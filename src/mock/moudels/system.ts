@@ -5,12 +5,12 @@ export default [
   {
     url: '/user/login',
     method: 'post',
-    response: (req) => {
-      console.log(req)
+    response: ({ body }) => {
       return {
         code: 0,
         data: {
-          name: 'vben'
+          name: 'pear',
+          body
         }
       }
     }
@@ -18,7 +18,8 @@ export default [
   {
     url: '/user/getCapture',
     method: 'get',
-    response: () => {
+    response: (req) => {
+      console.log(req)
       const value = Mock.mock({ regexp: /[a-zA-Z0-9]{4}/ }).regexp
       return {
         code: 0,

@@ -12,10 +12,8 @@
     NSpin
   } from 'naive-ui'
   import { markRaw, ref, computed, watch } from 'vue'
-  import useAppFetch from '@/api/useAppFetch'
-  import { AppApi } from '@/api/moduels/app/app'
-  import { testApi } from '@/api/moduels/app/test'
-
+  // import { getCapture, login } from '@/api/moduels/app/app'
+  import { useApi } from '@/api/http/useApi'
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
@@ -55,15 +53,11 @@
   const {
     data: validateCodeState,
     isFinished: hasCode,
-    isFetching: codeLoading,
+    isLoading: codeLoading,
     execute: refreshValidateCode
-  } = useAppFetch(
-    AppApi.GetCapture,
-    {
-      method: 'get'
-    },
-    { immediate: true, initialData: { code: '', image: '' } }
-  ).json()
+  } = useApi('/user/getCapture')
+
+  console.log(validateCodeState)
 
   // 自动填写验证码
   watch(hasCode, (code) => {
@@ -77,32 +71,19 @@
     refreshValidateCode()
   }
 
+
   // login
-  const {
-    data: loginData,
-    isFetching: loginLoading,
-    execute: loginFn,
-    isFinished
-  } = useAppFetch(
-    AppApi.Login,
-    {
-      method: 'post',
-      body: {
-        ...model
-      }
-    },
-    {
-      immediate: false
-    }
-  )
+  // const {
+  //   data: loginData,
+  //   isFetching: loginLoading,
+  //   execute: loginFn,
+  //   isFinished
+  // } = useApi('user/login').post({username: 'nmd', password: 'nnn'}).json()
   async function handleLogin() {
     console.log(model)
     await loginFn()
   }
 
-  // test
-  const response = await testApi()
-  console.log(response)
 </script>
 <template>
   <div class="px-5 login-wrapper">
