@@ -1,6 +1,6 @@
 import ky from 'ky'
 import { defaultFetchConfig } from '@/api/http/defaultFetchConfig'
-import { UserFetchConfig, DefaultFetchOptions } from '@/api/http/type'
+import { UserFetchConfig, DefaultCreateFetchOptions } from '@/api/http/type'
 
 export class FetchRequest {
   private readonly kyInstance: typeof ky
@@ -23,7 +23,7 @@ export class FetchRequest {
    */
   post<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -43,7 +43,7 @@ export class FetchRequest {
    */
   get<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -63,7 +63,7 @@ export class FetchRequest {
    */
   put<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -83,7 +83,7 @@ export class FetchRequest {
    */
   delete<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -103,7 +103,7 @@ export class FetchRequest {
    */
   patch<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -117,7 +117,7 @@ export class FetchRequest {
 
   head<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)
@@ -136,7 +136,7 @@ export class FetchRequest {
    */
   request<T = any>(
     url: string,
-    options?: DefaultFetchOptions,
+    options?: DefaultCreateFetchOptions,
     userFetchConfig?: UserFetchConfig
   ): Promise<T> {
     const fetchUrl = this.transformUrl(url)

@@ -14,6 +14,7 @@
   import { markRaw, ref, computed, watch } from 'vue'
   // import { getCapture, login } from '@/api/moduels/app/app'
   import { useApi } from '@/api/http/useApi'
+  import { apiTest } from '@/api/moduels/app/test'
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
@@ -62,7 +63,6 @@
   const codeLoading = ref(false)
   const loginLoading = ref(false)
   const refreshValidateCode = () => {}
-  useApi()
 
   // console.log(validateCodeState)
 
@@ -78,6 +78,29 @@
     refreshValidateCode()
   }
 
+  const d = ref({
+    a: 'a',
+    b: 1
+  })
+  const p = ref({
+    c: 'c',
+    d: '2'
+  })
+  const { loading, data, execute } = apiTest(p)
+  console.log(data)
+
+  watch(loading, v => {
+    console.log('loading => ', v)
+  })
+
+  function handleTestFetch () {
+    p.value = {
+      c: Math.floor(Math.random() * 10) + 1,
+      d: 'f'
+    }
+    execute.value()
+  }
+
 
   // login
   // const {
@@ -87,8 +110,10 @@
   //   isFinished
   // } = useApi('user/login').post({username: 'nmd', password: 'nnn'}).json()
   async function handleLogin() {
-    console.log(model)
-    await loginFn()
+    p.value = {
+      c: Math.floor(Math.random() * 3) + 10,
+      d: 'f'
+    }
   }
 
 </script>
@@ -96,6 +121,11 @@
   <div class="px-5 login-wrapper">
     <!--    <ThemeTool class="float-right my-4 mr-4" />-->
     <div class="relative w-full py-5 my-40 ml-auto mr-auto login-form sm:w-full">
+      <n-button @click="handleTestFetch">Test Fetch</n-button>
+      {{loading}}
+      {{JSON.stringify(data)}}
+      <hr/>
+      {{JSON.stringify(p)}}
       <div class="flex flex-row items-center justify-around">
         <img class="w-16" src="~@/assets/logo.png" alt="" />
         <n-element
