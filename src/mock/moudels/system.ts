@@ -19,7 +19,6 @@ export default [
     url: '/user/getCapture',
     method: 'get',
     response: (req) => {
-      console.log(req)
       const value = Mock.mock({ regexp: /[a-zA-Z0-9]{4}/ }).regexp
       return {
         code: 0,

@@ -8,9 +8,11 @@
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
   },
   "dependencies": {
+    "@types/lodash": "^4.14.174",
     "@vueuse/core": "^6.4.1",
-    "@vueuse/integrations": "^6.4.1",
     "axios": "^0.21.4",
+    "ky": "^0.28.5",
+    "lodash-es": "^4.17.21",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.0-rc.9",
     "qs": "^6.10.1",

@@ -1,24 +1,10 @@
-import { useAxios } from '@vueuse/integrations/useAxios'
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASIC_FETCH_URL,
-})
-
-axiosInstance.interceptors.request.use((requestConfig) => {
-  console.log(requestConfig)
-  return requestConfig
-})
-
-axiosInstance.interceptors.response.use((response) => {
+import api from './FetchRequest'
+export async function useApi(requestConfig) {
+  // const response = await api.get('/user/getCapture', { initialValue: { a: 2, b: 3 } })
+  // console.log('fetch result => ', response)
+  const response = await api.request('/user/getCapture', {
+    initialValue: { a: 333, b: 'adaf' },
+    method: 'post'
+  })
   console.log(response)
-  return response.data
-})
-
-export function useApi(url: string, config?: AxiosRequestConfig) {
-  const instance = axiosInstance
-  if (config) {
-    return useAxios(url, config, instance)
-  }
-  return useAxios(url, instance)
 }

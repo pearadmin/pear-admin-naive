@@ -5,6 +5,6 @@ declare module '*.vue' {
 }
 
 declare interface ImportMetaEnv {
-  VITE_BASIC_FETCH_URL: string
+  VITE_FETCH_PREFIX_URL: string
   // 更多环境变量...
 }

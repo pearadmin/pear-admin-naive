@@ -50,14 +50,21 @@
   )
 
   // 验证码
-  const {
-    data: validateCodeState,
-    isFinished: hasCode,
-    isLoading: codeLoading,
-    execute: refreshValidateCode
-  } = useApi('/user/getCapture')
+  // const {
+  //   data: validateCodeState,
+  //   isFinished: hasCode,
+  //   isLoading: codeLoading,
+  //   execute: refreshValidateCode
+  // } = useApi('/user/getCapture')
 
-  console.log(validateCodeState)
+  const validateCodeState = {code: '', image: ''}
+  const hasCode = ref(false)
+  const codeLoading = ref(false)
+  const loginLoading = ref(false)
+  const refreshValidateCode = () => {}
+  useApi()
+
+  // console.log(validateCodeState)
 
   // 自动填写验证码
   watch(hasCode, (code) => {
