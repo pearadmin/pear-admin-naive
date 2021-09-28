@@ -20,8 +20,10 @@ export interface DefaultCreateFetchOptions extends Options {
 }
 
 export interface UseApiFetchOption extends Options {
-  data?: MaybeRef<Options['json']>
-  params?: MaybeRef<Options['searchParams']>
+  // data?: MaybeRef<Options['json']>
+  // params?: MaybeRef<Options['searchParams']>
+  data?: MaybeRef<Recordable>
+  params?: MaybeRef<Recordable>
 }
 
 export interface HookConfig<T> {

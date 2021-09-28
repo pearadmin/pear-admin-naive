@@ -1,18 +1,30 @@
 import { MockMethod } from 'vite-plugin-mock'
 import Mock, { Random } from 'mockjs'
+import { createResponseData } from '../mockUtil'
 
 export default [
   {
     url: '/user/login',
     method: 'post',
     response: ({ body }) => {
-      return {
-        code: 0,
-        data: {
-          name: 'pear',
-          body
-        }
+      const data = {
+        userInfo: {
+          username: body.username,
+          password: body.password
+        },
+        token: Math.random().toString(32).substr(3),
+        routes: [],
+        permissions: []
       }
+      if (body.username !== 'admin' || body.password !== 'admin') {
+        return createResponseData({
+          code: -1,
+          msg: '账号或密码不正确'
+        })
+      }
+      return createResponseData({
+        data
+      })
     }
   },
   {

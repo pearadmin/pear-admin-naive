@@ -8,3 +8,4 @@ declare interface ImportMetaEnv {
   VITE_FETCH_PREFIX_URL: string
   // 更多环境变量...
 }
+

@@ -13,6 +13,12 @@
   } from 'naive-ui'
   import { markRaw, ref, computed, watch, unref, nextTick } from 'vue'
   import { getCapture, login } from '@/api/moduels/app/app'
+  import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
+  import { useUserStore } from '@/store/modules/userInfo'
+  import { get } from '@vueuse/core'
+
+  const userStore = useUserStore()
+
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
@@ -55,9 +61,8 @@
     execute: reloadCapture
   } = getCapture({ timestamp: new Date().getTime() })
 
-  // console.log(validateCodeState)
 
-  // 自动填写验证码
+  // 自动填写验证码 -- 开发环境用，仅限
   watch(validateCodeState, (data) => {
     if (data) {
       model.value.captchaCode = validateCodeState.value?.code
@@ -68,12 +73,19 @@
   const {
     data: loginData,
     loading: loginLoading,
-    execute: handleLogin,
+    execute: loginFn,
   } = login(model)
+
+  function handleLogin () {
+    loginFn.value()
+    console.log(loginData)
+    userStore.setUserInfo(get(loginData, 'userInfo'))
+  }
+
 </script>
 <template>
   <div class="px-5 login-wrapper">
-    <!--    <ThemeTool class="float-right my-4 mr-4" />-->
+    <ThemeTool class="float-right my-4 mr-4" />
     <div class="relative w-full py-5 my-40 ml-auto mr-auto login-form sm:w-full">
       <div class="flex flex-row items-center justify-around">
         <img class="w-16" src="~@/assets/logo.png" alt="" />

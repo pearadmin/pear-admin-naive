@@ -3,7 +3,12 @@ export interface CaptureModel {
   key: string
 }
 
-export interface GetCaptureParams {
+export interface CaptureParams {
   timestamp: number
 }
 
+export interface LoginForm {
+  username: string
+  password: string
+  captchaCode: string
+}
