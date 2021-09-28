@@ -48,7 +48,7 @@ export interface UseApiReturnType<T> {
   /**
    * 请求状态
    */
-  loading: MaybeRef<boolean>
+  loading: Ref<boolean>
   /**
    * 请求是否完成
    */
