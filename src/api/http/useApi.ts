@@ -1,17 +1,17 @@
 import api from './FetchRequest'
-import { computed, ref, watch } from 'vue'
-import { UseApiFetchOption, HookConfig, DefaultCreateFetchOptions } from '@/api/http/type'
+import { computed, Ref, ref, watch } from 'vue'
+import { UseApiFetchOption, HookConfig, DefaultCreateFetchOptions, UseApiReturnType } from '@/api/http/type'
 import { Options } from 'ky/distribution/types/options'
-import { get } from '@vueuse/core'
+import { get, MaybeRef } from '@vueuse/core'
 
-function getInitialRefData(initialData: unknown): unknown {
+function getInitialRefData<T = any>(initialData: T): T | null {
   if (initialData) {
     return initialData
   }
   return null
 }
 
-export function useApi(options: UseApiFetchOption, hookConfig?: HookConfig) {
+export function useApi<T = any>(url: MaybeRef<string>, options: UseApiFetchOption, hookConfig?: HookConfig): UseApiReturnType<T> {
   // init useApi settings
   const hookCfg: HookConfig = { immediate: true, refetch: false, throwOnFailed: false }
   if (hookConfig) {
@@ -20,11 +20,11 @@ export function useApi(options: UseApiFetchOption, hookConfig?: HookConfig) {
 
   const loading = ref<boolean>(false)
   const error = ref<string>('')
-  const data = ref<unknown>(getInitialRefData(hookCfg.initialData))
+  const data = ref<T>(getInitialRefData(hookCfg.initialData))
 
-  // eg: /api/get/:id url
+  // eg: /api/get/:id
   const fetchUrl = computed(() => {
-    return get(options.url)
+    return get(url)
   })
 
   // fetch options

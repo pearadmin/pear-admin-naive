@@ -1,6 +1,6 @@
 import { Options } from 'ky/distribution/types/options'
 import { MaybeRef } from '@vueuse/core'
-import { ComputedRef } from 'vue'
+import { ComputedRef, UnwrapRef } from 'vue'
 
 export interface UserFetchConfig {
   transform?: 'arrayBuffer' | 'blob' | 'formData' | 'json' | 'text'
@@ -13,7 +13,6 @@ export interface DefaultCreateFetchOptions extends Options {
 }
 
 export interface UseApiFetchOption extends Options {
-  url: MaybeRef<string>
   data?: MaybeRef<Options['json']>
   params?: MaybeRef<Options['searchParams']>
 }
@@ -22,7 +21,7 @@ export interface HookConfig {
   /**
    * 初始化data: default null
    */
-  initialData?: any
+  initialData?: MaybeRef
   /**
    * 是否立即触发请求: default true
    */
@@ -38,7 +37,7 @@ export interface HookConfig {
 }
 
 
-export interface UseApiReturnType<T> {
+export interface UseApiReturnType<T extends any> {
   /**
    * 请求状态
    */
@@ -46,9 +45,9 @@ export interface UseApiReturnType<T> {
   /**
    * 返回的数据类型
    */
-  data: MaybeRef<T>
+  data: MaybeRef<UnwrapRef<Nullable<T>>>
   /**
    * 执行函数
    */
-  execute: ComputedRef<() => {}>
+  execute: ComputedRef<() => Promise<unknown>>
 }
