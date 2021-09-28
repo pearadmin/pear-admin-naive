@@ -11,7 +11,7 @@ function getInitialRefData<T = any>(initialData: T): T | null {
   return null
 }
 
-export function useApi<T = any>(url: MaybeRef<string>, options: UseApiFetchOption, hookConfig?: HookConfig): UseApiReturnType<T> {
+export function useApi<T = any>(url: MaybeRef<string>, options?: UseApiFetchOption, hookConfig?: HookConfig): UseApiReturnType<T> {
   // init useApi settings
   const hookCfg: HookConfig = { immediate: true, refetch: false, throwOnFailed: false }
   if (hookConfig) {
@@ -29,11 +29,11 @@ export function useApi<T = any>(url: MaybeRef<string>, options: UseApiFetchOptio
 
   // fetch options
   const fetchOptions = computed((): DefaultCreateFetchOptions => {
-    const fetchOpt: Options = {}
-    if (options.data) {
+    const fetchOpt: Options = options ?? {}
+    if (options && options.data) {
       fetchOpt.json = get(options.data)
     }
-    if (options.params) {
+    if (options && options.params) {
       fetchOpt.searchParams = get(options.params)
     }
     return fetchOpt
@@ -49,7 +49,7 @@ export function useApi<T = any>(url: MaybeRef<string>, options: UseApiFetchOptio
         api
           .request(url, options)
           .then((response) => {
-            data.value = response
+            data.value = response.data
             resolve(response)
           })
           .catch((fetchError) => {

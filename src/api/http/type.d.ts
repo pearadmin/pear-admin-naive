@@ -3,7 +3,14 @@ import { MaybeRef } from '@vueuse/core'
 import { ComputedRef, UnwrapRef } from 'vue'
 
 export interface UserFetchConfig {
+  /**
+   * 返回的数据的方式
+   * fetch请求后需要链式调用 [transform]() 对应的方法， 默认调用.json()返回json对象
+   */
   transform?: 'arrayBuffer' | 'blob' | 'formData' | 'json' | 'text'
+  /**
+   * 展示错误数据的方式
+   */
   showErrorType?: 'Modal' | 'Notification'
 }
 

@@ -11,10 +11,8 @@
     NButton,
     NSpin
   } from 'naive-ui'
-  import { markRaw, ref, computed, watch } from 'vue'
-  // import { getCapture, login } from '@/api/moduels/app/app'
-  import { useApi } from '@/api/http/useApi'
-  import { apiTest } from '@/api/moduels/app/test'
+  import { markRaw, ref, computed, watch, unref } from 'vue'
+  import { getCapture, login } from '@/api/moduels/app/app'
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
@@ -51,81 +49,33 @@
   )
 
   // 验证码
-  // const {
-  //   data: validateCodeState,
-  //   isFinished: hasCode,
-  //   isLoading: codeLoading,
-  //   execute: refreshValidateCode
-  // } = useApi('/user/getCapture')
-
-  const validateCodeState = {code: '', image: ''}
-  const hasCode = ref(false)
-  const codeLoading = ref(false)
-  const loginLoading = ref(false)
-  const refreshValidateCode = () => {}
+  const {
+    data: validateCodeState,
+    loading: codeLoading,
+    execute: reloadCapture
+  } = getCapture({ timestamp: new Date().getTime() })
 
   // console.log(validateCodeState)
 
   // 自动填写验证码
-  watch(hasCode, (code) => {
-    if (code) {
+  watch(validateCodeState, (data) => {
+    if (data) {
       model.value.captchaCode = validateCodeState.value?.code
     }
   })
 
-  // 重新加载验证码
-  function reloadCapture() {
-    refreshValidateCode()
-  }
-
-  const d = ref({
-    a: 'a',
-    b: 1
-  })
-  const p = ref({
-    c: 'c',
-    d: '2'
-  })
-  const { loading, data, execute } = apiTest(p)
-  console.log(data)
-
-  watch(loading, v => {
-    console.log('loading => ', v)
-  })
-
-  function handleTestFetch () {
-    p.value = {
-      c: Math.floor(Math.random() * 10) + 1,
-      d: 'f'
-    }
-    execute.value()
-  }
-
-
   // login
-  // const {
-  //   data: loginData,
-  //   isFetching: loginLoading,
-  //   execute: loginFn,
-  //   isFinished
-  // } = useApi('user/login').post({username: 'nmd', password: 'nnn'}).json()
-  async function handleLogin() {
-    p.value = {
-      c: Math.floor(Math.random() * 3) + 10,
-      d: 'f'
-    }
-  }
+  const {
+    data: loginData,
+    loading: loginLoading,
+    execute: handleLogin,
+  } = login(model)
 
 </script>
 <template>
   <div class="px-5 login-wrapper">
     <!--    <ThemeTool class="float-right my-4 mr-4" />-->
     <div class="relative w-full py-5 my-40 ml-auto mr-auto login-form sm:w-full">
-      <n-button @click="handleTestFetch">Test Fetch</n-button>
-      {{loading}}
-      {{JSON.stringify(data)}}
-      <hr/>
-      {{JSON.stringify(p)}}
       <div class="flex flex-row items-center justify-around">
         <img class="w-16" src="~@/assets/logo.png" alt="" />
         <n-element
