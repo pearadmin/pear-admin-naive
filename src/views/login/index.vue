@@ -11,7 +11,7 @@
     NButton,
     NSpin
   } from 'naive-ui'
-  import { markRaw, ref, computed, watch, unref } from 'vue'
+  import { markRaw, ref, computed, watch, unref, nextTick } from 'vue'
   import { getCapture, login } from '@/api/moduels/app/app'
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
@@ -70,7 +70,6 @@
     loading: loginLoading,
     execute: handleLogin,
   } = login(model)
-
 </script>
 <template>
   <div class="px-5 login-wrapper">

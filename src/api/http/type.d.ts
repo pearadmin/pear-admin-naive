@@ -1,6 +1,6 @@
 import { Options } from 'ky/distribution/types/options'
 import { MaybeRef } from '@vueuse/core'
-import { ComputedRef, UnwrapRef } from 'vue'
+import { ComputedRef, Ref, UnwrapRef } from 'vue'
 
 export interface UserFetchConfig {
   /**
@@ -24,11 +24,11 @@ export interface UseApiFetchOption extends Options {
   params?: MaybeRef<Options['searchParams']>
 }
 
-export interface HookConfig {
+export interface HookConfig<T> {
   /**
    * 初始化data: default null
    */
-  initialData?: MaybeRef
+  initialData?: MaybeRef<T>
   /**
    * 是否立即触发请求: default true
    */
@@ -44,15 +44,19 @@ export interface HookConfig {
 }
 
 
-export interface UseApiReturnType<T extends any> {
+export interface UseApiReturnType<T> {
   /**
    * 请求状态
    */
   loading: MaybeRef<boolean>
   /**
+   * 请求是否完成
+   */
+  finished: Ref<boolean>
+  /**
    * 返回的数据类型
    */
-  data: MaybeRef<UnwrapRef<Nullable<T>>>
+  data: Ref<UnwrapRef<T>  | null>
   /**
    * 执行函数
    */

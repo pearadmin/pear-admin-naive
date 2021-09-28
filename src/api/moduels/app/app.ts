@@ -13,7 +13,7 @@ export const getCapture = (params: Recordable) => {
 }
 
 export const login = (data: Recordable) => {
-  return useApi(Api.Login, {
+  return useApi<{code: string, image: string}>(Api.Login, {
     method: 'post',
     data
   }, { immediate: false })
