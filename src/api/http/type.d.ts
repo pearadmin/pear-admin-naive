@@ -59,6 +59,7 @@ export interface UseApiReturnType<T> {
    * 返回的数据类型
    */
   data: Ref<UnwrapRef<T>  | null>
+  // data: Ref<T | null>
   /**
    * 执行函数
    */

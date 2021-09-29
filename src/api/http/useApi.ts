@@ -29,7 +29,8 @@ export function useApi<T = any>(
 
   const loading = ref<boolean>(false)
   const error = ref<string>('')
-  const data = ref<T | null>(getInitialRefData(hookCfg))
+  const data = ref<Nullable<T>>(getInitialRefData(hookCfg))
+  // const data = ref<Nullable<T>>(null)
   const finished = ref<boolean>(false)
 
   // eg: /api/get/:id
@@ -61,7 +62,7 @@ export function useApi<T = any>(
           .request(url, options)
           .then((response) => {
             data.value = response.data
-            resolve(response)
+            resolve(response.data)
           })
           .catch((fetchError) => {
             error.value = fetchError.message || fetchError.name

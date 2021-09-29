@@ -15,14 +15,17 @@
   import { getCapture, login } from '@/api/moduels/app/app'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
-  import { get } from '@vueuse/core'
+  import { get, until } from '@vueuse/core'
+  import { FormState } from '@/views/login/type'
+  import { useRouter } from 'vue-router'
 
   const userStore = useUserStore()
+  const router = useRouter()
 
   // formRef
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
-  const model = ref({
+  const model = ref<FormState>({
     username: 'admin',
     password: 'admin',
     captchaCode: ''
@@ -74,12 +77,17 @@
     data: loginData,
     loading: loginLoading,
     execute: loginFn,
+    finished: loginFinished
   } = login(model)
 
-  function handleLogin () {
-    loginFn.value()
-    console.log(loginData)
+  // 登录
+  async function handleLogin () {
+    await loginFn.value()
     userStore.setUserInfo(get(loginData, 'userInfo'))
+    userStore.setToken(get(loginData, 'token'))
+    router.push({
+      name: 'Dashboard'
+    })
   }
 
 </script>

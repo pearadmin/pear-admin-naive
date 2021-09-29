@@ -12,3 +12,13 @@ export interface LoginForm {
   password: string
   captchaCode: string
 }
+
+export interface LoginResData {
+  permissions: any[]
+  routes: any[]
+  token: string
+  userInfo: {
+    username: string
+    password: string
+  }
+}

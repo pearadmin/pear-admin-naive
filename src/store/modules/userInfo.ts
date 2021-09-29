@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { RemoveableRef, useLocalStorage } from '@vueuse/core'
+import { useStorage } from '@vueuse/core'
 
 interface UserState {
   userInfo: Nullable<Recordable>
-  token: Nullable<RemoveableRef<string>>
+  token: Nullable<string>
 }
 
 const useUserStore = defineStore({
@@ -17,10 +17,14 @@ const useUserStore = defineStore({
   getters: {},
   actions: {
     setUserInfo(userInfo: Recordable) {
-      this.userInfo = useLocalStorage('userInfo', userInfo)
+      const userInfoRef = useStorage('userInfo', userInfo, localStorage)
+      userInfoRef.value = userInfo
+      this.userInfo = userInfoRef.value
     },
     setToken(token: string) {
-      this.token = useLocalStorage('token', token) as RemoveableRef<string>
+      const tokenRef = useStorage('token', token, localStorage)
+      tokenRef.value = token
+      this.token = tokenRef.value
     }
   }
 })
