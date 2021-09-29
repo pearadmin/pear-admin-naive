@@ -17,7 +17,18 @@ export const defaultFetchConfig: Options = {
     ],
     // beforeRetry: [(beforeRetryState) => {}],
     afterResponse: [
-      (_, __, response) => {
+      async (_, __, response) => {
+        if (!response.ok) {
+          window.$message.error('网络错误, 请稍后重试！')
+        }
+        const cloneResponse = response.clone()
+        const responseData = await cloneResponse.json()
+
+        const { code, msg } = responseData
+        if (code === -1) {
+          window.$message.error(msg)
+        }
+
         return response
       }
     ]

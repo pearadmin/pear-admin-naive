@@ -11,11 +11,11 @@
     NButton,
     NSpin
   } from 'naive-ui'
-  import { markRaw, ref, computed, watch, unref, nextTick } from 'vue'
+  import { markRaw, ref, computed, watch } from 'vue'
   import { getCapture, login } from '@/api/moduels/app/app'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
-  import { get, until } from '@vueuse/core'
+  import { get } from '@vueuse/core'
   import { FormState } from '@/views/login/type'
   import { useRouter } from 'vue-router'
 
@@ -26,7 +26,7 @@
   const formRefEl = ref<null | typeof NForm>(null)
   // form model
   const model = ref<FormState>({
-    username: 'admin',
+    username: 'admin1',
     password: 'admin',
     captchaCode: ''
   })
@@ -83,9 +83,9 @@
   // 登录
   async function handleLogin () {
     await loginFn.value()
-    userStore.setUserInfo(get(loginData, 'userInfo'))
-    userStore.setToken(get(loginData, 'token'))
-    router.push({
+    userStore.setUserInfo(loginData.value?.userInfo)
+    userStore.setToken(loginData.value?.token)
+    await router.push({
       name: 'Dashboard'
     })
   }

@@ -1,10 +1,12 @@
 <template>
-  <div> abcd </div>
+  <div>
+    <div> abcd </div>
+    <Interaction></Interaction>
+  </div>
 </template>
 
 <script setup lang="ts">
-  const response = await fetch('/api/get')
-  console.log(response)
+  import Interaction from '@/components/Application/Interaction/Interaction.vue'
 </script>
 
 <style scoped lang="less"></style>

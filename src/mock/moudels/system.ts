@@ -19,7 +19,8 @@ export default [
       if (body.username !== 'admin' || body.password !== 'admin') {
         return createResponseData({
           code: -1,
-          msg: '账号或密码不正确'
+          msg: '账号或密码不正确',
+          success: false
         })
       }
       return createResponseData({

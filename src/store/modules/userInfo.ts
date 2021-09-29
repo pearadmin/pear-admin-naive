@@ -10,8 +10,8 @@ const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => {
     return {
-      userInfo: null,
-      token: null
+      userInfo: useStorage('userInfo', null, localStorage).value,
+      token: useStorage('token', null, localStorage).value
     }
   },
   getters: {},
