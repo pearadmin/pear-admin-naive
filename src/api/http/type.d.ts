@@ -11,7 +11,7 @@ export interface UserFetchConfig {
   /**
    * 展示错误数据的方式
    */
-  showErrorType?: 'Modal' | 'Notification'
+  showErrorType?: 'Modal' | 'Notification' | 'Message'
 }
 
 export interface DefaultCreateFetchOptions extends Options {
@@ -45,7 +45,6 @@ export interface HookConfig<T> {
   throwOnFailed?: boolean
 }
 
-
 export interface UseApiReturnType<T> {
   /**
    * 请求状态
@@ -58,7 +57,7 @@ export interface UseApiReturnType<T> {
   /**
    * 返回的数据类型
    */
-  data: Ref<UnwrapRef<T>  | null>
+  data: Ref<UnwrapRef<T> | null>
   // data: Ref<T | null>
   /**
    * 执行函数

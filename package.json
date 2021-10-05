@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "serve": "vite",
+    "dev": "pnpm run serve",
     "build": "vue-tsc --noEmit && vite build",
     "preview:local": "yarn build && vite preview",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
+    "clean:lib": "rimraf node_modules",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
   },
   "dependencies": {

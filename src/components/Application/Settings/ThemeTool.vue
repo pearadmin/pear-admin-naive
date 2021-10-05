@@ -32,7 +32,7 @@
   const value = ref<ThemeName>('auto')
 
   watch(
-    () => appStore.getTheme,
+    () => appStore.theme,
     (theme: ThemeName) => {
       value.value = theme
     },
@@ -52,12 +52,7 @@
 </script>
 <template>
   <div>
-    <n-popselect
-      :value="value"
-      :options="options"
-      trigger="click"
-      @update:value="handleToggle"
-    >
+    <n-popselect :value="value" :options="options" trigger="click" @update:value="handleToggle">
       <n-button round>主题: {{ currentThemeName }}</n-button>
     </n-popselect>
   </div>

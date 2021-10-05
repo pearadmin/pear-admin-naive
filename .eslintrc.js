@@ -1,4 +1,5 @@
 // @ts-check
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { defineConfig } = require('eslint-define-config')
 module.exports = defineConfig({
   root: true,
@@ -25,6 +26,7 @@ module.exports = defineConfig({
   ],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    'vue/one-component-per-file': 'off'
   }
 })
