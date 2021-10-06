@@ -12,7 +12,7 @@
         bordered
         inverted
         :native-scrollbar="false"
-      >海淀桥</n-layout-sider>
+      >Left Sider</n-layout-sider>
       <n-layout
         class="pear-admin-layout-wrapper-layout"
         embedded
@@ -21,7 +21,7 @@
           class="h-12"
           inverted
         >
-          header
+          Header
         </n-layout-header>
         <n-layout-content
           embedded
@@ -29,12 +29,12 @@
           class="h-full"
           :native-scrollbar="false"
         >
-          平山道
+          Content
         </n-layout-content>
         <n-layout-footer
           inverted
         >
-          成府路
+          Footer
         </n-layout-footer>
       </n-layout>
     </n-layout>
