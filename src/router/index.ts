@@ -1,6 +1,7 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
 import { App } from 'vue'
 import { permissionGuard } from '@/router/guard/permissionGuard'
+import { BasicLayout } from '@/layouts'
 
 const router = createRouter({
   history: createWebHashHistory('/'),
@@ -17,7 +18,14 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: () => import('@/views/dashboard/index.vue')
+      component: BasicLayout,
+      children: [
+        {
+          path: 'index',
+          component: () => import('@/views/dashboard/index.vue'),
+          name: 'Index'
+        }
+      ]
     },
     {
       path: '/test',
