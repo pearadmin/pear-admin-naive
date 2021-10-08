@@ -1,6 +1,6 @@
 export interface CaptureModel {
   code: string
-  key: string
+  image: string
 }
 
 export interface CaptureParams {

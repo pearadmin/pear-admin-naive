@@ -1,5 +1,6 @@
 import { Options } from 'ky/distribution/types/options'
 import { InstanceFetchConfig } from '@/api/http/type'
+import { createDialog } from '@/api/http/createDialog'
 
 export const fetchConfig: Options = {
   prefixUrl: import.meta.env.VITE_FETCH_PREFIX_URL,
@@ -43,10 +44,11 @@ export const fetchConfig: Options = {
               window.$message.error(msg)
               break
             case 'Dialog':
-              window.$dialog.destroyAll()
-              window.$dialog.error({
+              createDialog({
+                type: 'error',
                 title: '提示',
-                content: msg
+                content: msg,
+                duration: 3000
               })
               break
             case 'Notification':

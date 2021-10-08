@@ -127,7 +127,6 @@
                   class="cursor-pointer"
                   :src="validateCodeState?.image"
                   alt="验证码"
-                  :loading="codeLoading"
                   @click="reloadCapture"
                 />
               </n-spin>
@@ -136,15 +135,19 @@
         </n-form-item>
         <n-form-item class="block">
           <n-grid :cols="2" :x-gap="24">
-            <n-checkbox>记住我</n-checkbox>
-            <n-element
-              tag="a"
-              href="javascript:;"
-              class="block text-right"
-              style="color: var(--primary-color); transition: 0.3s var(--cubic-bezier-ease-in-out)"
-            >
-              忘记密码
-            </n-element>
+            <n-gi>
+              <n-checkbox>记住我</n-checkbox>
+            </n-gi>
+            <n-gi>
+              <n-element
+                tag="a"
+                href="javascript:;"
+                class="block text-right"
+                style="color: var(--primary-color); transition: 0.3s var(--cubic-bezier-ease-in-out)"
+              >
+                忘记密码
+              </n-element>
+            </n-gi>
           </n-grid>
         </n-form-item>
         <n-form-item class="block">
