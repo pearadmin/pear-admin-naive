@@ -24,7 +24,8 @@ export const login = (data: Ref<LoginForm>) => {
     Api.Login,
     {
       method: 'post',
-      data
+      data,
+      showErrorType: 'Dialog'
     },
     { immediate: false }
   )

@@ -1,12 +1,6 @@
-import api from './FetchRequest'
+import api from './Fetch'
 import { computed, ref, watch } from 'vue'
-import {
-  UseApiFetchOption,
-  HookConfig,
-  DefaultCreateFetchOptions,
-  UseApiReturnType
-} from '@/api/http/type'
-import { Options } from 'ky/distribution/types/options'
+import { HookConfig, InstanceFetchConfig, UseApiReturnType } from '@/api/http/type'
 import { get, MaybeRef } from '@vueuse/core'
 
 function getInitialRefData<T>(config: HookConfig<T>): T | null {
@@ -18,7 +12,7 @@ function getInitialRefData<T>(config: HookConfig<T>): T | null {
 
 export function useApi<T = any>(
   url: MaybeRef<string>,
-  options?: UseApiFetchOption,
+  options?: InstanceFetchConfig,
   hookConfig?: HookConfig<T>
 ): UseApiReturnType<T> {
   // init useApi settings
@@ -39,8 +33,8 @@ export function useApi<T = any>(
   })
 
   // fetch options
-  const fetchOptions = computed((): DefaultCreateFetchOptions => {
-    const fetchOpt: Options = options ?? {}
+  const fetchOptions = computed((): InstanceFetchConfig => {
+    const fetchOpt: InstanceFetchConfig = options ?? {}
     if (options && options.data) {
       fetchOpt.json = get(options.data)
     }

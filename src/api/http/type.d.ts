@@ -2,28 +2,21 @@ import { Options } from 'ky/distribution/types/options'
 import { MaybeRef } from '@vueuse/core'
 import { ComputedRef, Ref, UnwrapRef } from 'vue'
 
-export interface UserFetchConfig {
+export interface InstanceFetchConfig extends Options {
+  /**
+   * post 请求数据body对象
+   */
+  data?: Options['json'] | Recordable
+  /**
+   * get 请求数据参数对象
+   */
+  params?: Options['searchParams'] | Recordable
   /**
    * 返回的数据的方式
    * fetch请求后需要链式调用 [transform]() 对应的方法， 默认调用.json()返回json对象
    */
   transform?: 'arrayBuffer' | 'blob' | 'formData' | 'json' | 'text'
-  /**
-   * 展示错误数据的方式
-   */
-  showErrorType?: 'Modal' | 'Notification' | 'Message'
-}
-
-export interface DefaultCreateFetchOptions extends Options {
-  data?: Options['json']
-  params?: Options['searchParams']
-}
-
-export interface UseApiFetchOption extends Options {
-  // data?: MaybeRef<Options['json']>
-  // params?: MaybeRef<Options['searchParams']>
-  data?: MaybeRef<Recordable>
-  params?: MaybeRef<Recordable>
+  showErrorType?: 'Message' | 'Dialog' | 'Notification'
 }
 
 export interface HookConfig<T> {

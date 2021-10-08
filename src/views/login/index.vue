@@ -15,7 +15,6 @@
   import { getCapture, login } from '@/api/moduels/app/app'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
-  import { get } from '@vueuse/core'
   import { FormState } from '@/views/login/type'
   import { useRouter } from 'vue-router'
 
@@ -64,11 +63,10 @@
     execute: reloadCapture
   } = getCapture({ timestamp: new Date().getTime() })
 
-
   // 自动填写验证码 -- 开发环境用，仅限
   watch(validateCodeState, (data) => {
     if (data) {
-      model.value.captchaCode = validateCodeState.value?.code
+      model.value.captchaCode = data.code
     }
   })
 
@@ -81,15 +79,16 @@
   } = login(model)
 
   // 登录
-  async function handleLogin () {
+  async function handleLogin() {
     await loginFn.value()
-    userStore.setUserInfo(loginData.value?.userInfo)
-    userStore.setToken(loginData.value?.token)
-    await router.push({
-      name: 'Dashboard'
-    })
+    if (loginData.value) {
+      userStore.setUserInfo(loginData.value?.userInfo)
+      userStore.setToken(loginData.value?.token)
+      await router.push({
+        name: 'Dashboard'
+      })
+    }
   }
-
 </script>
 <template>
   <div class="px-5 login-wrapper">

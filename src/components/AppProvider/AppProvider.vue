@@ -3,7 +3,7 @@
   import { NThemeEditor, NGlobalStyle } from 'naive-ui'
   import { isDevelopment } from '@/utils/utils'
   import { useUiConfig } from '@/composables/useUiConfig/useUiConfig'
-  import { OuterMessage, OuterNotification } from '@/components/AppProvider/OuterFeedback'
+  import { OuterMessage, OuterNotification, OuterDialog } from '@/components/AppProvider/OuterFeedback'
 
   const { providerAttrs } = useUiConfig()
 </script>
@@ -12,6 +12,7 @@
     <n-global-style />
     <n-theme-editor v-if="isDevelopment()" />
     <n-dialog-provider>
+      <OuterDialog></OuterDialog>
       <n-notification-provider>
         <OuterNotification></OuterNotification>
         <NMessageProvider>

@@ -7,13 +7,12 @@ FetchRequest.ts
 eg:
 
 ```ts
-import api from '@/api/http/FetchRequest'
+import api from '@/api/http/Fetch'
 
 // get:
 // 参数类型
 // url: string
 // fetchOptions: DefaultCreateFetchOptions
-// useFetchCofig: UserFetchConfig // UseFetchConfig['showErrorType']效果待实现
 
 export const getFn = (parmas) => {
   return api.get<ResponseType>('/api/getXXX', { params: { a: 1, b: 'str' })
@@ -23,7 +22,6 @@ export const getFn = (parmas) => {
 // 参数类型
 // url: string
 // fetchOptions: DefaultCreateFetchOptions
-// useFetchCofig: UserFetchConfig // UseFetchConfig['showErrorType']效果待实现
 
 export const getFn = (parmas) => {
   return api.get<ResponseType>('/api/getXXX', { params: { a: 1, b: 'str' })
