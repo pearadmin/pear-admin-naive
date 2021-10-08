@@ -8,7 +8,10 @@
       embedded
     >
       <n-layout-sider
-        content-style="padding: 24px;"
+        collapse-mode="width"
+        :width="200"
+        show-trigger="arrow-circle"
+        content-style=""
         bordered
         inverted
         :native-scrollbar="false"
