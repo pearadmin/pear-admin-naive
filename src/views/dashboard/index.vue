@@ -1,5 +1,9 @@
 <template>
-  <div> abcd </div>
+  <div>
+    adfa
+    asd
+    Dashboard
+  </div>
 </template>
 
 <script setup lang="ts">

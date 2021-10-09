@@ -13,7 +13,6 @@
         show-trigger="arrow-circle"
         content-style=""
         bordered
-        inverted
         :native-scrollbar="false"
       >Left Sider</n-layout-sider>
       <n-layout
@@ -22,20 +21,19 @@
       >
         <n-layout-header
           class="h-12"
-          inverted
         >
           Header
         </n-layout-header>
         <n-layout-content
           embedded
           content-style=""
-          class="h-full"
           :native-scrollbar="false"
+          contet-style="padding: 24px"
+          class="h-full"
         >
-          Content
+          <router-view></router-view>
         </n-layout-content>
         <n-layout-footer
-          inverted
         >
           Footer
         </n-layout-footer>

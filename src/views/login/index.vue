@@ -143,7 +143,10 @@
                 tag="a"
                 href="javascript:;"
                 class="block text-right"
-                style="color: var(--primary-color); transition: 0.3s var(--cubic-bezier-ease-in-out)"
+                style="
+                  color: var(--primary-color);
+                  transition: 0.3s var(--cubic-bezier-ease-in-out);
+                "
               >
                 忘记密码
               </n-element>
