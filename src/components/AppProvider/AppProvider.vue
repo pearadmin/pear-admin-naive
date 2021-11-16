@@ -1,9 +1,18 @@
 <script setup lang="ts">
-  import { NConfigProvider, NMessageProvider, NDialogProvider, NNotificationProvider } from 'naive-ui'
+  import {
+    NConfigProvider,
+    NMessageProvider,
+    NDialogProvider,
+    NNotificationProvider
+  } from 'naive-ui'
   import { NThemeEditor, NGlobalStyle } from 'naive-ui'
   import { isDevelopment } from '@/utils/utils'
   import { useUiConfig } from '@/composables/useUiConfig/useUiConfig'
-  import { OuterMessage, OuterNotification, OuterDialog } from '@/components/AppProvider/OuterFeedback'
+  import {
+    OuterMessage,
+    OuterNotification,
+    OuterDialog
+  } from '@/components/AppProvider/OuterFeedback'
 
   const { providerAttrs } = useUiConfig()
 </script>

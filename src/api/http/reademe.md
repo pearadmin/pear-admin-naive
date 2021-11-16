@@ -82,8 +82,8 @@ const getProductList = (data: RequestDataWrapper<RequestData>) => {
     data: products,
     execute: handleFetchProduct
   } = getProductList(requestData)
-  
-  async function handleFetch () {
+
+  async function handleFetch() {
     console.log(products.value) // null
     await handleFetchProduct.value()
     console.log(products.value) // is Fetch result
