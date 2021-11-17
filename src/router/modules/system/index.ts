@@ -9,7 +9,8 @@ const systemRoutes: RouteRecordRaw[] = [
     component: () => import('@/layouts'),
     redirect: '/system/account',
     meta: {
-      title: '系统设置'
+      title: '系统设置',
+      icon: 'ri:settings-4-line'
     },
     children: [
       {
@@ -17,7 +18,8 @@ const systemRoutes: RouteRecordRaw[] = [
         name: 'Account',
         component: () => import('@/views/demo/system/account/index.vue'),
         meta: {
-          title: '账号管理'
+          title: '账号管理',
+          icon: 'ri:account-box-line'
         }
       },
       {
@@ -25,7 +27,8 @@ const systemRoutes: RouteRecordRaw[] = [
         name: 'Menus',
         component: () => import('@/views/demo/system/menus/index.vue'),
         meta: {
-          title: '账号管理'
+          title: '菜单管理',
+          icon: 'system-uicons:side-menu'
         }
       }
     ]

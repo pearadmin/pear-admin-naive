@@ -4,6 +4,7 @@
   import PearHeader from './header'
   import PearContent from './content'
   import PearFooter from './footer'
+
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">

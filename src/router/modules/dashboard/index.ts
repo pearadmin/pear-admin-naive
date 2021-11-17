@@ -8,7 +8,8 @@ const dashboardRoutes: RouteRecordRaw[] = [
     component: () => import('@/layouts'),
     redirect: '/dashboard/analysis',
     meta: {
-      title: '仪表盘'
+      title: '仪表盘',
+      icon: 'icon-park-outline:dashboard-two'
     },
     children: [
       {
@@ -16,7 +17,8 @@ const dashboardRoutes: RouteRecordRaw[] = [
         name: 'Analysis',
         component: () => import('@/views/demo/dashboard/analysis/index.vue'),
         meta: {
-          title: '分析页'
+          title: '分析页',
+          icon: 'uim:analysis'
         }
       },
       {
@@ -24,7 +26,8 @@ const dashboardRoutes: RouteRecordRaw[] = [
         name: 'Workspace',
         component: () => import('@/views/demo/dashboard/workspace/index.vue'),
         meta: {
-          title: '工作台'
+          title: '工作台',
+          icon: 'carbon:workspace'
         }
       }
     ]

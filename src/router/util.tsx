@@ -1,5 +1,6 @@
 import type { MenuOption } from 'naive-ui'
 import { RouteRecordRaw } from 'vue-router'
+import Icon from '@/components/Icon'
 const menuRoutes = import.meta.globEager('./modules/*/*.ts')
 
 const routes = Object.keys(menuRoutes).reduce((routes, key) => {
@@ -26,7 +27,7 @@ export function getMenuOptions(routes: RouteRecordRaw[]): MenuOption[] {
         label: route.meta?.title,
         icon: route.meta?.icon
           ? () => {
-              return <span>{route.meta?.icon}</span>
+              return <Icon name={route.meta?.icon} />
             }
           : undefined,
         key: route.name as string
