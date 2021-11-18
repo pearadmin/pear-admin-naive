@@ -1,6 +1,7 @@
 <script setup lang="tsx">
   import Icon from '@/components/Icon'
-  import { NElement, NDropdown, NAvatar } from "naive-ui";
+  import { NElement, NDropdown, NAvatar } from 'naive-ui'
+  import { useRouter } from 'vue-router'
 
   const options = [
     {
@@ -23,15 +24,21 @@
       icon: () => <Icon name="ant-design:logout-outlined"></Icon>
     }
   ]
-  function handleSelect() {}
+
+  const router = useRouter()
+  function handleSelect(key: string) {
+    switch (key) {
+      case 'logout':
+        sessionStorage.clear()
+        window.location.reload()
+        break
+    }
+  }
 </script>
 
 <template>
-  <n-dropdown trigger="hover" @select="handleSelect" :options="options">
-    <NElement
-      tag="div"
-      class="pear-admin-user-dropdown"
-    >
+  <n-dropdown trigger="hover" :on-select="handleSelect" :options="options" width="trigger">
+    <NElement tag="div" class="pear-admin-user-dropdown" placement="bottom-end">
       <NAvatar
         round
         :size="24"
@@ -52,7 +59,6 @@
       background: var(--hover-color);
     }
     &-avatar {
-
     }
   }
 </style>

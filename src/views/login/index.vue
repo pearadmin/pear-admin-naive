@@ -11,23 +11,22 @@
     NButton,
     NSpin
   } from 'naive-ui'
-  import { markRaw, ref, computed, watch } from 'vue'
-  import { getCapture, login } from '@/api/moduels/app/app'
+  import { markRaw, ref, computed } from 'vue'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
   import { FormState } from '@/views/login/type'
   import { useRouter } from 'vue-router'
+  import { useLogin } from '@/api/moduels/fast-api/login'
 
   const userStore = useUserStore()
   const router = useRouter()
 
-  // formRef
-  const formRefEl = ref<null | typeof NForm>(null)
+  // form refEl
+  const formRefEl = ref<typeof NForm | null>(null)
   // form model
   const model = ref<FormState>({
     username: 'admin1',
     password: 'admin',
-    captchaCode: ''
   })
 
   const rules = markRaw({
@@ -51,38 +50,22 @@
     ]
   })
 
-  // login button disabled
-  const btnNotDisable = computed(() =>
-    Object.values(model.value).every((val) => val && val.trim() !== '')
-  )
-
-  // 验证码
-  const {
-    data: validateCodeState,
-    loading: codeLoading,
-    execute: reloadCapture
-  } = getCapture({ timestamp: new Date().getTime() })
-
-  // 自动填写验证码 -- 开发环境用，仅限
-  watch(validateCodeState, (data) => {
-    if (data) {
-      model.value.captchaCode = data.code
-    }
-  })
-
   // login
   const {
     data: loginData,
     loading: loginLoading,
     execute: loginFn,
     finished: loginFinished
-  } = login(model)
+  } = useLogin(model)
 
   // 登录
   async function handleLogin() {
+    await formRefEl.value?.validate()
     await loginFn.value()
+    console.log(loginData)
     if (loginData.value) {
-      userStore.setUserInfo(loginData.value?.userInfo)
+      console.log(loginData)
+      userStore.setUserInfo(loginData.value?.userinfo)
       userStore.setToken(loginData.value?.token)
       await router.push({
         name: 'Dashboard'
@@ -116,23 +99,23 @@
             show-password-on="click"
           />
         </n-form-item>
-        <n-form-item class="block" path="captchaCode">
-          <n-grid x-gap="12" :cols="2">
-            <n-gi>
-              <n-input v-model:value="model.captchaCode" placeholder="请输入验证码" maxlength="5" />
-            </n-gi>
-            <n-gi class="flex flex-row-reverse">
-              <n-spin :show="codeLoading">
-                <img
-                  class="cursor-pointer"
-                  :src="validateCodeState?.image"
-                  alt="验证码"
-                  @click="reloadCapture"
-                />
-              </n-spin>
-            </n-gi>
-          </n-grid>
-        </n-form-item>
+<!--        <n-form-item class="block" path="captchaCode">-->
+<!--          <n-grid x-gap="12" :cols="2">-->
+<!--            <n-gi>-->
+<!--              <n-input v-model:value="model.captchaCode" placeholder="请输入验证码" maxlength="5" />-->
+<!--            </n-gi>-->
+<!--            <n-gi class="flex flex-row-reverse">-->
+<!--              <n-spin :show="codeLoading">-->
+<!--                <img-->
+<!--                  class="cursor-pointer"-->
+<!--                  :src="validateCodeState?.image"-->
+<!--                  alt="验证码"-->
+<!--                  @click="reloadCapture"-->
+<!--                />-->
+<!--              </n-spin>-->
+<!--            </n-gi>-->
+<!--          </n-grid>-->
+<!--        </n-form-item>-->
         <n-form-item class="block">
           <n-grid :cols="2" :x-gap="24">
             <n-gi>
@@ -155,7 +138,6 @@
         </n-form-item>
         <n-form-item class="block">
           <n-button
-            :disabled="!btnNotDisable"
             type="primary"
             class="w-full"
             attr-type="submit"

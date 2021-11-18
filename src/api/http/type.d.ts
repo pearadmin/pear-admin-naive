@@ -16,7 +16,7 @@ export interface InstanceFetchConfig extends Options {
    * fetch请求后需要链式调用 [transform]() 对应的方法， 默认调用.json()返回json对象
    */
   transform?: 'arrayBuffer' | 'blob' | 'formData' | 'json' | 'text'
-  showErrorType?: 'Message' | 'Dialog' | 'Notification'
+  showErrorType?: 'Message' | 'Dialog' | 'Notification',
 }
 
 export interface HookConfig<T> {

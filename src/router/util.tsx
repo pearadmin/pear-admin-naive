@@ -24,7 +24,9 @@ export function getMenuOptions(routes: RouteRecordRaw[]): MenuOption[] {
   routes.forEach((route) => {
     if (!route.meta?.hidden) {
       const menuOption: MenuOption = {
-        label: route.meta?.title,
+        label: () => {
+          return <router-link to={{ name: route.name }}>{route.meta?.title}</router-link>
+        },
         icon: route.meta?.icon
           ? () => {
               return <Icon color="var(--primary-color)" name={route.meta?.icon} />

@@ -17,6 +17,7 @@ const useUserStore = defineStore({
   getters: {},
   actions: {
     setUserInfo(userInfo: Recordable) {
+      console.log(userInfo)
       const userInfoRef = useStorage('userInfo', userInfo, sessionStorage)
       userInfoRef.value = userInfo
       this.userInfo = userInfoRef.value

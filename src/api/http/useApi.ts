@@ -55,8 +55,9 @@ export function useApi<T = any>(
         api
           .request(url, options)
           .then((response) => {
-            data.value = response.data
-            resolve(response.data)
+            const resData = response.data ?? response
+            data.value = resData
+            resolve(resData)
           })
           .catch((fetchError) => {
             error.value = fetchError.message || fetchError.name
