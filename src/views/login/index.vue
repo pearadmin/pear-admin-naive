@@ -63,7 +63,6 @@
     await formRefEl.value?.validate()
     await loginFn.value()
     if (loginData.value?.code !== -1) {
-      console.log(loginData)
       userStore.setUserInfo(loginData.value?.userinfo as Recordable)
       userStore.setToken(loginData.value?.token as string)
       await router.push({
