@@ -6,6 +6,7 @@
 <template>
   <NElement
     class="pear-admin-settings"
+    tag="span"
   >
     <Icon name="ic:sharp-settings"></Icon>
   </NElement>
@@ -16,13 +17,8 @@
     @apply h-full flex flex-row justify-center items-center;
     padding: 0 10px;
     cursor: pointer;
-    //background: var(--primaryColor);
-    //background: green;
-    color: var(--primary-color);
     &:hover {
       background: var(--hover-color);
-      //background: var(--option-color-hover);
-      //background: var(--primaryColor);
     }
   }
 </style>

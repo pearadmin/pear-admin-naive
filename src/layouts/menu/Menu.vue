@@ -5,15 +5,13 @@
   const routes = getRoutes()
 
   const menus = getMenuOptions(routes)
-  console.log(menus);
 </script>
 
 <template>
-  <!--  style="max-height: calc(100vh - 48px);"-->
   <NScrollbar
     style="max-height: calc(100vh - 48px)"
   >
-    <n-menu :options="menus"></n-menu>
+    <n-menu :options="menus" :root-indent="16" :indent="12"></n-menu>
   </NScrollbar>
 </template>
 
