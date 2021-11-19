@@ -4,6 +4,7 @@
   import PearHeader from './header'
   import PearContent from './content'
   import PearFooter from './footer'
+  import RouteTabs from './content/RouteTabs.vue'
 
 </script>
 <template>
@@ -12,6 +13,7 @@
       <PearSider />
       <n-layout class="pear-admin-layout-wrapper-layout" embedded>
         <PearHeader />
+        <RouteTabs />
         <PearContent />
         <PearFooter />
       </n-layout>

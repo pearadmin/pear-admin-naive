@@ -8,12 +8,15 @@
     embedded
     content-style=""
     :native-scrollbar="false"
-    contet-style="padding: 24px"
-    class="h-full"
+    class="pear-admin-content"
   >
-    <RouteTabs></RouteTabs>
     <router-view></router-view>
   </n-layout-content>
 </template>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+  .pear-admin-content {
+    @apply h-full;
+    height: calc(100vh - 140px);
+  }
+</style>

@@ -3,7 +3,19 @@
 </script>
 
 <template>
-  <n-layout-footer> Footer </n-layout-footer>
+  <n-layout-footer
+    class="pear-admin-footer"
+  >
+    <div>©{{ new Date().getFullYear() }} 落小梅</div>
+  </n-layout-footer>
 </template>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+  .pear-admin-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+</style>

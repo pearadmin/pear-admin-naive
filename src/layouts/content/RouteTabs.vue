@@ -7,11 +7,11 @@
 <script setup lang="ts">
   import { NScrollbar, NSpace, NTag } from 'naive-ui'
   import Icon from '@/components/Icon'
-  import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import { onMounted, ref } from 'vue'
 
   const route = useRoute()
-  console.log(route)
+  const router = useRouter()
 
   const tags = ref<Recordable[]>([])
   onMounted(() => {
@@ -22,6 +22,9 @@
       }
     })
   })
+
+  function refreshRoute () {
+  }
 </script>
 
 <template>
@@ -36,7 +39,7 @@
       </div>
     </NScrollbar>
     <div class='pear-admin-tabs-right-menu'>
-      <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
+      <Icon @click='refreshRoute' class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
       <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:arrow-down-drop-circle-outline" :size="18"></Icon>
     </div>
   </div>
@@ -50,6 +53,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2px;
     &-left {
       padding: 0 5px;
       white-space: nowrap;
@@ -85,6 +89,7 @@
       align-items: center;
       padding: 0 5px;
       &-icon {
+        cursor: pointer;
         &:not(:first-child) {
           margin-left: 5px;
         }
