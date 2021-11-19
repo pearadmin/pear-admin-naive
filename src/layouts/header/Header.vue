@@ -2,7 +2,8 @@
   import { NLayoutHeader } from 'naive-ui'
   import Setting from './Setting.vue'
   import UserDropdown from './UserDropdown.vue'
-  import FullScreen from "./FullScreen.vue";
+  import FullScreen from './FullScreen.vue'
+  import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
 </script>
 
 <template>
@@ -10,6 +11,7 @@
     <Setting />
     <UserDropdown />
     <FullScreen />
+    <ThemeTool />
   </n-layout-header>
 </template>
 

@@ -1,5 +1,5 @@
 import { getRoutes, getMenuOptions } from '@/router/util'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { MenuOption } from 'naive-ui'
 import { useRoute } from 'vue-router'
 export function useMenu() {

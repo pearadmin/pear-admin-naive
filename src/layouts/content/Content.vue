@@ -5,8 +5,6 @@
 
 <template>
   <n-layout-content
-    embedded
-    content-style=""
     :native-scrollbar="false"
     class="pear-admin-content"
   >
@@ -17,6 +15,6 @@
 <style scoped lang="less">
   .pear-admin-content {
     @apply h-full;
-    height: calc(100vh - 140px);
+    min-height: calc(100vh - 140px);
   }
 </style>

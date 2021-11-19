@@ -6,6 +6,7 @@ specifiers:
   '@nabla/vite-plugin-eslint': ^1.3.4
   '@purge-icons/generated': ^0.7.0
   '@types/lodash': ^4.14.177
+  '@types/lodash-es': ^4.17.5
   '@types/node': ^16.11.7
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
@@ -47,7 +48,6 @@ dependencies:
   '@vueuse/core': 6.9.1_vue@3.2.22
   axios: 0.21.4
   ky: 0.28.7
-  lodash-es: 4.17.21
   mockjs: 1.1.0
   pinia: 2.0.3_typescript@4.5.2+vue@3.2.22
   qs: 6.10.1
@@ -58,6 +58,7 @@ devDependencies:
   '@iconify/json': 1.1.430
   '@nabla/vite-plugin-eslint': 1.3.4_eslint@7.32.0+vite@2.6.14
   '@purge-icons/generated': 0.7.0
+  '@types/lodash-es': 4.17.5
   '@types/node': 16.11.7
   '@typescript-eslint/eslint-plugin': 4.33.0_d00b196ac5df1286ea7e45797bebddbc
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.2
@@ -72,6 +73,7 @@ devDependencies:
   eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.4.1
   eslint-plugin-vue: 7.20.0_eslint@7.32.0
   less: 4.1.2
+  lodash-es: 4.17.21
   naive-ui: 2.20.3_eslint@7.32.0+vue@3.2.22
   postcss-windicss: 1.0.0
   prettier: 2.4.1
@@ -2491,6 +2493,7 @@ packages:
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: true
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
