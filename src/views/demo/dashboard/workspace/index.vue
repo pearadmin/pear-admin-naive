@@ -56,14 +56,6 @@
     <template #title>
       <a href="https://anyway.fm/" style="text-decoration: none; color: inherit">Anyway.FM</a>
     </template>
-    <template #header>
-      <n-breadcrumb>
-        <n-breadcrumb-item>播客</n-breadcrumb-item>
-        <n-breadcrumb-item>精选</n-breadcrumb-item>
-        <n-breadcrumb-item>超级精选</n-breadcrumb-item>
-        <n-breadcrumb-item>Anyway.FM</n-breadcrumb-item>
-      </n-breadcrumb>
-    </template>
     <template #avatar>
       <n-avatar src="https://cdnimg103.lizhi.fm/user/2017/02/04/2583325032200238082_160x160.jpg" />
     </template>

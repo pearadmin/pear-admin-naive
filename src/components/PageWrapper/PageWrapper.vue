@@ -7,9 +7,10 @@
 
 <script setup lang="ts">
   import { NPageHeader, NBreadcrumb, NBreadcrumbItem, NLayoutContent } from 'naive-ui'
-  import type { PageHeaderPorps } from 'naive-ui'
+  import Breadcrumb from './Breadcrumb/Breadcrumb.vue'
   import { computed, useAttrs, useSlots } from 'vue'
   import { omit } from 'lodash-es'
+  import { useRoute } from 'vue-router'
 
   export interface PageWrapperProps {
     title?: string
@@ -32,12 +33,13 @@
   const slots = useSlots()
   const attrs = useAttrs()
 
-  const pageHeaderSlots = omit(slots, 'default')
-  console.log(slots)
+  const pageHeaderSlots = omit(slots, 'default', 'header', 'title')
 
   const pageHeaderClass = computed(() => {
     return ['pear-admin-page-wrapper', attrs.class ?? {}]
   })
+
+  const route = useRoute()
 </script>
 
 <template>
@@ -46,7 +48,23 @@
       <template v-for="slot in Object.keys(pageHeaderSlots)" :key="slot" #[slot]>
         <slot :name="slot"></slot>
       </template>
-      <slot name="pageHeaderContent"></slot>
+      <!-- default is => parentMenuTitle/currentMenuTitle -->
+      <template #header>
+        <slot name="header">
+          <Breadcrumb />
+        </slot>
+      </template>
+
+      <!-- default is => currentMenuTitle -->
+      <template #title>
+        <slot name="title">
+          {{ route.meta.title }}
+        </slot>
+      </template>
+
+      <template v-if='slots?.pageHeaderContent' #default>
+        <slot name="pageHeaderContent"></slot>
+      </template>
     </NPageHeader>
     <n-layout-content
       embedded
