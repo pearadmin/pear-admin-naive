@@ -51,9 +51,7 @@
   }
 </script>
 <template>
-  <div>
-    <n-popselect :value="value" :options="options" trigger="click" @update:value="handleToggle">
-      <n-button round>主题: {{ currentThemeName }}</n-button>
-    </n-popselect>
-  </div>
+  <n-popselect :value="value" :options="options" trigger="click" @update:value="handleToggle">
+    <n-button round>主题: {{ currentThemeName }}</n-button>
+  </n-popselect>
 </template>

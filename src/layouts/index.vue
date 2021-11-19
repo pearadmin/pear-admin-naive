@@ -5,13 +5,19 @@
   import PearContent from './content'
   import PearFooter from './footer'
   import RouteTabs from './content/RouteTabs.vue'
+  import { provide, ref } from 'vue'
+
+  const themeConfig = ref<Recordable>({
+    inverted: false
+  })
+  provide('themeConfig', themeConfig)
 
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">
-    <n-layout has-sider embedded>
+    <n-layout embedded has-sider>
       <PearSider />
-      <n-layout class="pear-admin-layout-wrapper-layout" embedded>
+      <n-layout embedded class="pear-admin-layout-wrapper-layout">
         <PearHeader />
         <RouteTabs />
         <PearContent />

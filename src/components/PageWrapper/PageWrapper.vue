@@ -6,7 +6,7 @@
 </script>
 
 <script setup lang="ts">
-  import { NPageHeader, NBreadcrumb, NBreadcrumbItem, NLayoutContent } from 'naive-ui'
+  import { NPageHeader, NBreadcrumb, NBreadcrumbItem, NLayoutContent, NElement } from 'naive-ui'
   import Breadcrumb from './Breadcrumb/Breadcrumb.vue'
   import { computed, useAttrs, useSlots } from 'vue'
   import { omit } from 'lodash-es'
@@ -62,17 +62,13 @@
         </slot>
       </template>
 
-      <template v-if='slots?.pageHeaderContent' #default>
+      <template v-if="slots?.pageHeaderContent" #default>
         <slot name="pageHeaderContent"></slot>
       </template>
     </NPageHeader>
-    <n-layout-content
-      embedded
-      content-style="padding: 16px"
-      class="pear-admin-page-wrapper-content"
-    >
+    <NElement tag="div" class="pear-admin-page-wrapper-content">
       <slot name="default"></slot>
-    </n-layout-content>
+    </NElement>
   </div>
 </template>
 
@@ -84,6 +80,8 @@
       padding: 5px 16px 0px;
     }
     &-content {
+      background: var(--hover-color);
+      padding: 16px;
     }
   }
 </style>

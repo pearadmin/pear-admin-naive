@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { NMenu, NScrollbar } from 'naive-ui'
   import { useMenu } from '@/layouts/menu/useMenu'
-  import { ref } from 'vue'
+  import { inject, ref } from 'vue'
 
   const {
     menuRef: menus,
@@ -10,6 +10,8 @@
     currentMenu,
     updateValue
   } = useMenu()
+
+  const themeConfig = inject('themeConfig')
 
 </script>
 
@@ -23,6 +25,7 @@
       :on-update:expanded-keys="updateExpandKeys"
       :value="currentMenu"
       :on-update:value='updateValue'
+      v-bind="themeConfig"
     ></n-menu>
   </NScrollbar>
 </template>

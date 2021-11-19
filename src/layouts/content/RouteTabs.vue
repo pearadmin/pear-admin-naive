@@ -5,7 +5,7 @@
 </script>
 
 <script setup lang="ts">
-  import { NScrollbar, NSpace, NTag } from 'naive-ui'
+  import { NScrollbar, NSpace, NTag, NElement } from 'naive-ui'
   import Icon from '@/components/Icon'
   import { useRoute, useRouter } from 'vue-router'
   import { onMounted, ref } from 'vue'
@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <div class="pear-admin-tabs">
+  <NElement tag="div" class="pear-admin-tabs">
     <NScrollbar x-scrollable style="width: calc(100% - 50px)">
       <div class="pear-admin-tabs-left">
         <NTag closable class="pear-admin-tabs-left-item" v-for="tag in tags" :key="tag.name">
@@ -42,7 +42,7 @@
       <Icon @click='refreshRoute' class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
       <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:arrow-down-drop-circle-outline" :size="18"></Icon>
     </div>
-  </div>
+  </NElement>
 </template>
 
 <style scoped lang="less">
@@ -54,6 +54,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 2px;
+    background: var(--hover-color);
     &-left {
       padding: 0 5px;
       white-space: nowrap;
