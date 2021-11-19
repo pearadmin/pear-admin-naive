@@ -8,38 +8,29 @@
   import { NScrollbar, NSpace, NTag, NElement } from 'naive-ui'
   import Icon from '@/components/Icon'
   import { useRoute, useRouter } from 'vue-router'
+  import userRouteTabs from './useRouteTab'
   import { onMounted, ref } from 'vue'
 
   const route = useRoute()
   const router = useRouter()
 
-  const tags = ref<Recordable[]>([])
-  onMounted(() => {
-    tags.value = new Array(20).fill('').map((it) => {
-      return {
-        label: route.meta.title,
-        name: route.name
-      }
-    })
-  })
+  const { tags, handleCloseTag } = userRouteTabs()
 
-  function refreshRoute () {
-  }
 </script>
 
 <template>
   <NElement tag="div" class="pear-admin-tabs">
     <NScrollbar x-scrollable style="width: calc(100% - 50px)">
       <div class="pear-admin-tabs-left">
-        <NTag closable class="pear-admin-tabs-left-item" v-for="tag in tags" :key="tag.name">
+        <NTag closable class="pear-admin-tabs-left-item" v-for="tag in tags" :key="tag.name" :on-close="() => { handleCloseTag(tag) }">
           <div class="pear-admin-tabs-left-item-content">
-            {{ tag.label }}
+            {{ tag.meta?.title }}
           </div>
         </NTag>
       </div>
     </NScrollbar>
     <div class='pear-admin-tabs-right-menu'>
-      <Icon @click='refreshRoute' class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
+      <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
       <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:arrow-down-drop-circle-outline" :size="18"></Icon>
     </div>
   </NElement>

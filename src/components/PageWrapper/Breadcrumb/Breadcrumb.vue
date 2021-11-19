@@ -10,7 +10,6 @@
 
   const { matches } = useBreadcrumb()
 
-  console.log('matches => ', matches)
 </script>
 
 <template>

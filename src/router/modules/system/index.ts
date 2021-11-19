@@ -36,7 +36,7 @@ const systemRoutes: RouteRecordRaw[] = [
         name: 'Role',
         component: () => import('@/views/fast-api/role/index.vue'),
         meta: {
-          title: '用户管理',
+          title: '角色管理',
           icon: 'uil:user-square'
         }
       }
