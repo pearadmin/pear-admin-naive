@@ -7,18 +7,18 @@ const systemRoutes: RouteRecordRaw[] = [
     name: 'System',
     // component: BasicLayout,
     component: () => import('@/layouts'),
-    redirect: '/system/account',
+    redirect: '/system/user',
     meta: {
       title: '系统设置',
       icon: 'ri:settings-4-line'
     },
     children: [
       {
-        path: 'account',
-        name: 'Account',
+        path: 'user',
+        name: 'User',
         component: () => import('@/views/demo/system/account/index.vue'),
         meta: {
-          title: '账号管理',
+          title: '用户管理',
           icon: 'ri:account-box-line'
         }
       },
@@ -29,6 +29,15 @@ const systemRoutes: RouteRecordRaw[] = [
         meta: {
           title: '菜单管理',
           icon: 'system-uicons:side-menu'
+        }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/fast-api/role/index.vue'),
+        meta: {
+          title: '用户管理',
+          icon: 'uil:user-square'
         }
       }
     ]
