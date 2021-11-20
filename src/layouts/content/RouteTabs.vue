@@ -5,7 +5,7 @@
 </script>
 
 <script setup lang="ts">
-  import { NScrollbar, NSpace, NTag, NElement } from 'naive-ui'
+  import { NScrollbar, NSpace, NTag, NElement, NBadge } from 'naive-ui'
   import Icon from '@/components/Icon'
   import { useRoute, useRouter } from 'vue-router'
   import userRouteTabs from './useRouteTab'
@@ -14,24 +14,39 @@
   const route = useRoute()
   const router = useRouter()
 
-  const { tags, handleCloseTag } = userRouteTabs()
-
+  const { tags, handleCloseTag, handleClickTag } = userRouteTabs()
 </script>
 
 <template>
   <NElement tag="div" class="pear-admin-tabs">
     <NScrollbar x-scrollable style="width: calc(100% - 50px)">
       <div class="pear-admin-tabs-left">
-        <NTag closable class="pear-admin-tabs-left-item" v-for="tag in tags" :key="tag.name" :on-close="() => { handleCloseTag(tag) }">
+        <NTag
+          class="pear-admin-tabs-left-item"
+          v-for="tag in tags"
+          :key="tag.name"
+          :closable='tags.length > 1'
+          @click="handleClickTag(tag)"
+          :on-close="
+            () => {
+              handleCloseTag(tag)
+            }
+          "
+        >
           <div class="pear-admin-tabs-left-item-content">
-            {{ tag.meta?.title }}
+            <NBadge v-if="route.name === tag.name" dot type="success"></NBadge>
+            <span class="ml-2">{{ tag.meta?.title }}</span>
           </div>
         </NTag>
       </div>
     </NScrollbar>
-    <div class='pear-admin-tabs-right-menu'>
-      <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:refresh" :size='20'></Icon>
-      <Icon class='pear-admin-tabs-right-menu-icon' name="mdi:arrow-down-drop-circle-outline" :size="18"></Icon>
+    <div class="pear-admin-tabs-right-menu">
+      <Icon class="pear-admin-tabs-right-menu-icon" name="mdi:refresh" :size="20"></Icon>
+      <Icon
+        class="pear-admin-tabs-right-menu-icon"
+        name="mdi:arrow-down-drop-circle-outline"
+        :size="18"
+      ></Icon>
     </div>
   </NElement>
 </template>
@@ -65,6 +80,7 @@
           justify-content: center;
           align-items: center;
           align-content: center;
+          cursor: pointer;
         }
         &-icon {
           cursor: pointer;

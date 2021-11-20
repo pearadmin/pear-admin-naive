@@ -17,6 +17,10 @@ export default function useRouteTab () {
   function refreshRoute () {
   }
 
+  function handleClickTag (tag) {
+    router.replace(tag.fullPath).catch(err => console.error(err))
+  }
+
   function handleCloseTag (tag) {
     // 最后一个不删除
     if (tags.value.length === 1) {
@@ -33,6 +37,7 @@ export default function useRouteTab () {
 
   return {
     tags,
-    handleCloseTag
+    handleCloseTag,
+    handleClickTag
   }
 }
