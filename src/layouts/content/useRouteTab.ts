@@ -1,8 +1,14 @@
 import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
-import { computed, onMounted, ref, unref, watch } from 'vue'
+import { computed, ComputedRef, watch } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 
-export default function useRouteTab () {
+export interface ReturnUseRouteTab {
+  tags: ComputedRef<RouteLocationNormalizedLoaded[]>
+  handleCloseTag: (tag: RouteLocationNormalizedLoaded) => void
+  handleClickTag: (tag: RouteLocationNormalizedLoaded) => void
+}
+
+export default function useRouteTab (): ReturnUseRouteTab {
 
   const route = useRoute()
   const router = useRouter()
@@ -16,6 +22,7 @@ export default function useRouteTab () {
 
   function refreshRoute () {
   }
+
 
   function handleClickTag (tag) {
     router.replace(tag.fullPath).catch(err => console.error(err))

@@ -33,7 +33,7 @@ export function getMenuOptions(routes: RouteRecordRaw[]): MenuOption[] {
         },
         icon: route.meta?.icon
           ? () => {
-              return <Icon color="var(--primary-color)" name={route.meta?.icon} />
+              return <Icon color="var(--primary-color)" name={route.meta!.icon as string} />
             }
           : undefined,
         key: route.name as string

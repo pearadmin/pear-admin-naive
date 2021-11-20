@@ -24,16 +24,15 @@
         <NTag
           class="pear-admin-tabs-left-item"
           v-for="tag in tags"
-          :key="tag.name"
+          :key="tag.path"
           :closable='tags.length > 1'
-          @click="handleClickTag(tag)"
           :on-close="
             () => {
               handleCloseTag(tag)
             }
           "
         >
-          <div class="pear-admin-tabs-left-item-content">
+          <div class="pear-admin-tabs-left-item-content" @click="handleClickTag(tag)">
             <NBadge v-if="route.name === tag.name" dot type="success"></NBadge>
             <span class="ml-2">{{ tag.meta?.title }}</span>
           </div>

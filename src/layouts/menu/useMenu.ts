@@ -1,9 +1,18 @@
 import { getRoutes, getMenuOptions } from '@/router/util'
-import { ref, watch } from 'vue'
+import { Ref, ref, watch } from 'vue'
 import { MenuOption } from 'naive-ui'
 import { useRoute } from 'vue-router'
-export function useMenu() {
-  const menuRef = ref<Nullable<MenuOption[]>>(null)
+
+export interface ReturnUseMenu {
+  menuRef: Ref<MenuOption[]>
+  expandKeys: Ref<string[]>
+  updateExpandKeys: (keys: string[]) => void
+  currentMenu: Ref<string>
+  updateValue: (key: string) => void
+}
+
+export function useMenu(): ReturnUseMenu {
+  const menuRef = ref<MenuOption[]>([])
   const routes = getRoutes()
   const menus = getMenuOptions(routes)
   menuRef.value = menus
