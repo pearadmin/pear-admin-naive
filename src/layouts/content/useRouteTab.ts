@@ -6,29 +6,33 @@ export interface ReturnUseRouteTab {
   tags: ComputedRef<RouteLocationNormalizedLoaded[]>
   handleCloseTag: (tag: RouteLocationNormalizedLoaded) => void
   handleClickTag: (tag: RouteLocationNormalizedLoaded) => void
+  refreshRoute: () => void
 }
 
-export default function useRouteTab (): ReturnUseRouteTab {
-
+export default function useRouteTab(): ReturnUseRouteTab {
   const route = useRoute()
   const router = useRouter()
   const appStore = useAppStore()
 
-  watch(() => route.path, () => {
-    appStore.addTag({...route})
-  }, { immediate: true })
+  watch(
+    () => route.path,
+    () => {
+      appStore.addTag({ ...route })
+    },
+    { immediate: true }
+  )
 
   const tags = computed(() => appStore.tags)
 
-  function refreshRoute () {
+  function refreshRoute() {
+    console.log('refresh')
   }
 
-
-  function handleClickTag (tag) {
-    router.replace(tag.fullPath).catch(err => console.error(err))
+  function handleClickTag(tag) {
+    router.replace(tag.fullPath).catch((err) => console.error(err))
   }
 
-  function handleCloseTag (tag) {
+  function handleCloseTag(tag) {
     // 最后一个不删除
     if (tags.value.length === 1) {
       return
@@ -38,13 +42,14 @@ export default function useRouteTab (): ReturnUseRouteTab {
     // 删除的跟当前页面是同一个, 路由回退上一个
     if (tag.name === route.name) {
       const last = tags.value[tags.value.length - 1]
-      router.replace(last.fullPath).then(() => {}).catch(err => console.error(err))
+      router.replace(last.fullPath).catch((err) => console.error(err))
     }
   }
 
   return {
     tags,
     handleCloseTag,
-    handleClickTag
+    handleClickTag,
+    refreshRoute
   }
 }

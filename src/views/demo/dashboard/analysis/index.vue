@@ -2,13 +2,21 @@
 import Icon from '@/components/Icon'
 import PageWrapper from '@/components/PageWrapper'
 import BasicForm from '@/components/Form'
+
+const schemas = [
+  {
+    model: 'input1',
+    component: 'NInput'
+  }
+]
+
 </script>
 
 <template>
   <PageWrapper>
     <Icon name="fa:home" size="22px" spin></Icon>
     <Icon name="fa:dashboard" color="red"></Icon>
-    <BasicForm></BasicForm>
+    <BasicForm :schemas="schemas"></BasicForm>
   </PageWrapper>
 </template>
 

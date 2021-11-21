@@ -12,10 +12,12 @@ export type ComponentMap = Map<string, unknown>
 
 const map: ComponentMap = new Map()
 
-map.set(NFormItem.name, NFormItem)
-map.set(NFormItemGi.name, NFormItemGi)
-map.set(NInput.name, NInput)
-map.set(NSelect.name, NSelect)
-map.set(NCheckbox.name, NCheckbox)
-map.set(NRadio.name, NRadio)
-map.set(NSwitch.name, NSwitch)
+map.set('NInput', NInput)
+map.set('NSelect', NSelect)
+map.set('NCheckbox', NCheckbox)
+map.set('NRadio', NRadio)
+map.set('NSwitch', NSwitch)
+
+export {
+  map as componentMap
+}

@@ -1,4 +1,3 @@
-import { FormItemProps, FormItemGiProps } from 'naive-ui'
 import { Slots } from 'vue'
 
 export type ComponentName =
@@ -12,11 +11,16 @@ export type ComponentName =
   | 'Slot'
 
 export interface FormSchema {
+  model: string
   component?: ComponentName
   componentProps?: Recordable
   componentSlots?: (() => Slots | HTMLElement) | Slots
   field: string
-  wrapperProps?: Recordable
+  wrapperProps?: {
+    offset?: number
+    span?: number
+    suffix?: boolean
+  }
   // maybe not need
   wrapperSlots?: (() => Slots | HTMLElement) | Slots
 }
