@@ -1,8 +1,11 @@
 <script setup lang='ts'>
   import BasicForm from '@/components/Form'
   import PageWrapper from '@/components/PageWrapper'
+  import useForm from '@/components/Form/composables/useForm'
+  import { NButton, useMessage, NSpace } from 'naive-ui'
+  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
 
-  const schemas = [
+  const schemas: FormSchema[] = [
     {
       model: 'input',
       component: 'NInput',
@@ -17,7 +20,6 @@
       formItemProps: {
         label: 'Select',
         span: 8,
-
       },
       componentProps: {
         options: [
@@ -78,7 +80,6 @@
       formItemProps: {
         label: 'DateTime',
         span: 8,
-
       },
       componentProps: {
         type: 'datetime',
@@ -91,7 +92,7 @@
       model: 'dateTimeRange',
       component: 'NDatePicker',
       formItemProps: {
-        label: 'DateTimeRange',
+        label: 'DTRange',
         span: 8,
       },
       componentProps: {
@@ -107,11 +108,28 @@
     cols: 24,
     xGap: 12
   }
+
+  const { formRefEl, modelValue } = useForm({
+    schemas,
+    gridProps
+  })
+  const message = useMessage()
+  function getFormModel () {
+    message.info(JSON.stringify(modelValue.value))
+  }
+  function updFormValue () {
+    modelValue.value.input = Math.random().toString(32).substr(5, 12)
+  }
+
 </script>
 
 <template>
   <PageWrapper>
-    <BasicForm label-placement="left" :schemas="schemas" :gridProps="gridProps"></BasicForm>
+    <BasicForm ref="formRefEl" :label-width="60" label-placement="left"></BasicForm>
+    <NSpace>
+      <NButton type="primary" @click="getFormModel">获取model</NButton>
+      <NButton type="primary" @click="updFormValue">改变值</NButton>
+    </NSpace>
   </PageWrapper>
 </template>
 

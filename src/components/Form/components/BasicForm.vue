@@ -1,8 +1,9 @@
 <script setup lang="ts">
   import { NForm, NGrid, NFormItemGi, FormRules } from 'naive-ui'
   import FormItem from './FormItem'
-  import { computed, Ref, Slots, useAttrs, watch } from 'vue'
+  import { computed, ref, Ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
+  import { merge } from 'lodash-es'
 
   export type ComponentName =
     | 'NInput'
@@ -20,7 +21,7 @@
     componentProps?: Recordable
     componentSlots?: (() => Slots | HTMLElement) | Slots
     formItemProps?: Recordable
-    field: string
+    // field: string
     // maybe not need
     wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
@@ -51,13 +52,26 @@
     })
   })
 
+  const basicFormProps = ref<BasicFormProps>({})
+
+  watch(() => props, (pp) => {
+    basicFormProps.value = {...pp}
+  }, { immediate: true, deep: true })
+
   const attrs = useAttrs()
 
   const { formModelRef } = useFormModel(props)
 
   defineExpose({
-    getFormValue: (): Ref<Recordable> => {
-      return formModelRef
+    getFormValue: (): Recordable => {
+      console.log(formModelRef)
+      return formModelRef.value
+    },
+    updFormValue: (updModel: Recordable): void => {
+      formModelRef.value = merge(formModelRef.value, updModel)
+    },
+    updFormProps: (options: BasicFormProps): void => {
+      merge(basicFormProps.value, options)
     }
   })
 
@@ -65,9 +79,9 @@
 
 <template>
   <NForm :model="formModelRef" v-bind="attrs">
-    <NGrid v-bind="gridProps">
+    <NGrid v-bind="basicFormProps.gridProps">
       <NFormItemGi
-        v-for="schema in schemas"
+        v-for="schema in basicFormProps.schemas"
         :key="schema.model"
         :path="schema.model"
         v-bind="schema?.formItemProps ? schema.formItemProps : {}"
