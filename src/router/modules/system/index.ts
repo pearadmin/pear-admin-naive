@@ -1,5 +1,4 @@
 import type { RouteRecordRaw } from 'vue-router'
-// import { BasicLayout } from '@/layouts'
 
 const systemRoutes: RouteRecordRaw[] = [
   {

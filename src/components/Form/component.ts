@@ -1,6 +1,4 @@
 import {
-  NFormItem,
-  NFormItemGi,
   NInput,
   NSelect,
   NCheckbox,

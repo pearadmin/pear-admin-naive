@@ -1,4 +1,4 @@
-import { computed, DefineComponent, defineComponent, PropType, resolveComponent } from 'vue'
+import { computed, DefineComponent, defineComponent, PropType } from 'vue'
 import { FormSchema } from '@/components/Form/typing'
 import { componentMap } from '@/components/Form/component'
 
@@ -7,16 +7,22 @@ export default defineComponent({
   props: {
     schema: {
       type: Object as PropType<FormSchema>,
-      required: false
+      required: false,
+      default: () => ({})
     }
   },
   setup(props) {
-    const name = props.schema?.component ? props.schema.component : 'NInput'
-    console.log(name)
-    const Component = componentMap.get(name) as DefineComponent
-    console.log(Component)
+    const Component = computed((): DefineComponent => {
+      const name = props.schema?.component ? props.schema.component : 'NInput'
+      return componentMap.get(name) as DefineComponent
+    })
+
+    const comProps = computed((): Recordable => {
+      return props.schema?.componentProps ? props.schema.componentProps : {}
+    })
+
     return () => {
-      return <Component></Component>
+      return <Component.value {...comProps.value}></Component.value>
     }
   }
 })

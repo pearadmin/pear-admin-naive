@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import Icon from '@/components/Icon'
 import PageWrapper from '@/components/PageWrapper'
-import BasicForm from '@/components/Form'
-
-const schemas = [
-  {
-    model: 'input1',
-    component: 'NInput'
-  }
-]
 
 </script>
 
@@ -16,7 +8,6 @@ const schemas = [
   <PageWrapper>
     <Icon name="fa:home" size="22px" spin></Icon>
     <Icon name="fa:dashboard" color="red"></Icon>
-    <BasicForm :schemas="schemas"></BasicForm>
   </PageWrapper>
 </template>
 

@@ -15,7 +15,7 @@ export interface FormSchema {
   component?: ComponentName
   componentProps?: Recordable
   componentSlots?: (() => Slots | HTMLElement) | Slots
-  field: string
+  formItemProps?: Recordable
   wrapperProps?: {
     offset?: number
     span?: number
