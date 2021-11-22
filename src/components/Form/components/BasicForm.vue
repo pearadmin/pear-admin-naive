@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { NForm, NGrid, NFormItemGi, FormRules } from 'naive-ui'
   import FormItem from './FormItem'
-  import { computed, Slots, useAttrs, watch } from 'vue'
+  import { computed, Ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
 
   export type ComponentName =
@@ -21,11 +21,6 @@
     componentSlots?: (() => Slots | HTMLElement) | Slots
     formItemProps?: Recordable
     field: string
-    wrapperProps?: {
-      offset?: number
-      span?: number
-      suffix?: boolean
-    }
     // maybe not need
     wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
@@ -51,22 +46,21 @@
       collapsedRows: 1,
       responsive: 'self',
       itemResponsive: false,
-      xGap: 0,
+      xGap: 12,
       yGap: 0
     })
   })
 
   const attrs = useAttrs()
 
-  function getFormItemGiSpan(schema: FormSchema) {
-    return schema.wrapperProps?.span ? schema.wrapperProps?.span : 24
-  }
-
   const { formModelRef } = useFormModel(props)
 
-  watch(formModelRef, (v) => {
-    console.log('model val => ', v)
+  defineExpose({
+    getFormValue: (): Ref<Recordable> => {
+      return formModelRef
+    }
   })
+
 </script>
 
 <template>
@@ -76,10 +70,9 @@
         v-for="schema in schemas"
         :key="schema.model"
         :path="schema.model"
-        :span="getFormItemGiSpan(schema)"
         v-bind="schema?.formItemProps ? schema.formItemProps : {}"
       >
-        <FormItem :schema="schema"></FormItem>
+        <FormItem :schema="schema" :formModelRef="formModelRef"></FormItem>
       </NFormItemGi>
     </NGrid>
   </NForm>

@@ -4,17 +4,20 @@
 
   const schemas = [
     {
-      model: 'input1',
+      model: 'input',
       component: 'NInput',
       formItemProps: {
-        label: 'Input'
+        label: 'Input',
+        span: 8,
       }
     },
     {
       model: 'select',
       component: 'NSelect',
       formItemProps: {
-        label: 'Select'
+        label: 'Select',
+        span: 8,
+
       },
       componentProps: {
         options: [
@@ -68,13 +71,47 @@
           }
         ]
       }
+    },
+    {
+      model: 'dateTime',
+      component: 'NDatePicker',
+      formItemProps: {
+        label: 'DateTime',
+        span: 8,
+
+      },
+      componentProps: {
+        type: 'datetime',
+        style: {
+          width: '100%'
+        }
+      }
+    },
+    {
+      model: 'dateTimeRange',
+      component: 'NDatePicker',
+      formItemProps: {
+        label: 'DateTimeRange',
+        span: 8,
+      },
+      componentProps: {
+        type: 'datetimerange',
+        style: {
+          width: '100%'
+        }
+      }
     }
   ]
+
+  const gridProps = {
+    cols: 24,
+    xGap: 12
+  }
 </script>
 
 <template>
   <PageWrapper>
-    <BasicForm :schemas="schemas"></BasicForm>
+    <BasicForm label-placement="left" :schemas="schemas" :gridProps="gridProps"></BasicForm>
   </PageWrapper>
 </template>
 

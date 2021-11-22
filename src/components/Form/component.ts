@@ -3,7 +3,8 @@ import {
   NSelect,
   NCheckbox,
   NRadio,
-  NSwitch
+  NSwitch,
+  NDatePicker
 } from 'naive-ui'
 
 export type ComponentMap = Map<string, unknown>
@@ -15,6 +16,7 @@ map.set('NSelect', NSelect)
 map.set('NCheckbox', NCheckbox)
 map.set('NRadio', NRadio)
 map.set('NSwitch', NSwitch)
+map.set('NDatePicker', NDatePicker)
 
 export {
   map as componentMap

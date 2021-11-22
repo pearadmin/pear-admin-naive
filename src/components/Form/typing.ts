@@ -16,11 +16,11 @@ export interface FormSchema {
   componentProps?: Recordable
   componentSlots?: (() => Slots | HTMLElement) | Slots
   formItemProps?: Recordable
-  wrapperProps?: {
-    offset?: number
-    span?: number
-    suffix?: boolean
-  }
+  // wrapperProps?: {
+  //   offset?: number
+  //   span?: number
+  //   suffix?: boolean
+  // }
   // maybe not need
   wrapperSlots?: (() => Slots | HTMLElement) | Slots
 }

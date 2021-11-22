@@ -1,4 +1,4 @@
-import { computed, DefineComponent, defineComponent, PropType } from 'vue'
+import { computed, DefineComponent, defineComponent, PropType, Slots } from 'vue'
 import { FormSchema } from '@/components/Form/typing'
 import { componentMap } from '@/components/Form/component'
 
@@ -8,6 +8,10 @@ export default defineComponent({
     schema: {
       type: Object as PropType<FormSchema>,
       required: false,
+      default: () => ({})
+    },
+    formModelRef: {
+      type: Object as PropType<object>,
       default: () => ({})
     }
   },
@@ -21,8 +25,12 @@ export default defineComponent({
       return props.schema?.componentProps ? props.schema.componentProps : {}
     })
 
+    const comSlots = computed(() => {
+      return props.schema?.componentSlots ? props.schema?.componentSlots : {}
+    })
+
     return () => {
-      return <Component.value {...comProps.value}></Component.value>
+      return <Component.value v-model={[props.formModelRef[props.schema?.model], 'value']} {...comProps.value} v-slots={comSlots.value}></Component.value>
     }
   }
 })

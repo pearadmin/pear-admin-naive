@@ -9,12 +9,13 @@ export default function useFormModel(props: Readonly<BasicFormProps>) {
     if (formSchemas && formSchemas.length > 0) {
       const model = formSchemas.reduce((modelObject, schema) => {
         return {
+          ...modelObject,
           [schema.model]: undefined
         }
       }, {} as Recordable)
       formModal.value = model
     }
-  })
+  }, { immediate: true })
 
   return {
     formModelRef: formModal
