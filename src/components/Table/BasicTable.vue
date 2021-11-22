@@ -15,24 +15,17 @@
   // @ts-ignore
   export interface BasicTableProps {
     fetch?: {
-      api?: Promise<unknown>
+      api?: (...args: any[]) => Promise<unknown>
       type?: 'hooks' | 'fetch'
-      beforeFetch?: PromiseFn<Recordable>
-      afterFetch?: PromiseFn<any>
+      beforeFetch?: Fn
+      afterFetch?: Fn
     }
   }
 
   const basicTableProps = withDefaults(defineProps<BasicTableProps>(), {
-    fetch:() => {
+    fetch: () => {
       return {
-        api: Promise.resolve({}),
-        type: 'hooks',
-        beforeFetch: () => {
-          return Promise.resolve({})
-        },
-        afterFetch: () => {
-          return Promise.resolve({})
-        }
+        type: 'hooks'
       }
     }
   })

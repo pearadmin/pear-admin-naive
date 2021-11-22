@@ -2,7 +2,7 @@
   import BasicForm from '@/components/Form'
   import PageWrapper from '@/components/PageWrapper'
   import useForm from '@/components/Form/composables/useForm'
-  import { NButton, useMessage, NSpace } from 'naive-ui'
+  import { NButton, useMessage, NSpace, NCard } from 'naive-ui'
   import { FormSchema } from '@/components/Form/components/BasicForm.vue'
 
   const schemas: FormSchema[] = [
@@ -125,11 +125,13 @@
 
 <template>
   <PageWrapper>
-    <BasicForm ref="formRefEl" :label-width="60" label-placement="left"></BasicForm>
-    <NSpace>
-      <NButton type="primary" @click="getFormModel">获取model</NButton>
-      <NButton type="primary" @click="updFormValue">改变值</NButton>
-    </NSpace>
+    <NCard>
+      <BasicForm ref="formRefEl" :label-width="60" label-placement="left"></BasicForm>
+      <NSpace>
+        <NButton type="primary" @click="getFormModel">获取model</NButton>
+        <NButton type="primary" @click="updFormValue">改变值</NButton>
+      </NSpace>
+    </NCard>
   </PageWrapper>
 </template>
 
