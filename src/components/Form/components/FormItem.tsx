@@ -1,5 +1,5 @@
 import { computed, DefineComponent, defineComponent, PropType, Slots } from 'vue'
-import { FormSchema } from '@/components/Form/typing'
+import type { FormSchema } from '@/components/Form'
 import { componentMap } from '@/components/Form/component'
 
 export default defineComponent({

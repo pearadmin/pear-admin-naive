@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "serve": "vite",
+    "serve:force": "vite --force",
     "dev": "pnpm run serve",
     "build": "vue-tsc --noEmit && vite build",
     "preview:local": "yarn build && vite preview",

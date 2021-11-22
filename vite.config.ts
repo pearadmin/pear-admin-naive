@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import path from 'path'
 import {viteMockServe} from 'vite-plugin-mock';
-import eslintPlugin from "@nabla/vite-plugin-eslint"
+// import eslintPlugin from "@nabla/vite-plugin-eslint"
 import purgeIcons from 'vite-plugin-purge-icons'
 
 const plugins = [
@@ -21,11 +21,11 @@ const plugins = [
     mockPath: 'src/mock',
     localEnabled: true,
   }),
-  eslintPlugin({
-    eslintOptions: {
-      cache: false
-    }
-  })
+  // eslintPlugin({
+  //   eslintOptions: {
+  //     cache: false
+  //   }
+  // })
 ]
 
 // https://vitejs.dev/config/

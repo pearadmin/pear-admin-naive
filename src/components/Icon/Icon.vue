@@ -21,7 +21,7 @@
   const styles = computed(() => {
     return {
       fontSize: fontSize.value,
-      color: props.color ? props.color : 'var(--text-color)'
+      color: props.color ? props.color : 'inherit'
     }
   })
 

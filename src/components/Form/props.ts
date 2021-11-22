@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { FormSchema } from '@/components/Form/typing'
+import { FormSchema } from '@/components/Form'
 import { FormRules } from 'naive-ui'
 
 export const basicFormProps = {

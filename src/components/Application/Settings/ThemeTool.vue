@@ -10,6 +10,7 @@
   import type { ThemeName } from '@/store/modules/app'
   import { useAppStore } from '@/store/modules/app'
   import { useUiConfig } from '@/composables/useUiConfig/useUiConfig'
+  import { getMenuRecords } from "@/api/moduels/fast-api/menu"
 
   const options = [
     {
@@ -51,7 +52,15 @@
   }
 </script>
 <template>
-  <n-popselect :value="value" :options="options" trigger="click" @update:value="handleToggle">
-    <n-button round>主题: {{ currentThemeName }}</n-button>
-  </n-popselect>
+  <div>
+    <n-popselect
+      :value="value"
+      :options="options"
+      trigger="click"
+      @update:value="handleToggle"
+      :api='getMenuRecords'
+    >
+      <n-button round>主题: {{ currentThemeName }}</n-button>
+    </n-popselect>
+  </div>
 </template>
