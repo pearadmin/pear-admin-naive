@@ -21,7 +21,7 @@
           <!--          <suspense>-->
           <!--            <component :is="Component"></component>-->
           <!--            <template #fallback>-->
-          <!--              <div class="app-loading">-->
+          <!--              <div class="demo-loading">-->
           <!--                <n-spin size="large" />-->
           <!--                <span class="mt-10">加载中...</span>-->
           <!--              </div>-->

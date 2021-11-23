@@ -11,12 +11,13 @@
     NButton,
     NSpin
   } from 'naive-ui'
-  import { markRaw, ref, computed } from 'vue'
+  import { markRaw, ref } from 'vue'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
   import { FormState } from '@/views/login/type'
   import { useRouter } from 'vue-router'
-  import { useLogin } from '@/api/moduels/fast-api/login'
+  // import { useLogin } from '@/api/moduels/fast-api/login'
+  import { login } from '@/api/moduels/demo/app'
 
   const userStore = useUserStore()
   const router = useRouter()
@@ -56,7 +57,7 @@
     loading: loginLoading,
     execute: loginFn,
     finished: loginFinished
-  } = useLogin(model)
+  } = login(model)
 
   // 登录
   async function handleLogin() {

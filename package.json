@@ -6,6 +6,7 @@
     "serve:force": "vite --force",
     "dev": "pnpm run serve",
     "build": "vue-tsc --noEmit && vite build",
+    "ts:check": "vue-tsc --noEmit",
     "preview:local": "yarn build && vite preview",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
     "clean:lib": "rimraf node_modules",

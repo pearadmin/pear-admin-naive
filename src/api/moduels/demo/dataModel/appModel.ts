@@ -10,7 +10,6 @@ export interface CaptureParams {
 export interface LoginForm {
   username: string
   password: string
-  captchaCode: string
 }
 
 export interface LoginResData {

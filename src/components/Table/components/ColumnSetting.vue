@@ -8,8 +8,9 @@
   import Icon from '@/components/Icon'
   import { inject, Ref } from 'vue'
   import { NTooltip, TableProps } from 'naive-ui'
+  import { iconSizeInjectKey } from '../composables/useTableConfig'
 
-  const iconSize = inject('iconSize') as Ref<TableProps['size']>
+  const iconSize = inject<Ref<number>>(iconSizeInjectKey)
 </script>
 
 <template>

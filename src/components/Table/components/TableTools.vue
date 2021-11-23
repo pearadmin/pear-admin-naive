@@ -9,11 +9,6 @@
   import Reload from './Reload.vue'
   import SizeSetting from './SizeSetting.vue'
   import ColumnSetting from './ColumnSetting.vue'
-  import { ref, provide } from 'vue'
-
-  const iconSize = ref<number>(18)
-
-  provide('iconSize', iconSize)
 </script>
 
 <template>

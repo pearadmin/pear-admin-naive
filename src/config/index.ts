@@ -5,6 +5,6 @@ export const DEFAULT_STORAGE = sessionStorage
 export const DEFAULT_TABLE_SIZE = 'medium'
 
 export const DEFAULT_TABLE_FETCH = {
-  method: 'get',
-  bodyType: 'params'
+  method: 'post',
+  bodyType: 'data'
 }

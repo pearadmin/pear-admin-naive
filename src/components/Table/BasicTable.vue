@@ -6,9 +6,9 @@
 <script setup lang="ts">
   import { DataTableProps, NDataTable, NElement, PaginationProps } from 'naive-ui'
   import TableTools from './components/TableTools.vue'
-  import { computed, provide, useAttrs } from 'vue'
+  import { computed, ComputedRef, provide, ref, useAttrs } from 'vue'
   import { omit, pick } from 'lodash-es'
-  import { useTableConfig } from '@/components/Table/composables/useTableConfig'
+  import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
@@ -37,11 +37,17 @@
     paginationRef
   )
 
-  // todo 将fetchRunner注入抽到useTableConfig中
-  provide('fetchRunner', fetchRunner)
-
   const basicTableAttrs = useAttrs()
-  const { tableSize } = useTableConfig(basicTableAttrs)
+
+  const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
+    return {
+      attrs: basicTableAttrs,
+      fetchRunner,
+      iconSize: ref<number>(18)
+    }
+  })
+
+  const { tableSize } = useTableConfig(tableConfigOptions)
 
   const nTableProps = computed((): DataTableProps => {
     return {
@@ -54,7 +60,7 @@
     }
   })
 
-  const wrapperAttrs = computed(() => {
+  const wrapperAttrs = computed((): Recordable => {
     return pick(basicTableAttrs, 'class', 'style')
   })
 </script>

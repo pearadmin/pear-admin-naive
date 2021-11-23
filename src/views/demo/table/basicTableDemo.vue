@@ -4,6 +4,7 @@
   import { h } from 'vue'
   import { NDataTable } from 'naive-ui'
   import { MenuApiEnum } from '@/api/moduels/fast-api/menu'
+  import { TableDemoEnum } from './service'
 
   const columns = [
     {
@@ -47,7 +48,7 @@
       :scroll-x="1800"
       virtual-scroll
       :fetch="{
-        fetchUrl: MenuApiEnum.menuRecords
+        fetchUrl: TableDemoEnum.getTableRecords
       }"
     >
       <template #tableTitle>标准表格</template>

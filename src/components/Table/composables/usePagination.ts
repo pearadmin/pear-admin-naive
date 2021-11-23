@@ -12,6 +12,7 @@ export default function usePagination (): UsePagination {
     pageSize: 10,
     showQuickJumper: true,
     showSizePicker: true,
+    page: 1,
     pageSizes: [
       {
         label: '10/页',

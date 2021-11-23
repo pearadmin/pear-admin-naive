@@ -5,7 +5,7 @@ import {
   CaptureParams,
   LoginForm,
   LoginResData
-} from '@/api/moduels/app/dataModel/appModel'
+} from './dataModel/appModel'
 
 export enum Api {
   GetCapture = '/user/getCapture',

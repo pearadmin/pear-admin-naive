@@ -29,13 +29,24 @@ export default function useTableFetch(
     { deep: true, immediate: true }
   )
 
+  const requestParams = ref<Recordable>({})
+
+  watch(paginationRef, pagination => {
+    requestParams.value = {
+      PAGEINDEX: pagination.page,
+      PAGESIZE: pagination.pageSize
+    }
+  }, { immediate: true, deep: true })
+
   function runBeforeFetch () {
-    const params: Recordable = {}
+    const params: Recordable = {
+      ...requestParams.value
+    }
     if (fetchConfig.value && fetchConfig.value.beforeFetch && typeof fetchConfig.value.beforeFetch === 'function') {
       const beforeFetchResult = fetchConfig.value.beforeFetch(params)
       return beforeFetchResult
     }
-    return null
+    return params
   }
 
   const useFetchFn = computed(() => {
@@ -48,15 +59,13 @@ export default function useTableFetch(
          *   body: params | params: params
          * }
          */
-        // const fetchOptions = {
-        //   method: DEFAULT_TABLE_FETCH.method,
-        //   // [DEFAULT_TABLE_FETCH.bodyType]: params ?? null
-        // }
+        const fetchOptions = {
+          method: DEFAULT_TABLE_FETCH.method,
+          [DEFAULT_TABLE_FETCH.bodyType]: params ?? null
+        }
         return useApi<unknown>(
           fetchConfig.value?.fetchUrl,
-          {
-            method: 'get'
-          },
+          fetchOptions,
           { immediate: fetchConfig.value?.immediate ?? true }
         )
       }
