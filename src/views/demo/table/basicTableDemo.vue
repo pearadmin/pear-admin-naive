@@ -3,6 +3,8 @@
   import PageWrapper from '@/components/PageWrapper'
   import { h } from 'vue'
   import { NDataTable } from 'naive-ui'
+  import { MenuApiEnum } from "@/api/moduels/fast-api/menu"
+
 
   const columns = [
     {
@@ -52,7 +54,7 @@
     }
   ]
 
-  const data = Array.apply(null, { length: 5000 }).map((_, index) => ({
+  const data = Array.apply(null, { length: 100000 }).map((_, index) => ({
     key: index,
     name: `Edward King ${index}`,
     age: 32,
@@ -68,6 +70,9 @@
       :max-height="250"
       :scroll-x="1800"
       virtual-scroll
+      :fetch='{
+        fetchUrl: MenuApiEnum.menuRecords
+      }'
     >
       <template #tableTitle>标准表格</template>
     </BasicTable>

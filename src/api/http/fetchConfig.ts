@@ -17,7 +17,7 @@ export const fetchConfig: Options = {
     // ],
     beforeRequest: [
       (request) => {
-        const token = 'abcdfef'
+        const token = sessionStorage.getItem('token')
         if (token) {
           request.headers.set('token', token)
         }
