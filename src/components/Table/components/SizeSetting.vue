@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { inject, ref } from 'vue'
-  import { NTooltip, NDropdown } from 'naive-ui'
+  import { inject, Ref, ref } from 'vue'
+  import { NTooltip, NDropdown, TableProps } from 'naive-ui'
 
   const iconSize = inject('iconSize')
 
@@ -26,8 +26,8 @@
     }
   ]
 
-  const tableSize = inject('tableSize')
-  const changeTableSize = inject('changeTableSize')
+  const tableSize = inject('tableSize') as Ref<TableProps['size']>
+  const changeTableSize = inject('changeTableSize') as Fn
 </script>
 
 <template>

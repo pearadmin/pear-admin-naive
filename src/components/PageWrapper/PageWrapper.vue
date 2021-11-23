@@ -84,7 +84,7 @@
     width: 100%;
     height: auto;
     &-header {
-      padding: 5px 16px 0px;
+      padding: 8px 8px 0px;
     }
     &-content {
       background: var(--hover-color);

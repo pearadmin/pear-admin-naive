@@ -6,10 +6,10 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { inject } from 'vue'
-  import { NTooltip } from 'naive-ui'
+  import { inject, Ref } from 'vue'
+  import { NTooltip, TableProps } from 'naive-ui'
 
-  const iconSize = inject('iconSize')
+  const iconSize = inject('iconSize') as Ref<TableProps['size']>
 </script>
 
 <template>

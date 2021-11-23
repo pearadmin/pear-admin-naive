@@ -3,8 +3,7 @@
   import PageWrapper from '@/components/PageWrapper'
   import { h } from 'vue'
   import { NDataTable } from 'naive-ui'
-  import { MenuApiEnum } from "@/api/moduels/fast-api/menu"
-
+  import { MenuApiEnum } from '@/api/moduels/fast-api/menu'
 
   const columns = [
     {
@@ -13,66 +12,43 @@
     },
     {
       title: 'Name',
-      key: 'name',
-      width: 200,
-      fixed: 'left'
+      key: 'name'
     },
     {
-      title: 'Age',
-      key: 'age',
+      title: 'Title',
+      key: 'title'
+    },
+    {
+      title: 'Icon',
+      key: 'icon'
+    },
+    {
+      title: 'Path',
+      key: 'path'
+    },
+    {
+      title: 'Type',
+      key: 'type'
+    },
+    {
+      title: 'Sort',
+      key: 'sort',
       width: 100,
-      fixed: 'left'
-    },
-    {
-      title: 'Row',
-      key: 'row',
-      render(row, index) {
-        return h('span', ['row ', index])
-      }
-    },
-    {
-      title: 'Row1',
-      key: 'row1',
-      render(row, index) {
-        return h('span', ['row ', index])
-      }
-    },
-    {
-      title: 'Row2',
-      key: 'row2',
-      render(row, index) {
-        return h('span', ['row ', index])
-      },
-      width: 100,
-      fixed: 'right'
-    },
-    {
-      title: 'Address',
-      key: 'address',
-      width: 200,
       fixed: 'right'
     }
   ]
-
-  const data = Array.apply(null, { length: 100000 }).map((_, index) => ({
-    key: index,
-    name: `Edward King ${index}`,
-    age: 32,
-    address: `London, Park Lane no. ${index}`
-  }))
 </script>
 
 <template>
   <PageWrapper>
     <BasicTable
       :columns="columns"
-      :data="data"
-      :max-height="250"
+      :max-height="600"
       :scroll-x="1800"
       virtual-scroll
-      :fetch='{
+      :fetch="{
         fetchUrl: MenuApiEnum.menuRecords
-      }'
+      }"
     >
       <template #tableTitle>标准表格</template>
     </BasicTable>

@@ -4,13 +4,14 @@
   }
 </script>
 <script setup lang="ts">
-  import { NDataTable, NElement } from 'naive-ui'
+  import { DataTableProps, NDataTable, NElement, PaginationProps } from 'naive-ui'
   import TableTools from './components/TableTools.vue'
   import { computed, provide, useAttrs } from 'vue'
   import { omit, pick } from 'lodash-es'
   import { useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
+  import { RowData } from 'naive-ui/es/data-table/src/interface'
 
   // @ts-ignore
   export interface BasicTableProps {
@@ -42,12 +43,14 @@
   const basicTableAttrs = useAttrs()
   const { tableSize } = useTableConfig(basicTableAttrs)
 
-  const nTableProps = computed(() => {
+  const nTableProps = computed((): DataTableProps => {
     return {
       ...omit(basicTableAttrs, 'class', 'style'),
       size: tableSize.value,
-      pagination: paginationRef.value,
-      loading: isFetching.value
+      pagination: paginationRef.value as PaginationProps,
+      loading: isFetching.value,
+      data: tableData.value as RowData[],
+      rowKey: (row) => row.id
     }
   })
 
@@ -81,9 +84,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    background: var(--td-color);
+    background: var(--body-color);
     border-radius: var(--border-radius);
-
+    padding: 0 0 5px 0;
     &-top {
       width: 100%;
       height: auto;

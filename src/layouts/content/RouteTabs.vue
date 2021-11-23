@@ -61,7 +61,7 @@
     margin-top: 2px;
     background: var(--hover-color);
     &-left {
-      padding: 0 5px;
+      //padding: 0 5px;
       white-space: nowrap;
       display: flex;
       flex-direction: row;
