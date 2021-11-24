@@ -45,10 +45,10 @@ export default function usePagination (): UsePagination {
     },
     prefix: (pagination: PaginationProps) => {
       return `共${pagination.itemCount ?? 0}条数据`
-    },
-    suffix: (pagination: PaginationProps) => {
-      return `${pagination.page} / ${pagination.pageCount}`
     }
+    // suffix: (pagination: PaginationProps) => {
+    //   return `${pagination.page} / ${pagination.pageCount}`
+    // }
   })
 
   return {

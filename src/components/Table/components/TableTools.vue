@@ -9,14 +9,14 @@
   import Reload from './Reload.vue'
   import SizeSetting from './SizeSetting.vue'
   import ColumnSetting from './ColumnSetting.vue'
-  // import ResizeHeight from './ResizeHeight.vue'
+  import ResizeHeight from './ResizeHeight.vue'
 </script>
 
 <template>
   <div class="pear-admin-table-tools">
     <div class="pear-admin-table-tools-content">
       <Reload />
-      <!--      <ResizeHeight />-->
+      <ResizeHeight />
       <SizeSetting />
       <ColumnSetting />
     </div>

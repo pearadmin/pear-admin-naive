@@ -5,7 +5,6 @@
 </script>
 
 <script setup lang="ts">
-  // TODO 暂不启用
   import Icon from '@/components/Icon'
   import { inject, Ref, ref } from 'vue'
   import { NTooltip, NPopover, NSlider } from 'naive-ui'
@@ -41,13 +40,13 @@
 <template>
   <NPopover placement="bottom" trigger="click" style='height: 200px;'>
     <template #trigger>
-      <NTooltip>
+      <NTooltip placement="top-start">
         <template #trigger>
           <a href="javascript:;" class="pear-admin-a">
             <Icon name="vaadin:resize-h" :size="iconSize"></Icon>
           </a>
         </template>
-        表格高度
+        表格高度(当一页展示50条或更多条记录时,尝试增加高度,展示更多的数据.)
       </NTooltip>
     </template>
     <NSlider
@@ -57,7 +56,6 @@
       :step="100"
       :value="tableHeight"
       :on-update:value="changeTableHeight"
-      style="height: 300px;width: 2px;"
     />
   </NPopover>
 </template>

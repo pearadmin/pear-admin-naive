@@ -30,7 +30,6 @@ export function useTableConfig(options: ComputedRef<TableConfigOptions>) {
   const heightRef = ref<number>(DEFAULT_TABLE_HEIGHT)
 
   function changeTableHeight(height: number) {
-    console.log(height)
     heightRef.value = height
   }
 

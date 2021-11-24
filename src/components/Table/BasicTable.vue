@@ -51,17 +51,18 @@
 
   const nTableProps = computed((): DataTableProps & Recordable => {
     return {
-      ...omit(basicTableAttrs, 'class', 'style'),
+      scrollX: '1500',
       size: tableSize.value,
       pagination: paginationRef.value as PaginationProps,
       loading: isFetching.value,
       data: tableData.value as RowData[],
       remote: true,
-      // flexHeight: true, 暂不启用高度控制
-      // style: {
-      //   height: `${tableHeight.value}px`
-      // },
-      rowKey: (row) => row.id
+      flexHeight: true,
+      style: {
+        height: `${tableHeight.value}px`
+      },
+      rowKey: (row) => row.id,
+      ...omit(basicTableAttrs, 'class', 'style'),
     }
   })
 

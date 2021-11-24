@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 
 const store = createPinia()
 
-export function setupStore(app: App<Element>): void {
+export function useAppStore(app: App<Element>): void {
   app.use(store)
 }
 

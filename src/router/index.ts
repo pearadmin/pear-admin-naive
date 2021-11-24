@@ -10,6 +10,6 @@ const router = createRouter({
 
 permissionGuard(router)
 
-export const setupRouter = (app: App<Element>): void => {
+export const useAppRouter = (app: App<Element>): void => {
   app.use(router)
 }

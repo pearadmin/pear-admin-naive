@@ -42,7 +42,8 @@
     },
     {
       title: 'CreateTime',
-      key: 'createTime'
+      key: 'createTime',
+      fixed: 'right'
     }
   ]
 
@@ -62,9 +63,6 @@
   <PageWrapper>
     <BasicTable
       :columns="columns"
-      :min-height='300'
-      :max-height="500"
-      :scroll-x="1800"
       virtual-scroll
       :fetch="fetch"
     >
@@ -73,4 +71,5 @@
   </PageWrapper>
 </template>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+</style>
