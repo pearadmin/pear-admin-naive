@@ -45,7 +45,7 @@ export default function useTableFetch(
     }
   })
 
-  const fetching = computed(() => {
+  const fetchInstance = computed(() => {
     const { loading, execute, finished, data } = useApi<Recordable>(
       props.fetch?.fetchUrl as string,
       {
@@ -58,12 +58,16 @@ export default function useTableFetch(
     }
   })
 
-  watch(fetching, res => {
+  watch(fetchInstance, res => {
     isFetching.value = res.loading.value
     fetchFinished.value = res.finished.value
     fetchRunner.value = res.execute.value
-    // tableData.value = res.data.value
-    tableData.value = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+    // table data
+    let cacheData = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+    if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {
+      cacheData = props.fetch.afterFetch(tableData) ?? []
+    }
+    tableData.value = cacheData
     // pagination
     paginationRef.value.itemCount = res.data.value?.[TABLE_FETCH_RESPONSE.total]
   }, { immediate: true, deep: true })

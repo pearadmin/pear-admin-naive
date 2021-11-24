@@ -1,17 +1,25 @@
 // windicss 样式与naive-ui组件的冲突
 // 修改box-sizing: border-box 为 content-box
 // 解决naive-ui slider组件 竖放时渲染颜色不正常的问题
-*, ::before, ::after {
+/**
+  windicss以下样式会让n-slider组件失效
+  *, ::before, ::after {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+ */
+[class^=n-slider]{
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: #e5e7eb;
 }
+
 
 //============================
 #app {
-  //@apply w-full min-h-screen h-full;
+  @apply w-full min-h-screen h-full;
 }
 [class^=pear-]{
   box-sizing: border-box;
