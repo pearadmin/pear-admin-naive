@@ -8,11 +8,12 @@ export interface UsePagination {
 export default function usePagination (): UsePagination {
   const paginationRef = ref<PaginationProps>({
     itemCount: 0,
-    pageCount: 0,
+    // pageCount: 100,
+    page: 1,
     pageSize: 10,
+    pageSlot: 9,
     showQuickJumper: true,
     showSizePicker: true,
-    page: 1,
     pageSizes: [
       {
         label: '10/页',
@@ -33,20 +34,22 @@ export default function usePagination (): UsePagination {
       {
         label: '50000/页',
         value: 50000
-      },
-      {
-        label: '100000/页',
-        value: 100000
       }
     ],
-    'onUpdate:pageSize': (pageSize: number) => {
-      changePageSize(pageSize)
+    ['onUpdate:pageSize']: (pageSize: number) => {
+      paginationRef.value.page = 1
+      paginationRef.value.pageSize = pageSize
     },
+    ['onUpdate:page']: (pageNo: number) => {
+      paginationRef.value.page = pageNo
+    },
+    prefix: (pagination: PaginationProps) => {
+      return `共${pagination.itemCount ?? 0}条数据`
+    },
+    suffix: (pagination: PaginationProps) => {
+      return `${pagination.page} / ${pagination.pageCount}`
+    }
   })
-
-  function changePageSize (pageSize: number) {
-    paginationRef.value.pageSize = pageSize
-  }
 
   return {
     paginationRef

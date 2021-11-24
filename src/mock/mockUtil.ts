@@ -9,7 +9,7 @@ export function createResponseData (responseData: ResponseData): ResponseData {
   return Object.assign({}, {
     code: 0,
     success: true,
-    msg: '',
+    msg: '成功',
     data: null,
     timestamp: new Date().getTime()
   }, responseData)

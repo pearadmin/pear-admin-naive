@@ -12,44 +12,61 @@
       fixed: 'left'
     },
     {
+      title: 'Id',
+      fixed: 'left',
+      key: 'id'
+    },
+    {
       title: 'Name',
       key: 'name'
     },
     {
-      title: 'Title',
-      key: 'title'
+      title: 'Age',
+      key: 'age'
     },
     {
-      title: 'Icon',
-      key: 'icon'
+      title: 'Birthday',
+      key: 'birthday'
     },
     {
-      title: 'Path',
-      key: 'path'
+      title: 'Email',
+      key: 'email'
     },
     {
-      title: 'Type',
-      key: 'type'
+      title: 'Address',
+      key: 'city'
     },
     {
-      title: 'Sort',
-      key: 'sort',
-      width: 100,
-      fixed: 'right'
+      title: 'ZIP',
+      key: 'zip'
+    },
+    {
+      title: 'CreateTime',
+      key: 'createTime'
     }
   ]
+
+  const fetch = {
+    fetchUrl: TableDemoEnum.getTableRecords,
+    beforeFetch(params) {
+      console.log('beform fetch', params)
+      return {
+        ...params,
+        a: 1,
+      }
+    }
+  }
 </script>
 
 <template>
   <PageWrapper>
     <BasicTable
       :columns="columns"
-      :max-height="600"
+      :min-height='300'
+      :max-height="500"
       :scroll-x="1800"
       virtual-scroll
-      :fetch="{
-        fetchUrl: TableDemoEnum.getTableRecords
-      }"
+      :fetch="fetch"
     >
       <template #tableTitle>标准表格</template>
     </BasicTable>

@@ -1,15 +1,14 @@
 // @ts-ignore
 import { BasicTableProps } from '@/components/Table/BasicTable.vue'
-import { computed, ComputedRef, Ref, ref, UnwrapRef, watch } from 'vue'
+import { computed, Ref, ref, UnwrapRef, watch } from 'vue'
 import { useApi } from '@/api/http'
 import { PaginationProps } from 'naive-ui'
-import { UseApiReturnType } from '@/api/http/type'
-import { DEFAULT_TABLE_FETCH } from '@/config'
+import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
 
 export interface UseTableFetchReturn {
   isFetching: Ref<boolean>
   fetchFinished: Ref<boolean>
-  fetchRunner: ComputedRef<() => Promise<unknown>>
+  fetchRunner: Ref<() => Promise<unknown>>
   tableData: Ref<UnwrapRef<unknown> | null>
 }
 
@@ -17,80 +16,62 @@ export default function useTableFetch(
   props: Readonly<BasicTableProps>,
   paginationRef: Ref<PaginationProps>
 ): UseTableFetchReturn {
-  const fetchConfig = ref<Nullable<Recordable>>(null)
+  const isFetching = ref<boolean>(false)
+  const fetchFinished = ref<boolean>(false)
+  const fetchRunner = ref<PromiseFn<unknown>>(() => Promise.resolve())
+  const tableData = ref<Recordable[]>([])
 
-  watch(
-    () => props.fetch,
-    (fetch) => {
-      if (fetch) {
-        fetchConfig.value = fetch
-      }
-    },
-    { deep: true, immediate: true }
-  )
-
-  const requestParams = ref<Recordable>({})
-
-  watch(paginationRef, pagination => {
-    requestParams.value = {
-      PAGEINDEX: pagination.page,
-      PAGESIZE: pagination.pageSize
+  const fetchOptions = computed((): Recordable => {
+    /**
+     * {
+     *   method: 'get' | 'post'
+     *   body: params | params: params
+     * }
+     */
+    const basic = {
+      [TABLE_PAGINATION.pageNo]: paginationRef.value.page,
+      [TABLE_PAGINATION.pageSize]: paginationRef.value.pageSize,
     }
+    let userOptions: Recordable = {}
+    if (props.fetch && props.fetch.beforeFetch && typeof props.fetch.beforeFetch === 'function') {
+      userOptions = props.fetch.beforeFetch(basic) ?? {}
+    }
+    return {
+      method: DEFAULT_TABLE_FETCH.method,
+      [DEFAULT_TABLE_FETCH.bodyType]: {
+        ...basic,
+        ...userOptions
+      }
+    }
+  })
+
+  const fetching = computed(() => {
+    const { loading, execute, finished, data } = useApi<Recordable>(
+      props.fetch?.fetchUrl,
+      {
+        ...fetchOptions.value
+      },
+      { immediate: props.fetch?.immediate ?? true, refetch: true }
+    )
+    return {
+      loading, execute, finished, data
+    }
+  })
+
+  watch(fetching, res => {
+    isFetching.value = res.loading.value
+    fetchFinished.value = res.finished.value
+    fetchRunner.value = res.execute.value
+    // tableData.value = res.data.value
+    tableData.value = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+    // pagination
+    paginationRef.value.itemCount = res.data.value?.[TABLE_FETCH_RESPONSE.total]
   }, { immediate: true, deep: true })
 
-  function runBeforeFetch () {
-    const params: Recordable = {
-      ...requestParams.value
-    }
-    if (fetchConfig.value && fetchConfig.value.beforeFetch && typeof fetchConfig.value.beforeFetch === 'function') {
-      const beforeFetchResult = fetchConfig.value.beforeFetch(params)
-      return beforeFetchResult
-    }
-    return params
-  }
-
-  const useFetchFn = computed(() => {
-    if (fetchConfig.value && fetchConfig.value.fetchUrl) {
-      return (): UseApiReturnType<unknown> => {
-        const params = runBeforeFetch()
-        /**
-         * {
-         *   method: 'get' | 'post'
-         *   body: params | params: params
-         * }
-         */
-        const fetchOptions = {
-          method: DEFAULT_TABLE_FETCH.method,
-          [DEFAULT_TABLE_FETCH.bodyType]: params ?? null
-        }
-        return useApi<unknown>(
-          fetchConfig.value?.fetchUrl,
-          fetchOptions,
-          { immediate: fetchConfig.value?.immediate ?? true }
-        )
-      }
-    }
-    return null
-  })
-
-  const { loading, execute, finished, data } = useFetchFn.value?.() as UseApiReturnType<any>
-
-  // onMounted(() => {
-  //   if (fetchConfig.value && !fetchConfig.value.immediate) {
-  //     execute.value()
-  //   }
-  // })
-
-  watch(data, d => {
-    console.log(d)
-  })
-
   return {
-    isFetching: loading,
-    fetchRunner: execute,
-    fetchFinished: finished,
-    tableData: computed(() => {
-      return data.value?.menu as Recordable[] || []
-    })
+    isFetching,
+    fetchFinished,
+    tableData,
+    fetchRunner
   }
 }

@@ -4,7 +4,7 @@ import { createDialog } from '@/api/http/createDialog'
 
 export const fetchConfig: Options = {
   prefixUrl: import.meta.env.VITE_FETCH_PREFIX_URL as string,
-  timeout: 6 * 1000,
+  timeout: 6 * 1000 * 10,
   headers: {
     credentials: 'omit' // detail msg in the RequestCredentials
   },

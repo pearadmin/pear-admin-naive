@@ -6,7 +6,7 @@
 <script setup lang="ts">
   import { DataTableProps, NDataTable, NElement, PaginationProps } from 'naive-ui'
   import TableTools from './components/TableTools.vue'
-  import { computed, ComputedRef, provide, ref, useAttrs } from 'vue'
+  import { computed, ComputedRef, provide, ref, useAttrs, watch } from 'vue'
   import { omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
@@ -47,15 +47,20 @@
     }
   })
 
-  const { tableSize } = useTableConfig(tableConfigOptions)
+  const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
 
-  const nTableProps = computed((): DataTableProps => {
+  const nTableProps = computed((): DataTableProps & Recordable => {
     return {
       ...omit(basicTableAttrs, 'class', 'style'),
       size: tableSize.value,
       pagination: paginationRef.value as PaginationProps,
       loading: isFetching.value,
       data: tableData.value as RowData[],
+      remote: true,
+      // flexHeight: true, 暂不启用高度控制
+      // style: {
+      //   height: `${tableHeight.value}px`
+      // },
       rowKey: (row) => row.id
     }
   })
