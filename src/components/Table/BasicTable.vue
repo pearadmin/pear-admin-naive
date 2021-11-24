@@ -12,6 +12,7 @@
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
+  import { useColumns } from '@/components/Table/composables/useColumns'
 
   // @ts-ignore
   export interface BasicTableProps {
@@ -43,11 +44,15 @@
     return {
       attrs: basicTableAttrs,
       fetchRunner,
-      iconSize: ref<number>(18)
+      iconSize: ref<number>(18),
+      columns
     }
   })
 
+  const { columns } = useColumns(basicTableAttrs)
+
   const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
+
 
   const nTableProps = computed((): DataTableProps & Recordable => {
     return {
@@ -63,6 +68,7 @@
       },
       rowKey: (row) => row.id,
       ...omit(basicTableAttrs, 'class', 'style'),
+      columns: columns.value
     }
   })
 

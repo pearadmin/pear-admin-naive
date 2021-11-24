@@ -1,10 +1,12 @@
 import { ComputedRef, provide, Ref, ref, watch } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
+import { DataTableColumns } from 'naive-ui'
 
 export interface TableConfigOptions {
   attrs: Record<string, any>
   fetchRunner: Ref<() => Promise<any>>
-  iconSize: Ref<number>
+  iconSize: Ref<number>,
+  columns: Ref<DataTableColumns>
 }
 
 export const tableSizeInjectKey = Symbol('tableSize')
@@ -14,6 +16,8 @@ export const iconSizeInjectKey = Symbol('iconSize')
 
 export const tableHeightInjectKey = Symbol('tableHeight')
 export const changeTableHeightInjectKey = Symbol('changeTableHeight')
+
+export const columnsInjectKey = Symbol('columns')
 
 export type TableSize = 'small' | 'medium' | 'large'
 
@@ -53,6 +57,8 @@ export function useTableConfig(options: ComputedRef<TableConfigOptions>) {
 
   provide<Ref<number>>(tableHeightInjectKey, heightRef)
   provide<(height: number) => void>(changeTableHeightInjectKey, changeTableHeight)
+
+  provide<Ref<DataTableColumns>>(columnsInjectKey, options.value.columns)
 
   return {
     tableSize: sizeRef,

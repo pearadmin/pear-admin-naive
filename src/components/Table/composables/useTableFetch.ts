@@ -47,7 +47,7 @@ export default function useTableFetch(
 
   const fetching = computed(() => {
     const { loading, execute, finished, data } = useApi<Recordable>(
-      props.fetch?.fetchUrl,
+      props.fetch?.fetchUrl as string,
       {
         ...fetchOptions.value
       },
