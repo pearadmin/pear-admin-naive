@@ -3,16 +3,9 @@
   import { useMenu } from '@/layouts/menu/useMenu'
   import { inject, ref } from 'vue'
 
-  const {
-    menuRef: menus,
-    expandKeys,
-    updateExpandKeys,
-    currentMenu,
-    updateValue
-  } = useMenu()
+  const { menuRef: menus, expandKeys, updateExpandKeys, currentMenu, updateValue } = useMenu()
 
   const themeConfig = inject('themeConfig')
-
 </script>
 
 <template>
@@ -24,7 +17,7 @@
       :expanded-keys="expandKeys"
       :on-update:expanded-keys="updateExpandKeys"
       :value="currentMenu"
-      :on-update:value='updateValue'
+      :on-update:value="updateValue"
       v-bind="themeConfig"
     ></n-menu>
   </NScrollbar>

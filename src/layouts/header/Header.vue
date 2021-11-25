@@ -4,7 +4,6 @@
   import UserDropdown from './UserDropdown.vue'
   import FullScreen from './FullScreen.vue'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
-
 </script>
 
 <template>

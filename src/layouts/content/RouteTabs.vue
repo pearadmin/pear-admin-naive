@@ -25,7 +25,7 @@
           class="pear-admin-tabs-left-item"
           v-for="tag in tags"
           :key="tag.path"
-          :closable='tags.length > 1'
+          :closable="tags.length > 1"
           :on-close="
             () => {
               handleCloseTag(tag)

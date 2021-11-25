@@ -53,9 +53,13 @@
 
   const basicFormProps = ref<BasicFormProps>({})
 
-  watch(() => props, (pp) => {
-    basicFormProps.value = {...pp}
-  }, { immediate: true, deep: true })
+  watch(
+    () => props,
+    (pp) => {
+      basicFormProps.value = { ...pp }
+    },
+    { immediate: true, deep: true }
+  )
 
   const attrs = useAttrs()
 
@@ -73,7 +77,6 @@
       merge(basicFormProps.value, options)
     }
   })
-
 </script>
 
 <template>

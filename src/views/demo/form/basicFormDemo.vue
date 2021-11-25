@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import BasicForm from '@/components/Form'
   import PageWrapper from '@/components/PageWrapper'
   import useForm from '@/components/Form/composables/useForm'
@@ -11,7 +11,7 @@
       component: 'NInput',
       formItemProps: {
         label: 'Input',
-        span: 8,
+        span: 8
       }
     },
     {
@@ -19,7 +19,7 @@
       component: 'NSelect',
       formItemProps: {
         label: 'Select',
-        span: 8,
+        span: 8
       },
       componentProps: {
         options: [
@@ -79,7 +79,7 @@
       component: 'NDatePicker',
       formItemProps: {
         label: 'DateTime',
-        span: 8,
+        span: 8
       },
       componentProps: {
         type: 'datetime',
@@ -93,7 +93,7 @@
       component: 'NDatePicker',
       formItemProps: {
         label: 'DTRange',
-        span: 8,
+        span: 8
       },
       componentProps: {
         type: 'datetimerange',
@@ -114,13 +114,12 @@
     gridProps
   })
   const message = useMessage()
-  function getFormModel () {
+  function getFormModel() {
     message.info(JSON.stringify(modelValue.value))
   }
-  function updFormValue () {
+  function updFormValue() {
     modelValue.value.input = Math.random().toString(32).substr(5, 12)
   }
-
 </script>
 
 <template>
@@ -135,6 +134,4 @@
   </PageWrapper>
 </template>
 
-<style scoped lang='less'>
-
-</style>
+<style scoped lang="less"></style>

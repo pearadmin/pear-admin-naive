@@ -4,10 +4,7 @@
 </script>
 
 <template>
-  <NElement
-    class="pear-admin-settings"
-    tag="span"
-  >
+  <NElement class="pear-admin-settings" tag="span">
     <Icon name="ic:sharp-settings"></Icon>
   </NElement>
 </template>

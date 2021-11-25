@@ -1,10 +1,10 @@
-<script lang='ts'>
+<script lang="ts">
   export default {
     name: 'PButton'
   }
 </script>
 
-<script setup lang='ts'>
+<script setup lang="ts">
   /**
    * 这个组件的存在意义在于
    * 因为NButton设置为Loading状态还能继续触发事件。
@@ -17,7 +17,7 @@
   const btnProps = computed(() => {
     return {
       ...attrs,
-      disabled: (attrs && attrs.loading !== undefined) ? attrs.loading : false
+      disabled: attrs && attrs.loading !== undefined ? attrs.loading : false
     }
   })
 </script>
@@ -30,6 +30,4 @@
   </NButton>
 </template>
 
-<style scoped lang='less'>
-
-</style>
+<style scoped lang="less"></style>

@@ -9,7 +9,7 @@
   import type { ThemeName } from '@/store/modules/app'
   import { useAppStore } from '@/store/modules/app'
   import { useUiConfig } from '@/composables/useUiConfig/useUiConfig'
-  import { getMenuRecords } from "@/api/moduels/fast-api/menu"
+  import { getMenuRecords } from '@/api/moduels/fast-api/menu'
 
   const options = [
     {
@@ -57,7 +57,7 @@
       :options="options"
       trigger="click"
       @update:value="handleToggle"
-      :api='getMenuRecords'
+      :api="getMenuRecords"
     >
       <n-button round>主题: {{ currentThemeName }}</n-button>
     </n-popselect>

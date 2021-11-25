@@ -53,7 +53,6 @@
 
   const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
 
-
   const nTableProps = computed((): DataTableProps & Recordable => {
     return {
       scrollX: '1500',

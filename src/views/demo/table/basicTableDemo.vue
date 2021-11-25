@@ -48,7 +48,7 @@
       console.log('before fetch', params)
       return {
         ...params,
-        a: 1,
+        a: 1
       }
     },
     afterFetch(data) {
@@ -59,15 +59,10 @@
 
 <template>
   <PageWrapper>
-    <BasicTable
-      :columns="columns"
-      virtual-scroll
-      :fetch="fetch"
-    >
+    <BasicTable :columns="columns" virtual-scroll :fetch="fetch">
       <template #tableTitle>标准表格</template>
     </BasicTable>
   </PageWrapper>
 </template>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

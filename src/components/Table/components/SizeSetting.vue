@@ -15,7 +15,6 @@
     tableSizeInjectKey
   } from '../composables/useTableConfig'
 
-
   const options = [
     {
       label: '紧凑',
@@ -36,7 +35,13 @@
 </script>
 
 <template>
-  <NDropdown trigger="click" :options="options" placement="bottom-start" :value="tableSize" @select='changeTableSize'>
+  <NDropdown
+    trigger="click"
+    :options="options"
+    placement="bottom-start"
+    :value="tableSize"
+    @select="changeTableSize"
+  >
     <NTooltip>
       <template #trigger>
         <a href="javascript:;" class="pear-admin-a">

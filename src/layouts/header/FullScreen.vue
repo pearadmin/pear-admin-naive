@@ -1,7 +1,7 @@
 <script lang="ts">
-export default {
-  name: "FullScreen"
-};
+  export default {
+    name: 'FullScreen'
+  }
 </script>
 
 <script setup lang="ts">
@@ -9,26 +9,20 @@ export default {
   import Icon from '@/components/Icon'
 
   import { useFullscreen } from '@vueuse/core'
-  import { computed, watch } from "vue";
+  import { computed, watch } from 'vue'
 
   const { isFullscreen, toggle } = useFullscreen()
 
   const iconName = computed(() => {
-    console.log(isFullscreen.value);
+    console.log(isFullscreen.value)
     return isFullscreen.value ? 'ic:baseline-fullscreen-exit' : 'ic:baseline-fullscreen'
   })
-
 </script>
 
 <template>
   <NTooltip placement="bottom" trigger="hover">
     <template #trigger>
-      <NElement
-        tag="div"
-        class="pear-admin-fullscreen"
-        placement="bottom-end"
-        @click="toggle"
-      >
+      <NElement tag="div" class="pear-admin-fullscreen" placement="bottom-end" @click="toggle">
         <Icon v-if="isFullscreen" name="ic:baseline-fullscreen-exit" :size="18"></Icon>
         <Icon v-else name="ic:baseline-fullscreen" :size="18"></Icon>
       </NElement>

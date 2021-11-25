@@ -4,11 +4,9 @@ import { defineComponent } from 'vue'
 export const getParentComponent = (name: string) => {
   return defineComponent({
     name,
-    setup () {
+    setup() {
       return () => {
-        return (
-          <router-view></router-view>
-        )
+        return <router-view></router-view>
       }
     }
   })

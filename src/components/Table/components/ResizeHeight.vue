@@ -34,11 +34,10 @@
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)
   const tableHeight = inject<Ref<number>>(tableHeightInjectKey)
   const changeTableHeight = inject<Fn>(changeTableHeightInjectKey)
-
 </script>
 
 <template>
-  <NPopover placement="bottom" trigger="click" style='height: 200px;'>
+  <NPopover placement="bottom" trigger="click" style="height: 200px">
     <template #trigger>
       <NTooltip placement="top-start">
         <template #trigger>
@@ -60,5 +59,4 @@
   </NPopover>
 </template>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

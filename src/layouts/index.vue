@@ -11,7 +11,6 @@
     inverted: false
   })
   provide('themeConfig', themeConfig)
-
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">

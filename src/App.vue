@@ -7,7 +7,7 @@
     <router-view v-slot="{ Component }">
       <template v-if="Component">
         <transition mode="out-in">
-<!--          <component :is="Component" />-->
+          <!--          <component :is="Component" />-->
           <suspense>
             <component :is="Component" />
             <template #fallback>

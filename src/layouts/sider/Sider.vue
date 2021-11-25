@@ -6,7 +6,7 @@
 
   const collapsed = ref<boolean>(false)
 
-  function handleCollapsed (value) {
+  function handleCollapsed(value) {
     collapsed.value = value
   }
 

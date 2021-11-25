@@ -29,26 +29,20 @@
     </template>
     <template #header>
       <div class="pear-admin-columns-setting-title">
-        <NCheckbox
-          >列展示</NCheckbox
-        >
-        <NElement
-          tag="a"
-          href="javascript:;"
-          class="pear-admin-columns-setting-title-reset"
-        >
+        <NCheckbox>列展示</NCheckbox>
+        <NElement tag="a" href="javascript:;" class="pear-admin-columns-setting-title-reset">
           重置
         </NElement>
       </div>
     </template>
     <div class="pear-admin-columns-setting-content">
       <NElement
-        tag='div'
+        tag="div"
         v-for="(col, idx) in columns"
         :key="idx"
         class="pear-admin-columns-setting-content-item"
       >
-<!--        <NCheckbox>{{ col.title }}</NCheckbox>-->
+        <!--        <NCheckbox>{{ col.title }}</NCheckbox>-->
         施工中
       </NElement>
     </div>

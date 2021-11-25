@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { useApi } from '@/api/http'
   import { HttpDemoEnums } from '@/views/demo/utils-demo/http/service'
   import { ref } from 'vue'
@@ -12,10 +12,14 @@
     loading: loading1,
     data: data1,
     execute: execute1
-  } = useApi(HttpDemoEnums.getData, {
-    method: 'post',
-    data: params1
-  }, { refetch: true })
+  } = useApi(
+    HttpDemoEnums.getData,
+    {
+      method: 'post',
+      data: params1
+    },
+    { refetch: true }
+  )
 </script>
 
 <template>
@@ -35,6 +39,4 @@
   </PageWrapper>
 </template>
 
-<style scoped lang='less'>
-
-</style>
+<style scoped lang="less"></style>

@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <n-layout-footer
-    class="pear-admin-footer"
-  >
+  <n-layout-footer class="pear-admin-footer">
     <div>©{{ new Date().getFullYear() }} 落小梅</div>
   </n-layout-footer>
 </template>

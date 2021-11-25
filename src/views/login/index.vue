@@ -27,7 +27,7 @@
   // form model
   const model = ref<FormState>({
     username: 'admin1',
-    password: 'admin',
+    password: 'admin'
   })
 
   const rules = markRaw({
@@ -99,23 +99,23 @@
             show-password-on="click"
           />
         </n-form-item>
-<!--        <n-form-item class="block" path="captchaCode">-->
-<!--          <n-grid x-gap="12" :cols="2">-->
-<!--            <n-gi>-->
-<!--              <n-input v-model:value="model.captchaCode" placeholder="请输入验证码" maxlength="5" />-->
-<!--            </n-gi>-->
-<!--            <n-gi class="flex flex-row-reverse">-->
-<!--              <n-spin :show="codeLoading">-->
-<!--                <img-->
-<!--                  class="cursor-pointer"-->
-<!--                  :src="validateCodeState?.image"-->
-<!--                  alt="验证码"-->
-<!--                  @click="reloadCapture"-->
-<!--                />-->
-<!--              </n-spin>-->
-<!--            </n-gi>-->
-<!--          </n-grid>-->
-<!--        </n-form-item>-->
+        <!--        <n-form-item class="block" path="captchaCode">-->
+        <!--          <n-grid x-gap="12" :cols="2">-->
+        <!--            <n-gi>-->
+        <!--              <n-input v-model:value="model.captchaCode" placeholder="请输入验证码" maxlength="5" />-->
+        <!--            </n-gi>-->
+        <!--            <n-gi class="flex flex-row-reverse">-->
+        <!--              <n-spin :show="codeLoading">-->
+        <!--                <img-->
+        <!--                  class="cursor-pointer"-->
+        <!--                  :src="validateCodeState?.image"-->
+        <!--                  alt="验证码"-->
+        <!--                  @click="reloadCapture"-->
+        <!--                />-->
+        <!--              </n-spin>-->
+        <!--            </n-gi>-->
+        <!--          </n-grid>-->
+        <!--        </n-form-item>-->
         <n-form-item class="block">
           <n-grid :cols="2" :x-gap="24">
             <n-gi>

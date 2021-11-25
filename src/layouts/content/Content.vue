@@ -4,10 +4,7 @@
 </script>
 
 <template>
-  <n-layout-content
-    :native-scrollbar="false"
-    class="pear-admin-content"
-  >
+  <n-layout-content :native-scrollbar="false" class="pear-admin-content">
     <router-view></router-view>
   </n-layout-content>
 </template>

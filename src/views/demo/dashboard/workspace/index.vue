@@ -70,7 +70,7 @@
     <template #footer>截止到 2021 年 4 月 3 日</template>
     <div>
       Page Content11
-      <hr/>
+      <hr />
       <n-grid :cols="5">
         <n-gi>
           <n-statistic label="正片" value="125 集" />

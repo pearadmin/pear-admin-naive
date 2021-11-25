@@ -30,7 +30,13 @@ export default defineComponent({
     })
 
     return () => {
-      return <Component.value v-model={[props.formModelRef[props.schema?.model], 'value']} {...comProps.value} v-slots={comSlots.value}></Component.value>
+      return (
+        <Component.value
+          v-model={[props.formModelRef[props.schema?.model], 'value']}
+          {...comProps.value}
+          v-slots={comSlots.value}
+        ></Component.value>
+      )
     }
   }
 })
