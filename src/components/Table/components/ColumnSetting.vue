@@ -7,12 +7,12 @@
 <script setup lang="ts">
   import Icon from '@/components/Icon'
   import { inject, Ref } from 'vue'
-  import type { DataTableColumns } from 'naive-ui'
+  import type { DataTableProps } from 'naive-ui'
   import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
 
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)
 
-  const columns = inject(columnsInjectKey) as Ref<DataTableColumns>
+  const columns = inject<Ref<DataTableProps['columns']>>(columnsInjectKey)
 </script>
 
 <template>
@@ -48,7 +48,8 @@
         :key="idx"
         class="pear-admin-columns-setting-content-item"
       >
-        <NCheckbox>{{ col.title }}</NCheckbox>
+<!--        <NCheckbox>{{ col.title }}</NCheckbox>-->
+        施工中
       </NElement>
     </div>
   </NPopover>
