@@ -65,7 +65,7 @@ export default function useTableFetch(
     // table data
     let cacheData = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
     if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {
-      cacheData = props.fetch.afterFetch(tableData) ?? []
+      cacheData = props.fetch.afterFetch(cacheData) ?? []
     }
     tableData.value = cacheData
     // pagination

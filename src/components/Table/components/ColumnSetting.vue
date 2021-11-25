@@ -6,13 +6,13 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { inject, Ref } from 'vue'
+  import { computed, inject, ref, Ref, watch } from 'vue'
   import { NTooltip, NPopover, NCheckbox, NElement, DataTableColumns } from 'naive-ui'
   import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
 
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)
 
-  const columns = inject<Ref<DataTableColumns>>(columnsInjectKey)
+  const columns = inject(columnsInjectKey) as Ref<DataTableColumns>
 </script>
 
 <template>
@@ -29,25 +29,36 @@
     </template>
     <template #header>
       <div class="pear-admin-columns-setting-title">
-        <NCheckbox>列展示</NCheckbox>
-        <NElement tag="a" href='javascript:;' class='pear-admin-columns-setting-title-reset'>
+        <NCheckbox
+          >列展示</NCheckbox
+        >
+        <NElement
+          tag="a"
+          href="javascript:;"
+          class="pear-admin-columns-setting-title-reset"
+        >
           重置
         </NElement>
       </div>
     </template>
     <div class="pear-admin-columns-setting-content">
-      <div
-        v-for='(col, idx) in columns'
-        :key='idx'
+      <NElement
+        tag='div'
+        v-for="(col, idx) in columns"
+        :key="idx"
+        class="pear-admin-columns-setting-content-item"
       >
-        <NCheckbox>{{col.title}}</NCheckbox>
-      </div>
+        <NCheckbox>{{ col.title }}</NCheckbox>
+      </NElement>
     </div>
   </NPopover>
 </template>
 
 <style scoped lang="less">
   .pear-admin-columns-setting {
+    ::v-deep(.n-popover .n-popover__content) {
+      padding: 0px !important;
+    }
     &-title {
       display: flex;
       flex-direction: row;
@@ -57,9 +68,15 @@
         color: var(--primary-color);
       }
     }
-    &-content{
+    &-content {
       width: 180px;
       height: auto;
+      background: var(--body-color);
+      &-item {
+        &:hover {
+          background: var(--hover-color);
+        }
+      }
     }
   }
 </style>

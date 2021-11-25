@@ -1,5 +1,6 @@
-import { computed, ref, watch } from 'vue'
+import { computed, inject, Ref, ref, watch } from 'vue'
 import { DataTableColumns } from 'naive-ui'
+import { columnsInjectKey } from '@/components/Table/composables/useTableConfig'
 
 export function useColumns (basicTableAttrs: Recordable) {
   const computedCol = computed(() => {

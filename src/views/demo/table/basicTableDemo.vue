@@ -1,9 +1,6 @@
 <script setup lang="ts">
   import BasicTable from '@/components/Table'
   import PageWrapper from '@/components/PageWrapper'
-  import { h } from 'vue'
-  import { NDataTable } from 'naive-ui'
-  import { MenuApiEnum } from '@/api/moduels/fast-api/menu'
   import { TableDemoEnum } from './service'
 
   const columns = [
@@ -50,11 +47,14 @@
   const fetch = {
     fetchUrl: TableDemoEnum.getTableRecords,
     beforeFetch(params) {
-      console.log('beform fetch', params)
+      console.log('before fetch', params)
       return {
         ...params,
         a: 1,
       }
+    },
+    afterFetch(data) {
+      return data
     }
   }
 </script>

@@ -40,6 +40,8 @@
 
   const basicTableAttrs = useAttrs()
 
+  const { columns } = useColumns(basicTableAttrs)
+
   const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
     return {
       attrs: basicTableAttrs,
@@ -48,8 +50,6 @@
       columns
     }
   })
-
-  const { columns } = useColumns(basicTableAttrs)
 
   const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
 
