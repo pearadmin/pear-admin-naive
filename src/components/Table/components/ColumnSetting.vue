@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { computed, inject, ref, Ref, watch } from 'vue'
-  import { NTooltip, NPopover, NCheckbox, NElement, DataTableColumns } from 'naive-ui'
+  import { inject, Ref } from 'vue'
+  import type { DataTableColumns } from 'naive-ui'
   import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
 
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)

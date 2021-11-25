@@ -6,7 +6,7 @@
 </script>
 
 <script setup lang="ts">
-  import { computed, useAttrs, useSlots, h, resolveDynamicComponent } from 'vue'
+  import { computed, useAttrs, useSlots } from 'vue'
   import { omit } from 'lodash-es'
   import { useRoute } from 'vue-router'
 

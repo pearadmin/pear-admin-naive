@@ -35,7 +35,7 @@
 </script>
 
 <template>
-  <PageWrapper title="顶层await(不建议使用)">
+  <PageWrapper title="顶层await(不建议使用)" subtitle="按F5刷新查看效果">
     <NCard>
       <div>
         top await fetch data:

@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-  import PButton from '@/components/Button/Button.vue'
+  import PButton from '@/components/Button/PButton.vue'
   import { ref } from 'vue'
   import usePromiseFn from '@/composables/usePromiseFn'
 
@@ -21,27 +21,6 @@
     })
   }
 
-  /**
-   * eg 1.
-   * 顶层异步 promise().then()
-   * 如果一定要使用顶层请求，可像这样去使用
-   */
-  const res = ref<any>({})
-  promiseFn({ tag: true }).then(data => {
-    res.value = data
-  })
-
-  /**
-   * eg 2.
-   * 顶层 await
-   * 目前不建议这么使用。
-   * 1. suspense目前不建议在生产中使用
-   * 2. 配合vue-router并不理想
-   * 可偿试f5刷新该页面，查看Loading效果
-   */
-  // const showTopAwait = ref<boolean>(true)
-  // const d = await promiseFn({ tag: true })
-
   const usePromiseFetchData = ref<Recordable>({
     tag: true
   })
@@ -60,14 +39,15 @@
     }
   }
 
-  function testLoading () {
-    console.log('click')
-  }
 
 </script>
 
 <template>
-  <PageWrapper>
+  <PageWrapper subtitle="可以使用usePromiseFn将Promise转换为hook使用">
+    <template #pageHeaderContent>
+      需要注意的是: 只要设置了 redo为true 那么函数的参数可以为响应式的对象。在数据变化时，会自动再次请求。
+      usePromiseFn返回的 executor 是个执行器，可以手动触发请求
+    </template>
     <NCard>
       <div>
         FetchParams:
@@ -80,8 +60,8 @@
       <p>error: {{ JSON.stringify(promiseError) }}</p>
       <p>finished: {{ isFinished }}</p>
       <NSpace>
-        <PButton type="primary" :loading="isLoading" @click="handleReFetch">再次请求</PButton>
-        <PButton type="primary" :loading="isLoading" @click="handleChangeData">改变参数</PButton>
+        <PButton type="primary" :loading="isLoading" @click="handleReFetch">手动触发</PButton>
+        <PButton type="primary" :loading="isLoading" @click="handleChangeData">参数改变自动重发</PButton>
       </NSpace>
     </NCard>
   </PageWrapper>

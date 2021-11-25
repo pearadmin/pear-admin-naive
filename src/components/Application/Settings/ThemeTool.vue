@@ -5,7 +5,6 @@
   })
 </script>
 <script setup lang="ts">
-  import { NPopselect, NButton } from 'naive-ui'
   import { computed, ref, watch } from 'vue'
   import type { ThemeName } from '@/store/modules/app'
   import { useAppStore } from '@/store/modules/app'

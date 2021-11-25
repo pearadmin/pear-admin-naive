@@ -11,8 +11,5 @@ const router = createRouter({
 permissionGuard(router)
 
 export const useAppRouter = (app: App<Element>): void => {
-  router.isReady().then((args) => {
-    console.log('ise Ready', args)
-  })
   app.use(router)
 }

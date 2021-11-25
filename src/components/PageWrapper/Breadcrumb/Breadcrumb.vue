@@ -5,7 +5,6 @@
 </script>
 
 <script setup lang='ts'>
-  import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
   import useBreadcrumb from './useBreadcrumb'
 
   const { matches } = useBreadcrumb()

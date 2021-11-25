@@ -13,7 +13,7 @@
             <template #fallback>
               <div class="app-loading">
                 <NSpin size="large" />
-                <span class="mt-10">加载中...</span>
+                <span class="mt-10">Suspense 加载中...</span>
               </div>
             </template>
           </suspense>

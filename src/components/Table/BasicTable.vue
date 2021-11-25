@@ -4,15 +4,15 @@
   }
 </script>
 <script setup lang="ts">
-  import { DataTableProps, NDataTable, NElement, PaginationProps } from 'naive-ui'
   import TableTools from './components/TableTools.vue'
-  import { computed, ComputedRef, provide, ref, useAttrs, watch } from 'vue'
+  import { computed, ComputedRef, ref, useAttrs } from 'vue'
   import { omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
   import { useColumns } from '@/components/Table/composables/useColumns'
+  import { DataTableProps, PaginationProps } from 'naive-ui'
 
   // @ts-ignore
   export interface BasicTableProps {

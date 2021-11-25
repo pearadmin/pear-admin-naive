@@ -1,11 +1,4 @@
 <script setup lang="ts">
-  import {
-    NConfigProvider,
-    NMessageProvider,
-    NDialogProvider,
-    NNotificationProvider
-  } from 'naive-ui'
-  import { NThemeEditor, NGlobalStyle } from 'naive-ui'
   import { isDevelopment } from '@/utils/utils'
   import { useUiConfig } from '@/composables/useUiConfig/useUiConfig'
   import {

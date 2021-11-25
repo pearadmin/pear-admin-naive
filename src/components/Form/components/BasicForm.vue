@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { NForm, NGrid, NFormItemGi, FormRules } from 'naive-ui'
   import FormItem from './FormItem'
   import { computed, ref, Ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'

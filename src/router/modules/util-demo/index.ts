@@ -39,6 +39,14 @@ const utilDemoRoutes: RouteRecordRaw[] = [
               icon: 'simple-icons:farfetch'
             },
             component: () => import('@/views/demo/utils-demo/http/index.vue'),
+          },
+          {
+            path: 'useApi',
+            name: 'UseApi',
+            meta: {
+              title: 'useApi',
+            },
+            component: () => import('@/views/demo/utils-demo/http/useApi.vue')
           }
         ]
       }
