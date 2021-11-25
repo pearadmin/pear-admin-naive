@@ -28,6 +28,7 @@ const plugins = [
     // default
     mockPath: 'src/mock',
     localEnabled: true,
+    prodEnabled: true
   }),
   // eslintPlugin({
   //   eslintOptions: {
