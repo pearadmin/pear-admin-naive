@@ -1,7 +1,8 @@
-import { getRoutes, getMenuOptions } from '@/router/util'
-import { Ref, ref, watch } from 'vue'
+import { getMenuOptions } from '@/router/util'
+import { computed, Ref, ref, watch } from 'vue'
 import { MenuOption } from 'naive-ui'
 import { useRoute } from 'vue-router'
+import { useUserStore } from '@/store/modules/userInfo'
 
 export interface ReturnUseMenu {
   menuRef: Ref<MenuOption[]>
@@ -12,9 +13,14 @@ export interface ReturnUseMenu {
 }
 
 export function useMenu(): ReturnUseMenu {
+  const userStore = useUserStore()
   const menuRef = ref<MenuOption[]>([])
-  const routes = getRoutes()
-  const menus = getMenuOptions(routes)
+
+  const routes = computed(() => {
+    return userStore.menuRoutes
+  })
+
+  const menus = getMenuOptions(routes.value)
 
   // TODO: Type error TS2589: Type instantiation is excessively deep and possibly infinite.
   // @ts-ignore
@@ -37,8 +43,10 @@ export function useMenu(): ReturnUseMenu {
   function setKeys() {
     const matched = route.matched
     const matchedNames = matched.map((it) => it.name as string)
-    const [expandKey, openKey] = matchedNames
-    expandKeys.value = Array.of(expandKey)
+    const matchLen = matchedNames.length
+    const matchExpandKeys = matchedNames.slice(0, matchLen - 1)
+    const openKey = matchedNames[matchLen - 1]
+    expandKeys.value = matchExpandKeys
     currentMenu.value = openKey
   }
 

@@ -66,6 +66,7 @@
     if (loginData.value) {
       userStore.setUserInfo(loginData.value?.userInfo as Recordable)
       userStore.setToken(loginData.value?.token as string)
+      userStore.setUserMenuRoutes()
       await router.push({
         name: 'Dashboard'
       })

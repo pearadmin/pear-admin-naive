@@ -6,6 +6,8 @@ import legacy from '@vitejs/plugin-legacy'
 import path from 'path'
 import {viteMockServe} from 'vite-plugin-mock';
 // import eslintPlugin from "@nabla/vite-plugin-eslint"
+import autoComponents from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import purgeIcons from 'vite-plugin-purge-icons'
 
 const plugins = [
@@ -16,6 +18,12 @@ const plugins = [
     targets: ['defaults', 'not IE 11']
   }),
   purgeIcons(),
+  autoComponents({
+    resolvers: [
+      NaiveUiResolver()
+    ],
+    dts: true
+  }),
   viteMockServe({
     // default
     mockPath: 'src/mock',

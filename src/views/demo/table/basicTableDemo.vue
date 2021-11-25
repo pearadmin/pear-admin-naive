@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import BasicTable from '@/components/Table'
-  import PageWrapper from '@/components/PageWrapper'
   import { TableDemoEnum } from './service'
 
   const columns = [

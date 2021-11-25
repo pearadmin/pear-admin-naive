@@ -1,0 +1,36 @@
+<script lang='ts'>
+  export default {
+    name: 'PButton'
+  }
+</script>
+
+<script setup lang='ts'>
+  /**
+   * 这个组件的存在意义在于
+   * 因为NButton设置为Loading状态还能继续触发事件。
+   * 所以让组件为Loading时，同时为disabled。这样能有效的防止重复提交的问题
+   */
+  import { NButton } from 'naive-ui'
+  import { computed, useAttrs, useSlots } from 'vue'
+
+  const attrs = useAttrs()
+
+  const btnProps = computed(() => {
+    return {
+      ...attrs,
+      disabled: (attrs && attrs.loading !== undefined) ? attrs.loading : false
+    }
+  })
+</script>
+
+<template>
+  <NButton v-bind="btnProps">
+    <template v-for="name in Object.keys($slots)" :key="name" v-slot:[name]>
+      <slot :name="name" />
+    </template>
+  </NButton>
+</template>
+
+<style scoped lang='less'>
+
+</style>

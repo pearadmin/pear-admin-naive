@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { NSpin } from 'naive-ui'
   import AppProvider from '@/components/AppProvider/AppProvider.vue'
 </script>
 
@@ -8,11 +7,12 @@
     <router-view v-slot="{ Component }">
       <template v-if="Component">
         <transition mode="out-in">
+<!--          <component :is="Component" />-->
           <suspense>
             <component :is="Component" />
             <template #fallback>
               <div class="app-loading">
-                <n-spin size="large" />
+                <NSpin size="large" />
                 <span class="mt-10">加载中...</span>
               </div>
             </template>
