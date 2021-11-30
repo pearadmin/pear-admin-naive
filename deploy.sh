@@ -9,6 +9,6 @@ git status &&
 git add . &&
 git status &&
 git commit -m 'fix: bugs' &&
-git push origin main &&
+git push origin master &&
 echo 'task finished'
 ##
