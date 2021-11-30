@@ -45,17 +45,6 @@
 
 <template>
   <PageWrapper>
-    <NSpin :show="loading1">
-      <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
-        <NInput v-model:value="params1.keyA"></NInput>
-        <NInput v-model:value="params1.keyB"></NInput>
-          <pre>
-          结果: => {{ JSON.stringify(data1, null, 2) }}
-        </pre>
-        <NButton type="primary" @click="execute1">手动换挡</NButton>
-      </NCard>
-    </NSpin>
-    <NDivider></NDivider>
     <NSpin :show="loading2">
       <NCard title="全自动挡(初始化会请求，参数改变也会请求)">
         <NAlert type="warning">注意：改变参请后会马上触发请求，一般来说最好不要这么频繁。你懂的 : )</NAlert>
@@ -64,6 +53,17 @@
         <pre>
           结果: => {{ JSON.stringify(data2, null, 2) }}
         </pre>
+      </NCard>
+    </NSpin>
+    <NDivider></NDivider>
+    <NSpin :show="loading1">
+      <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
+        <NInput v-model:value="params1.keyA"></NInput>
+        <NInput v-model:value="params1.keyB"></NInput>
+        <pre>
+          结果: => {{ JSON.stringify(data1, null, 2) }}
+        </pre>
+        <NButton type="primary" @click="execute1">手动换挡</NButton>
       </NCard>
     </NSpin>
   </PageWrapper>

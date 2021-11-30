@@ -26,7 +26,7 @@
   const formRefEl = ref<typeof NForm | null>(null)
   // form model
   const model = ref<FormState>({
-    username: 'admin1',
+    username: 'admin',
     password: 'admin'
   })
 
