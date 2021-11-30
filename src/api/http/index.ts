@@ -1,4 +1,7 @@
-import api from './Fetch'
-import { useApi } from './useApi'
+import { useApi } from './composables/useApi'
+import http from './fetch'
 
-export { api, useApi }
+export {
+  useApi,
+  http
+}

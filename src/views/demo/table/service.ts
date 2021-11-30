@@ -1,3 +1,3 @@
 export enum TableDemoEnum {
-  getTableRecords = 'demo/table/getTableRecords'
+  getTableRecords = '/demo/table/getTableRecords'
 }

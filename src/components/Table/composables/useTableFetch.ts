@@ -1,5 +1,5 @@
 // @ts-ignore
-import { BasicTableProps } from '@/components/Table/BasicTable.vue'
+import type { BasicTableProps } from '@/components/Table/BasicTable.vue'
 import { computed, Ref, ref, UnwrapRef, watch } from 'vue'
 import { useApi } from '@/api/http'
 import { PaginationProps } from 'naive-ui'
@@ -25,7 +25,7 @@ export default function useTableFetch(
     /**
      * {
      *   method: 'get' | 'post'
-     *   body: params | params: params
+     *   data: params | params: params
      * }
      */
     const basic = {
@@ -46,22 +46,22 @@ export default function useTableFetch(
   })
 
   const fetchInstance = computed(() => {
-    const { loading, execute, finished, data } = useApi<Recordable>(
-      props.fetch?.fetchUrl as string,
+    const { loading, executor, finished, data } = useApi<Recordable>(
       {
+        url: props.fetch?.fetchUrl as string,
         ...fetchOptions.value
       },
-      { immediate: props.fetch?.immediate ?? true, refetch: true }
+      { immediate: props.fetch?.immediate ?? true, redo: true }
     )
     return {
-      loading, execute, finished, data
+      loading, executor, finished, data
     }
   })
 
   watch(fetchInstance, res => {
     isFetching.value = res.loading.value
     fetchFinished.value = res.finished.value
-    fetchRunner.value = res.execute.value
+    fetchRunner.value = res.executor.value
     // table data
     let cacheData = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
     if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {

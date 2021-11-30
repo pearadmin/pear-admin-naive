@@ -8,8 +8,8 @@ enum Api {
 
 export const useLogin = (data: Ref<LoginModel>) => {
   return useApi<LoginResData>(
-    Api.userLogin,
     {
+      url: Api.userLogin,
       data,
       method: 'post',
       showErrorType: 'Notification'

@@ -11,14 +11,14 @@
   const {
     loading: loading1,
     data: data1,
-    execute: execute1
+    executor: execute1
   } = useApi(
-    HttpDemoEnums.getData,
     {
+      url: HttpDemoEnums.getData,
       method: 'post',
       data: params1
     },
-    { refetch: true }
+    { redo: true }
   )
 </script>
 

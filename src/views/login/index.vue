@@ -55,7 +55,7 @@
   const {
     data: loginData,
     loading: loginLoading,
-    execute: loginFn,
+    executor: loginFn,
     finished: loginFinished
   } = login(model)
 

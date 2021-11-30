@@ -22,7 +22,6 @@ specifiers:
   eslint-define-config: ^1.2.0
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-vue: ^7.20.0
-  ky: ^0.28.7
   less: ^4.1.2
   lodash-es: ^4.17.21
   mockjs: ^1.1.0
@@ -33,6 +32,7 @@ specifiers:
   qs: ^6.10.1
   rimraf: ^3.0.2
   typescript: ^4.5.2
+  umi-request: ^1.4.0
   unplugin-vue-components: ^0.17.2
   vfonts: ^0.1.0
   vite: ^2.6.14
@@ -49,10 +49,10 @@ dependencies:
   '@types/lodash': 4.14.177
   '@vueuse/core': 6.9.2_vue@3.2.23
   axios: 0.21.4
-  ky: 0.28.7
   mockjs: 1.1.0
   pinia: 2.0.4_typescript@4.5.2+vue@3.2.23
   qs: 6.10.1
+  umi-request: 1.4.0
   vue: 3.2.23
   vue-router: 4.0.12_vue@3.2.23
 
@@ -1584,6 +1584,12 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
+  /encoding/0.1.13:
+    resolution: {integrity: sha1-VldK/deR9UqOmyeFwFgqLSYhD6k=, tarball: encoding/download/encoding-0.1.13.tgz}
+    dependencies:
+      iconv-lite: 0.6.3
+    dev: false
+
   /enquirer/2.3.6:
     resolution: {integrity: sha1-Kn/l3WNKHkElqXXsmU/1RW3Dc00=, tarball: enquirer/download/enquirer-2.3.6.tgz}
     engines: {node: '>=8.6'}
@@ -2269,6 +2275,13 @@ packages:
     dev: true
     optional: true
 
+  /iconv-lite/0.6.3:
+    resolution: {integrity: sha1-pS+AvzjaGVLrXGgXkHGYcaGnJQE=, tarball: iconv-lite/download/iconv-lite-0.6.3.tgz}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      safer-buffer: 2.1.2
+    dev: false
+
   /ignore/4.0.6:
     resolution: {integrity: sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=, tarball: ignore/download/ignore-4.0.6.tgz}
     engines: {node: '>= 4'}
@@ -2375,6 +2388,11 @@ packages:
       has-tostringtag: 1.0.0
     dev: true
 
+  /is-stream/1.1.0:
+    resolution: {integrity: sha1-EtSj3U5o4Lec6428hBc66A2RykQ=, tarball: is-stream/download/is-stream-1.1.0.tgz}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /is-what/3.14.1:
     resolution: {integrity: sha1-4SIvRt3ahd6tD9HJ3xMXYOd3VcE=, tarball: is-what/download/is-what-3.14.1.tgz}
     dev: true
@@ -2382,6 +2400,13 @@ packages:
   /isexe/2.0.0:
     resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=, tarball: isexe/download/isexe-2.0.0.tgz}
     dev: true
+
+  /isomorphic-fetch/2.2.1:
+    resolution: {integrity: sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=, tarball: isomorphic-fetch/download/isomorphic-fetch-2.2.1.tgz}
+    dependencies:
+      node-fetch: 1.7.3
+      whatwg-fetch: 3.6.2
+    dev: false
 
   /jest-diff/27.3.1:
     resolution: {integrity: sha1-0ndf6hVBH19a7aKl4CwvNkQPbVU=, tarball: jest-diff/download/jest-diff-27.3.1.tgz}
@@ -2471,11 +2496,6 @@ packages:
   /kolorist/1.5.0:
     resolution: {integrity: sha1-oG990R0bX9t0PXnIrNTh7Ly9ibM=, tarball: kolorist/download/kolorist-1.5.0.tgz}
     dev: true
-
-  /ky/0.28.7:
-    resolution: {integrity: sha512-a23i6qSr/ep15vdtw/zyEQIDLoUaKDg9Jf04CYl/0ns/wXNYna26zJpI+MeIFaPeDvkrjLPrKtKOiiI3IE53RQ==, tarball: ky/download/ky-0.28.7.tgz}
-    engines: {node: '>=12'}
-    dev: false
 
   /less/4.1.2:
     resolution: {integrity: sha1-YJnuWEmZdQwmJLZfgBRfhnTktLA=, tarball: less/download/less-4.1.2.tgz}
@@ -2568,7 +2588,7 @@ packages:
     dev: true
 
   /mime/1.6.0:
-    resolution: {integrity: sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=, tarball: mime/download/mime-1.6.0.tgz}
+    resolution: {integrity: sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=, tarball: mime/download/mime-1.6.0.tgz?cache=0&sync_timestamp=1636370946189&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime%2Fdownload%2Fmime-1.6.0.tgz}
     engines: {node: '>=4'}
     hasBin: true
     requiresBuild: true
@@ -2688,12 +2708,19 @@ packages:
     dev: true
     optional: true
 
+  /node-fetch/1.7.3:
+    resolution: {integrity: sha1-mA9vcthSEaU0fGsrwYxbhMPrR+8=, tarball: node-fetch/download/node-fetch-1.7.3.tgz?cache=0&sync_timestamp=1636410227230&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnode-fetch%2Fdownload%2Fnode-fetch-1.7.3.tgz}
+    dependencies:
+      encoding: 0.1.13
+      is-stream: 1.1.0
+    dev: false
+
   /node-fetch/2.6.1:
-    resolution: {integrity: sha1-BFvTI2Mfdu0uK1VXM5RBa2OaAFI=, tarball: node-fetch/download/node-fetch-2.6.1.tgz}
+    resolution: {integrity: sha1-BFvTI2Mfdu0uK1VXM5RBa2OaAFI=, tarball: node-fetch/download/node-fetch-2.6.1.tgz?cache=0&sync_timestamp=1636410227230&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnode-fetch%2Fdownload%2Fnode-fetch-2.6.1.tgz}
     engines: {node: 4.x || >=6.0.0}
 
   /node-fetch/2.6.6:
-    resolution: {integrity: sha1-F1GnwBg06OFpd1hzLp77burfr4k=, tarball: node-fetch/download/node-fetch-2.6.6.tgz}
+    resolution: {integrity: sha1-F1GnwBg06OFpd1hzLp77burfr4k=, tarball: node-fetch/download/node-fetch-2.6.6.tgz?cache=0&sync_timestamp=1636410227230&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnode-fetch%2Fdownload%2Fnode-fetch-2.6.6.tgz}
     engines: {node: 4.x || >=6.0.0}
     dependencies:
       whatwg-url: 5.0.0
@@ -3035,7 +3062,7 @@ packages:
     dev: true
 
   /request-light/0.5.5:
-    resolution: {integrity: sha512-AvjfJuhyT6dYfhtIBF+IpTPQco+Td1QJ6PsIJ5xui110vQ5p9HxHk+m1XJqXazLQT6CxxSx9eNv6R/+fu4bZig==, tarball: request-light/download/request-light-0.5.5.tgz}
+    resolution: {integrity: sha512-AvjfJuhyT6dYfhtIBF+IpTPQco+Td1QJ6PsIJ5xui110vQ5p9HxHk+m1XJqXazLQT6CxxSx9eNv6R/+fu4bZig==, tarball: http-light/download/http-light-0.5.5.tgz}
     dev: true
 
   /require-from-string/2.0.2:
@@ -3105,8 +3132,6 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha1-RPoWGwGHuVSd2Eu5GAL5vYOFzWo=, tarball: safer-buffer/download/safer-buffer-2.1.2.tgz}
-    dev: true
-    optional: true
 
   /sax/1.2.4:
     resolution: {integrity: sha1-KBYjTiN4vdxOU1T6tcqold9xANk=, tarball: sax/download/sax-1.2.4.tgz}
@@ -3352,6 +3377,13 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /umi-request/1.4.0:
+    resolution: {integrity: sha1-7Q5U5H8EPSvgbmkUd/CJA4P53Yo=, tarball: umi-http/download/umi-http-1.4.0.tgz}
+    dependencies:
+      isomorphic-fetch: 2.2.1
+      qs: 6.10.1
+    dev: false
 
   /universalify/2.0.0:
     resolution: {integrity: sha1-daSYTv7cSwiXXFrrc/Uw0C3yVxc=, tarball: universalify/download/universalify-2.0.0.tgz}
@@ -3741,6 +3773,10 @@ packages:
   /webpack-virtual-modules/0.4.3:
     resolution: {integrity: sha1-zVl8bVHVpey0c+6hmDpY+ooX3tk=, tarball: webpack-virtual-modules/download/webpack-virtual-modules-0.4.3.tgz}
     dev: true
+
+  /whatwg-fetch/3.6.2:
+    resolution: {integrity: sha1-3O0k838mJO0CgXJdUdDi4/5nf4w=, tarball: whatwg-fetch/download/whatwg-fetch-3.6.2.tgz}
+    dev: false
 
   /whatwg-url/5.0.0:
     resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=, tarball: whatwg-url/download/whatwg-url-5.0.0.tgz}

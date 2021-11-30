@@ -13,7 +13,8 @@ export enum Api {
 }
 
 export const getCapture = (params: CaptureParams) => {
-  return useApi<CaptureModel>(Api.GetCapture, {
+  return useApi<CaptureModel>( {
+    url: Api.GetCapture,
     method: 'get',
     params
   })
@@ -21,8 +22,8 @@ export const getCapture = (params: CaptureParams) => {
 
 export const login = (data: Ref<LoginForm>) => {
   return useApi<LoginResData>(
-    Api.Login,
     {
+      url: Api.Login,
       method: 'post',
       data,
       showErrorType: 'Dialog'
