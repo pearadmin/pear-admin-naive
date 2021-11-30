@@ -9,7 +9,7 @@
      开 箱 即 用 的 Vue3 与 Naive UI 企 业 级 开 发 模 板
   </h4>
 
-[预览](http://naive.pearadmin.com/)
+<a href="http://163.53.219.60:3000" target="_blank">预览</a>
 
 [官 网](http://www.pearadmin.com/) | [交流](https://jq.qq.com/?_wv=1027&k=5OdSmve) | [社区](http://forum.pearadmin.com/)
 
