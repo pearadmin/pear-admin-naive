@@ -14,7 +14,6 @@
   const { isFullscreen, toggle } = useFullscreen()
 
   const iconName = computed(() => {
-    console.log(isFullscreen.value)
     return isFullscreen.value ? 'ic:baseline-fullscreen-exit' : 'ic:baseline-fullscreen'
   })
 </script>

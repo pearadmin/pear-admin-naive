@@ -5,11 +5,9 @@
 </script>
 
 <script setup lang="ts">
-  import { NScrollbar, NSpace, NTag, NElement, NBadge } from 'naive-ui'
-  import Icon from '@/components/Icon'
+  // import Icon from '@/components/Icon'
   import { useRoute, useRouter } from 'vue-router'
   import userRouteTabs from './useRouteTab'
-  import { onMounted, ref } from 'vue'
 
   const route = useRoute()
   const router = useRouter()
@@ -34,7 +32,7 @@
         >
           <div class="pear-admin-tabs-left-item-content" @click="handleClickTag(tag)">
             <NBadge v-if="route.name === tag.name" dot type="success"></NBadge>
-            <span class="ml-2">{{ tag.meta?.title }}</span>
+            <span class="ml-2">{{ tag?.title }}</span>
           </div>
         </NTag>
       </div>

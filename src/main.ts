@@ -7,11 +7,6 @@ import { useAppRouter } from '@/router'
 
 import { useAppStore } from '@/store'
 
-// import('virtual:windi.css').then(module => {
-//   console.log(module.default)
-// })
-
-
 const app = createApp(App)
 
 useAppRouter(app)

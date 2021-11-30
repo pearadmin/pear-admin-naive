@@ -15,7 +15,7 @@ export interface UseApiOptions extends RequestOptionsInit{
   showErrorType?: 'Message' | 'Dialog' | 'Notification',
 }
 
-export interface UseApiConfig<T> {
+export interface UseApiConfig<T = Nullable<Recordable>> {
   immediate?: boolean
   redo?: boolean
   initialData?: T
@@ -32,16 +32,15 @@ export interface UseApiReturnType<T> {
 }
 
 export function useApi<T extends Recordable>(options: UseApiOptions, config?: UseApiConfig<T>): UseApiReturnType<T> {
-  const {
-    immediate,
-    redo,
-    initialData,
-    throwErr
-  } = config ?? {
+  let useConfig: UseApiConfig = {
     immediate: true,
-    redo: true,
     initialData: null,
+    redo: false,
     throwErr: false
+  }
+
+  if (config) {
+    useConfig = { ...useConfig, ...config }
   }
 
   // http url
@@ -59,7 +58,7 @@ export function useApi<T extends Recordable>(options: UseApiOptions, config?: Us
   })
 
   // return define
-  const data = ref<T>(initialData as T)
+  const data = ref<T>(useConfig.initialData as T)
   const loading = ref<boolean>(false)
   const finished = ref<boolean>(false)
   const error = ref<unknown>(null)
@@ -82,7 +81,7 @@ export function useApi<T extends Recordable>(options: UseApiOptions, config?: Us
         }).catch(err => {
           data.value = null
           error.value = err
-          if (throwErr) {
+          if (useConfig.throwErr) {
             throw err
           } else {
             reject(err)
@@ -97,12 +96,12 @@ export function useApi<T extends Recordable>(options: UseApiOptions, config?: Us
   })
 
   watch([fetchUrl, fetchOptions], async () => {
-    if (redo) {
+    if (useConfig.redo) {
       await get(executor)()
     }
   }, { deep: true })
 
-  if (immediate) {
+  if (useConfig.immediate) {
     get(executor)()
   }
 

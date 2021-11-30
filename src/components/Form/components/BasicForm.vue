@@ -67,7 +67,6 @@
 
   defineExpose({
     getFormValue: (): Recordable => {
-      console.log(formModelRef)
       return formModelRef.value
     },
     updFormValue: (updModel: Recordable): void => {

@@ -1,16 +1,22 @@
 import { defineStore } from 'pinia'
-import type { GlobalTheme } from 'naive-ui'
-import { useLocalStorage, useSessionStorage, useStorage } from '@vueuse/core'
+import { useLocalStorage, useSessionStorage } from '@vueuse/core'
 import { RemoveableRef, get } from '@vueuse/core'
 import { RouteLocationNormalizedLoaded } from 'vue-router'
-import { unref } from 'vue'
 
 export type ThemeName = 'dark' | 'light' | 'auto'
+
+export interface RouteTag {
+  name: string
+  path: string
+  fullPath: string
+  title: string
+}
+
 export interface AppConfiguration {
   theme: RemoveableRef<ThemeName>
-  tags: RemoveableRef<RouteLocationNormalizedLoaded[]>
+  tags: RemoveableRef<RouteTag[]>
 }
-export type GetTheme = Nullable<GlobalTheme>
+
 
 const useAppStore = defineStore({
   id: 'app',
@@ -26,15 +32,15 @@ const useAppStore = defineStore({
       this.theme = theme
       localStorage.setItem('theme', theme)
     },
-    addTag(tag: RouteLocationNormalizedLoaded) {
-      const tagsRef: RemoveableRef<RouteLocationNormalizedLoaded[]> = useSessionStorage('tags', [])
+    addTag(tag: RouteTag) {
+      const tagsRef: RemoveableRef<RouteTag[]> = useSessionStorage('tags', [])
       if (tagsRef.value.findIndex(it => get(it, 'name') === get(tag, 'name')) < 0) {
         tagsRef.value.push(tag)
       }
       this.tags = tagsRef.value
     },
-    removeTag(tag: RouteLocationNormalizedLoaded) {
-      const tagsRef: RemoveableRef<RouteLocationNormalizedLoaded[]> = useSessionStorage('tags', [])
+    removeTag(tag: RouteTag) {
+      const tagsRef: RemoveableRef<RouteTag[]> = useSessionStorage('tags', [])
       const index = tagsRef.value.findIndex(it => get(it, 'name') === get(tag, 'name'))
       if (index > -1) {
         tagsRef.value.splice(index, 1)

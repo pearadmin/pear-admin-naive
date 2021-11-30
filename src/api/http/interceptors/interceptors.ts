@@ -62,7 +62,6 @@ export function errorHandler(error) {
     console.log(codeMap[error.data.status])
   } else {
     // 请求初始化时出错或者没有响应返回的异常
-    console.log(error.message)
     window.$notification.error({
       title: 'Emmm',
       duration: 3000,

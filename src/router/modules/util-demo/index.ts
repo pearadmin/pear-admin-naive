@@ -46,7 +46,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
             meta: {
               title: 'useApi',
             },
-            component: () => import('@/views/demo/utils-demo/http/useApi.vue')
+            component: () => import('@/views/demo/utils-demo/http/useApiHooks.vue')
           }
         ]
       }

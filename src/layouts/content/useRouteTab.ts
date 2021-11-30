@@ -1,11 +1,11 @@
-import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { computed, ComputedRef, watch } from 'vue'
-import { useAppStore } from '@/store/modules/app'
+import { RouteTag, useAppStore } from '@/store/modules/app'
 
 export interface ReturnUseRouteTab {
-  tags: ComputedRef<RouteLocationNormalizedLoaded[]>
-  handleCloseTag: (tag: RouteLocationNormalizedLoaded) => void
-  handleClickTag: (tag: RouteLocationNormalizedLoaded) => void
+  tags: ComputedRef<RouteTag[]>
+  handleCloseTag: (tag: RouteTag) => void
+  handleClickTag: (tag: RouteTag) => void
   refreshRoute: () => void
 }
 
@@ -17,7 +17,12 @@ export default function useRouteTab(): ReturnUseRouteTab {
   watch(
     () => route.path,
     () => {
-      appStore.addTag({ ...route })
+      appStore.addTag({
+        path: route.path,
+        fullPath: route.fullPath,
+        name: route.name as string,
+        title: route.meta.title
+      })
     },
     { immediate: true }
   )
