@@ -1,16 +1,5 @@
 <script lang="ts" setup>
-  import {
-    NForm,
-    NFormItem,
-    useMessage,
-    NInput,
-    NElement,
-    NGrid,
-    NGi,
-    NCheckbox,
-    NButton,
-    NSpin
-  } from 'naive-ui'
+  import { NForm } from 'naive-ui'
   import { markRaw, ref } from 'vue'
   import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
@@ -52,12 +41,7 @@
   })
 
   // login
-  const {
-    data: loginData,
-    loading: loginLoading,
-    executor: loginFn,
-    finished: loginFinished
-  } = login(model)
+  const { data: loginData, loading: loginLoading, executor: loginFn } = login(model)
 
   // 登录
   async function handleLogin() {
