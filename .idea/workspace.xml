@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58710c17-74d7-4c06-ac6d-fe2ff9769227" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/PButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/PButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/index.vue" afterDir="false" />
-    </list>
+    <list default="true" id="58710c17-74d7-4c06-ac6d-fe2ff9769227" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +87,7 @@
       <updated>1638325468593</updated>
       <workItem from="1638325474282" duration="375000" />
       <workItem from="1638325935600" duration="497000" />
-      <workItem from="1638326449097" duration="3398000" />
+      <workItem from="1638326449097" duration="3698000" />
     </task>
     <servers />
   </component>
