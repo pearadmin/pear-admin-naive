@@ -4,7 +4,7 @@ import { FormRules } from 'naive-ui'
 
 export const basicFormProps = {
   schema: {
-    type: Array as PropType<FormSchema[]>,
+    type: Array as PropType<FormSchema[]>
   },
   // NForm
   disabled: {
@@ -16,10 +16,10 @@ export const basicFormProps = {
     default: false
   },
   labelWidth: {
-    type: [String, Number] as PropType<string | number>,
+    type: [String, Number] as PropType<string | number>
   },
   labelAlign: {
-    type: String as PropType<'left' | 'right'>,
+    type: String as PropType<'left' | 'right'>
   },
   labelPlacement: {
     type: String as PropType<'left' | 'top'>,

@@ -5,9 +5,7 @@
 </script>
 
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
-  import { inject, Ref, ref } from 'vue'
-  import { NTooltip, NDropdown, TableProps } from 'naive-ui'
+  import { inject, Ref } from 'vue'
   import {
     changeTableSizeInjectKey,
     iconSizeInjectKey,
@@ -45,7 +43,7 @@
     <NTooltip>
       <template #trigger>
         <a href="javascript:;" class="pear-admin-a">
-          <Icon name="ant-design:column-height-outlined" :size="iconSize"></Icon>
+          <Icon name="ant-design:column-height-outlined" :size="iconSize" />
         </a>
       </template>
       密度

@@ -1,11 +1,6 @@
 import { useApi } from '@/api/http'
 import { Ref } from 'vue'
-import {
-  CaptureModel,
-  CaptureParams,
-  LoginForm,
-  LoginResData
-} from './dataModel/appModel'
+import { CaptureModel, CaptureParams, LoginForm, LoginResData } from './dataModel/appModel'
 
 export enum Api {
   GetCapture = '/user/getCapture',
@@ -13,7 +8,7 @@ export enum Api {
 }
 
 export const getCapture = (params: CaptureParams) => {
-  return useApi<CaptureModel>( {
+  return useApi<CaptureModel>({
     url: Api.GetCapture,
     method: 'get',
     params

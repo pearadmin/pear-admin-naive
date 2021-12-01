@@ -33,10 +33,7 @@
   })
 
   const { paginationRef } = usePagination()
-  const { isFetching, fetchFinished, fetchRunner, tableData } = useTableFetch(
-    basicTableProps,
-    paginationRef
-  )
+  const { isFetching, fetchRunner, tableData } = useTableFetch(basicTableProps, paginationRef)
 
   const basicTableAttrs = useAttrs()
 
@@ -82,9 +79,9 @@
       <h2 class="pear-admin-table-top-title">
         <slot name="tableTitle"></slot>
       </h2>
-      <TableTools></TableTools>
+      <TableTools />
     </div>
-    <NDataTable v-bind="nTableProps"></NDataTable>
+    <NDataTable v-bind="nTableProps" />
   </div>
 </template>
 

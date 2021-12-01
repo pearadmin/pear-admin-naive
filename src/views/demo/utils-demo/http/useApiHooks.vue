@@ -4,7 +4,7 @@
   import { ref } from 'vue'
 
   const params1 = ref<{
-    keyA: string,
+    keyA: string
     keyB: string
   }>({
     keyA: 'keyA',
@@ -25,41 +25,42 @@
   )
 
   const params2 = ref<{
-    keyA: string,
+    keyA: string
     keyB: string
   }>({
     keyA: '全自动无刹车',
     keyB: 'Tesla'
   })
 
-  const {
-    loading: loading2,
-    data: data2,
-    executor: execute2
-  } = useApi({
-    url: HttpDemoEnums.getData,
-    method: 'post',
-    data: params2
-  }, { redo: true, immediate: true })
+  const { loading: loading2, data: data2 } = useApi(
+    {
+      url: HttpDemoEnums.getData,
+      method: 'post',
+      data: params2
+    },
+    { redo: true, immediate: true }
+  )
 </script>
 
 <template>
   <PageWrapper>
     <NSpin :show="loading2">
       <NCard title="全自动挡(初始化会请求，参数改变也会请求)">
-        <NAlert type="warning">注意：改变参请后会马上触发请求，一般来说最好不要这么频繁。你懂的 : )</NAlert>
-        <NInput v-model:value="params2.keyA"></NInput>
-        <NInput v-model:value="params2.keyB"></NInput>
+        <NAlert type="warning">
+          注意：改变参请后会马上触发请求，一般来说最好不要这么频繁。你懂的 : )
+        </NAlert>
+        <NInput v-model:value="params2.keyA" />
+        <NInput v-model:value="params2.keyB" />
         <pre>
           结果: => {{ JSON.stringify(data2, null, 2) }}
         </pre>
       </NCard>
     </NSpin>
-    <NDivider></NDivider>
+    <NDivider />
     <NSpin :show="loading1">
       <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
-        <NInput v-model:value="params1.keyA"></NInput>
-        <NInput v-model:value="params1.keyB"></NInput>
+        <NInput v-model:value="params1.keyA" />
+        <NInput v-model:value="params1.keyB" />
         <pre>
           结果: => {{ JSON.stringify(data1, null, 2) }}
         </pre>

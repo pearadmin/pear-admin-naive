@@ -5,11 +5,11 @@
 </script>
 
 <script setup lang="ts">
-  import { NElement, NTooltip } from 'naive-ui'
-  import Icon from '@/components/Icon'
+  // import { NElement, NTooltip } from 'naive-ui'
+  // import Icon from '@/components/Icon'
 
   import { useFullscreen } from '@vueuse/core'
-  import { computed, watch } from 'vue'
+  import { computed } from 'vue'
 
   const { isFullscreen, toggle } = useFullscreen()
 
@@ -22,8 +22,7 @@
   <NTooltip placement="bottom" trigger="hover">
     <template #trigger>
       <NElement tag="div" class="pear-admin-fullscreen" placement="bottom-end" @click="toggle">
-        <Icon v-if="isFullscreen" name="ic:baseline-fullscreen-exit" :size="18"></Icon>
-        <Icon v-else name="ic:baseline-fullscreen" :size="18"></Icon>
+        <Icon :name="iconName" :size="18" />
       </NElement>
     </template>
     全屏

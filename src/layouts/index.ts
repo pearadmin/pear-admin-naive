@@ -4,4 +4,3 @@ import { getParentComponent } from './ParentLayout'
 export { BasicLayout, getParentComponent }
 
 export default BasicLayout
-

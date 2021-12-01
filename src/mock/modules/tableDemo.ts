@@ -6,9 +6,9 @@ const TOTAL = 50000
 
 const getTableItem = (): Recordable => {
   return Mock.mock({
-    "age|1-100": 100,
-    "rate|1-5": "★",
-    "status|1-2": true,
+    'age|1-100': 100,
+    'rate|1-5': '★',
+    'status|1-2': true,
     birthday: Mock.mock('@date("MM-dd")'),
     createTime: Random.datetime(),
     avatar: Random.image('200x200', '#894FC4', '#FFF', 'png', 'avatar'),
@@ -29,8 +29,8 @@ const getCurrentPage = (pageNo, pageSize) => {
   if (pageNo * pageSize <= TOTAL) {
     return getTableData(pageSize)
   } else {
-    const dataLen = (TOTAL % pageSize)
-    return getTableData( dataLen)
+    const dataLen = TOTAL % pageSize
+    return getTableData(dataLen)
   }
 }
 export default [

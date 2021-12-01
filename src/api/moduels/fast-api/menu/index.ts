@@ -6,9 +6,12 @@ export enum MenuApiEnum {
 }
 
 export const getMenuRecords = (data: Recordable) => {
-  return useApi<MenuModel[]>( {
-    url: MenuApiEnum.menuRecords,
-    data,
-    method: 'post'
-  }, { immediate: false })
+  return useApi<MenuModel[]>(
+    {
+      url: MenuApiEnum.menuRecords,
+      data,
+      method: 'post'
+    },
+    { immediate: false }
+  )
 }

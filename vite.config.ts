@@ -9,6 +9,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 import autoComponents from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import purgeIcons from 'vite-plugin-purge-icons'
+import eslintPlugin from '@nabla/vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 
@@ -24,6 +25,12 @@ function getPlugins(command: string) {
     autoComponents({
       resolvers: [NaiveUiResolver()],
       dts: true
+    }),
+    eslintPlugin({
+      shouldLint: (path) => /\/src\/.*\.(vue|[t]sx?)$/.test(path),
+      eslintOptions: {
+        cache: false
+      }
     }),
     viteMockServe({
       mockPath: 'src/mock',

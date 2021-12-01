@@ -56,10 +56,10 @@
       :value="value"
       :options="options"
       trigger="click"
-      @update:value="handleToggle"
       :api="getMenuRecords"
+      @update:value="handleToggle"
     >
-      <n-button round>主题: {{ currentThemeName }}</n-button>
+      <n-button round> 主题: {{ currentThemeName }} </n-button>
     </n-popselect>
   </div>
 </template>

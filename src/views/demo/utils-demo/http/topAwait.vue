@@ -41,8 +41,7 @@
         top await fetch data:
         <pre>
           {{ JSON.stringify(topFetchData, null, 2) }}
-          </pre
-        >
+        </pre>
       </div>
       <div>
         top promise then

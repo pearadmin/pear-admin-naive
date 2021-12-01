@@ -6,11 +6,10 @@
 
 <script setup lang="ts">
   // import Icon from '@/components/Icon'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRoute } from 'vue-router'
   import userRouteTabs from './useRouteTab'
 
   const route = useRoute()
-  const router = useRouter()
 
   const { tags, handleCloseTag, handleClickTag } = userRouteTabs()
 </script>
@@ -20,9 +19,9 @@
     <NScrollbar x-scrollable style="width: calc(100% - 50px)">
       <div class="pear-admin-tabs-left">
         <NTag
-          class="pear-admin-tabs-left-item"
           v-for="tag in tags"
           :key="tag.path"
+          class="pear-admin-tabs-left-item"
           :closable="tags.length > 1"
           :on-close="
             () => {
@@ -31,19 +30,19 @@
           "
         >
           <div class="pear-admin-tabs-left-item-content" @click="handleClickTag(tag)">
-            <NBadge v-if="route.name === tag.name" dot type="success"></NBadge>
+            <NBadge v-if="route.name === tag.name" dot type="success" />
             <span class="ml-2">{{ tag?.title }}</span>
           </div>
         </NTag>
       </div>
     </NScrollbar>
     <div class="pear-admin-tabs-right-menu">
-      <Icon class="pear-admin-tabs-right-menu-icon" name="mdi:refresh" :size="20"></Icon>
+      <Icon class="pear-admin-tabs-right-menu-icon" name="mdi:refresh" :size="20" />
       <Icon
         class="pear-admin-tabs-right-menu-icon"
         name="mdi:arrow-down-drop-circle-outline"
         :size="18"
-      ></Icon>
+      />
     </div>
   </NElement>
 </template>

@@ -16,11 +16,10 @@ const useUserStore = defineStore({
     return {
       userInfo: useStorage('userInfo', null, sessionStorage).value,
       token: useStorage('token', null, sessionStorage).value,
-      menuRoutes: useStorage('userRoutes', [], sessionStorage).value,
+      menuRoutes: useStorage('userRoutes', [], sessionStorage).value
     }
   },
-  getters: {
-  },
+  getters: {},
   actions: {
     setUserInfo(userInfo: Recordable) {
       const userInfoRef = useStorage('userInfo', userInfo, sessionStorage)

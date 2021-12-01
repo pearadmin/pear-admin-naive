@@ -1,18 +1,4 @@
 <script setup lang="ts">
-  import PageWrapper from '@/components/PageWrapper'
-
-  import {
-    NGrid,
-    NGridItem as NGi,
-    NStatistic,
-    NAvatar,
-    NBreadcrumb,
-    NBreadcrumbItem,
-    NButton,
-    NSpace,
-    NDropdown
-  } from 'naive-ui'
-
   function handleBack() {
     alert('back')
   }
@@ -63,11 +49,11 @@
       <n-space>
         <n-button>催更</n-button>
         <n-dropdown :options="options" placement="bottom-start">
-          <n-button :bordered="false" style="padding: 0 4px">···</n-button>
+          <n-button :bordered="false" style="padding: 0 4px"> ··· </n-button>
         </n-dropdown>
       </n-space>
     </template>
-    <template #footer>截止到 2021 年 4 月 3 日</template>
+    <template #footer> 截止到 2021 年 4 月 3 日 </template>
     <div>
       Page Content11
       <hr />

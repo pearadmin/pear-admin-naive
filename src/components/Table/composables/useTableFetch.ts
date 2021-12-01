@@ -30,7 +30,7 @@ export default function useTableFetch(
      */
     const basic = {
       [TABLE_PAGINATION.pageNo]: paginationRef.value.page,
-      [TABLE_PAGINATION.pageSize]: paginationRef.value.pageSize,
+      [TABLE_PAGINATION.pageSize]: paginationRef.value.pageSize
     }
     let userOptions: Recordable = {}
     if (props.fetch && props.fetch.beforeFetch && typeof props.fetch.beforeFetch === 'function') {
@@ -54,23 +54,30 @@ export default function useTableFetch(
       { immediate: props.fetch?.immediate ?? true, redo: true }
     )
     return {
-      loading, executor, finished, data
+      loading,
+      executor,
+      finished,
+      data
     }
   })
 
-  watch(fetchInstance, res => {
-    isFetching.value = res.loading.value
-    fetchFinished.value = res.finished.value
-    fetchRunner.value = res.executor.value
-    // table data
-    let cacheData = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
-    if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {
-      cacheData = props.fetch.afterFetch(cacheData) ?? []
-    }
-    tableData.value = cacheData
-    // pagination
-    paginationRef.value.itemCount = res.data.value?.[TABLE_FETCH_RESPONSE.total]
-  }, { immediate: true, deep: true })
+  watch(
+    fetchInstance,
+    (res) => {
+      isFetching.value = res.loading.value
+      fetchFinished.value = res.finished.value
+      fetchRunner.value = res.executor.value
+      // table data
+      let cacheData = res.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+      if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {
+        cacheData = props.fetch.afterFetch(cacheData) ?? []
+      }
+      tableData.value = cacheData
+      // pagination
+      paginationRef.value.itemCount = res.data.value?.[TABLE_FETCH_RESPONSE.total]
+    },
+    { immediate: true, deep: true }
+  )
 
   return {
     isFetching,

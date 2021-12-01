@@ -9,7 +9,7 @@
      开 箱 即 用 的 Vue3 与 Naive UI 企 业 级 开 发 模 板
   </h4>
 
-<a href="http://163.53.219.60:3000" target="_blank">预览</a>
+<a href="naive.pearadmin.com" target="_blank">预览</a>
 
 [官 网](http://www.pearadmin.com/) | [交流](https://jq.qq.com/?_wv=1027&k=5OdSmve) | [社区](http://forum.pearadmin.com/)
 
@@ -17,13 +17,13 @@
 
 <p align="center">
     <a href="#">
-        <img src="https://img.shields.io/badge/Pear Admin Naive-1.0.0-green.svg" alt="Pear Admin Pro Version">
+        <img src="https://img.shields.io/badge/Pear Admin Naive-1.0.0-green.svg" alt="Pear Admin Naive Version">
     </a>
     <a href="#">
         <img src="https://img.shields.io/badge/Vue-3.0.0+-green.svg" alt="Vue Version">
     </a>
     <a href="#">
-        <img src="https://img.shields.io/badge/Naive-2.0.0-green.svg" alt="Ant Design Vue Version">
+        <img src="https://img.shields.io/badge/Naive-2.0.0-green.svg" alt="Naive UI Version">
     </a>
     <br/>
     <a href="#">
@@ -37,17 +37,15 @@
 
 ### 🌈 项目概述
 
-- 基于 Vue 3 与 Naive UI 实现的通用管理模板（RBAC 模式）。整合最新技术高效快速开发，前后端分离模式，开箱即用。
-- 核心模块包括：权鉴管理，权限处理，路由管理 等功能。
-- 代码量少、学习简单、功能强大、轻量级、易扩展，轻松开发从现在开始！
+- 基于 Vue 3 setup script语法 与 Naive UI 实现的通用中后台管理模板。整合最新技术高效快速开发，前后端分离模式，开箱即用。
 
-### ☘ 更新日志
+[//]: # (### ☘ 更新日志)
 
-更新日志 [查看日志](https://gitee.com/pear-admin/pear-admin-naive-min/releases)
+[//]: # (更新日志 [查看日志]&#40;https://gitee.com/pear-admin/pear-admin-naive-min/releases&#41;)
 
 ### 🍚 功能概览
 
-- [x] 用户管理: 用户是系统操作者，该功能主要完成系统用户配置。
+- [x] 请求模块: 请求使用umi-request，支持供常用的调用方式和hook调用方式(useApi)。
 
 ### 🔨 项目结构
 
@@ -84,15 +82,19 @@ pnpm run serve
 
 ### 📖 帮助文档
 
-开发注意事项本项目采用 setup-script 语法，[参见](https://github.com/vuejs/rfcs/pull/227#issuecomment-870105222)
+除却需要jsx支持的组件外，其它均采用 setup-script 语法，[详情](https://github.com/vuejs/rfcs/pull/227#issuecomment-870105222)
+
 
 👉 编写中
 
-### 🍎 预览界面
+[//]: # (### 🍎 预览界面)
 
-| 预览 | 界面 |
-| --- | --- |
-| ![输入图片说明](https://images.gitee.com/uploads/images/2021/0505/223456_0ae4c5ef_4835367.png '屏幕截图.png') | ![输入图片说明](https://images.gitee.com/uploads/images/2021/0505/223516_74b7d454_4835367.png '屏幕截图.png') |
+[//]: # ()
+[//]: # (| 预览 | 界面 |)
+
+[//]: # (| --- | --- |)
+
+[//]: # (| ![输入图片说明]&#40;https://images.gitee.com/uploads/images/2021/0505/223456_0ae4c5ef_4835367.png '屏幕截图.png'&#41; | ![输入图片说明]&#40;https://images.gitee.com/uploads/images/2021/0505/223516_74b7d454_4835367.png '屏幕截图.png'&#41; |)
 
 ### 💐 特别鸣谢
 

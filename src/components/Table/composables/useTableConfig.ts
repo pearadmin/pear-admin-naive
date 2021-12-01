@@ -5,7 +5,7 @@ import { DataTableColumns } from 'naive-ui'
 export interface TableConfigOptions {
   attrs: Record<string, any>
   fetchRunner: Ref<() => Promise<any>>
-  iconSize: Ref<number>,
+  iconSize: Ref<number>
   columns: Ref<DataTableColumns>
 }
 

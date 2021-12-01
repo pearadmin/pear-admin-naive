@@ -1,7 +1,6 @@
 <script setup lang="tsx">
   import Icon from '@/components/Icon'
-  import { NElement, NDropdown, NAvatar } from 'naive-ui'
-  import { useRouter } from 'vue-router'
+  // import { useRouter } from 'vue-router'
 
   const options = [
     {
@@ -25,7 +24,8 @@
     }
   ]
 
-  const router = useRouter()
+  // const router = useRouter()
+
   function handleSelect(key: string) {
     switch (key) {
       case 'logout':
@@ -55,9 +55,11 @@
     @apply h-full flex flex-row justify-center items-center;
     padding: 0 10px;
     cursor: pointer;
+
     &:hover {
       background: var(--hover-color);
     }
+
     &-avatar {
     }
   }

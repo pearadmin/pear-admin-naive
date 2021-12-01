@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import FormItem from './FormItem'
-  import { computed, ref, Ref, Slots, useAttrs, watch } from 'vue'
+  import { ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
   import { merge } from 'lodash-es'
 
@@ -87,7 +87,7 @@
         :path="schema.model"
         v-bind="schema?.formItemProps ? schema.formItemProps : {}"
       >
-        <FormItem :schema="schema" :formModelRef="formModelRef"></FormItem>
+        <FormItem :schema="schema" :form-model-ref="formModelRef" />
       </NFormItemGi>
     </NGrid>
   </NForm>

@@ -8,7 +8,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       title: '工具案例',
-      icon: 'entypo:tools',
+      icon: 'entypo:tools'
     },
     redirect: '/utils/http',
     children: [
@@ -38,13 +38,13 @@ const utilDemoRoutes: RouteRecordRaw[] = [
               title: '页面请求',
               icon: 'simple-icons:farfetch'
             },
-            component: () => import('@/views/demo/utils-demo/http/index.vue'),
+            component: () => import('@/views/demo/utils-demo/http/index.vue')
           },
           {
             path: 'useApi',
             name: 'UseApi',
             meta: {
-              title: 'useApi',
+              title: 'useApi'
             },
             component: () => import('@/views/demo/utils-demo/http/useApiHooks.vue')
           }

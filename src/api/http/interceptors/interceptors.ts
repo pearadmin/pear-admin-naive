@@ -47,7 +47,6 @@ export async function responseInterceptor(response, options) {
   }
 
   if (options.showErrorType) {
-
   }
   return response
 }
@@ -55,7 +54,7 @@ export async function responseInterceptor(response, options) {
 export function errorHandler(error) {
   const codeMap = {
     '500': '哦豁~服务器熄火啦',
-    '404': '哦豁~啥都没有找到',
+    '404': '哦豁~啥都没有找到'
   }
   if (error.response) {
     // 请求已发送但服务端返回状态码非 2xx 的响应

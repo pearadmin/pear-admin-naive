@@ -12,11 +12,11 @@ import Mock from 'mockjs'
 }
  * @param mockList
  */
-export function createFetchSever (mockList: any[]) {
+export function createFetchSever(mockList: any[]) {
   if (!window['originFetch']) {
     window['originFetch'] = window.fetch
     window.fetch = function (fetchUrl: string, init: RequestInit) {
-      const currentMock = mockList.find(mi => fetchUrl.includes(mi.url))
+      const currentMock = mockList.find((mi) => fetchUrl.includes(mi.url))
       if (currentMock) {
         const result = createFetchReturn(currentMock, init)
         return result
@@ -34,15 +34,14 @@ function __param2Obj__(url: string) {
   }
   return JSON.parse(
     '{"' +
-    decodeURIComponent(search)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g, '":"')
-      .replace(/\+/g, ' ') +
-    '"}',
+      decodeURIComponent(search)
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"')
+        .replace(/\+/g, ' ') +
+      '"}'
   )
 }
-
 
 function __Fetch2ExpressReqWrapper__(handle: (d: any) => any) {
   return function (options: any) {
@@ -58,7 +57,7 @@ function __Fetch2ExpressReqWrapper__(handle: (d: any) => any) {
         method,
         body: b,
         query: __param2Obj__(url),
-        headers,
+        headers
       })
     } else {
       result = handle
@@ -68,14 +67,14 @@ function __Fetch2ExpressReqWrapper__(handle: (d: any) => any) {
   }
 }
 
-function setupTimeOut (timeout = 0) {
+function setupTimeOut(timeout = 0) {
   timeout &&
-  Mock.setup({
-    timeout,
-  })
+    Mock.setup({
+      timeout
+    })
 }
 
-function createFetchReturn (mock: Recordable, init: RequestInit) {
+function createFetchReturn(mock: Recordable, init: RequestInit) {
   const { timeout, response } = mock
   setupTimeOut(timeout)
   const mockFn = __Fetch2ExpressReqWrapper__(response)
@@ -86,11 +85,11 @@ function createFetchReturn (mock: Recordable, init: RequestInit) {
     clone: () => {
       return result
     },
-    text () {
-      return Promise.resolve(data);
+    text() {
+      return Promise.resolve(data)
     },
-    json () {
-      return Promise.resolve(data);
+    json() {
+      return Promise.resolve(data)
     }
   }
   return result

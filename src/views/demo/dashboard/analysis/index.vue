@@ -15,8 +15,8 @@
 
 <template>
   <PageWrapper>
-    <Icon name="fa:home" size="22px" spin></Icon>
-    <Icon name="fa:dashboard" color="red"></Icon>
+    <Icon name="fa:home" size="22px" spin />
+    <Icon name="fa:dashboard" color="red" />
     <NCard>
       <n-space style="height: 300px; justify-content: center">
         <n-slider :default-value="77" vertical />

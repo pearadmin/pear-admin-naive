@@ -14,12 +14,12 @@
     <n-global-style />
     <n-theme-editor v-if="isDevelopment()" />
     <n-dialog-provider>
-      <OuterDialog></OuterDialog>
+      <OuterDialog />
       <n-notification-provider>
-        <OuterNotification></OuterNotification>
+        <OuterNotification />
         <NMessageProvider>
-          <OuterMessage></OuterMessage>
-          <slot slot="default"></slot>
+          <OuterMessage />
+          <slot name="default"></slot>
         </NMessageProvider>
       </n-notification-provider>
     </n-dialog-provider>

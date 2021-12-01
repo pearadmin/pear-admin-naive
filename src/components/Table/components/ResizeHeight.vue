@@ -5,32 +5,13 @@
 </script>
 
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
-  import { inject, Ref, ref } from 'vue'
-  import { NTooltip, NPopover, NSlider } from 'naive-ui'
+  import { inject, Ref } from 'vue'
   import {
     changeTableHeightInjectKey,
-    changeTableSizeInjectKey,
     iconSizeInjectKey,
-    tableHeightInjectKey,
-    TableSize,
-    tableSizeInjectKey
+    tableHeightInjectKey
   } from '../composables/useTableConfig'
 
-  const options = [
-    {
-      label: '紧凑',
-      key: 'small'
-    },
-    {
-      label: '默认',
-      key: 'medium'
-    },
-    {
-      label: '大号',
-      key: 'large'
-    }
-  ]
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)
   const tableHeight = inject<Ref<number>>(tableHeightInjectKey)
   const changeTableHeight = inject<Fn>(changeTableHeightInjectKey)
@@ -42,7 +23,7 @@
       <NTooltip placement="top-start">
         <template #trigger>
           <a href="javascript:;" class="pear-admin-a">
-            <Icon name="vaadin:resize-h" :size="iconSize"></Icon>
+            <Icon name="vaadin:resize-h" :size="iconSize" />
           </a>
         </template>
         表格高度(当一页展示50条或更多条记录时,尝试增加高度,展示更多的数据.)

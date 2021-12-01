@@ -5,7 +5,7 @@ export interface UsePagination {
   paginationRef: Ref<PaginationProps>
 }
 
-export default function usePagination (): UsePagination {
+export default function usePagination(): UsePagination {
   const paginationRef = ref<PaginationProps>({
     itemCount: 0,
     // pageCount: 100,
@@ -21,7 +21,7 @@ export default function usePagination (): UsePagination {
       },
       {
         label: '20/页',
-        value: 20,
+        value: 20
       },
       {
         label: '30/页',

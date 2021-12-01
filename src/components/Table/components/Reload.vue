@@ -5,9 +5,7 @@
 </script>
 
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
   import { inject, Ref } from 'vue'
-  import { NTooltip, TableProps } from 'naive-ui'
   import {
     fetchRunnerInjectKey,
     iconSizeInjectKey,
@@ -22,7 +20,7 @@
   <NTooltip>
     <template #trigger>
       <a href="javascript:;" class="pear-admin-a" @click.stop="fetchRunner">
-        <Icon name="ant-design:reload-outlined" :size="iconSize"></Icon>
+        <Icon name="ant-design:reload-outlined" :size="iconSize" />
       </a>
     </template>
     刷新

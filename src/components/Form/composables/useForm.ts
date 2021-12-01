@@ -1,11 +1,15 @@
-import { computed, getCurrentInstance, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, Ref, ref, WritableComputedRef } from 'vue'
 import type { BasicFormProps } from '@/components/Form'
 import BasicForm from '@/components/Form'
 
-export interface UseFormOption extends BasicFormProps {
+export type UseFormOption = BasicFormProps
+
+export interface ReturnUseForm {
+  formRefEl: Ref<Nullable<typeof BasicForm>>
+  modelValue: WritableComputedRef<Recordable>
 }
 
-export default function useForm(options?: UseFormOption) {
+export default function useForm(options?: UseFormOption): ReturnUseForm {
   const formRefEl = ref<typeof BasicForm | null>(null)
 
   onMounted(() => {
@@ -14,7 +18,7 @@ export default function useForm(options?: UseFormOption) {
   })
 
   const modelValue = computed({
-    get: () => {
+    get: (): Recordable => {
       return formRefEl.value?.getFormValue()
     },
     set: (val) => {

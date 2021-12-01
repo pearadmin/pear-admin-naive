@@ -5,7 +5,6 @@
 </script>
 
 <script setup lang="ts">
-  import { NSpace } from 'naive-ui'
   import Reload from './Reload.vue'
   import SizeSetting from './SizeSetting.vue'
   import ColumnSetting from './ColumnSetting.vue'

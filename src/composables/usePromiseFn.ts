@@ -58,17 +58,21 @@ export default function usePromiseFn<T>(
       })
   }
 
-  watch(fetchParams, (params) => {
-    if (redo) {
-      if (!loading.value) {
-        runPromise()
+  watch(
+    fetchParams,
+    () => {
+      if (redo) {
+        if (!loading.value) {
+          runPromise()
+        }
+        return
       }
-      return
-    }
-  }, { deep: true })
+    },
+    { deep: true }
+  )
 
   if (immediate) {
-    if(!loading.value) {
+    if (!loading.value) {
       runPromise()
     }
   }

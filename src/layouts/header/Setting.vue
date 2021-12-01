@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
-  import { NElement } from 'naive-ui'
+  // import Icon from '@/components/Icon'
+  // import { NElement } from 'naive-ui'
 </script>
 
 <template>
   <NElement class="pear-admin-settings" tag="span">
-    <Icon name="ic:sharp-settings"></Icon>
+    <Icon name="ic:sharp-settings" />
   </NElement>
 </template>
 

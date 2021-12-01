@@ -1,11 +1,4 @@
-import {
-  NInput,
-  NSelect,
-  NCheckbox,
-  NRadio,
-  NSwitch,
-  NDatePicker
-} from 'naive-ui'
+import { NInput, NSelect, NCheckbox, NRadio, NSwitch, NDatePicker } from 'naive-ui'
 
 export type ComponentMap = Map<string, unknown>
 
@@ -18,6 +11,4 @@ map.set('NRadio', NRadio)
 map.set('NSwitch', NSwitch)
 map.set('NDatePicker', NDatePicker)
 
-export {
-  map as componentMap
-}
+export { map as componentMap }

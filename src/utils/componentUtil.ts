@@ -1,4 +1,7 @@
-export function getComponentProps<T extends Recordable , U extends T>(props: U, componentProps: T): T {
+export function getComponentProps<T extends Recordable, U extends T>(
+  props: U,
+  componentProps: T
+): T {
   const cKeys = Object.keys(componentProps)
   return Object.keys(props).reduce((cProps: T, propKey: keyof T) => {
     if (cKeys.includes(propKey as string)) {
@@ -11,4 +14,3 @@ export function getComponentProps<T extends Recordable , U extends T>(props: U, 
     }
   }, {} as T)
 }
-

@@ -125,10 +125,10 @@
 <template>
   <PageWrapper>
     <NCard>
-      <BasicForm ref="formRefEl" :label-width="60" label-placement="left"></BasicForm>
+      <BasicForm ref="formRefEl" :label-width="60" label-placement="left" />
       <NSpace>
-        <NButton type="primary" @click="getFormModel">获取model</NButton>
-        <NButton type="primary" @click="updFormValue">改变值</NButton>
+        <NButton type="primary" @click="getFormModel"> 获取model </NButton>
+        <NButton type="primary" @click="updFormValue"> 改变值 </NButton>
       </NSpace>
     </NCard>
   </PageWrapper>

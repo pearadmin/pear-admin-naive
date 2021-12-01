@@ -61,10 +61,10 @@
       <p>error: {{ JSON.stringify(promiseError) }}</p>
       <p>finished: {{ isFinished }}</p>
       <NSpace>
-        <PButton type="primary" :loading="isLoading" @click="handleReFetch">手动触发</PButton>
-        <PButton type="primary" :loading="isLoading" @click="handleChangeData"
-          >参数改变自动重发</PButton
-        >
+        <PButton type="primary" :loading="isLoading" @click="handleReFetch"> 手动触发 </PButton>
+        <PButton type="primary" :loading="isLoading" @click="handleChangeData">
+          参数改变自动重发
+        </PButton>
       </NSpace>
     </NCard>
   </PageWrapper>

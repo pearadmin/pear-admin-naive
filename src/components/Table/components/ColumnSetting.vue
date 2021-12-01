@@ -21,7 +21,7 @@
       <NTooltip>
         <template #trigger>
           <a href="javascript:;" class="pear-admin-a">
-            <Icon name="ant-design:setting-outlined" :size="iconSize"></Icon>
+            <Icon name="ant-design:setting-outlined" :size="iconSize" />
           </a>
         </template>
         列设置
@@ -37,9 +37,9 @@
     </template>
     <div class="pear-admin-columns-setting-content">
       <NElement
-        tag="div"
         v-for="(col, idx) in columns"
         :key="idx"
+        tag="div"
         class="pear-admin-columns-setting-content-item"
       >
         <!--        <NCheckbox>{{ col.title }}</NCheckbox>-->

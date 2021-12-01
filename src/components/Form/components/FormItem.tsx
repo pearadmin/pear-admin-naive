@@ -1,4 +1,4 @@
-import { computed, DefineComponent, defineComponent, PropType, Slots } from 'vue'
+import { computed, DefineComponent, defineComponent, PropType } from 'vue'
 import type { FormSchema } from '@/components/Form'
 import { componentMap } from '@/components/Form/component'
 
@@ -11,7 +11,7 @@ export default defineComponent({
       default: () => ({})
     },
     formModelRef: {
-      type: Object as PropType<object>,
+      type: Object as PropType<Recordable>,
       default: () => ({})
     }
   },

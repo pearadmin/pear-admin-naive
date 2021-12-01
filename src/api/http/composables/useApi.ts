@@ -7,12 +7,12 @@ import request from '../fetch'
 
 export type FetchMethod = 'get' | 'post' | 'delete' | 'put' | 'patch' | 'head' | 'options' | 'rpc'
 
-export interface UseApiOptions extends RequestOptionsInit{
+export interface UseApiOptions extends RequestOptionsInit {
   url: MaybeRef<string>
   method?: FetchMethod
   data?: MaybeRef<any>
   params?: MaybeRef<Recordable | URLSearchParams>
-  showErrorType?: 'Message' | 'Dialog' | 'Notification',
+  showErrorType?: 'Message' | 'Dialog' | 'Notification'
 }
 
 export interface UseApiConfig<T = Nullable<Recordable>> {
@@ -31,7 +31,10 @@ export interface UseApiReturnType<T> {
   executor: ComputedRef<(args?: RequestOptionsInit) => Promise<T>>
 }
 
-export function useApi<T extends Recordable>(options: UseApiOptions, config?: UseApiConfig<T>): UseApiReturnType<T> {
+export function useApi<T extends Recordable>(
+  options: UseApiOptions,
+  config?: UseApiConfig<T>
+): UseApiReturnType<T> {
   let useConfig: UseApiConfig = {
     immediate: true,
     initialData: null,
@@ -62,7 +65,7 @@ export function useApi<T extends Recordable>(options: UseApiOptions, config?: Us
   const loading = ref<boolean>(false)
   const finished = ref<boolean>(false)
   const error = ref<unknown>(null)
-  const executor = computed((): (args?: RequestOptionsInit) => Promise<T> => {
+  const executor = computed((): ((args?: RequestOptionsInit) => Promise<T>) => {
     const method = options.method ?? 'get'
     return (args?: RequestOptionsInit) => {
       return new Promise((resolve, reject) => {
@@ -74,32 +77,39 @@ export function useApi<T extends Recordable>(options: UseApiOptions, config?: Us
           ...fetchOptions.value,
           ...args
         }
-        request[method](fetchUrl.value, requestOption).then(response => {
-          data.value = response.data as T
-          error.value = null
-          resolve(response.data as T)
-        }).catch(err => {
-          data.value = null
-          error.value = err
-          if (useConfig.throwErr) {
-            throw err
-          } else {
-            reject(err)
-            console.error('fetch fail => ', err)
-          }
-        }).finally(() => {
-          loading.value = false
-          finished.value = true
-        })
+        request[method](fetchUrl.value, requestOption)
+          .then((response) => {
+            data.value = response.data as T
+            error.value = null
+            resolve(response.data as T)
+          })
+          .catch((err) => {
+            data.value = null
+            error.value = err
+            if (useConfig.throwErr) {
+              throw err
+            } else {
+              reject(err)
+              console.error('fetch fail => ', err)
+            }
+          })
+          .finally(() => {
+            loading.value = false
+            finished.value = true
+          })
       })
     }
   })
 
-  watch([fetchUrl, fetchOptions], async () => {
-    if (useConfig.redo) {
-      await get(executor)()
-    }
-  }, { deep: true })
+  watch(
+    [fetchUrl, fetchOptions],
+    async () => {
+      if (useConfig.redo) {
+        await get(executor)()
+      }
+    },
+    { deep: true }
+  )
 
   if (useConfig.immediate) {
     get(executor)()

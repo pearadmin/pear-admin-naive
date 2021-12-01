@@ -25,7 +25,7 @@
     :on-update:collapsed="handleCollapsed"
     v-bind="themeConfig"
   >
-    <AppLogo :showTitle="!collapsed" />
+    <AppLogo :show-title="!collapsed" />
     <PearMenu />
   </NLayoutSider>
 </template>
