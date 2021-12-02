@@ -1,9 +1,7 @@
 <script setup lang="ts">
-  import BasicForm from '@/components/Form'
-  import PageWrapper from '@/components/PageWrapper'
   import useForm from '@/components/Form/composables/useForm'
-  import { NButton, useMessage, NSpace, NCard } from 'naive-ui'
-  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
+  import type { FormSchema } from '@/components/Form'
+  import { useMessage } from 'naive-ui'
 
   const schemas: FormSchema[] = [
     {
@@ -111,7 +109,10 @@
 
   const { formRefEl, modelValue } = useForm({
     schemas,
-    gridProps
+    gridProps,
+    model: {
+      select: 'song2'
+    }
   })
   const message = useMessage()
   function getFormModel() {

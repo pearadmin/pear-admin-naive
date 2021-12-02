@@ -22,7 +22,6 @@ export function useMenu(): ReturnUseMenu {
 
   const menus = getMenuOptions(routes.value)
 
-  // TODO: Type error TS2589: Type instantiation is excessively deep and possibly infinite.
   // @ts-ignore
   menuRef.value = menus
 

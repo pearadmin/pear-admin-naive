@@ -26,6 +26,7 @@
   }
 
   export interface BasicFormProps {
+    model?: Recordable
     schemas?: FormSchema[]
     gridProps?: {
       cols?: number
@@ -63,7 +64,8 @@
 
   const attrs = useAttrs()
 
-  const { formModelRef } = useFormModel(props)
+  // const { formModelRef } = useFormModel(props)
+  const { formModelRef } = useFormModel(basicFormProps)
 
   defineExpose({
     getFormValue: (): Recordable => {

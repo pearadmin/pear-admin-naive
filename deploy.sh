@@ -2,8 +2,8 @@
 pnpm run build &&
 pwd &&
 zip -q -r -o dist.zip dist &&
-scp -i '/Users/jiabinbin/.ssh/root' dist.zip root@163.53.219.60:/root/website/naive-admin/ &&
-ssh -i '/Users/jiabinbin/.ssh/root' root@163.53.219.60 'cd /root/website/naive-admin/ ; ./deploy.sh' &&
+scp -i '/Users/jiabinbin/.ssh/root' dist.zip root@115.126.75.120:/www/admin/naive.pearadmin.com_80/ &&
+ssh -i '/Users/jiabinbin/.ssh/root' root@115.126.75.120 'cd /www/admin/naive.pearadmin.com_80/ ; ./deploy.sh' &&
 rm -rf dist.zip &&
 git status &&
 git add . &&

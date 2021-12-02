@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
   import PButton from '@/components/Button/PButton.vue'
   import { ref } from 'vue'
   import usePromiseFn from '@/composables/usePromiseFn'

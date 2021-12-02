@@ -27,7 +27,7 @@ function getPlugins(command: string) {
       dts: true
     }),
     eslintPlugin({
-      shouldLint: (path) => /\/src\/.*\.(vue|[t]sx?)$/.test(path),
+      shouldLint: (path) => /\/src\/[^\?\r\n]*\.(vue|tsx?)$/.test(path),
       eslintOptions: {
         cache: false
       }
@@ -56,7 +56,7 @@ export default ({ command }): UserConfigExport => ({
     ]
   },
   server: {
-    port: 3000,
+    port: 8000,
     host: true,
     open: true
   },

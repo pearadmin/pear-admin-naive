@@ -27,18 +27,8 @@ const utilDemoRoutes: RouteRecordRaw[] = [
             name: 'TopAwait',
             component: () => import('@/views/demo/utils-demo/http/topAwait.vue'),
             meta: {
-              title: '顶级请求',
-              icon: 'fluent:desktop-flow-20-regular'
+              title: '顶层异步请求'
             }
-          },
-          {
-            path: 'pageFetch',
-            name: 'PageFetch',
-            meta: {
-              title: '页面请求',
-              icon: 'simple-icons:farfetch'
-            },
-            component: () => import('@/views/demo/utils-demo/http/index.vue')
           },
           {
             path: 'useApi',
@@ -47,6 +37,26 @@ const utilDemoRoutes: RouteRecordRaw[] = [
               title: 'useApi'
             },
             component: () => import('@/views/demo/utils-demo/http/useApiHooks.vue')
+          }
+        ]
+      },
+      {
+        path: 'composable',
+        name: 'Composable',
+        component: getParentComponent('parentComposable'),
+        redirect: '/utils/composable/usePromiseFn',
+        meta: {
+          title: 'Composable',
+          icon: 'logos:webhooks'
+        },
+        children: [
+          {
+            path: 'usePromiseFn',
+            name: 'UsePromiseFn',
+            meta: {
+              title: 'usePromiseFn'
+            },
+            component: () => import('@/views/demo/utils-demo/composables/usePromiseFn.vue')
           }
         ]
       }
