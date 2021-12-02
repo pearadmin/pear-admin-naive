@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58710c17-74d7-4c06-ac6d-fe2ff9769227" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/demo/utils-demo/composables/usePromiseFn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Table/helper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/menu/useMenu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/menu/useMenu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/modules/util-demo/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/modules/util-demo/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/form/basicFormDemo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/form/basicFormDemo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/utils-demo/http/index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/utils-demo/http/topAwait.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/utils-demo/http/topAwait.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/utils-demo/http/useApiHooks.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/utils-demo/http/useApiHooks.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Icon/Icon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Icon/Icon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/util.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/util.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue3TSSteupScript" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -61,7 +53,7 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Shell Script.deploy.sh">
+  <component name="RunManager" selected="npm.serve:force">
     <configuration name="deploy.sh" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_TEXT" value="" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -118,7 +110,8 @@
       <updated>1638325468593</updated>
       <workItem from="1638325474282" duration="375000" />
       <workItem from="1638325935600" duration="497000" />
-      <workItem from="1638326449097" duration="17215000" />
+      <workItem from="1638326449097" duration="19488000" />
+      <workItem from="1638433186773" duration="3398000" />
     </task>
     <servers />
   </component>
