@@ -13,6 +13,10 @@
 
   // @ts-ignore
   export interface CustomTableColumn extends DataTableColumn {
+    key: number | string
+    title: string
+    type: 'selection' | 'expand'
+    fixed: 'left' | 'right'
     visible?: Ref<boolean>
     elRef?: Ref<Nullable<HTMLElement>>
   }
@@ -37,6 +41,13 @@
     },
     { immediate: true }
   )
+
+  function setRefEl(col: CustomTableColumn, el: HTMLElement) {
+    console.log(el)
+    if (el) {
+      col.elRef
+    }
+  }
 </script>
 
 <template>
@@ -66,6 +77,7 @@
           v-for="(lCol, lIndex) in leftColumns"
           :key="lCol.key || lCol.type || lIndex"
           class="col-setting-checkbox"
+          :ref="(el: HTMLElement) => { setRefEl(lCol, el) }"
         >
           <NCheckbox v-model:checked="lCol.visible">{{ lCol.title }}</NCheckbox>
           <NSpace item-style="display:flex;">
@@ -94,6 +106,7 @@
           v-for="(cCol, cIndex) in centerColumns"
           :key="cCol.key || cCol.type || cIndex"
           class="col-setting-checkbox"
+          :ref="(el: HTMLElement) => setRefEl(cCol, el)"
         >
           <NCheckbox v-model:checked="cCol.visible">{{ cCol.title }}</NCheckbox>
           <NSpace item-style="display:flex;">
@@ -122,6 +135,7 @@
           v-for="(rCol, rIndex) in rightColumns"
           :key="rCol.key || rCol.type || rIndex"
           class="col-setting-checkbox"
+          :ref="(el: HTMLElement) => setRefEl(rCol, el)"
         >
           <NCheckbox v-model:checked="rCol.visible">{{ rCol.title }}</NCheckbox>
           <NSpace item-style="display:flex;">

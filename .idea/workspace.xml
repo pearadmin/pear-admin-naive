@@ -4,13 +4,7 @@
     <list default="true" id="58710c17-74d7-4c06-ac6d-fe2ff9769227" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/components/Reload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/Reload.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/components/ResizeHeight.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/ResizeHeight.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/components/SizeSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/SizeSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/components/TableTools.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/TableTools.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/header/Setting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/Setting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/global.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/global.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/helper.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +109,7 @@
       <workItem from="1638325474282" duration="375000" />
       <workItem from="1638325935600" duration="497000" />
       <workItem from="1638326449097" duration="19488000" />
-      <workItem from="1638433186773" duration="5999000" />
+      <workItem from="1638433186773" duration="9108000" />
     </task>
     <servers />
   </component>

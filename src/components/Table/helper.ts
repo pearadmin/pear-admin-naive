@@ -8,6 +8,7 @@ export function getColumns(columns: ColumnsSetting) {
   const center: ColumnsSetting = []
   columns.forEach((col) => {
     col.visible = ref(true)
+    col.elRef = ref(null)
     if (col.type && col.type === 'selection') {
       col.title = 'Selection'
     }
