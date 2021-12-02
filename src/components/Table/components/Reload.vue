@@ -19,9 +19,9 @@
 <template>
   <NTooltip>
     <template #trigger>
-      <a href="javascript:;" class="pear-admin-a" @click.stop="fetchRunner">
+      <NButton text @click.stop="fetchRunner">
         <Icon name="ant-design:reload-outlined" :size="iconSize" />
-      </a>
+      </NButton>
     </template>
     刷新
   </NTooltip>

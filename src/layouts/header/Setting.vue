@@ -1,7 +1,4 @@
-<script setup lang="ts">
-  // import Icon from '@/components/Icon'
-  // import { NElement } from 'naive-ui'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <NElement class="pear-admin-settings" tag="span">

@@ -14,10 +14,12 @@
 <template>
   <div class="pear-admin-table-tools">
     <div class="pear-admin-table-tools-content">
-      <Reload />
-      <ResizeHeight />
-      <SizeSetting />
-      <ColumnSetting />
+      <NSpace item-style="display:flex">
+        <Reload />
+        <ResizeHeight />
+        <SizeSetting />
+        <ColumnSetting />
+      </NSpace>
     </div>
   </div>
 </template>
@@ -27,14 +29,10 @@
     width: auto;
     height: auto;
     &-content {
-      width: auto;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      ::v-deep(.pear-admin-a) {
-        margin-left: 10px;
-      }
     }
   }
 </style>

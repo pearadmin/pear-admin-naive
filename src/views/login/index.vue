@@ -83,40 +83,13 @@
             show-password-on="click"
           />
         </n-form-item>
-        <!--        <n-form-item class="block" path="captchaCode">-->
-        <!--          <n-grid x-gap="12" :cols="2">-->
-        <!--            <n-gi>-->
-        <!--              <n-input v-model:value="model.captchaCode" placeholder="请输入验证码" maxlength="5" />-->
-        <!--            </n-gi>-->
-        <!--            <n-gi class="flex flex-row-reverse">-->
-        <!--              <n-spin :show="codeLoading">-->
-        <!--                <img-->
-        <!--                  class="cursor-pointer"-->
-        <!--                  :src="validateCodeState?.image"-->
-        <!--                  alt="验证码"-->
-        <!--                  @click="reloadCapture"-->
-        <!--                />-->
-        <!--              </n-spin>-->
-        <!--            </n-gi>-->
-        <!--          </n-grid>-->
-        <!--        </n-form-item>-->
         <n-form-item class="block">
           <n-grid :cols="2" :x-gap="24">
             <n-gi>
               <n-checkbox>记住我</n-checkbox>
             </n-gi>
-            <n-gi>
-              <n-element
-                tag="a"
-                href="javascript:;"
-                class="block text-right"
-                style="
-                  color: var(--primary-color);
-                  transition: 0.3s var(--cubic-bezier-ease-in-out);
-                "
-              >
-                忘记密码
-              </n-element>
+            <n-gi class="flex flex-row justify-end">
+              <n-button text class="block text-right">忘记密码</n-button>
             </n-gi>
           </n-grid>
         </n-form-item>

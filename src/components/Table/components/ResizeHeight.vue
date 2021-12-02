@@ -22,9 +22,9 @@
     <template #trigger>
       <NTooltip placement="top-start">
         <template #trigger>
-          <a href="javascript:;" class="pear-admin-a">
+          <NButton text>
             <Icon name="vaadin:resize-h" :size="iconSize" />
-          </a>
+          </NButton>
         </template>
         表格高度(当一页展示50条或更多条记录时,尝试增加高度,展示更多的数据.)
       </NTooltip>
@@ -39,5 +39,3 @@
     />
   </NPopover>
 </template>
-
-<style scoped lang="less"></style>

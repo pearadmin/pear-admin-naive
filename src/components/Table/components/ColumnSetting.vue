@@ -14,6 +14,7 @@
   // @ts-ignore
   export interface CustomTableColumn extends DataTableColumn {
     visible?: Ref<boolean>
+    elRef?: Ref<Nullable<HTMLElement>>
   }
   // @ts-ignore
   export type ColumnsSetting = CustomTableColumn[]
@@ -43,9 +44,9 @@
     <template #trigger>
       <NTooltip>
         <template #trigger>
-          <a href="javascript:;" class="pear-admin-a">
+          <NButton text>
             <Icon name="ant-design:setting-outlined" :size="iconSize" />
-          </a>
+          </NButton>
         </template>
         列设置
       </NTooltip>
@@ -67,8 +68,24 @@
           class="col-setting-checkbox"
         >
           <NCheckbox v-model:checked="lCol.visible">{{ lCol.title }}</NCheckbox>
-          <Icon name="mdi:format-vertical-align-top" color="var(--primary-color)" />
-          <Icon name="mdi:format-vertical-align-bottom" color="var(--primary-color)" />
+          <NSpace item-style="display:flex;">
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-center" />
+                </NButton>
+              </template>
+              <span>不固定</span>
+            </NTooltip>
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-bottom" />
+                </NButton>
+              </template>
+              <span>固定到列尾</span>
+            </NTooltip>
+          </NSpace>
         </div>
       </div>
       <div class="center col">
@@ -79,6 +96,24 @@
           class="col-setting-checkbox"
         >
           <NCheckbox v-model:checked="cCol.visible">{{ cCol.title }}</NCheckbox>
+          <NSpace item-style="display:flex;">
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-top" />
+                </NButton>
+              </template>
+              <span>固定到列首</span>
+            </NTooltip>
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-bottom" />
+                </NButton>
+              </template>
+              <span>固定到列尾</span>
+            </NTooltip>
+          </NSpace>
         </div>
       </div>
       <div v-if="rightColumns.length > 0" class="right col">
@@ -89,6 +124,24 @@
           class="col-setting-checkbox"
         >
           <NCheckbox v-model:checked="rCol.visible">{{ rCol.title }}</NCheckbox>
+          <NSpace item-style="display:flex;">
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-top" />
+                </NButton>
+              </template>
+              <span>固定到列首</span>
+            </NTooltip>
+            <NTooltip placement="top-center" trigger="hover">
+              <template #trigger>
+                <NButton text>
+                  <Icon name="mdi:format-vertical-align-center" />
+                </NButton>
+              </template>
+              <span>不固定</span>
+            </NTooltip>
+          </NSpace>
         </div>
       </div>
     </div>
@@ -119,8 +172,13 @@
       .col {
         padding: 2px 0;
         .col-setting-checkbox {
-          padding: 3px 0;
+          padding: 5px 0;
           cursor: pointer;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
         }
       }
       .left {

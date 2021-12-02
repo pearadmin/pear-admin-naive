@@ -42,9 +42,9 @@
   >
     <NTooltip>
       <template #trigger>
-        <a href="javascript:;" class="pear-admin-a">
+        <NButton text>
           <Icon name="ant-design:column-height-outlined" :size="iconSize" />
-        </a>
+        </NButton>
       </template>
       密度
     </NTooltip>
