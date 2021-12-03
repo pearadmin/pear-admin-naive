@@ -18,6 +18,7 @@ export const tableHeightInjectKey = Symbol('tableHeight')
 export const changeTableHeightInjectKey = Symbol('changeTableHeight')
 
 export const columnsInjectKey = Symbol('columns')
+export const changeColumnsInjectKey = Symbol('handleChangeColumns')
 
 export type TableSize = 'small' | 'medium' | 'large'
 
@@ -50,6 +51,7 @@ export function useTableConfig(options: ComputedRef<TableConfigOptions>) {
     },
     { immediate: true }
   )
+
   provide<Ref<TableSize>>(tableSizeInjectKey, sizeRef)
   provide<(size: TableSize) => void>(changeTableSizeInjectKey, changeTableSize)
   provide<Ref<() => Promise<any>>>(fetchRunnerInjectKey, options.value.fetchRunner)

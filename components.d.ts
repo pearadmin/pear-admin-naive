@@ -11,6 +11,7 @@ declare module 'vue' {
     Button: typeof import('./src/components/Button/Button.vue')['default']
     ColumnSetting: typeof import('./src/components/Table/components/ColumnSetting.vue')['default']
     Icon: typeof import('./src/components/Icon/Icon.vue')['default']
+    NA: typeof import('naive-ui')['NA']
     NAlert: typeof import('naive-ui')['NAlert']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBadge: typeof import('naive-ui')['NBadge']

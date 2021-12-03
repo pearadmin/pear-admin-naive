@@ -6,47 +6,71 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { inject, ref, Ref, watch } from 'vue'
-  import type { DataTableColumn } from 'naive-ui'
+  import { ref, inject, reactive, Ref, watch } from 'vue'
   import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
-  import { getColumns } from '@/components/Table/helper'
-
-  // @ts-ignore
-  export interface CustomTableColumn extends DataTableColumn {
-    key: number | string
-    title: string
-    type: 'selection' | 'expand'
-    fixed: 'left' | 'right'
-    visible?: Ref<boolean>
-    elRef?: Ref<Nullable<HTMLElement>>
-  }
-  // @ts-ignore
-  export type ColumnsSetting = CustomTableColumn[]
+  import { NOT_RENDER_KEYS, PTableColumns } from '@/components/Table/composables/useColumns'
 
   const iconSize = inject<Ref<number>>(iconSizeInjectKey)
 
-  const columns = inject<Ref<ColumnsSetting>>(columnsInjectKey)
+  const columns = inject(columnsInjectKey) as Ref<PTableColumns[]>
 
-  const leftColumns = ref<ColumnsSetting>([])
-  const centerColumns = ref<ColumnsSetting>([])
-  const rightColumns = ref<ColumnsSetting>([])
+  const settingCols = ref<PTableColumns[]>([])
+
+  const globalState = reactive<{
+    checked: boolean
+    indeterminate: boolean
+  }>({
+    checked: true,
+    indeterminate: false
+  })
+
+  function setStatus(cols: PTableColumns[]): void {
+    const isAllChecked = cols.every((it) => it.visible)
+    // const isIndeterminate = cols.some((it) => !it.visible)
+    const isAllUnChecked = cols.every((it) => !it.visible)
+    if (isAllChecked) {
+      globalState.checked = true
+      globalState.indeterminate = false
+    } else if (isAllUnChecked) {
+      globalState.checked = false
+      globalState.indeterminate = false
+    } else {
+      globalState.checked = false
+      globalState.indeterminate = true
+    }
+  }
 
   watch(
-    () => columns,
+    [...columns.value],
     (cols) => {
-      const { left, center, right } = getColumns(cols?.value)
-      leftColumns.value = left
-      centerColumns.value = center
-      rightColumns.value = right
+      if (cols.length > 0) {
+        settingCols.value = [...cols]
+      }
     },
     { immediate: true }
   )
 
-  function setRefEl(col: CustomTableColumn, el: HTMLElement) {
-    console.log(el)
-    if (el) {
-      col.elRef
-    }
+  watch(
+    settingCols,
+    (cols) => {
+      setStatus(cols)
+    },
+    { immediate: true, deep: true }
+  )
+
+  function handleReset() {
+    handleUpdateGlobalCheck(true)
+  }
+
+  function handleUpdateGlobalCheck(val: boolean) {
+    globalState.checked = val
+    settingCols.value.forEach((it) => {
+      it.visible = val
+    })
+  }
+
+  function handleChangeCheckedItem(val: boolean, col: PTableColumns) {
+    col.visible = val
   }
 </script>
 
@@ -64,100 +88,28 @@
     </template>
     <template #header>
       <div class="pear-admin-columns-setting-title">
-        <NCheckbox>列展示</NCheckbox>
-        <NElement tag="a" href="javascript:;" class="pear-admin-columns-setting-title-reset">
-          重置
-        </NElement>
+        <NCheckbox
+          :checked="globalState.checked"
+          :indeterminate="globalState.indeterminate"
+          :on-update:checked="handleUpdateGlobalCheck"
+        >
+          列展示
+        </NCheckbox>
+        <n-a @click.stop="handleReset">重置</n-a>
       </div>
     </template>
     <div class="pear-admin-columns-setting-content">
-      <div v-if="leftColumns.length > 0" class="left col">
-        <p>固定左侧</p>
-        <div
-          v-for="(lCol, lIndex) in leftColumns"
-          :key="lCol.key || lCol.type || lIndex"
-          class="col-setting-checkbox"
-          :ref="(el: HTMLElement) => { setRefEl(lCol, el) }"
-        >
-          <NCheckbox v-model:checked="lCol.visible">{{ lCol.title }}</NCheckbox>
-          <NSpace item-style="display:flex;">
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-center" />
-                </NButton>
-              </template>
-              <span>不固定</span>
-            </NTooltip>
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-bottom" />
-                </NButton>
-              </template>
-              <span>固定到列尾</span>
-            </NTooltip>
-          </NSpace>
-        </div>
-      </div>
-      <div class="center col">
-        <p v-if="leftColumns.length !== 0 || rightColumns.length !== 0">不固定</p>
-        <div
-          v-for="(cCol, cIndex) in centerColumns"
-          :key="cCol.key || cCol.type || cIndex"
-          class="col-setting-checkbox"
-          :ref="(el: HTMLElement) => setRefEl(cCol, el)"
-        >
-          <NCheckbox v-model:checked="cCol.visible">{{ cCol.title }}</NCheckbox>
-          <NSpace item-style="display:flex;">
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-top" />
-                </NButton>
-              </template>
-              <span>固定到列首</span>
-            </NTooltip>
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-bottom" />
-                </NButton>
-              </template>
-              <span>固定到列尾</span>
-            </NTooltip>
-          </NSpace>
-        </div>
-      </div>
-      <div v-if="rightColumns.length > 0" class="right col">
-        <p>固定右侧</p>
-        <div
-          v-for="(rCol, rIndex) in rightColumns"
-          :key="rCol.key || rCol.type || rIndex"
-          class="col-setting-checkbox"
-          :ref="(el: HTMLElement) => setRefEl(rCol, el)"
-        >
-          <NCheckbox v-model:checked="rCol.visible">{{ rCol.title }}</NCheckbox>
-          <NSpace item-style="display:flex;">
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-top" />
-                </NButton>
-              </template>
-              <span>固定到列首</span>
-            </NTooltip>
-            <NTooltip placement="top-center" trigger="hover">
-              <template #trigger>
-                <NButton text>
-                  <Icon name="mdi:format-vertical-align-center" />
-                </NButton>
-              </template>
-              <span>不固定</span>
-            </NTooltip>
-          </NSpace>
-        </div>
-      </div>
+      <NSpace vertical>
+        <template v-for="col in settingCols" :key="col?.key">
+          <NCheckbox
+            v-if="!col.type || !NOT_RENDER_KEYS.includes(col.type)"
+            v-model:checked="col.visible"
+            :on-update:checked="(val) => handleChangeCheckedItem(val, col)"
+          >
+            {{ col?.title }}
+          </NCheckbox>
+        </template>
+      </NSpace>
     </div>
   </NPopover>
 </template>
@@ -173,36 +125,11 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
-      &-reset {
-        color: var(--primary-color);
-      }
     }
 
     &-content {
       width: 180px;
       height: auto;
-
-      .col {
-        padding: 2px 0;
-        .col-setting-checkbox {
-          padding: 5px 0;
-          cursor: pointer;
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-        }
-      }
-      .left {
-      }
-
-      .center {
-      }
-
-      .right {
-      }
     }
   }
 </style>

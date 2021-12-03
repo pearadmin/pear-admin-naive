@@ -8,7 +8,7 @@ rm -rf dist.zip &&
 git status &&
 git add . &&
 git status &&
-git commit -m 'fix: bugs' &&
+git commit -m 'feat&ci: table columns setting tool and update deps' &&
 git push origin master &&
 echo 'task finished'
 ##

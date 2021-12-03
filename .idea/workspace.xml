@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58710c17-74d7-4c06-ac6d-fe2ff9769227" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Table/composables/useTableContext.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/components/ColumnSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useColumns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useColumns.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useTableConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useTableConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/helper.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +94,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="ts:check" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="ts:check" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.ts:check" />
         <item itemvalue="npm.serve:force" />
         <item itemvalue="Shell Script.deploy.sh" />
         <item itemvalue="npm.lint:prettier" />
@@ -109,7 +127,9 @@
       <workItem from="1638325474282" duration="375000" />
       <workItem from="1638325935600" duration="497000" />
       <workItem from="1638326449097" duration="19488000" />
-      <workItem from="1638433186773" duration="9108000" />
+      <workItem from="1638433186773" duration="10840000" />
+      <workItem from="1638497388294" duration="69000" />
+      <workItem from="1638497688680" duration="14309000" />
     </task>
     <servers />
   </component>
