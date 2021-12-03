@@ -19,6 +19,7 @@
     fetch?: {
       fetchUrl?: string
       immediate?: boolean
+      redo?: boolean
       beforeFetch?: Fn
       afterFetch?: Fn
     }
@@ -27,16 +28,25 @@
   const basicTableProps = withDefaults(defineProps<BasicTableProps>(), {
     fetch: () => {
       return {
-        immediate: true
+        immediate: true,
+        redo: false
       }
     }
   })
 
+  // 分页
   const { paginationRef } = usePagination()
-  const { isFetching, fetchRunner, tableData } = useTableFetch(basicTableProps, paginationRef)
 
+  // 请求
+  const { isFetching, fetchRunner, tableData, fetchFinished } = useTableFetch(
+    basicTableProps,
+    paginationRef
+  )
+
+  // attrs
   const basicTableAttrs = useAttrs()
 
+  // 定义可控制列
   const { columns } = useColumns(basicTableAttrs)
 
   const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
@@ -48,8 +58,10 @@
     }
   })
 
+  // 表格高度和大小
   const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
 
+  // n-table props
   const nTableProps = computed((): DataTableProps & Recordable => {
     return {
       scrollX: '1500',
@@ -68,20 +80,36 @@
     }
   })
 
+  // 最外层class 和style
   const wrapperAttrs = computed((): Recordable => {
     return pick(basicTableAttrs, 'class', 'style')
+  })
+
+  // define expose
+  defineExpose({
+    isFetching,
+    fetchExecutor: fetchRunner,
+    tableData,
+    fetchFinished
   })
 </script>
 
 <template>
-  <div class="pear-admin-table" v-bind="wrapperAttrs">
-    <div class="pear-admin-table-top">
-      <h2 class="pear-admin-table-top-title">
-        <slot name="tableTitle"></slot>
-      </h2>
-      <TableTools />
+  <div class="pear-admin-table-wrapper">
+    <div v-if="$slots.search" class="pear-admin-table-search">
+      <NCard>
+        <slot name="search"></slot>
+      </NCard>
     </div>
-    <NDataTable v-bind="nTableProps" />
+    <div class="pear-admin-table" v-bind="wrapperAttrs">
+      <div class="pear-admin-table-top">
+        <h2 class="pear-admin-table-top-title">
+          <slot name="tableTitle"></slot>
+        </h2>
+        <TableTools />
+      </div>
+      <NDataTable v-bind="nTableProps" />
+    </div>
   </div>
 </template>
 
@@ -91,32 +119,39 @@
     border: 1px solid var(--border-color) !important;
   }
 
-  .pear-admin-table {
+  .pear-admin-table-wrapper {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background: var(--body-color);
-    border-radius: var(--border-radius);
-    padding: 0 0 5px 0;
-    &-top {
+    .pear-admin-table-search {
+    }
+    .pear-admin-table {
       width: 100%;
       height: auto;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      border-left: 1px solid var(--hover-color);
-      border-right: 1px solid var(--hover-color);
-      border-top: 1px solid var(--hover-color);
-      border-top-left-radius: var(--border-radius);
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      background: var(--body-color);
+      border-radius: var(--border-radius);
+      padding: 0 0 5px 0;
+      margin-top: 10px;
+      &-top {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-left: 1px solid var(--hover-color);
+        border-right: 1px solid var(--hover-color);
+        border-top: 1px solid var(--hover-color);
+        border-top-left-radius: var(--border-radius);
 
-      &-title {
-        font-size: 16px;
-        font-weight: 500;
+        &-title {
+          font-size: 16px;
+          font-weight: 500;
+        }
       }
     }
   }

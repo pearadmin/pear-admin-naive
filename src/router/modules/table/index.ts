@@ -19,6 +19,15 @@ const tableDateRoutes: RouteRecordRaw[] = [
           title: '基础表格',
           icon: 'la:table'
         }
+      },
+      {
+        path: 'searchTable',
+        name: 'SearchTable',
+        component: () => import('@/views/demo/table/searchTableDemo.vue'),
+        meta: {
+          title: '查询表格',
+          icon: 'mdi:table-search'
+        }
       }
     ]
   }

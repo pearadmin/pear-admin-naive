@@ -32,6 +32,8 @@ declare module 'vue' {
     NGi: typeof import('naive-ui')['NGi']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NGrid: typeof import('naive-ui')['NGrid']
+    NH1: typeof import('naive-ui')['NH1']
+    NH2: typeof import('naive-ui')['NH2']
     NInput: typeof import('naive-ui')['NInput']
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']

@@ -7,6 +7,7 @@ export type UseFormOption = BasicFormProps
 export interface ReturnUseForm {
   formRefEl: Ref<Nullable<typeof BasicForm>>
   modelValue: WritableComputedRef<Recordable>
+  restoreValidation: () => void
 }
 
 export default function useForm(options?: UseFormOption): ReturnUseForm {
@@ -26,8 +27,14 @@ export default function useForm(options?: UseFormOption): ReturnUseForm {
     }
   })
 
+  function restoreValidation(): void {
+    // @ts-ignore
+    formRefEl.value.restoreValidation()
+  }
+
   return {
     formRefEl,
-    modelValue
+    modelValue,
+    restoreValidation
   }
 }

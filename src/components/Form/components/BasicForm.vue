@@ -3,6 +3,7 @@
   import { ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
   import { merge } from 'lodash-es'
+  import { ButtonProps, NForm } from 'naive-ui'
 
   export type ComponentName =
     | 'NInput'
@@ -25,6 +26,14 @@
     wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
 
+  export interface FormActionItem {
+    label: (() => string) | string
+    handler: (() => void) | (() => Promise<void>)
+    buttonProps?: ButtonProps
+  }
+
+  export type FormAction = FormActionItem[]
+
   export interface BasicFormProps {
     model?: Recordable
     schemas?: FormSchema[]
@@ -37,6 +46,7 @@
       xGap?: number
       yGap?: number
     }
+    formAction?: FormAction
   }
 
   const props = withDefaults(defineProps<BasicFormProps>(), {
@@ -65,7 +75,13 @@
   const attrs = useAttrs()
 
   // const { formModelRef } = useFormModel(props)
-  const { formModelRef } = useFormModel(basicFormProps)
+  // const { formModelRef } = useFormModel(basicFormProps)
+
+  const formModelRef = ref({
+    input: 'ads '
+  })
+
+  const formRefEl = ref<typeof NForm | null>(null)
 
   defineExpose({
     getFormValue: (): Recordable => {
@@ -76,12 +92,15 @@
     },
     updFormProps: (options: BasicFormProps): void => {
       merge(basicFormProps.value, options)
+    },
+    restoreValidation: () => {
+      formRefEl.value?.restoreValidation()
     }
   })
 </script>
 
 <template>
-  <NForm :model="formModelRef" v-bind="attrs">
+  <NForm ref="formRefEl" :model="formModelRef" v-bind="attrs">
     <NGrid v-bind="basicFormProps.gridProps">
       <NFormItemGi
         v-for="schema in basicFormProps.schemas"
@@ -90,6 +109,18 @@
         v-bind="schema?.formItemProps ? schema.formItemProps : {}"
       >
         <FormItem :schema="schema" :form-model-ref="formModelRef" />
+      </NFormItemGi>
+      <NFormItemGi v-if="formAction && formAction.length > 0" :span="8">
+        <NSpace>
+          <NButton
+            v-for="(action, index) in formAction"
+            :key="index"
+            v-bind="action.buttonProps"
+            @click.stop="action.handler"
+          >
+            {{ action.label }}
+          </NButton>
+        </NSpace>
       </NFormItemGi>
     </NGrid>
   </NForm>

@@ -18,12 +18,9 @@ export function useColumns(basicTableAttrs: Recordable) {
   watch(
     columns,
     (cols) => {
-      console.log('outer = > ', cols)
       caches.value = cols.filter((it) => {
-        console.log(it.visible)
         return it.visible || (it.type && NOT_RENDER_KEYS.includes(it.type))
       })
-      console.log(caches.value)
     },
     { deep: true }
   )
