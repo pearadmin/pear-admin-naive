@@ -74,12 +74,7 @@
 
   const attrs = useAttrs()
 
-  // const { formModelRef } = useFormModel(props)
-  // const { formModelRef } = useFormModel(basicFormProps)
-
-  const formModelRef = ref({
-    input: 'ads '
-  })
+  const { formModelRef } = useFormModel(basicFormProps)
 
   const formRefEl = ref<typeof NForm | null>(null)
 

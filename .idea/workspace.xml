@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/composables/useForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/composables/useForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useColumns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useColumns.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/modules/table/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/modules/table/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +11,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -79,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638528767098</updated>
-      <workItem from="1638528771723" duration="73000" />
+      <workItem from="1638528771723" duration="291000" />
     </task>
     <servers />
   </component>
