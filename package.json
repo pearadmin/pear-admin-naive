@@ -1,6 +1,6 @@
 {
-  "name": "pear-admin-naive-min",
-  "version": "0.0.0",
+  "name": "pear-admin-naive",
+  "version": "1.0.0",
   "scripts": {
     "serve": "vite",
     "serve:force": "vite --force",
@@ -17,7 +17,6 @@
     "@iconify/iconify": "^2.1.0",
     "@types/lodash": "^4.14.177",
     "@vueuse/core": "^6.9.2",
-    "axios": "^0.21.4",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.5",
     "qs": "^6.10.1",
