@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Table/composables/useTable.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/components/FormItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/FormItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/props.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638528767098</updated>
       <workItem from="1638528771723" duration="291000" />
-      <workItem from="1638581674833" duration="8376000" />
+      <workItem from="1638581674833" duration="9124000" />
     </task>
     <servers />
   </component>
