@@ -6,7 +6,7 @@
 <script setup lang="ts">
   import TableTools from './components/TableTools.vue'
   import { computed, ComputedRef, ref, useAttrs } from 'vue'
-  import { omit, pick } from 'lodash-es'
+  import { merge, omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
@@ -15,14 +15,16 @@
   import { DataTableProps, PaginationProps } from 'naive-ui'
 
   // @ts-ignore
+  export interface TableFetch {
+    fetchUrl?: string
+    immediate?: boolean
+    redo?: boolean
+    beforeFetch?: Fn
+    afterFetch?: Fn
+  }
+  // @ts-ignore
   export interface BasicTableProps {
-    fetch?: {
-      fetchUrl?: string
-      immediate?: boolean
-      redo?: boolean
-      beforeFetch?: Fn
-      afterFetch?: Fn
-    }
+    fetch?: TableFetch
   }
 
   const basicTableProps = withDefaults(defineProps<BasicTableProps>(), {
@@ -33,6 +35,17 @@
       }
     }
   })
+
+  // proxy props
+  // const proxyProps = ref<BasicTableProps>({})
+
+  // watch(
+  //   () => basicTableProps,
+  //   (p) => {
+  //     proxyProps.value = merge({}, p)
+  //   },
+  //   { immediate: true, deep: true }
+  // )
 
   // 分页
   const { paginationRef } = usePagination()
@@ -68,7 +81,7 @@
       size: tableSize.value,
       pagination: paginationRef.value as PaginationProps,
       loading: isFetching.value,
-      data: tableData.value as RowData[],
+      data: columns.value.length > 0 ? (tableData.value as RowData[]) : [],
       remote: true,
       flexHeight: true,
       style: {
@@ -87,6 +100,15 @@
 
   // define expose
   defineExpose({
+    paginationRef,
+    // 某些时候可能需要外层改变分页信息的时候
+    changePagination: (paginationProps: PaginationProps): void => {
+      paginationRef.value = merge(paginationRef, paginationProps)
+    },
+    resetPagination: (): void => {
+      paginationRef.value.page = 1
+      paginationRef.value.pageSize = 10
+    },
     isFetching,
     fetchExecutor: fetchRunner,
     tableData,
@@ -96,9 +118,9 @@
 
 <template>
   <div class="pear-admin-table-wrapper">
-    <div v-if="$slots.search" class="pear-admin-table-search">
+    <div v-if="$slots.header" class="pear-admin-table-search">
       <NCard>
-        <slot name="search"></slot>
+        <slot name="header"></slot>
       </NCard>
     </div>
     <div class="pear-admin-table" v-bind="wrapperAttrs">

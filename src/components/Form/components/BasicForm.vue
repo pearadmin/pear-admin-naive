@@ -27,8 +27,8 @@
   }
 
   export interface FormActionItem {
-    label: (() => string) | string
-    handler: (() => void) | (() => Promise<void>)
+    label?: (() => string) | string
+    handler?: (() => void) | (() => Promise<void>)
     buttonProps?: ButtonProps
   }
 
@@ -74,7 +74,7 @@
 
   const attrs = useAttrs()
 
-  const { formModelRef } = useFormModel(basicFormProps)
+  const { formModelRef, restFormValue } = useFormModel(basicFormProps)
 
   const formRefEl = ref<typeof NForm | null>(null)
 
@@ -90,6 +90,7 @@
     },
     restoreValidation: () => {
       formRefEl.value?.restoreValidation()
+      restFormValue()
     }
   })
 </script>
@@ -105,16 +106,9 @@
       >
         <FormItem :schema="schema" :form-model-ref="formModelRef" />
       </NFormItemGi>
-      <NFormItemGi v-if="formAction && formAction.length > 0" :span="8">
+      <NFormItemGi v-if="$slots.formAction" :span="8">
         <NSpace>
-          <NButton
-            v-for="(action, index) in formAction"
-            :key="index"
-            v-bind="action.buttonProps"
-            @click.stop="action.handler"
-          >
-            {{ action.label }}
-          </NButton>
+          <slot name="formAction"></slot>
         </NSpace>
       </NFormItemGi>
     </NGrid>

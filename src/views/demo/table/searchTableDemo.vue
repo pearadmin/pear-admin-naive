@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
   import useForm from '@/components/Form/composables/useForm'
-  import { FormAction, FormSchema } from '@/components/Form/components/BasicForm.vue'
-  import { ref } from 'vue'
+  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
+  import { Ref, ref } from 'vue'
 
   const columns = [
     {
@@ -168,42 +168,40 @@
   }
 
   // todo:: create useTable
-  const tableRefEl = ref<Nullable<HTMLElement>>(null)
+  const tableRefEl = ref<
+    Nullable<
+      HTMLElement &
+        Ref<{
+          resetPagination: Fn
+          fetchExecutor: PromiseFn
+          isFetching: Ref<boolean>
+        }>
+    >
+  >(null)
 
-  const formAction: FormAction = [
-    {
-      label: '查询',
-      handler: async () => {
-        // @see https://github.com/vuejs/vue-next/issues/4397
-        // @ts-ignore
-        await tableRefEl.value.fetchExecutor()
-      },
-      buttonProps: {
-        type: 'primary',
-        // @ts-ignore
-        loading: tableRefEl.value?.isFetching
-      }
-    },
-    {
-      label: '重置',
-      handler: () => {
-        console.log('重置')
-        restoreValidation()
-      }
-    }
-  ]
+  function reset() {
+    restoreValidation()
+    tableRefEl.value?.resetPagination()
+    tableRefEl.value?.fetchExecutor()
+  }
+
+  function doSearch() {
+    tableRefEl.value?.fetchExecutor()
+  }
 </script>
 
 <template>
   <PageWrapper>
     <BasicTable ref="tableRefEl" :columns="columns" virtual-scroll :fetch="fetch">
-      <template #search>
-        <BasicForm
-          ref="formRefEl"
-          :label-width="60"
-          label-placement="left"
-          :form-action="formAction"
-        />
+      <template #header>
+        <BasicForm ref="formRefEl" :label-width="60" label-placement="left">
+          <template #formAction>
+            <NButton type="primary" :loading="tableRefEl?.isFetching" @click="doSearch">
+              查询
+            </NButton>
+            <NButton :loading="tableRefEl?.isFetching" @click="reset">重置</NButton>
+          </template>
+        </BasicForm>
       </template>
       <template #tableTitle> 标准表格 </template>
     </BasicTable>

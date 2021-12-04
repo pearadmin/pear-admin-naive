@@ -22,18 +22,18 @@ export default defineComponent({
     })
 
     const comProps = computed((): Recordable => {
-      return props.schema?.componentProps ? props.schema.componentProps : {}
+      return props.schema?.componentProps ?? {}
     })
 
     const comSlots = computed(() => {
-      return props.schema?.componentSlots ? props.schema?.componentSlots : {}
+      return props.schema?.componentSlots ?? {}
     })
 
     return () => {
       return (
         <Component.value
-          v-model={[props.formModelRef[props.schema?.model], 'value']}
           {...comProps.value}
+          v-model={[props.formModelRef[props.schema.model], 'value']}
           v-slots={comSlots.value}
         ></Component.value>
       )

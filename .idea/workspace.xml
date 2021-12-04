@@ -2,12 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Table/composables/useTable.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/BasicForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/components/FormItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/components/FormItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/composables/useFormModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/props.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useTableFetch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,10 +52,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="pnpm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.ts:check">
     <configuration name="serve:force" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -80,10 +96,22 @@
       <option name="presentableId" value="Default" />
       <updated>1638528767098</updated>
       <workItem from="1638528771723" duration="291000" />
+      <workItem from="1638581674833" duration="8376000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

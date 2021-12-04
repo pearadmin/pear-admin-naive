@@ -6,6 +6,7 @@ import { PaginationProps } from 'naive-ui'
 import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
 import { FetchMethod } from '@/api/http/composables/useApi'
 import { isEqual } from 'lodash-es'
+// import { get } from '@vueuse/core'
 
 export interface UseTableFetchReturn {
   isFetching: Ref<boolean>
@@ -18,6 +19,7 @@ export default function useTableFetch(
   props: Readonly<BasicTableProps>,
   paginationRef: Ref<PaginationProps>
 ): UseTableFetchReturn {
+  // const props = get(basicTableProps)
   const tableData = ref<Recordable[]>([])
 
   const fetchOptions = computed((): Recordable => {
@@ -50,6 +52,7 @@ export default function useTableFetch(
     { immediate: false, redo: false }
   )
 
+  // 请求参数改变
   watch(fetchOptions, (n, o) => {
     if (!isEqual(n, o)) {
       if (props.fetch?.redo && props.fetch?.redo === true) {
@@ -57,6 +60,16 @@ export default function useTableFetch(
       }
     }
   })
+
+  // 分页信息改变
+  watch(
+    [() => paginationRef.value.page, () => paginationRef.value.pageSize],
+    ([np, ns], [op, os]) => {
+      if (np !== op || ns !== os) {
+        unref(fetchRunner)()
+      }
+    }
+  )
 
   if (props.fetch?.immediate === undefined || props.fetch?.immediate === true) {
     // 初次执行在下一个事件中执行，保证fetch options 已经加载完成
