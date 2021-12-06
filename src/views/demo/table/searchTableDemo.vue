@@ -135,7 +135,7 @@
   ]
   const gridProps = {
     cols: 3,
-    xGap: 12
+    xGap: 24
   }
 
   const searchFormProps = {

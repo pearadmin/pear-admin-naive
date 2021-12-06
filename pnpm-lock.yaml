@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@antv/g2': ^4.1.34
   '@iconify/iconify': ^2.1.0
   '@iconify/json': ^1.1.438
   '@nabla/vite-plugin-eslint': ^1.3.5
@@ -44,6 +45,7 @@ specifiers:
   windicss: ^3.2.1
 
 dependencies:
+  '@antv/g2': 4.1.34
   '@iconify/iconify': 2.1.0
   '@types/lodash': 4.14.177
   '@vueuse/core': 6.9.2_vue@3.2.23
@@ -99,6 +101,180 @@ packages:
     dependencies:
       '@types/throttle-debounce': 2.1.0
     dev: true
+
+  /@antv/adjust/0.2.3:
+    resolution: {integrity: sha1-w4hKaAwyZMwSXX8qtTmOihwLlAE=, tarball: '@antv/adjust/download/@antv/adjust-0.2.3.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      tslib: 1.14.1
+    dev: false
+
+  /@antv/attr/0.3.2:
+    resolution: {integrity: sha1-5YZrZIcMYvOpwluKYfZUuiv9oFE=, tarball: '@antv/attr/download/@antv/attr-0.3.2.tgz'}
+    dependencies:
+      '@antv/color-util': 2.0.6
+      '@antv/util': 2.0.17
+      tslib: 1.14.1
+    dev: false
+
+  /@antv/color-util/2.0.6:
+    resolution: {integrity: sha1-XhKbuc4/K5MJtSECs9ySlDDMwBY=, tarball: '@antv/color-util/download/@antv/color-util-2.0.6.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/component/0.8.20:
+    resolution: {integrity: sha1-l/Daoi83aKNd4zzQ2cWP8yzspBc=, tarball: '@antv/component/download/@antv/component-0.8.20.tgz'}
+    dependencies:
+      '@antv/color-util': 2.0.6
+      '@antv/dom-util': 2.0.3
+      '@antv/g-base': 0.5.6
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/path-util': 2.0.15
+      '@antv/scale': 0.3.14
+      '@antv/util': 2.0.17
+      fecha: 4.2.1
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/coord/0.3.1:
+    resolution: {integrity: sha1-mC4mHYoeBqGY61GOp6zCDth1oBk=, tarball: '@antv/coord/download/@antv/coord-0.3.1.tgz'}
+    dependencies:
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/util': 2.0.17
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/dom-util/2.0.3:
+    resolution: {integrity: sha1-y9FYsciODopNhlhxpZabEZBVT/U=, tarball: '@antv/dom-util/download/@antv/dom-util-2.0.3.tgz'}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/event-emitter/0.1.2:
+    resolution: {integrity: sha1-oXt8uG5tBxiA3Gv7IydW+IYk7Lw=, tarball: '@antv/event-emitter/download/@antv/event-emitter-0.1.2.tgz'}
+    dev: false
+
+  /@antv/g-base/0.5.6:
+    resolution: {integrity: sha1-2W2l+/bF+LBzBydR4V5e7HCzk/w=, tarball: '@antv/g-base/download/@antv/g-base-0.5.6.tgz'}
+    dependencies:
+      '@antv/event-emitter': 0.1.2
+      '@antv/g-math': 0.1.7
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/path-util': 2.0.15
+      '@antv/util': 2.0.17
+      '@types/d3-timer': 2.0.1
+      d3-ease: 1.0.7
+      d3-interpolate: 1.4.0
+      d3-timer: 1.0.10
+      detect-browser: 5.3.0
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/g-base/0.5.9:
+    resolution: {integrity: sha1-WNDhHYUVetoUCPvfJPT0aPQOWc0=, tarball: '@antv/g-base/download/@antv/g-base-0.5.9.tgz'}
+    dependencies:
+      '@antv/event-emitter': 0.1.2
+      '@antv/g-math': 0.1.7
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/path-util': 2.0.15
+      '@antv/util': 2.0.17
+      '@types/d3-timer': 2.0.1
+      d3-ease: 1.0.7
+      d3-interpolate: 1.4.0
+      d3-timer: 1.0.10
+      detect-browser: 5.3.0
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/g-canvas/0.5.12:
+    resolution: {integrity: sha1-L8QNztaZTwdPIjQeZdVve71Sdfc=, tarball: '@antv/g-canvas/download/@antv/g-canvas-0.5.12.tgz'}
+    dependencies:
+      '@antv/g-base': 0.5.9
+      '@antv/g-math': 0.1.7
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/path-util': 2.0.15
+      '@antv/util': 2.0.17
+      gl-matrix: 3.4.3
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/g-math/0.1.7:
+    resolution: {integrity: sha1-bsJ2kmn3zLZ+WBQNVznfdARswE4=, tarball: '@antv/g-math/download/@antv/g-math-0.1.7.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      gl-matrix: 3.4.3
+    dev: false
+
+  /@antv/g-svg/0.5.6:
+    resolution: {integrity: sha1-cLL6mAxDGzmtPFtLU+NqHWCVfWU=, tarball: '@antv/g-svg/download/@antv/g-svg-0.5.6.tgz'}
+    dependencies:
+      '@antv/g-base': 0.5.9
+      '@antv/g-math': 0.1.7
+      '@antv/util': 2.0.17
+      detect-browser: 5.3.0
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/g2/4.1.34:
+    resolution: {integrity: sha1-aqcaCcJAuSkUvGZvESMQqrwOPhY=, tarball: '@antv/g2/download/@antv/g2-4.1.34.tgz'}
+    dependencies:
+      '@antv/adjust': 0.2.3
+      '@antv/attr': 0.3.2
+      '@antv/color-util': 2.0.6
+      '@antv/component': 0.8.20
+      '@antv/coord': 0.3.1
+      '@antv/dom-util': 2.0.3
+      '@antv/event-emitter': 0.1.2
+      '@antv/g-base': 0.5.9
+      '@antv/g-canvas': 0.5.12
+      '@antv/g-svg': 0.5.6
+      '@antv/matrix-util': 3.1.0-beta.3
+      '@antv/path-util': 2.0.15
+      '@antv/scale': 0.3.14
+      '@antv/util': 2.0.17
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/matrix-util/3.0.4:
+    resolution: {integrity: sha1-6hPxWKovtLovuNa2tWHsRn6jrCA=, tarball: '@antv/matrix-util/download/@antv/matrix-util-3.0.4.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      gl-matrix: 3.4.3
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/matrix-util/3.1.0-beta.3:
+    resolution: {integrity: sha1-4GHej6e+BGBaFVxpzFzpCC7t3e4=, tarball: '@antv/matrix-util/download/@antv/matrix-util-3.1.0-beta.3.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      gl-matrix: 3.4.3
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/path-util/2.0.15:
+    resolution: {integrity: sha1-pvaR38i3vOW+fwqrtb1hSWQyVjE=, tarball: '@antv/path-util/download/@antv/path-util-2.0.15.tgz'}
+    dependencies:
+      '@antv/matrix-util': 3.0.4
+      '@antv/util': 2.0.17
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/scale/0.3.14:
+    resolution: {integrity: sha1-Bxj4ZRNo5cmNtWEgZRMqjIu83kg=, tarball: '@antv/scale/download/@antv/scale-0.3.14.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
+      fecha: 4.2.1
+      tslib: 2.3.1
+    dev: false
+
+  /@antv/util/2.0.17:
+    resolution: {integrity: sha1-6O9CrKeJKBWyKSafPdEMazx1l6k=, tarball: '@antv/util/download/@antv/util-2.0.17.tgz'}
+    dependencies:
+      csstype: 3.0.10
+      tslib: 2.3.1
+    dev: false
 
   /@babel/code-frame/7.12.11:
     resolution: {integrity: sha1-9K1DWqJj25NbjxDyxVLSP7cWpj8=, tarball: '@babel/code-frame/download/@babel/code-frame-7.12.11.tgz'}
@@ -587,6 +763,10 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.0
     dev: true
+
+  /@types/d3-timer/2.0.1:
+    resolution: {integrity: sha1-/7ZiDSkGJPNyaqNiwMiktEyNcgA=, tarball: '@types/d3-timer/download/@types/d3-timer-2.0.1.tgz'}
+    dev: false
 
   /@types/eslint/8.2.1:
     resolution: {integrity: sha512-UP9rzNn/XyGwb5RQ2fok+DzcIRIYwc16qTXse5+Smsy8MOIccCChT15KAwnsgQx4PzJkaMq4myFyZ4CL5TjhIQ==, tarball: '@types/eslint/download/@types/eslint-8.2.1.tgz'}
@@ -1434,7 +1614,24 @@ packages:
 
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==, tarball: csstype/download/csstype-3.0.10.tgz?cache=0&sync_timestamp=1637224867418&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcsstype%2Fdownload%2Fcsstype-3.0.10.tgz}
-    dev: true
+
+  /d3-color/1.4.1:
+    resolution: {integrity: sha1-xSACv4hGraRCTVXZeYL+8m6zvIo=, tarball: d3-color/download/d3-color-1.4.1.tgz}
+    dev: false
+
+  /d3-ease/1.0.7:
+    resolution: {integrity: sha1-moNIkO+LiujFWLL+Vb1X9Zk7heI=, tarball: d3-ease/download/d3-ease-1.0.7.tgz}
+    dev: false
+
+  /d3-interpolate/1.4.0:
+    resolution: {integrity: sha1-Um554tgNqjg/ngwcHH3MDwWD6Yc=, tarball: d3-interpolate/download/d3-interpolate-1.4.0.tgz}
+    dependencies:
+      d3-color: 1.4.1
+    dev: false
+
+  /d3-timer/1.0.10:
+    resolution: {integrity: sha1-3+dripF0iDGxO22ceT/71QjdneU=, tarball: d3-timer/download/d3-timer-1.0.10.tgz}
+    dev: false
 
   /date-fns-tz/1.1.6_date-fns@2.27.0:
     resolution: {integrity: sha1-k8vzVOKuss0xL/oy5GLBlDzyCo4=, tarball: date-fns-tz/download/date-fns-tz-1.1.6.tgz}
@@ -1493,6 +1690,10 @@ packages:
   /delegates/1.0.0:
     resolution: {integrity: sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=, tarball: delegates/download/delegates-1.0.0.tgz}
     dev: true
+
+  /detect-browser/5.3.0:
+    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==, tarball: detect-browser/download/detect-browser-5.3.0.tgz}
+    dev: false
 
   /detect-libc/1.0.3:
     resolution: {integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=, tarball: detect-libc/download/detect-libc-1.0.3.tgz}
@@ -2017,6 +2218,10 @@ packages:
       reusify: 1.0.4
     dev: true
 
+  /fecha/4.2.1:
+    resolution: {integrity: sha1-CoOtj4bvYqCR4iu1oDnNA9I+7M4=, tarball: fecha/download/fecha-4.2.1.tgz}
+    dev: false
+
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha1-IRst2WWcsDlLBz5zI6w8kz1SICc=, tarball: file-entry-cache/download/file-entry-cache-6.0.1.tgz}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2135,6 +2340,10 @@ packages:
     resolution: {integrity: sha1-ngm/cSs2CrkiXoEgSPcf3pyJZXs=, tarball: get-stdin/download/get-stdin-6.0.0.tgz}
     engines: {node: '>=4'}
     dev: true
+
+  /gl-matrix/3.4.3:
+    resolution: {integrity: sha1-/BGR6DIACf1NIOkzlZXGBB3cIsk=, tarball: gl-matrix/download/gl-matrix-3.4.3.tgz}
+    dev: false
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha1-hpgyxYA0/mikCTwX3BXoNA2EAcQ=, tarball: glob-parent/download/glob-parent-5.1.2.tgz}
@@ -3325,11 +3534,9 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=, tarball: tslib/download/tslib-1.14.1.tgz}
-    dev: true
 
   /tslib/2.3.1:
     resolution: {integrity: sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=, tarball: tslib/download/tslib-2.3.1.tgz}
-    dev: true
 
   /tsutils/3.21.0_typescript@4.5.2:
     resolution: {integrity: sha1-tIcX05TOpsHglpg+7Vjp1hcVtiM=, tarball: tsutils/download/tsutils-3.21.0.tgz}

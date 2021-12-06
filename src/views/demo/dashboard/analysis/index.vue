@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
-  import PageWrapper from '@/components/PageWrapper'
-  import { NCard, NSlider, NSpace } from 'naive-ui'
   import { ref } from 'vue'
 
   const value = ref([20, 70])
@@ -15,15 +12,10 @@
 
 <template>
   <PageWrapper>
-    <Icon name="fa:home" size="22px" spin />
-    <Icon name="fa:dashboard" color="red" />
+    <!--    <Icon name="fa:home" size="22px" spin />-->
+    <!--    <Icon name="fa:dashboard" color="red" />-->
     <NCard>
-      <n-space style="height: 300px; justify-content: center">
-        <n-slider :default-value="77" vertical />
-        <n-slider :default-value="20" vertical reverse />
-        <n-slider :default-value="30" vertical disabled />
-        <n-slider v-model:value="value" :marks="marks" vertical range />
-      </n-space>
+      <G2Chart />
     </NCard>
   </PageWrapper>
 </template>

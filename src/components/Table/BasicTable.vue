@@ -15,7 +15,6 @@
   import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
   import useForm from '@/components/Form/composables/useForm'
   import { DEFAULT_TABLE_FETCH } from '@/config'
-  // import { merge } from 'lodash-es'
 
   // @ts-ignore
   export interface TableFetch {
@@ -146,7 +145,7 @@
     <div v-if="proxyProps.openSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
-          <BasicForm ref="searchFormRefEl" :label-width="60" label-placement="left">
+          <BasicForm ref="searchFormRefEl" :label-width="80" label-placement="left">
             <template #formAction>
               <PButton type="primary" :loading="isFetching" @click="handleSearch"> 查询 </PButton>
               <PButton :disabled="isFetching" @click="handleReset">重置</PButton>
@@ -157,9 +156,9 @@
     </div>
     <div class="pear-admin-table" v-bind="wrapperAttrs">
       <div class="pear-admin-table-top">
-        <h2 class="pear-admin-table-top-title">
+        <n-h4 class="pear-admin-table-top-title">
           <slot name="tableTitle"></slot>
-        </h2>
+        </n-h4>
         <TableTools>
           <template #tools>
             <slot name="tools"></slot>
@@ -209,8 +208,7 @@
         border-top-left-radius: var(--border-radius);
 
         &-title {
-          font-size: 16px;
-          font-weight: 500;
+          margin: 0;
         }
       }
     }
