@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AntVG2/G2Chart.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntVG2/composables/useChartG2.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/table/searchTableDemo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AntVG2/composables/useChartG2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntVG2/composables/useChartG2.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

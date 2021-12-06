@@ -3,6 +3,7 @@ import { Chart, View } from '@antv/g2'
 import { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 
 export function useChart(props: ComputedRef<G2ChartProps>) {
+  console.log(props)
   const data = [
     { year: '1951 年', sales: 38 },
     { year: '1952 年', sales: 52 },
