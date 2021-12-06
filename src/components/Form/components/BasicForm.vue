@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import FormItem from './FormItem'
-  import { ref, Slots, useAttrs, watch } from 'vue'
+  import { computed, ref, Slots, useAttrs } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
   import { merge } from 'lodash-es'
   import { NForm } from 'naive-ui'
@@ -53,19 +53,15 @@
     })
   })
 
-  const basicFormProps = ref<BasicFormProps>({})
+  const innerProps = ref<BasicFormProps>({})
 
-  watch(
-    () => props,
-    (pp) => {
-      basicFormProps.value = { ...pp }
-    },
-    { immediate: true, deep: true }
-  )
+  const proxyProps = computed((): BasicFormProps => {
+    return merge({}, props, innerProps.value)
+  })
 
   const attrs = useAttrs()
 
-  const { formModelRef, restFormValue } = useFormModel(basicFormProps)
+  const { formModelRef, methods: useFormMethods } = useFormModel(proxyProps)
 
   const formRefEl = ref<typeof NForm | null>(null)
 
@@ -73,24 +69,24 @@
     getFormValue: (): Recordable => {
       return formModelRef.value
     },
+    setFormProps: (formProps?: BasicFormProps) => {
+      formProps && (innerProps.value = formProps)
+    },
     updFormValue: (updModel: Recordable): void => {
       formModelRef.value = merge(formModelRef.value, updModel)
     },
-    updFormProps: (options: BasicFormProps): void => {
-      merge(basicFormProps.value, options)
-    },
     restoreValidation: () => {
       formRefEl.value?.restoreValidation()
-      restFormValue()
+      useFormMethods.restFormValue()
     }
   })
 </script>
 
 <template>
   <NForm ref="formRefEl" :model="formModelRef" v-bind="attrs">
-    <NGrid v-bind="basicFormProps.gridProps" item-responsive style="justify-content: space-between">
+    <NGrid v-bind="proxyProps.gridProps" item-responsive style="justify-content: space-between">
       <NFormItemGi
-        v-for="schema in basicFormProps.schemas"
+        v-for="schema in proxyProps.schemas"
         :key="schema.model"
         :path="schema.model"
         v-bind="schema?.formItemProps ? schema.formItemProps : {}"

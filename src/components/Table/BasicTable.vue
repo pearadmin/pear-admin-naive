@@ -4,9 +4,8 @@
   }
 </script>
 <script setup lang="ts">
-  // import TableTools from './components/TableTools.vue'
   import { computed, ComputedRef, ref, unref, useAttrs } from 'vue'
-  import { omit, pick } from 'lodash-es'
+  import { merge, omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
@@ -33,14 +32,6 @@
     searchFormProps?: BasicFormProps
   }
 
-  // @ts-ignore
-  // export interface BasicTableEmits {
-  //   (e: 'updTableProps', defaultProps: BasicTableProps): BasicTableProps
-  // }
-
-  // defineEmit
-  // const emit = defineEmits<BasicTableEmits>()
-  //
   const props = withDefaults(defineProps<BasicTableProps>(), {
     fetch: () => {
       return {
@@ -52,19 +43,25 @@
     openSearch: false
   })
 
+  const innerProps = ref<BasicTableProps>({})
+
+  const proxyProps = computed((): BasicTableProps => {
+    return merge({}, props, innerProps.value)
+  })
+
   // 查询表头
   const {
     formRefEl: searchFormRefEl,
     modelValue: searchFormValue,
     methods: formMethods
-  } = useForm(props.searchFormProps)
+  } = useForm(proxyProps.value.searchFormProps)
 
   // 分页
   const { paginationRef, resetPagination } = usePagination()
 
   // 请求
   const { isFetching, fetchRunner, tableData } = useTableFetch(
-    props,
+    proxyProps,
     paginationRef,
     searchFormValue
   )
@@ -129,8 +126,12 @@
     searchFormValue,
     handleReset,
     formMethods,
-    updTableProps: (updProps: BasicTableProps): void => {
-      // merge(proxyProps.value, updProps)
+    setTableProps: (updProps: BasicTableProps): void => {
+      innerProps.value = updProps
+      // 更新表头
+      if (updProps.openSearch) {
+        formMethods.setFormProps(updProps.searchFormProps)
+      }
     }
   })
 </script>
@@ -142,7 +143,7 @@
         <slot name="header"></slot>
       </NCard>
     </div>
-    <div v-if="openSearch" class="pear-admin-table-search">
+    <div v-if="proxyProps.openSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
           <BasicForm ref="searchFormRefEl" :label-width="60" label-placement="left">

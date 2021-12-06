@@ -9,7 +9,7 @@ interface TableExposeType {
   searchFormValue: WritableComputedRef<Recordable>
   handleReset: () => void
   formMethods: UseFormMethods
-  updTableProps: (updProps: Partial<BasicTableProps>) => void
+  setTableProps: (updProps: Partial<BasicTableProps>) => void
 }
 
 /**
@@ -18,10 +18,10 @@ interface TableExposeType {
 export type UseTableOptions = Partial<BasicTableProps>
 
 export function useTable(options: UseTableOptions) {
-  const tableRefEl = ref<Nullable<typeof BasicTable & TableExposeType>>(null)
+  const tableRefEl = ref<Nullable<typeof BasicTable & TableExposeType & HTMLElement>>(null)
 
   onMounted(() => {
-    tableRefEl.value?.updTableProps(options)
+    tableRefEl.value?.setTableProps(options)
   })
 
   return {

@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
-  // import useForm from '@/components/Form/composables/useForm'
   import { FormSchema } from '@/components/Form/components/BasicForm.vue'
-  // import { useTable } from '@/components/Table/composables/useTable'
-  // import { Ref, ref } from 'vue'
+  import { useTable } from '@/components/Table/composables/useTable'
 
   const columns = [
     {
@@ -144,7 +142,8 @@
     schemas,
     gridProps,
     model: {
-      select: 'song2'
+      select: 'song1',
+      input: 'abcdInput'
     }
   }
 
@@ -164,23 +163,16 @@
     }
   }
 
-  // const { tableRefEl } = useTable({
-  //   searchFormProps,
-  //   fetch,
-  //   openSearch: true
-  // })
+  const { tableRefEl } = useTable({
+    searchFormProps,
+    fetch,
+    openSearch: true
+  })
 </script>
 
 <template>
   <PageWrapper>
-    <BasicTable
-      ref="tableRefEl"
-      :columns="columns"
-      virtual-scroll
-      :fetch="fetch"
-      open-search
-      :search-form-props="searchFormProps"
-    >
+    <BasicTable ref="tableRefEl" :columns="columns" virtual-scroll>
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="primary">工具按钮1</NButton>

@@ -1,6 +1,16 @@
 // @ts-ignore
 import type { BasicTableProps } from '@/components/Table/BasicTable.vue'
-import { computed, nextTick, Ref, ref, unref, UnwrapRef, watch, WritableComputedRef } from 'vue'
+import {
+  computed,
+  ComputedRef,
+  nextTick,
+  Ref,
+  ref,
+  unref,
+  UnwrapRef,
+  watch,
+  WritableComputedRef
+} from 'vue'
 import { useApi } from '@/api/http'
 import { PaginationProps } from 'naive-ui'
 import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
@@ -17,7 +27,7 @@ export interface UseTableFetchReturn {
 }
 
 export default function useTableFetch(
-  props: Readonly<BasicTableProps>,
+  props: ComputedRef<BasicTableProps>,
   paginationRef: Ref<PaginationProps>,
   searchFormValue: WritableComputedRef<Recordable>
 ): UseTableFetchReturn {
@@ -38,8 +48,12 @@ export default function useTableFetch(
     }
     let userOptions: Recordable = {}
     // 用户使用beforeFetch改变参数
-    if (props.fetch && props.fetch.beforeFetch && typeof props.fetch.beforeFetch === 'function') {
-      userOptions = props.fetch.beforeFetch(basic) ?? {}
+    if (
+      props.value.fetch &&
+      props.value.fetch.beforeFetch &&
+      typeof props.value.fetch.beforeFetch === 'function'
+    ) {
+      userOptions = props.value.fetch.beforeFetch(basic) ?? {}
     }
     return {
       ...basic,
@@ -47,24 +61,10 @@ export default function useTableFetch(
     }
   })
 
-  // const {
-  //   loading: isFetching,
-  //   executor: fetchRunner,
-  //   finished: fetchFinished,
-  //   data
-  // } = useApi<Recordable>(
-  //   {
-  //     url: props.fetch?.fetchUrl as string,
-  //     method: DEFAULT_TABLE_FETCH.method as FetchMethod,
-  //     [DEFAULT_TABLE_FETCH.bodyType]: fetchOptions
-  //   },
-  //   { immediate: false, redo: false }
-  // )
-
   const fetchComputed = computed(() => {
     const { loading, executor, finished, data } = useApi<Recordable>(
       {
-        url: props.fetch?.fetchUrl as string,
+        url: props.value.fetch?.fetchUrl as string,
         method: DEFAULT_TABLE_FETCH.method as FetchMethod,
         [DEFAULT_TABLE_FETCH.bodyType]: fetchOptions
       },
@@ -93,8 +93,8 @@ export default function useTableFetch(
     (res) => {
       if (res.value) {
         let cacheData = res.value?.[TABLE_FETCH_RESPONSE.list] ?? []
-        if (props.fetch?.afterFetch && typeof props.fetch?.afterFetch === 'function') {
-          cacheData = props.fetch.afterFetch(cacheData) ?? []
+        if (props.value.fetch?.afterFetch && typeof props.value.fetch?.afterFetch === 'function') {
+          cacheData = props.value.fetch.afterFetch(cacheData) ?? []
         }
         tableData.value = cacheData
         // pagination
@@ -110,7 +110,7 @@ export default function useTableFetch(
   // 请求参数改变
   watch(fetchOptions, (n, o) => {
     if (!isEqual(n, o)) {
-      if (props.fetch?.redo && props.fetch?.redo === true) {
+      if (props.value.fetch?.redo && props.value.fetch?.redo === true) {
         unref(fetchRunner)()
       }
     }
@@ -126,7 +126,7 @@ export default function useTableFetch(
     }
   )
 
-  if (props.fetch?.immediate === undefined || props.fetch?.immediate === true) {
+  if (props.value.fetch?.immediate === undefined || props.value.fetch?.immediate === true) {
     // 初次执行在下一个事件中执行，保证fetch options 已经加载完成
     nextTick().then(() => {
       unref(fetchRunner)()

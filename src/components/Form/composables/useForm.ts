@@ -1,9 +1,11 @@
-import { computed, onMounted, Ref, ref, WritableComputedRef } from 'vue'
-import type { BasicFormProps } from '@/components/Form'
+import { computed, nextTick, onMounted, Ref, ref, WritableComputedRef } from 'vue'
+import type { BasicFormProps, FormSchema } from '@/components/Form'
 import BasicForm from '@/components/Form'
 
 export interface UseFormMethods {
-  restoreValidation: () => void
+  restoreValidation: () => Promise<void>
+  setFormProps: (basicFormProps?: BasicFormProps) => Promise<void>
+  setFormSchemas: (schemas?: FormSchema[]) => Promise<void>
 }
 
 export interface ReturnUseForm {
@@ -13,10 +15,10 @@ export interface ReturnUseForm {
 }
 
 export default function useForm(options?: BasicFormProps): ReturnUseForm {
-  const formRefEl = ref<typeof BasicForm | null>(null)
+  const formRefEl = ref<Nullable<typeof BasicForm & UseFormMethods>>(null)
 
   onMounted(() => {
-    options && formRefEl.value?.updFormProps(options)
+    options && formRefEl.value?.setFormProps(options)
     modelValue.value = formRefEl.value?.getFormValue()
   })
 
@@ -30,8 +32,17 @@ export default function useForm(options?: BasicFormProps): ReturnUseForm {
   })
 
   const methods: UseFormMethods = {
-    restoreValidation: (): void => {
-      formRefEl.value.restoreValidation()
+    restoreValidation: async () => {
+      await nextTick()
+      formRefEl.value?.restoreValidation()
+    },
+    setFormProps: async (formProps?: BasicFormProps) => {
+      await nextTick()
+      formRefEl.value?.setFormProps(formProps)
+    },
+    setFormSchemas: async (schemas?: FormSchema[]) => {
+      await nextTick()
+      formRefEl.value?.setFormSchemas(schemas)
     }
   }
 
