@@ -15,6 +15,7 @@
   <div class="pear-admin-table-tools">
     <div class="pear-admin-table-tools-content">
       <NSpace item-style="display:flex">
+        <slot name="tools"></slot>
         <Reload />
         <ResizeHeight />
         <SizeSetting />

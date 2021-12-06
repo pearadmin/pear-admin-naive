@@ -3,7 +3,7 @@
   import { ref, Slots, useAttrs, watch } from 'vue'
   import useFormModel from '@/components/Form/composables/useFormModel'
   import { merge } from 'lodash-es'
-  import { ButtonProps, NForm } from 'naive-ui'
+  import { NForm } from 'naive-ui'
 
   export type ComponentName =
     | 'NInput'
@@ -26,14 +26,6 @@
     wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
 
-  export interface FormActionItem {
-    label?: (() => string) | string
-    handler?: (() => void) | (() => Promise<void>)
-    buttonProps?: ButtonProps
-  }
-
-  export type FormAction = FormActionItem[]
-
   export interface BasicFormProps {
     model?: Recordable
     schemas?: FormSchema[]
@@ -46,13 +38,12 @@
       xGap?: number
       yGap?: number
     }
-    formAction?: FormAction
   }
 
   const props = withDefaults(defineProps<BasicFormProps>(), {
     schemas: () => [],
     gridProps: () => ({
-      cols: 24,
+      cols: 3,
       collapsed: false,
       collapsedRows: 1,
       responsive: 'self',
@@ -97,7 +88,7 @@
 
 <template>
   <NForm ref="formRefEl" :model="formModelRef" v-bind="attrs">
-    <NGrid v-bind="basicFormProps.gridProps">
+    <NGrid v-bind="basicFormProps.gridProps" item-responsive style="justify-content: space-between">
       <NFormItemGi
         v-for="schema in basicFormProps.schemas"
         :key="schema.model"
@@ -106,8 +97,8 @@
       >
         <FormItem :schema="schema" :form-model-ref="formModelRef" />
       </NFormItemGi>
-      <NFormItemGi v-if="$slots.formAction" :span="8">
-        <NSpace>
+      <NFormItemGi v-if="$slots.formAction" suffix style="margin-left: auto">
+        <NSpace justify="end">
           <slot name="formAction"></slot>
         </NSpace>
       </NFormItemGi>

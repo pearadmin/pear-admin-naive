@@ -1,8 +1,9 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
-  import useForm from '@/components/Form/composables/useForm'
+  // import useForm from '@/components/Form/composables/useForm'
   import { FormSchema } from '@/components/Form/components/BasicForm.vue'
-  import { Ref, ref } from 'vue'
+  // import { useTable } from '@/components/Table/composables/useTable'
+  // import { Ref, ref } from 'vue'
 
   const columns = [
     {
@@ -45,16 +46,14 @@
       model: 'input',
       component: 'NInput',
       formItemProps: {
-        label: 'Input',
-        span: 8
+        label: 'Input'
       }
     },
     {
       model: 'select',
       component: 'NSelect',
       formItemProps: {
-        label: 'Select',
-        span: 8
+        label: 'Select'
       },
       componentProps: {
         options: [
@@ -113,8 +112,7 @@
       model: 'dateTime',
       component: 'NDatePicker',
       formItemProps: {
-        label: 'DateTime',
-        span: 8
+        label: 'DateTime'
       },
       componentProps: {
         type: 'datetime',
@@ -127,8 +125,7 @@
       model: 'dateTimeRange',
       component: 'NDatePicker',
       formItemProps: {
-        label: 'DTRange',
-        span: 8
+        label: 'DTRange'
       },
       componentProps: {
         type: 'datetimerange',
@@ -139,16 +136,17 @@
     }
   ]
   const gridProps = {
-    cols: 24,
+    cols: 3,
     xGap: 12
   }
-  const { formRefEl, modelValue, restoreValidation } = useForm({
+
+  const searchFormProps = {
     schemas,
     gridProps,
     model: {
       select: 'song2'
     }
-  })
+  }
 
   const fetch = {
     fetchUrl: TableDemoEnum.getTableRecords,
@@ -157,8 +155,7 @@
     beforeFetch(params) {
       console.log('before fetch => ', params)
       return {
-        ...params,
-        ...modelValue.value
+        ...params
       }
     },
     afterFetch(data) {
@@ -167,43 +164,28 @@
     }
   }
 
-  // todo:: create useTable
-  const tableRefEl = ref<
-    Nullable<
-      HTMLElement &
-        Ref<{
-          resetPagination: Fn
-          fetchExecutor: PromiseFn
-          isFetching: Ref<boolean>
-        }>
-    >
-  >(null)
-
-  function reset() {
-    restoreValidation()
-    tableRefEl.value?.resetPagination()
-    tableRefEl.value?.fetchExecutor()
-  }
-
-  function doSearch() {
-    tableRefEl.value?.fetchExecutor()
-  }
+  // const { tableRefEl } = useTable({
+  //   searchFormProps,
+  //   fetch,
+  //   openSearch: true
+  // })
 </script>
 
 <template>
   <PageWrapper>
-    <BasicTable ref="tableRefEl" :columns="columns" virtual-scroll :fetch="fetch">
-      <template #header>
-        <BasicForm ref="formRefEl" :label-width="60" label-placement="left">
-          <template #formAction>
-            <NButton type="primary" :loading="tableRefEl?.isFetching" @click="doSearch">
-              查询
-            </NButton>
-            <NButton :loading="tableRefEl?.isFetching" @click="reset">重置</NButton>
-          </template>
-        </BasicForm>
-      </template>
+    <BasicTable
+      ref="tableRefEl"
+      :columns="columns"
+      virtual-scroll
+      :fetch="fetch"
+      open-search
+      :search-form-props="searchFormProps"
+    >
       <template #tableTitle> 标准表格 </template>
+      <template #tools>
+        <NButton type="primary">工具按钮1</NButton>
+        <NButton type="error">工具按钮2</NButton>
+      </template>
     </BasicTable>
   </PageWrapper>
 </template>

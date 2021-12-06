@@ -25,7 +25,7 @@
 <template>
   <NButton v-bind="btnProps">
     <template v-for="name in Object.keys($slots)" :key="name" #[name]>
-      <slot :name="name" />
+      <slot :name="name"> </slot>
     </template>
   </NButton>
 </template>

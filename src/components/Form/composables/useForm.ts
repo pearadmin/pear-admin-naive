@@ -2,15 +2,17 @@ import { computed, onMounted, Ref, ref, WritableComputedRef } from 'vue'
 import type { BasicFormProps } from '@/components/Form'
 import BasicForm from '@/components/Form'
 
-export type UseFormOption = BasicFormProps
+export interface UseFormMethods {
+  restoreValidation: () => void
+}
 
 export interface ReturnUseForm {
   formRefEl: Ref<Nullable<typeof BasicForm>>
   modelValue: WritableComputedRef<Recordable>
-  restoreValidation: () => void
+  methods: UseFormMethods
 }
 
-export default function useForm(options?: UseFormOption): ReturnUseForm {
+export default function useForm(options?: BasicFormProps): ReturnUseForm {
   const formRefEl = ref<typeof BasicForm | null>(null)
 
   onMounted(() => {
@@ -27,14 +29,15 @@ export default function useForm(options?: UseFormOption): ReturnUseForm {
     }
   })
 
-  function restoreValidation(): void {
-    // @ts-ignore
-    formRefEl.value.restoreValidation()
+  const methods: UseFormMethods = {
+    restoreValidation: (): void => {
+      formRefEl.value.restoreValidation()
+    }
   }
 
   return {
     formRefEl,
     modelValue,
-    restoreValidation
+    methods
   }
 }

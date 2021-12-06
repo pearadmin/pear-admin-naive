@@ -3,6 +3,7 @@ import { Ref, ref } from 'vue'
 
 export interface UsePagination {
   paginationRef: Ref<PaginationProps>
+  resetPagination: () => void
 }
 
 export default function usePagination(): UsePagination {
@@ -51,7 +52,13 @@ export default function usePagination(): UsePagination {
     // }
   })
 
+  function resetPagination() {
+    paginationRef.value.page = 1
+    paginationRef.value.pageSize = 10
+  }
+
   return {
-    paginationRef
+    paginationRef,
+    resetPagination
   }
 }

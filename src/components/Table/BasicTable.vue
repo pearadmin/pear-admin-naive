@@ -4,19 +4,23 @@
   }
 </script>
 <script setup lang="ts">
-  import TableTools from './components/TableTools.vue'
-  import { computed, ComputedRef, ref, useAttrs } from 'vue'
-  import { merge, omit, pick } from 'lodash-es'
+  // import TableTools from './components/TableTools.vue'
+  import { computed, ComputedRef, ref, unref, useAttrs } from 'vue'
+  import { omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
   import { useColumns } from '@/components/Table/composables/useColumns'
   import { DataTableProps, PaginationProps } from 'naive-ui'
+  import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
+  import useForm from '@/components/Form/composables/useForm'
+  import { DEFAULT_TABLE_FETCH } from '@/config'
+  // import { merge } from 'lodash-es'
 
   // @ts-ignore
   export interface TableFetch {
-    fetchUrl?: string
+    fetchUrl: string
     immediate?: boolean
     redo?: boolean
     beforeFetch?: Fn
@@ -25,35 +29,44 @@
   // @ts-ignore
   export interface BasicTableProps {
     fetch?: TableFetch
+    openSearch?: boolean
+    searchFormProps?: BasicFormProps
   }
 
-  const basicTableProps = withDefaults(defineProps<BasicTableProps>(), {
+  // @ts-ignore
+  // export interface BasicTableEmits {
+  //   (e: 'updTableProps', defaultProps: BasicTableProps): BasicTableProps
+  // }
+
+  // defineEmit
+  // const emit = defineEmits<BasicTableEmits>()
+  //
+  const props = withDefaults(defineProps<BasicTableProps>(), {
     fetch: () => {
       return {
+        fetchUrl: '',
         immediate: true,
         redo: false
       }
-    }
+    },
+    openSearch: false
   })
 
-  // proxy props
-  // const proxyProps = ref<BasicTableProps>({})
-
-  // watch(
-  //   () => basicTableProps,
-  //   (p) => {
-  //     proxyProps.value = merge({}, p)
-  //   },
-  //   { immediate: true, deep: true }
-  // )
+  // 查询表头
+  const {
+    formRefEl: searchFormRefEl,
+    modelValue: searchFormValue,
+    methods: formMethods
+  } = useForm(props.searchFormProps)
 
   // 分页
-  const { paginationRef } = usePagination()
+  const { paginationRef, resetPagination } = usePagination()
 
   // 请求
-  const { isFetching, fetchRunner, tableData, fetchFinished } = useTableFetch(
-    basicTableProps,
-    paginationRef
+  const { isFetching, fetchRunner, tableData } = useTableFetch(
+    props,
+    paginationRef,
+    searchFormValue
   )
 
   // attrs
@@ -98,29 +111,47 @@
     return pick(basicTableAttrs, 'class', 'style')
   })
 
+  // 查询
+  function handleSearch() {
+    unref(fetchRunner)({
+      [DEFAULT_TABLE_FETCH.bodyType]: { ...searchFormValue.value }
+    })
+  }
+
+  // 重置
+  function handleReset() {
+    formMethods.restoreValidation()
+    resetPagination()
+  }
+
   // define expose
   defineExpose({
-    paginationRef,
-    // 某些时候可能需要外层改变分页信息的时候
-    changePagination: (paginationProps: PaginationProps): void => {
-      paginationRef.value = merge(paginationRef, paginationProps)
-    },
-    resetPagination: (): void => {
-      paginationRef.value.page = 1
-      paginationRef.value.pageSize = 10
-    },
-    isFetching,
-    fetchExecutor: fetchRunner,
-    tableData,
-    fetchFinished
+    searchFormValue,
+    handleReset,
+    formMethods,
+    updTableProps: (updProps: BasicTableProps): void => {
+      // merge(proxyProps.value, updProps)
+    }
   })
 </script>
 
 <template>
   <div class="pear-admin-table-wrapper">
-    <div v-if="$slots.header" class="pear-admin-table-search">
+    <div v-if="$slots.header" class="pear-admin-table-header">
       <NCard>
         <slot name="header"></slot>
+      </NCard>
+    </div>
+    <div v-if="openSearch" class="pear-admin-table-search">
+      <NCard>
+        <slot name="search">
+          <BasicForm ref="searchFormRefEl" :label-width="60" label-placement="left">
+            <template #formAction>
+              <PButton type="primary" :loading="isFetching" @click="handleSearch"> 查询 </PButton>
+              <PButton :disabled="isFetching" @click="handleReset">重置</PButton>
+            </template>
+          </BasicForm>
+        </slot>
       </NCard>
     </div>
     <div class="pear-admin-table" v-bind="wrapperAttrs">
@@ -128,7 +159,11 @@
         <h2 class="pear-admin-table-top-title">
           <slot name="tableTitle"></slot>
         </h2>
-        <TableTools />
+        <TableTools>
+          <template #tools>
+            <slot name="tools"></slot>
+          </template>
+        </TableTools>
       </div>
       <NDataTable v-bind="nTableProps" />
     </div>
@@ -144,6 +179,8 @@
   .pear-admin-table-wrapper {
     width: 100%;
     height: auto;
+    .pear-admin-table-header {
+    }
     .pear-admin-table-search {
     }
     .pear-admin-table {

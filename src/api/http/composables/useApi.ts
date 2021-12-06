@@ -2,7 +2,7 @@ import { computed, ComputedRef, Ref, ref, UnwrapRef, watch } from 'vue'
 import { RequestOptionsInit } from 'umi-request'
 import type { MaybeRef } from '@vueuse/core'
 import { get } from '@vueuse/core'
-import { omit } from 'lodash-es'
+import { merge, omit } from 'lodash-es'
 import request from '../fetch'
 
 export type FetchMethod = 'get' | 'post' | 'delete' | 'put' | 'patch' | 'head' | 'options' | 'rpc'
@@ -73,10 +73,7 @@ export function useApi<T extends Recordable>(
         finished.value = false
         data.value = null
         error.value = null
-        const requestOption = {
-          ...fetchOptions.value,
-          ...args
-        }
+        const requestOption = merge({}, fetchOptions.value, args)
         request[method](fetchUrl.value, requestOption)
           .then((response) => {
             data.value = response.data as T
