@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntVG2/G2Chart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntVG2/G2Chart.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntVG2/composables/useInnerChart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntVG2/composables/useInnerChart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntVG2/useChart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntVG2/useChart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/BasicTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/composables/useTable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/composables/useTable.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +91,7 @@
       <workItem from="1638528771723" duration="291000" />
       <workItem from="1638581674833" duration="12181000" />
       <workItem from="1638754518279" duration="18387000" />
-      <workItem from="1638855444763" duration="12614000" />
+      <workItem from="1638855444763" duration="12967000" />
     </task>
     <servers />
   </component>
