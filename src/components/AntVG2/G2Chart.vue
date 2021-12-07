@@ -1,8 +1,14 @@
 <script setup lang="ts">
   import { ChartCfg } from '@antv/g2/lib/interface'
   import { useInnerChart } from '@/components/AntVG2/composables/useInnerChart'
-  import { computed, ref } from 'vue'
+  import { computed, Ref, ref, UnwrapRef } from 'vue'
   import { merge } from 'lodash-es'
+  import { Chart } from '@antv/g2'
+
+  export interface G2ChartExpose {
+    chart: Ref<UnwrapRef<Nullable<Chart>>>
+    updChartProps: (props: Partial<G2ChartProps>) => void
+  }
 
   // @ts-ignore
   export interface G2ChartProps {
@@ -26,7 +32,7 @@
 
   const { chartRefEl, chart } = useInnerChart(proxyProps)
 
-  defineExpose({
+  defineExpose<G2ChartExpose>({
     chart,
     updChartProps: (props: Partial<G2ChartProps>) => {
       merge(innerProps.value, props)

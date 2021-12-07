@@ -1,9 +1,14 @@
-import { ComputedRef, onMounted, onUnmounted, ref, watch } from 'vue'
+import { ComputedRef, onMounted, onUnmounted, Ref, ref, UnwrapRef, watch } from 'vue'
 import { Chart } from '@antv/g2'
 import { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 import { isEmpty, merge } from 'lodash-es'
 
-export function useInnerChart(props: ComputedRef<G2ChartProps>) {
+export interface UseInnerChartReturn {
+  chartRefEl: Ref<UnwrapRef<Nullable<HTMLElement>>>
+  chart: Ref<UnwrapRef<Nullable<Chart>>>
+}
+
+export function useInnerChart(props: ComputedRef<G2ChartProps>): UseInnerChartReturn {
   // chart config
   const initialCfg = ref<G2ChartProps['initialChartConfig']>({})
 
@@ -26,12 +31,6 @@ export function useInnerChart(props: ComputedRef<G2ChartProps>) {
           const width = (cfg?.width as number) ?? chart.value.width
           const height = (cfg?.height as number) ?? chart.value.width
           chart.value?.changeSize(width, height)
-          // chart.value.destroy()
-          // chart.value = new Chart(
-          //   merge({}, initialCfg.value, {
-          //     container: chartRefEl.value as HTMLElement
-          //   })
-          // )
         }
       }
     },

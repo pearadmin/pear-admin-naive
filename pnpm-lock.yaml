@@ -2520,7 +2520,6 @@ packages:
 
   /graceful-fs/4.2.8:
     resolution: {integrity: sha1-5BK40z9eAGWTy9PO5t+fLOu+gCo=, tarball: graceful-fs/download/graceful-fs-4.2.8.tgz}
-    requiresBuild: true
     dev: true
 
   /graphlib/2.1.8:

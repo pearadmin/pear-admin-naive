@@ -16,7 +16,7 @@
   const {
     chartRefEl,
     chartInstance,
-    methods: { getChart, updChartProps }
+    methods: { updChartProps }
   } = useChart({
     loading: loading1.value,
     initialChartConfig: {
@@ -43,7 +43,7 @@
     <NCard title="全球恐怖袭击致死人数趋势分析">
       <template #header-extra>
         <NSpace>
-          <PButton @click="executor1" :loading="loading1">重新加载数据</PButton>
+          <PButton :loading="loading1" @click="executor1">重新加载数据</PButton>
           <PButton @click="chartInstance?.render()">仅图表刷新</PButton>
         </NSpace>
       </template>

@@ -4,7 +4,7 @@
   }
 </script>
 <script setup lang="ts">
-  import { computed, ComputedRef, ref, unref, useAttrs } from 'vue'
+  import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
   import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
@@ -13,7 +13,7 @@
   import { useColumns } from '@/components/Table/composables/useColumns'
   import { DataTableProps, PaginationProps } from 'naive-ui'
   import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
-  import useForm from '@/components/Form/composables/useForm'
+  import useForm, { UseFormMethods } from '@/components/Form/composables/useForm'
   import { DEFAULT_TABLE_FETCH } from '@/config'
 
   // @ts-ignore
@@ -29,6 +29,14 @@
     fetch?: TableFetch
     openSearch?: boolean
     searchFormProps?: BasicFormProps
+  }
+
+  // @ts-ignore
+  export interface BasicTableExpose {
+    searchFormValue: WritableComputedRef<Recordable>
+    handleReset: () => void
+    formMethods: UseFormMethods
+    setTableProps: (updProps: BasicTableProps) => void
   }
 
   const props = withDefaults(defineProps<BasicTableProps>(), {
@@ -121,11 +129,11 @@
   }
 
   // define expose
-  defineExpose({
+  defineExpose<BasicTableExpose>({
     searchFormValue,
     handleReset,
     formMethods,
-    setTableProps: (updProps: BasicTableProps): void => {
+    setTableProps: (updProps: BasicTableProps) => {
       innerProps.value = updProps
       // 更新表头
       if (updProps.openSearch) {
