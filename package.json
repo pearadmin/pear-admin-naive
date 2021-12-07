@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "serve": "vite",
-    "serve:force": "vite --force --debug",
+    "serve:force": "vite --force",
+    "serve:force:debug": "vite --force --debug",
     "dev": "pnpm run serve",
     "build": "rimraf dist && vue-tsc --noEmit && vite build",
     "ts:check": "vue-tsc --noEmit",
