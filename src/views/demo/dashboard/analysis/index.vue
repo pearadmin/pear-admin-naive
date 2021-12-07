@@ -1,21 +1,53 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { useChart } from '@/components/AntVG2/useChart'
+  import { fetchChartLine } from './service'
+  import usePromiseFn from '@/composables/usePromiseFn'
+  import { renderLineChart } from '@/views/demo/dashboard/analysis/renderChart/renderLineChart'
+  import { watch } from 'vue'
+  import { Chart } from '@antv/g2'
 
-  const value = ref([20, 70])
-  const marks = {
-    0: '0°C',
-    20: '20°C',
-    37: '37°C',
-    100: '100°C'
-  }
+  // load data
+  const {
+    data: data1,
+    loading: loading1,
+    executor: executor1
+  } = usePromiseFn(fetchChartLine, {}, { immediate: true, redo: false })
+
+  const {
+    chartRefEl,
+    chartInstance,
+    methods: { getChart, updChartProps }
+  } = useChart({
+    loading: loading1.value,
+    initialChartConfig: {
+      autoFit: true,
+      width: 800,
+      height: 500,
+      syncViewPadding: true
+    }
+  })
+
+  watch(loading1, (loading1) => {
+    updChartProps({
+      loading: loading1
+    })
+  })
+
+  watch(data1, (chart1Data) => {
+    renderLineChart(chartInstance.value as Chart, chart1Data)
+  })
 </script>
 
 <template>
   <PageWrapper>
-    <!--    <Icon name="fa:home" size="22px" spin />-->
-    <!--    <Icon name="fa:dashboard" color="red" />-->
-    <NCard>
-      <G2Chart />
+    <NCard title="全球恐怖袭击致死人数趋势分析">
+      <template #header-extra>
+        <NSpace>
+          <PButton @click="executor1" :loading="loading1">重新加载数据</PButton>
+          <PButton @click="chartInstance?.render()">仅图表刷新</PButton>
+        </NSpace>
+      </template>
+      <G2Chart ref="chartRefEl" />
     </NCard>
   </PageWrapper>
 </template>

@@ -1,14 +1,15 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@antv/data-set': ^0.11.8
   '@antv/g2': ^4.1.34
   '@iconify/iconify': ^2.1.0
-  '@iconify/json': ^1.1.438
+  '@iconify/json': ^1.1.439
   '@nabla/vite-plugin-eslint': ^1.3.5
   '@purge-icons/generated': ^0.7.0
   '@types/lodash': ^4.14.177
   '@types/lodash-es': ^4.17.5
-  '@types/node': ^16.11.11
+  '@types/node': ^16.11.12
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
   '@vitejs/plugin-legacy': ^1.6.3
@@ -25,43 +26,44 @@ specifiers:
   less: ^4.1.2
   lodash-es: ^4.17.21
   mockjs: ^1.1.0
-  naive-ui: ^2.21.4
+  naive-ui: ^2.21.5
   pinia: ^2.0.6
   postcss-windicss: ^1.0.0
   prettier: ^2.5.1
-  qs: ^6.10.1
+  qs: ^6.10.2
   rimraf: ^3.0.2
   typescript: ^4.5.2
   umi-request: ^1.4.0
-  unplugin-vue-components: ^0.17.5
+  unplugin-vue-components: ^0.17.6
   vfonts: ^0.1.0
   vite: ^2.6.14
   vite-plugin-mock: ^2.9.6
   vite-plugin-purge-icons: ^0.7.0
   vite-plugin-windicss: ^1.5.4
-  vue: ^3.2.23
+  vue: ^3.2.24
   vue-router: ^4.0.12
   vue-tsc: ^0.3.0
   windicss: ^3.2.1
 
 dependencies:
+  '@antv/data-set': 0.11.8
   '@antv/g2': 4.1.34
   '@iconify/iconify': 2.1.0
   '@types/lodash': 4.14.177
-  '@vueuse/core': 6.9.2_vue@3.2.23
+  '@vueuse/core': 6.9.2_vue@3.2.24
   mockjs: 1.1.0
-  pinia: 2.0.6_typescript@4.5.2+vue@3.2.23
-  qs: 6.10.1
+  pinia: 2.0.6_typescript@4.5.2+vue@3.2.24
+  qs: 6.10.2
   umi-request: 1.4.0
-  vue: 3.2.23
-  vue-router: 4.0.12_vue@3.2.23
+  vue: 3.2.24
+  vue-router: 4.0.12_vue@3.2.24
 
 devDependencies:
-  '@iconify/json': 1.1.438
+  '@iconify/json': 1.1.439
   '@nabla/vite-plugin-eslint': 1.3.5_eslint@7.32.0+vite@2.6.14
   '@purge-icons/generated': 0.7.0
   '@types/lodash-es': 4.17.5
-  '@types/node': 16.11.11
+  '@types/node': 16.11.12
   '@typescript-eslint/eslint-plugin': 4.33.0_d00b196ac5df1286ea7e45797bebddbc
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.2
   '@vitejs/plugin-legacy': 1.6.3_vite@2.6.14
@@ -76,12 +78,12 @@ devDependencies:
   eslint-plugin-vue: 7.20.0_eslint@7.32.0
   less: 4.1.2
   lodash-es: 4.17.21
-  naive-ui: 2.21.4_vue@3.2.23
+  naive-ui: 2.21.5_vue@3.2.24
   postcss-windicss: 1.0.0
   prettier: 2.5.1
   rimraf: 3.0.2
   typescript: 4.5.2
-  unplugin-vue-components: 0.17.5_vite@2.6.14+vue@3.2.23
+  unplugin-vue-components: 0.17.6_vite@2.6.14+vue@3.2.24
   vfonts: 0.1.0
   vite: 2.6.14_less@4.1.2
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@2.6.14
@@ -144,6 +146,27 @@ packages:
       '@antv/matrix-util': 3.1.0-beta.3
       '@antv/util': 2.0.17
       tslib: 2.3.1
+    dev: false
+
+  /@antv/data-set/0.11.8:
+    resolution: {integrity: sha1-dBPpAGJIY9Wl87RoQf0An8TypP8=, tarball: '@antv/data-set/download/@antv/data-set-0.11.8.tgz'}
+    dependencies:
+      '@antv/hierarchy': 0.6.8
+      '@antv/util': 2.0.17
+      d3-composite-projections: 1.4.0
+      d3-dsv: 1.2.0
+      d3-geo: 1.6.4
+      d3-geo-projection: 2.1.2
+      d3-hexjson: 1.1.1
+      d3-hierarchy: 1.1.9
+      d3-sankey: 0.9.1
+      d3-voronoi: 1.1.4
+      dagre: 0.8.5
+      point-at-length: 1.1.0
+      regression: 2.0.1
+      simple-statistics: 6.1.1
+      topojson-client: 3.1.0
+      wolfy87-eventemitter: 5.2.9
     dev: false
 
   /@antv/dom-util/2.0.3:
@@ -235,6 +258,12 @@ packages:
       '@antv/scale': 0.3.14
       '@antv/util': 2.0.17
       tslib: 2.3.1
+    dev: false
+
+  /@antv/hierarchy/0.6.8:
+    resolution: {integrity: sha1-t3xJCpwt1toYbLrO4OeIe4wbP6Q=, tarball: '@antv/hierarchy/download/@antv/hierarchy-0.6.8.tgz'}
+    dependencies:
+      '@antv/util': 2.0.17
     dev: false
 
   /@antv/matrix-util/3.0.4:
@@ -577,12 +606,12 @@ packages:
       css-render: 0.15.6
     dev: true
 
-  /@css-render/vue3-ssr/0.15.6_vue@3.2.23:
+  /@css-render/vue3-ssr/0.15.6_vue@3.2.24:
     resolution: {integrity: sha1-TtwpS9p+bKIV9sfsniyDhWRQacM=, tarball: '@css-render/vue3-ssr/download/@css-render/vue3-ssr-0.15.6.tgz'}
     peerDependencies:
       vue: ^3.0.11
     dependencies:
-      vue: 3.2.23
+      vue: 3.2.24
     dev: true
 
   /@emmetio/abbreviation/2.2.2:
@@ -648,8 +677,8 @@ packages:
     dependencies:
       cross-fetch: 3.1.4
 
-  /@iconify/json/1.1.438:
-    resolution: {integrity: sha512-kuyJSBJWYtoHYuj5toxr4f5RKLtR6Mpm72WQ3Gu/LeqLEqaCnTTw0WlFB82zrgqjxSyzJnRC5LmVVNT6lsQiFA==, tarball: '@iconify/json/download/@iconify/json-1.1.438.tgz'}
+  /@iconify/json/1.1.439:
+    resolution: {integrity: sha512-iBNLQivpNJbm6uirNmT1UeiZBplA8UrfbNVR+PIIcyv6bMtZMbwPlj90oECBYguLnOd8T31GEADdA9WS8I6wZg==, tarball: '@iconify/json/download/@iconify/json-1.1.439.tgz'}
     dev: true
 
   /@jest/types/27.4.2:
@@ -658,7 +687,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.3
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.11.11
+      '@types/node': 16.11.12
       '@types/yargs': 16.0.4
       chalk: 4.1.2
     dev: true
@@ -831,14 +860,14 @@ packages:
     resolution: {integrity: sha512-0GeIl2kmVMXEnx8tg1SlG6Gg8vkqirrW752KqolYo1PHevhhZN3bhJ67qHj+bQaINhX0Ra3TlWwRvMCd9iEfNQ==, tarball: '@types/node/download/@types/node-14.18.0.tgz'}
     dev: true
 
-  /@types/node/16.11.11:
-    resolution: {integrity: sha512-KB0sixD67CeecHC33MYn+eYARkqTheIRNuu97y2XMjR7Wu3XibO1vaY6VBV6O/a89SPI81cEUIYT87UqUWlZNw==, tarball: '@types/node/download/@types/node-16.11.11.tgz'}
+  /@types/node/16.11.12:
+    resolution: {integrity: sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==, tarball: '@types/node/download/@types/node-16.11.12.tgz'}
     dev: true
 
   /@types/resolve/1.17.1:
     resolution: {integrity: sha1-Ov1q2JZ8d+Q3bFmKgt3Vj0bsRdY=, tarball: '@types/resolve/download/@types/resolve-1.17.1.tgz'}
     dependencies:
-      '@types/node': 16.11.11
+      '@types/node': 16.11.12
     dev: true
 
   /@types/throttle-debounce/2.1.0:
@@ -968,7 +997,7 @@ packages:
       vite: ^2.0.0
     dependencies:
       '@babel/standalone': 7.16.4
-      core-js: 3.19.2
+      core-js: 3.19.3
       magic-string: 0.25.7
       regenerator-runtime: 0.13.9
       systemjs: 6.11.0
@@ -1067,40 +1096,40 @@ packages:
       - supports-color
     dev: true
 
-  /@vue/compiler-core/3.2.23:
-    resolution: {integrity: sha512-4ZhiI/orx+7EJ1B+0zjgvXMV2uRN+XBfG06UN2sJfND9rH5gtEQT3QmO4erum1o6Irl7y754W8/KSaDJh4EUQg==, tarball: '@vue/compiler-core/download/@vue/compiler-core-3.2.23.tgz'}
+  /@vue/compiler-core/3.2.24:
+    resolution: {integrity: sha512-A0SxB2HAggKzP57LDin5gfgWOTwFyGCtQ5MTMNBADnfQYALWnYuC8kMI0DhRSplGTWRvn9Z2DAnG8f35BnojuA==, tarball: '@vue/compiler-core/download/@vue/compiler-core-3.2.24.tgz'}
     dependencies:
       '@babel/parser': 7.16.4
-      '@vue/shared': 3.2.23
+      '@vue/shared': 3.2.24
       estree-walker: 2.0.2
       source-map: 0.6.1
 
-  /@vue/compiler-dom/3.2.23:
-    resolution: {integrity: sha512-X2Nw8QFc5lgoK3kio5ktM95nqmLUH+q+N/PbV4kCHzF1avqv/EGLnAhaaF0Iu4bewNvHJAAhhwPZFeoV/22nbw==, tarball: '@vue/compiler-dom/download/@vue/compiler-dom-3.2.23.tgz'}
+  /@vue/compiler-dom/3.2.24:
+    resolution: {integrity: sha512-KQEm8r0JFsrNNIfbD28pcwMvHpcJcwjVR1XWFcD0yyQ8eREd7IXhT7J6j7iNCSE/TIo78NOvkwbyX+lnIm836w==, tarball: '@vue/compiler-dom/download/@vue/compiler-dom-3.2.24.tgz'}
     dependencies:
-      '@vue/compiler-core': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-core': 3.2.24
+      '@vue/shared': 3.2.24
 
-  /@vue/compiler-sfc/3.2.23:
-    resolution: {integrity: sha512-Aw+pb50Q5zTjyvWod8mNKmYZDRGHJBptmNNWE+84ZxrzEztPgMz8cNYIzWGbwcFVkmJlhvioAMvKnB+LM/sjSA==, tarball: '@vue/compiler-sfc/download/@vue/compiler-sfc-3.2.23.tgz'}
+  /@vue/compiler-sfc/3.2.24:
+    resolution: {integrity: sha512-YGPcIvVJp2qTPkuT6kT43Eo1xjstyY4bmuiSV31my4bQMBFVR26ANmifUSt759Blok71gK0WzfIZHbcOKYOeKA==, tarball: '@vue/compiler-sfc/download/@vue/compiler-sfc-3.2.24.tgz'}
     dependencies:
       '@babel/parser': 7.16.4
-      '@vue/compiler-core': 3.2.23
-      '@vue/compiler-dom': 3.2.23
-      '@vue/compiler-ssr': 3.2.23
-      '@vue/ref-transform': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-core': 3.2.24
+      '@vue/compiler-dom': 3.2.24
+      '@vue/compiler-ssr': 3.2.24
+      '@vue/ref-transform': 3.2.24
+      '@vue/shared': 3.2.24
       estree-walker: 2.0.2
       magic-string: 0.25.7
       postcss: 8.4.4
       source-map: 0.6.1
     dev: false
 
-  /@vue/compiler-ssr/3.2.23:
-    resolution: {integrity: sha512-Bqzn4jFyXPK1Ehqiq7e/czS8n62gtYF1Zfeu0DrR5uv+SBllh7LIvZjZU6+c8qbocAd3/T3I3gn2cZGmnDb6zg==, tarball: '@vue/compiler-ssr/download/@vue/compiler-ssr-3.2.23.tgz'}
+  /@vue/compiler-ssr/3.2.24:
+    resolution: {integrity: sha512-E1HHShNsGVWXxs68LDOUuI+Bzak9W/Ier/366aKDBFuwvfwgruwq6abhMfj6pSDZpwZ/PXnfliyl/m7qBSq6gw==, tarball: '@vue/compiler-ssr/download/@vue/compiler-ssr-3.2.24.tgz'}
     dependencies:
-      '@vue/compiler-dom': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-dom': 3.2.24
+      '@vue/shared': 3.2.24
     dev: false
 
   /@vue/devtools-api/6.0.0-beta.20.1:
@@ -1138,50 +1167,50 @@ packages:
       - supports-color
     dev: true
 
-  /@vue/reactivity/3.2.23:
-    resolution: {integrity: sha512-8RGVr/5Kpgb/EkCjgHXqttgA5IMc6n0lIXFY4TVbMkzdXrvaIhzBd7Te44oIDsTSYVKZLpfHd6/wEnuDqE8vFw==, tarball: '@vue/reactivity/download/@vue/reactivity-3.2.23.tgz'}
+  /@vue/reactivity/3.2.24:
+    resolution: {integrity: sha512-5eVsO9wfQ5erCMSRBjpqLkkI+LglJS7E0oLZJs2gsChpvOjH2Uwt3Hk1nVv0ywStnWg71Ykn3SyQwtnl7PknOQ==, tarball: '@vue/reactivity/download/@vue/reactivity-3.2.24.tgz'}
     dependencies:
-      '@vue/shared': 3.2.23
+      '@vue/shared': 3.2.24
 
-  /@vue/ref-transform/3.2.23:
-    resolution: {integrity: sha512-gW0GD2PSAs/th7mC7tPB/UwpIQxclbApVtsDtscDmOJXb2+cdu60ny+SuHNgfrlUT/JqWKQHq7jFKO4woxLNaA==, tarball: '@vue/ref-transform/download/@vue/ref-transform-3.2.23.tgz'}
+  /@vue/ref-transform/3.2.24:
+    resolution: {integrity: sha512-j6oNbsGLvea2rF8GQB9w6q7UFL1So7J+t6ducaMeWPSyjYZ+slWpwPVK6mmyghg5oGqC41R+HC5BV036Y0KhXQ==, tarball: '@vue/ref-transform/download/@vue/ref-transform-3.2.24.tgz'}
     dependencies:
       '@babel/parser': 7.16.4
-      '@vue/compiler-core': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-core': 3.2.24
+      '@vue/shared': 3.2.24
       estree-walker: 2.0.2
       magic-string: 0.25.7
     dev: false
 
-  /@vue/runtime-core/3.2.23:
-    resolution: {integrity: sha512-wSI5lmY2kCGLf89iiygqxVh6/5bsawz78Me9n1x4U2bHnN0yf3PWyuhN0WgIE8VfEaF7e75E333uboNEIFjgkg==, tarball: '@vue/runtime-core/download/@vue/runtime-core-3.2.23.tgz'}
+  /@vue/runtime-core/3.2.24:
+    resolution: {integrity: sha512-ReI06vGgYuW0G8FlOcAOzMklVDJSxKuRhYzT8j+a8BTfs1945kxo1Th28BPvasyYx8J+LMeZ0HqpPH9yGXvWvg==, tarball: '@vue/runtime-core/download/@vue/runtime-core-3.2.24.tgz'}
     dependencies:
-      '@vue/reactivity': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/reactivity': 3.2.24
+      '@vue/shared': 3.2.24
     dev: false
 
-  /@vue/runtime-dom/3.2.23:
-    resolution: {integrity: sha512-z6lp0888NkLmxD9j2sGoll8Kb7J743s8s6w7GbiyUc4WZwm0KJ35B4qTFDMoIU0G7CatS6Z+yRTpPHc6srtByg==, tarball: '@vue/runtime-dom/download/@vue/runtime-dom-3.2.23.tgz'}
+  /@vue/runtime-dom/3.2.24:
+    resolution: {integrity: sha512-piqsabtIEUKkMGSJlOyKUonZEDtdwOpR6teQ8EKbH8PX9sxfAt9snLnFJldUhhyYrLIyDtnjwajfJ7/XtpD4JA==, tarball: '@vue/runtime-dom/download/@vue/runtime-dom-3.2.24.tgz'}
     dependencies:
-      '@vue/runtime-core': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/runtime-core': 3.2.24
+      '@vue/shared': 3.2.24
       csstype: 2.6.19
     dev: false
 
-  /@vue/server-renderer/3.2.23_vue@3.2.23:
-    resolution: {integrity: sha512-mgQ2VAE5WjeZELJKNbwE69uiBNpN+3LyL0ZDki1bJWVwHD2fhPfx7pwyYuiucE81xz2LxVsyGxhKKUL997g8vw==, tarball: '@vue/server-renderer/download/@vue/server-renderer-3.2.23.tgz'}
+  /@vue/server-renderer/3.2.24_vue@3.2.24:
+    resolution: {integrity: sha512-DqiCRDxTbv67Hw5ImiqnLIQbPGtIwWLLfEcVHoEnu1f21EMTB6LfoS69EQddd8VyfN5kfX3Fmz27/hrFPpRaMQ==, tarball: '@vue/server-renderer/download/@vue/server-renderer-3.2.24.tgz'}
     peerDependencies:
-      vue: 3.2.23
+      vue: 3.2.24
     dependencies:
-      '@vue/compiler-ssr': 3.2.23
-      '@vue/shared': 3.2.23
-      vue: 3.2.23
+      '@vue/compiler-ssr': 3.2.24
+      '@vue/shared': 3.2.24
+      vue: 3.2.24
     dev: false
 
-  /@vue/shared/3.2.23:
-    resolution: {integrity: sha512-U+/Jefa0QfXUF2qVy9Dqlrb6HKJSr9/wJcM66wXmWcTOoqg7hOWzF4qruDle51pyF4x3wMn6TSH54UdjKjCKMA==, tarball: '@vue/shared/download/@vue/shared-3.2.23.tgz'}
+  /@vue/shared/3.2.24:
+    resolution: {integrity: sha512-BUgRiZCkCrqDps5aQ9av05xcge3rn092ztKIh17tHkeEFgP4zfXMQWBA2zfdoCdCEdBL26xtOv+FZYiOp9RUDA==, tarball: '@vue/shared/download/@vue/shared-3.2.24.tgz'}
 
-  /@vueuse/core/6.9.2_vue@3.2.23:
+  /@vueuse/core/6.9.2_vue@3.2.24:
     resolution: {integrity: sha512-FRwl4ccSFuHZBHLGgS9TMv/+Dd6XFaL4o9nph2qtgQIV+z29RBFokw08XjHfykiENRzB01MjYHJ7iRUnsIFQXg==, tarball: '@vueuse/core/download/@vueuse/core-6.9.2.tgz'}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
@@ -1192,12 +1221,12 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@vueuse/shared': 6.9.2_vue@3.2.23
-      vue: 3.2.23
-      vue-demi: 0.12.1_vue@3.2.23
+      '@vueuse/shared': 6.9.2_vue@3.2.24
+      vue: 3.2.24
+      vue-demi: 0.12.1_vue@3.2.24
     dev: false
 
-  /@vueuse/shared/6.9.2_vue@3.2.23:
+  /@vueuse/shared/6.9.2_vue@3.2.24:
     resolution: {integrity: sha512-lAiMh6XROs0kSKVd0Yb/6GKoQMxC1fYrFDi6opvQWISPtcqRNluRrQxLUZ3WTI78ovtoKRLktjhkFAtydcfFDg==, tarball: '@vueuse/shared/download/@vueuse/shared-6.9.2.tgz'}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
@@ -1208,8 +1237,8 @@ packages:
       vue:
         optional: true
     dependencies:
-      vue: 3.2.23
-      vue-demi: 0.12.1_vue@3.2.23
+      vue: 3.2.24
+      vue-demi: 0.12.1_vue@3.2.24
     dev: false
 
   /@windicss/config/1.5.4:
@@ -1253,6 +1282,10 @@ packages:
   /abbrev/1.1.1:
     resolution: {integrity: sha1-+PLIh60Qv2f2NPAFtph/7TF5qsg=, tarball: abbrev/download/abbrev-1.1.1.tgz}
     dev: true
+
+  /abs-svg-path/0.1.1:
+    resolution: {integrity: sha1-32Acjo0roQ1KdtYl4japo5wnI78=, tarball: abs-svg-path/download/abs-svg-path-0.1.1.tgz}
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@7.4.1:
     resolution: {integrity: sha1-ftW7VZCLOy8bxVxq8WU7rafweTc=, tarball: acorn-jsx/download/acorn-jsx-5.3.2.tgz}
@@ -1420,8 +1453,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001284
-      electron-to-chromium: 1.4.11
+      caniuse-lite: 1.0.30001285
+      electron-to-chromium: 1.4.12
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -1454,8 +1487,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001284:
-    resolution: {integrity: sha512-t28SKa7g6kiIQi6NHeOcKrOrGMzCRrXvlasPwWC26TH2QNdglgzQIRUuJ0cR3NeQPH+5jpuveeeSFDLm2zbkEw==, tarball: caniuse-lite/download/caniuse-lite-1.0.30001284.tgz}
+  /caniuse-lite/1.0.30001285:
+    resolution: {integrity: sha512-KAOkuUtcQ901MtmvxfKD+ODHH9YVDYnBt+TGYSz2KIfnq22CiArbUxXPN9067gNbgMlnNYRSwho8OPXZPALB9Q==, tarball: caniuse-lite/download/caniuse-lite-1.0.30001285.tgz}
     dev: true
 
   /canvas/2.8.0:
@@ -1539,6 +1572,10 @@ packages:
     hasBin: true
     dev: true
 
+  /commander/2.20.3:
+    resolution: {integrity: sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=, tarball: commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1634889569010&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz}
+    dev: false
+
   /commander/8.3.0:
     resolution: {integrity: sha1-SDfqGy2me5xhamevuw+v7lZ7ymY=, tarball: commander/download/commander-8.3.0.tgz?cache=0&sync_timestamp=1634889569010&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-8.3.0.tgz}
     engines: {node: '>= 12'}
@@ -1581,8 +1618,8 @@ packages:
       is-what: 3.14.1
     dev: true
 
-  /core-js/3.19.2:
-    resolution: {integrity: sha512-ciYCResnLIATSsXuXnIOH4CbdfgV+H1Ltg16hJFN7/v6OxqnFr/IFGeLacaZ+fHLAm0TBbXwNK9/DNBzBUrO/g==, tarball: core-js/download/core-js-3.19.2.tgz}
+  /core-js/3.19.3:
+    resolution: {integrity: sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==, tarball: core-js/download/core-js-3.19.3.tgz}
     requiresBuild: true
     dev: true
 
@@ -1615,12 +1652,73 @@ packages:
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==, tarball: csstype/download/csstype-3.0.10.tgz?cache=0&sync_timestamp=1637224867418&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcsstype%2Fdownload%2Fcsstype-3.0.10.tgz}
 
+  /d3-array/1.2.4:
+    resolution: {integrity: sha1-Y1zk1e6nWfb2BYY9vPww7cc39x8=, tarball: d3-array/download/d3-array-1.2.4.tgz}
+    dev: false
+
+  /d3-array/2.12.1:
+    resolution: {integrity: sha1-4gtBqvzf/fXVCSgATs7PgVpGXoE=, tarball: d3-array/download/d3-array-2.12.1.tgz}
+    dependencies:
+      internmap: 1.0.1
+    dev: false
+
+  /d3-collection/1.0.7:
+    resolution: {integrity: sha1-NJvSqpl32wcQkcExRNXk8WtbMQ4=, tarball: d3-collection/download/d3-collection-1.0.7.tgz}
+    dev: false
+
   /d3-color/1.4.1:
     resolution: {integrity: sha1-xSACv4hGraRCTVXZeYL+8m6zvIo=, tarball: d3-color/download/d3-color-1.4.1.tgz}
     dev: false
 
+  /d3-composite-projections/1.4.0:
+    resolution: {integrity: sha1-J7GC+mNaWGk0n+kRzgGAuXTRfxI=, tarball: d3-composite-projections/download/d3-composite-projections-1.4.0.tgz}
+    dependencies:
+      d3-geo: 2.0.2
+      d3-path: 2.0.0
+    dev: false
+
+  /d3-dsv/1.2.0:
+    resolution: {integrity: sha1-nV91w6X4q9YR900/WEew1DOLiFw=, tarball: d3-dsv/download/d3-dsv-1.2.0.tgz}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+      iconv-lite: 0.4.24
+      rw: 1.3.3
+    dev: false
+
   /d3-ease/1.0.7:
     resolution: {integrity: sha1-moNIkO+LiujFWLL+Vb1X9Zk7heI=, tarball: d3-ease/download/d3-ease-1.0.7.tgz}
+    dev: false
+
+  /d3-geo-projection/2.1.2:
+    resolution: {integrity: sha1-ffjh6dBG1jHGUJ9+UxNX1K3CSqM=, tarball: d3-geo-projection/download/d3-geo-projection-2.1.2.tgz}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+      d3-array: 1.2.4
+      d3-geo: 1.6.4
+    dev: false
+
+  /d3-geo/1.6.4:
+    resolution: {integrity: sha1-8g4eRhyxhF9ai+Vatvh2VCp+MZk=, tarball: d3-geo/download/d3-geo-1.6.4.tgz}
+    dependencies:
+      d3-array: 1.2.4
+    dev: false
+
+  /d3-geo/2.0.2:
+    resolution: {integrity: sha1-wGXBtx/oxfG+ZX5fQ9m90BA4PEA=, tarball: d3-geo/download/d3-geo-2.0.2.tgz}
+    dependencies:
+      d3-array: 2.12.1
+    dev: false
+
+  /d3-hexjson/1.1.1:
+    resolution: {integrity: sha1-oeJk/5A7sJuPj0vFnHJEepH0YP4=, tarball: d3-hexjson/download/d3-hexjson-1.1.1.tgz}
+    dependencies:
+      d3-array: 1.2.4
+    dev: false
+
+  /d3-hierarchy/1.1.9:
+    resolution: {integrity: sha1-L2vuJMqupD+Nw3VF+gFihVlkeoM=, tarball: d3-hierarchy/download/d3-hierarchy-1.1.9.tgz}
     dev: false
 
   /d3-interpolate/1.4.0:
@@ -1629,8 +1727,41 @@ packages:
       d3-color: 1.4.1
     dev: false
 
+  /d3-path/1.0.9:
+    resolution: {integrity: sha1-SMBQux/owmJJOoyvVSTj6VkXAc8=, tarball: d3-path/download/d3-path-1.0.9.tgz}
+    dev: false
+
+  /d3-path/2.0.0:
+    resolution: {integrity: sha1-VdhqwTGgVIra4kHuv7VrRYLdCdg=, tarball: d3-path/download/d3-path-2.0.0.tgz}
+    dev: false
+
+  /d3-sankey/0.9.1:
+    resolution: {integrity: sha1-uFAUWjKEERY23eyQ39qMZJGb7k4=, tarball: d3-sankey/download/d3-sankey-0.9.1.tgz}
+    dependencies:
+      d3-array: 1.2.4
+      d3-collection: 1.0.7
+      d3-shape: 1.3.7
+    dev: false
+
+  /d3-shape/1.3.7:
+    resolution: {integrity: sha1-32OAG+B7yYa8VPY3ibT+UCmStdc=, tarball: d3-shape/download/d3-shape-1.3.7.tgz}
+    dependencies:
+      d3-path: 1.0.9
+    dev: false
+
   /d3-timer/1.0.10:
     resolution: {integrity: sha1-3+dripF0iDGxO22ceT/71QjdneU=, tarball: d3-timer/download/d3-timer-1.0.10.tgz}
+    dev: false
+
+  /d3-voronoi/1.1.4:
+    resolution: {integrity: sha1-3Tx412U9K7NZKErkeGRdlZRMgpc=, tarball: d3-voronoi/download/d3-voronoi-1.1.4.tgz}
+    dev: false
+
+  /dagre/0.8.5:
+    resolution: {integrity: sha1-ujCwBV2sErbB/MJHgXRCd30Gr+4=, tarball: dagre/download/dagre-0.8.5.tgz}
+    dependencies:
+      graphlib: 2.1.8
+      lodash: 4.17.21
     dev: false
 
   /date-fns-tz/1.1.6_date-fns@2.27.0:
@@ -1755,8 +1886,8 @@ packages:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=, tarball: ee-first/download/ee-first-1.1.1.tgz}
     dev: true
 
-  /electron-to-chromium/1.4.11:
-    resolution: {integrity: sha512-2OhsaYgsWGhWjx2et8kaUcdktPbBGjKM2X0BReUCKcSCPttEY+hz2zie820JLbttU8jwL92+JJysWwkut3wZgA==, tarball: electron-to-chromium/download/electron-to-chromium-1.4.11.tgz}
+  /electron-to-chromium/1.4.12:
+    resolution: {integrity: sha512-zjfhG9Us/hIy8AlQ5OzfbR/C4aBv1Dg/ak4GX35CELYlJ4tDAtoEcQivXvyBdqdNQ+R6PhlgQqV8UNPJmhkJog==, tarball: electron-to-chromium/download/electron-to-chromium-1.4.12.tgz}
     dev: true
 
   /emmet/2.3.4:
@@ -2392,6 +2523,12 @@ packages:
     requiresBuild: true
     dev: true
 
+  /graphlib/2.1.8:
+    resolution: {integrity: sha1-V2HUFHN4cAhMkux7XbywWSydNdo=, tarball: graphlib/download/graphlib-2.1.8.tgz}
+    dependencies:
+      lodash: 4.17.21
+    dev: false
+
   /has-flag/3.0.0:
     resolution: {integrity: sha1-tdRU3CGZriJWmfNGfloH87lVuv0=, tarball: has-flag/download/has-flag-3.0.0.tgz}
     engines: {node: '>=4'}
@@ -2461,8 +2598,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-    dev: true
-    optional: true
 
   /iconv-lite/0.6.3:
     resolution: {integrity: sha1-pS+AvzjaGVLrXGgXkHGYcaGnJQE=, tarball: iconv-lite/download/iconv-lite-0.6.3.tgz}
@@ -2518,6 +2653,10 @@ packages:
   /inherits/2.0.4:
     resolution: {integrity: sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=, tarball: inherits/download/inherits-2.0.4.tgz}
     dev: true
+
+  /internmap/1.0.1:
+    resolution: {integrity: sha1-ABfMijuZYF8DAvKxmNJy4BXl35U=, tarball: internmap/download/internmap-1.0.1.tgz}
+    dev: false
 
   /is-binary-path/2.1.0:
     resolution: {integrity: sha1-6h9/O4DwZCNug0cPhsCcJU+0Wwk=, tarball: is-binary-path/download/is-binary-path-2.1.0.tgz}
@@ -2585,6 +2724,10 @@ packages:
   /is-what/3.14.1:
     resolution: {integrity: sha1-4SIvRt3ahd6tD9HJ3xMXYOd3VcE=, tarball: is-what/download/is-what-3.14.1.tgz}
     dev: true
+
+  /isarray/0.0.1:
+    resolution: {integrity: sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=, tarball: isarray/download/isarray-0.0.1.tgz}
+    dev: false
 
   /isexe/2.0.0:
     resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=, tarball: isexe/download/isexe-2.0.0.tgz}
@@ -2733,7 +2876,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=, tarball: lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1632820929452&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz}
-    dev: true
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha1-bW/mVw69lqr5D8rR2vo7JWbbOpQ=, tarball: lru-cache/download/lru-cache-6.0.0.tgz}
@@ -2835,11 +2977,11 @@ packages:
     dev: false
 
   /ms/2.0.0:
-    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, tarball: ms/download/ms-2.0.0.tgz?cache=0&sync_timestamp=1632883299868&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fms%2Fdownload%2Fms-2.0.0.tgz}
+    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, tarball: ms/download/ms-2.0.0.tgz}
     dev: true
 
   /ms/2.1.2:
-    resolution: {integrity: sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=, tarball: ms/download/ms-2.1.2.tgz?cache=0&sync_timestamp=1632883299868&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fms%2Fdownload%2Fms-2.1.2.tgz}
+    resolution: {integrity: sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=, tarball: ms/download/ms-2.1.2.tgz}
     dev: true
 
   /ms/2.1.3:
@@ -2847,13 +2989,13 @@ packages:
     dev: true
     optional: true
 
-  /naive-ui/2.21.4_vue@3.2.23:
-    resolution: {integrity: sha512-5S2VehwnsSaqI/j06bVynoiQ6ZbW6/rKz/sjioWgyagsAK5k0CbdW8Ij4gTXgqv6YUORQdQcPNmFhqqxQ4D3gQ==, tarball: naive-ui/download/naive-ui-2.21.4.tgz}
+  /naive-ui/2.21.5_vue@3.2.24:
+    resolution: {integrity: sha512-/vgWS4DdV7Ck8LgqAZCAynnLC9AXP9na1G3Uou1OeHYOgy3w07AcffpZVsAQtgYYuU8fRd6ogAABoLX3wZmRFg==, tarball: naive-ui/download/naive-ui-2.21.5.tgz}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
       '@css-render/plugin-bem': 0.15.6
-      '@css-render/vue3-ssr': 0.15.6_vue@3.2.23
+      '@css-render/vue3-ssr': 0.15.6_vue@3.2.24
       '@types/lodash': 4.14.177
       '@types/lodash-es': 4.17.5
       async-validator: 4.0.7
@@ -2866,11 +3008,11 @@ packages:
       lodash-es: 4.17.21
       seemly: 0.3.3
       treemate: 0.3.9
-      vdirs: 0.1.4_vue@3.2.23
+      vdirs: 0.1.4_vue@3.2.24
       vfonts: 0.1.0
-      vooks: 0.2.10_vue@3.2.23
-      vue: 3.2.23
-      vueuc: 0.4.18_89e7ec3258896f4bc2944cafca047175
+      vooks: 0.2.10_vue@3.2.24
+      vue: 3.2.24
+      vueuc: 0.4.18_ebeef33019930c663e0ff484ef997613
     dev: true
 
   /nan/2.15.0:
@@ -2948,8 +3090,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /object-inspect/1.11.0:
-    resolution: {integrity: sha1-nc6xRs7dQUig2eUauI00z1CZIrE=, tarball: object-inspect/download/object-inspect-1.11.0.tgz}
+  /object-inspect/1.11.1:
+    resolution: {integrity: sha512-If7BjFlpkzzBeV1cqgT3OSWT3azyoxDGajR+iGnFBfVV2EWyDyWaZZW2ERDjUaY2QM8i5jI3Sj7mhsM4DDAqWA==, tarball: object-inspect/download/object-inspect-1.11.1.tgz}
     dev: false
 
   /on-finished/2.3.0:
@@ -2988,6 +3130,10 @@ packages:
     resolution: {integrity: sha1-4rXb7eAOf6m8NjYH9TMn6LBzGJs=, tarball: parse-node-version/download/parse-node-version-1.0.1.tgz}
     engines: {node: '>= 0.10'}
     dev: true
+
+  /parse-svg-path/0.1.2:
+    resolution: {integrity: sha1-en7A0esG+lMlx9PgCbhZoJtdSes=, tarball: parse-svg-path/download/parse-svg-path-0.1.2.tgz}
+    dev: false
 
   /parseurl/1.3.3:
     resolution: {integrity: sha1-naGee+6NEt/wUT7Vt2lXeTvC6NQ=, tarball: parseurl/download/parseurl-1.3.3.tgz}
@@ -3031,7 +3177,7 @@ packages:
     dev: true
     optional: true
 
-  /pinia/2.0.6_typescript@4.5.2+vue@3.2.23:
+  /pinia/2.0.6_typescript@4.5.2+vue@3.2.24:
     resolution: {integrity: sha512-01mP4+KapIcTNSYLhQESy6GW0N8vY5wX3UqOwkC87e7DPjEusNJ8bENrKqdvZaRHbB2rDMOONeAbwMa3+n1/rw==, tarball: pinia/download/pinia-2.0.6.tgz}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
@@ -3045,8 +3191,16 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.0.0-beta.20.1
       typescript: 4.5.2
-      vue: 3.2.23
-      vue-demi: 0.12.1_vue@3.2.23
+      vue: 3.2.24
+      vue-demi: 0.12.1_vue@3.2.24
+    dev: false
+
+  /point-at-length/1.1.0:
+    resolution: {integrity: sha1-CtcuvQmA1/WhqxIpbAVfnrazDlc=, tarball: point-at-length/download/point-at-length-1.1.0.tgz}
+    dependencies:
+      abs-svg-path: 0.1.1
+      isarray: 0.0.1
+      parse-svg-path: 0.1.2
     dev: false
 
   /postcss-windicss/1.0.0:
@@ -3211,8 +3365,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /qs/6.10.1:
-    resolution: {integrity: sha1-STFIL6jWR6Wqt5nFJx0hM7mB+2o=, tarball: qs/download/qs-6.10.1.tgz}
+  /qs/6.10.2:
+    resolution: {integrity: sha512-mSIdjzqznWgfd4pMii7sHtaYF8rx8861hBO80SraY5GT0XQibWZWJSid0avzHGkDIZLImux2S5mXO0Hfct2QCw==, tarball: qs/download/qs-6.10.2.tgz}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.4
@@ -3250,6 +3404,10 @@ packages:
     resolution: {integrity: sha1-BCWido2PI7rXDKS5BGH6LxIT4bI=, tarball: regexpp/download/regexpp-3.2.0.tgz}
     engines: {node: '>=8'}
     dev: true
+
+  /regression/2.0.1:
+    resolution: {integrity: sha1-jSnD6CJKEIUMNeM36FqLL6w7DIc=, tarball: regression/download/regression-2.0.1.tgz}
+    dev: false
 
   /request-light/0.5.5:
     resolution: {integrity: sha512-AvjfJuhyT6dYfhtIBF+IpTPQco+Td1QJ6PsIJ5xui110vQ5p9HxHk+m1XJqXazLQT6CxxSx9eNv6R/+fu4bZig==, tarball: request-light/download/request-light-0.5.5.tgz?cache=0&sync_timestamp=1637142161633&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Frequest-light%2Fdownload%2Frequest-light-0.5.5.tgz}
@@ -3311,6 +3469,10 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
     dev: true
+
+  /rw/1.3.3:
+    resolution: {integrity: sha1-P4Yt+pGrdmsUiF700BEkv9oHT7Q=, tarball: rw/download/rw-1.3.3.tgz}
+    dev: false
 
   /safe-buffer/5.1.2:
     resolution: {integrity: sha1-mR7GnSluAxN0fVm9/St0XDX4go0=, tarball: safe-buffer/download/safe-buffer-5.1.2.tgz}
@@ -3374,7 +3536,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
-      object-inspect: 1.11.0
+      object-inspect: 1.11.1
     dev: false
 
   /signal-exit/3.0.6:
@@ -3392,6 +3554,10 @@ packages:
       once: 1.4.0
       simple-concat: 1.0.1
     dev: true
+
+  /simple-statistics/6.1.1:
+    resolution: {integrity: sha1-46B5n/xJkU1vQhxaSsWF9qE+K60=, tarball: simple-statistics/download/simple-statistics-6.1.1.tgz}
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha1-ZTm+hwwWWtvVJAIg2+Nh8bxNRjQ=, tarball: slash/download/slash-3.0.0.tgz}
@@ -3524,6 +3690,13 @@ packages:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=, tarball: token-stream/download/token-stream-1.0.0.tgz}
     dev: true
 
+  /topojson-client/3.1.0:
+    resolution: {integrity: sha1-Iuix7QiiuSL+60r29Ttu8JpGe5k=, tarball: topojson-client/download/topojson-client-3.1.0.tgz}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+    dev: false
+
   /tr46/0.0.3:
     resolution: {integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=, tarball: tr46/download/tr46-0.0.3.tgz}
     dev: true
@@ -3570,7 +3743,7 @@ packages:
     resolution: {integrity: sha1-7Q5U5H8EPSvgbmkUd/CJA4P53Yo=, tarball: umi-request/download/umi-request-1.4.0.tgz}
     dependencies:
       isomorphic-fetch: 2.2.1
-      qs: 6.10.1
+      qs: 6.10.2
     dev: false
 
   /universalify/2.0.0:
@@ -3583,8 +3756,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin-vue-components/0.17.5_vite@2.6.14+vue@3.2.23:
-    resolution: {integrity: sha512-KjvKCMgVtfJypDfRkM90s++ayOjwjpJWmlksnOfX1hASIshdYlJuBqO/DE6YTPG7kAk8+83py50yKBioNj9wAw==, tarball: unplugin-vue-components/download/unplugin-vue-components-0.17.5.tgz}
+  /unplugin-vue-components/0.17.6_vite@2.6.14+vue@3.2.24:
+    resolution: {integrity: sha512-Z2XvwKeY7/++MucRKzJihDsbdL8rFb71VfmuhtMtLE8zurjFu57XKFx0RNFUD5zD4g0HEyR9GGTwXu2YI0rang==, tarball: unplugin-vue-components/download/unplugin-vue-components-0.17.6.tgz}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -3606,7 +3779,7 @@ packages:
       minimatch: 3.0.4
       resolve: 1.20.0
       unplugin: 0.2.21_vite@2.6.14
-      vue: 3.2.23
+      vue: 3.2.24
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3656,14 +3829,14 @@ packages:
     resolution: {integrity: sha1-LeGWGMZtwkfc+2+ZM4A12CRaLO4=, tarball: v8-compile-cache/download/v8-compile-cache-2.3.0.tgz}
     dev: true
 
-  /vdirs/0.1.4_vue@3.2.23:
+  /vdirs/0.1.4_vue@3.2.24:
     resolution: {integrity: sha1-xMD/hs9H/tA95fhp4mUxHvGIq3Q=, tarball: vdirs/download/vdirs-0.1.4.tgz}
     peerDependencies:
       vue: ^3.0.11
     dependencies:
       '@types/node': 14.18.0
       evtd: 0.2.3
-      vue: 3.2.23
+      vue: 3.2.24
     dev: true
 
   /vfonts/0.1.0:
@@ -3751,13 +3924,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /vooks/0.2.10_vue@3.2.23:
+  /vooks/0.2.10_vue@3.2.24:
     resolution: {integrity: sha1-Jlb0wCV1jtl+3EqVhMnMFez/tws=, tarball: vooks/download/vooks-0.2.10.tgz}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
       evtd: 0.2.3
-      vue: 3.2.23
+      vue: 3.2.24
     dev: true
 
   /vscode-css-languageservice/5.1.9:
@@ -3862,9 +4035,9 @@ packages:
       '@volar/source-map': 0.27.24
       '@volar/transforms': 0.27.24
       '@vscode/emmet-helper': 2.8.2
-      '@vue/compiler-dom': 3.2.23
-      '@vue/reactivity': 3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-dom': 3.2.24
+      '@vue/reactivity': 3.2.24
+      '@vue/shared': 3.2.24
       request-light: 0.5.5
       upath: 2.0.1
       vscode-css-languageservice: 5.1.9
@@ -3876,7 +4049,7 @@ packages:
       vscode-typescript-languageservice: 0.27.25
     dev: true
 
-  /vue-demi/0.12.1_vue@3.2.23:
+  /vue-demi/0.12.1_vue@3.2.24:
     resolution: {integrity: sha1-9+GO++z/0RqwadFHLXoG4xm0F0w=, tarball: vue-demi/download/vue-demi-0.12.1.tgz}
     engines: {node: '>=12'}
     hasBin: true
@@ -3888,7 +4061,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.2.23
+      vue: 3.2.24
     dev: false
 
   /vue-eslint-parser/7.11.0_eslint@7.32.0:
@@ -3909,13 +4082,13 @@ packages:
       - supports-color
     dev: true
 
-  /vue-router/4.0.12_vue@3.2.23:
+  /vue-router/4.0.12_vue@3.2.24:
     resolution: {integrity: sha1-jceSzd9bsavMOQj5BkE23n4TxGA=, tarball: vue-router/download/vue-router-4.0.12.tgz}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
       '@vue/devtools-api': 6.0.0-beta.20.1
-      vue: 3.2.23
+      vue: 3.2.24
     dev: false
 
   /vue-tsc/0.3.0_typescript@4.5.2:
@@ -3928,30 +4101,30 @@ packages:
       vscode-vue-languageservice: 0.27.30
     dev: true
 
-  /vue/3.2.23:
-    resolution: {integrity: sha512-MGp9JZC37lzGhwSu6c1tQxrQbXbw7XKFqtYh7SFwNrNK899FPxGAHwSHMZijMChTSC3uZrD2BGO/3EHOgMJ0cw==, tarball: vue/download/vue-3.2.23.tgz}
+  /vue/3.2.24:
+    resolution: {integrity: sha512-PvCklXNfcUMyeP/a9nME27C32IipwUDoS45rDyKn5+RQrWyjL+0JAJtf98HL6y9bfqQRTlYjSowWEB1nXxvG5Q==, tarball: vue/download/vue-3.2.24.tgz}
     dependencies:
-      '@vue/compiler-dom': 3.2.23
-      '@vue/compiler-sfc': 3.2.23
-      '@vue/runtime-dom': 3.2.23
-      '@vue/server-renderer': 3.2.23_vue@3.2.23
-      '@vue/shared': 3.2.23
+      '@vue/compiler-dom': 3.2.24
+      '@vue/compiler-sfc': 3.2.24
+      '@vue/runtime-dom': 3.2.24
+      '@vue/server-renderer': 3.2.24_vue@3.2.24
+      '@vue/shared': 3.2.24
     dev: false
 
-  /vueuc/0.4.18_89e7ec3258896f4bc2944cafca047175:
+  /vueuc/0.4.18_ebeef33019930c663e0ff484ef997613:
     resolution: {integrity: sha512-fHoMFbwfaVs4S3U5tCSu2i4Xm5GZDNw9FuFNjRwCXiLB1S3rYTYuhjUWdX/+38SL5d9ivEkpsvfve/Msp2lwwg==, tarball: vueuc/download/vueuc-0.4.18.tgz}
     peerDependencies:
       '@css-render/vue3-ssr': ^0.15.3
       vue: ^3.0.11
     dependencies:
-      '@css-render/vue3-ssr': 0.15.6_vue@3.2.23
+      '@css-render/vue3-ssr': 0.15.6_vue@3.2.24
       css-render: 0.15.6
       evtd: 0.2.3
       resize-observer-polyfill: 1.5.1
       seemly: 0.3.3
-      vdirs: 0.1.4_vue@3.2.23
-      vooks: 0.2.10_vue@3.2.23
-      vue: 3.2.23
+      vdirs: 0.1.4_vue@3.2.24
+      vooks: 0.2.10_vue@3.2.24
+      vue: 3.2.24
     dev: true
 
   /webidl-conversions/3.0.1:
@@ -4002,6 +4175,10 @@ packages:
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: true
+
+  /wolfy87-eventemitter/5.2.9:
+    resolution: {integrity: sha1-6Hn3cLMPu2USqK+7Mww4hZEJnCo=, tarball: wolfy87-eventemitter/download/wolfy87-eventemitter-5.2.9.tgz}
+    dev: false
 
   /word-wrap/1.2.3:
     resolution: {integrity: sha1-YQY29rH3A4kb00dxzLF/uTtHB5w=, tarball: word-wrap/download/word-wrap-1.2.3.tgz}

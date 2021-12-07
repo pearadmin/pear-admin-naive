@@ -16,6 +16,11 @@ export interface UsePromiseFnReturn<T> {
   executor: () => void
 }
 
+export function usePromiseFn<T>(
+  fn: (...args: any) => Promise<UnwrapRef<T>>,
+  config?: UsePromiseConfig
+)
+
 export default function usePromiseFn<T>(
   fn: (...args: any) => Promise<UnwrapRef<T>>,
   fetchData?: Nullable<MaybeRef<FetchData>>,
