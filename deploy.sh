@@ -1,7 +1,7 @@
 #!/bin/sh
-#pnpm run build &&
+pnpm run build &&
 pwd &&
-#zip -q -r -o dist.zip dist &&
+zip -q -r -o dist.zip dist &&
 scp -i '/Users/jiabinbin/.ssh/root' dist.zip root@115.126.75.120:/www/admin/naive.pearadmin.com_80/ &&
 ssh -i '/Users/jiabinbin/.ssh/root' root@115.126.75.120 'cd /www/admin/naive.pearadmin.com_80/ ; ./deploy.sh' &&
 rm -rf dist.zip &&
