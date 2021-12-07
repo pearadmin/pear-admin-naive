@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e13fe65a-ad74-41d0-8e9b-6c334d8ee444" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/renderChart/renderGameChart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AntVG2/composables/useInnerChart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntVG2/composables/useInnerChart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/renderChart/renderLineChart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/renderChart/renderLineChart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/demo/dashboard/analysis/service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +54,36 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="pnpm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.serve:force">
+  <component name="RunManager" selected="Shell Script.deploy.sh">
+    <configuration name="deploy.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deploy.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="preview:local" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="preview:local" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="serve:force" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -74,6 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Shell Script.deploy.sh" />
+        <item itemvalue="npm.preview:local" />
         <item itemvalue="npm.serve:force" />
         <item itemvalue="npm.ts:check" />
       </list>
@@ -94,6 +128,8 @@
       <workItem from="1638581674833" duration="12181000" />
       <workItem from="1638754518279" duration="18387000" />
       <workItem from="1638855444763" duration="13530000" />
+      <workItem from="1638888461013" duration="615000" />
+      <workItem from="1638889260579" duration="4949000" />
     </task>
     <servers />
   </component>

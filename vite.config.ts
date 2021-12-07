@@ -2,14 +2,13 @@ import { UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import windiCSS from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import legacy from '@vitejs/plugin-legacy'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
-// import eslintPlugin from "@nabla/vite-plugin-eslint"
 import autoComponents from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import purgeIcons from 'vite-plugin-purge-icons'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
+import legacy from '@vitejs/plugin-legacy'
 
 // https://vitejs.dev/config/
 
@@ -18,9 +17,6 @@ function getPlugins(command: string) {
     vue(),
     windiCSS(),
     vueJsx(),
-    legacy({
-      targets: ['defaults', 'not IE 11']
-    }),
     purgeIcons(),
     autoComponents({
       resolvers: [NaiveUiResolver()],
@@ -41,6 +37,9 @@ function getPlugins(command: string) {
           import { setupProdMockServer } from './mock/useMock'
           setupProdMockServer()
         `
+    }),
+    legacy({
+      targets: ['defaults', 'not IE 11']
     })
   ]
 }
