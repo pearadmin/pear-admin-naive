@@ -8,7 +8,7 @@ rm -rf dist.zip &&
 git status &&
 git add . &&
 git status &&
-git commit -m 'wip: workspace' &&
+git commit -m 'feat: useG2Chart & G2Chart demo' &&
 git push origin master &&
 echo 'task finished'
 ##
