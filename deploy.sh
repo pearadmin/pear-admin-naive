@@ -5,10 +5,11 @@ zip -q -r -o dist.zip dist &&
 scp -i '/Users/jiabinbin/.ssh/root' dist.zip root@115.126.75.120:/www/admin/naive.pearadmin.com_80/ &&
 ssh -i '/Users/jiabinbin/.ssh/root' root@115.126.75.120 'cd /www/admin/naive.pearadmin.com_80/ ; ./deploy.sh' &&
 rm -rf dist.zip &&
+rm -rf dist &&
 git status &&
 git add . &&
 git status &&
-git commit -m 'feat: useG2Chart & G2Chart demo' &&
+git commit -m 'feat: routes sort' &&
 git push origin master &&
 echo 'task finished'
 ##

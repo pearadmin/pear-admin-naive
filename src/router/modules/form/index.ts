@@ -25,4 +25,7 @@ const formDemoRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export default formDemoRoutes
+export default {
+  sort: 2,
+  routes: formDemoRoutes
+}

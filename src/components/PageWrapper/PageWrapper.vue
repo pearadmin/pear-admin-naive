@@ -79,8 +79,8 @@
       padding: 8px 8px 0px;
     }
     &-content {
+      @apply p-4;
       background: var(--hover-color);
-      padding: 16px;
     }
   }
 </style>

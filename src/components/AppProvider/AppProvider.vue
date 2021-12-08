@@ -6,8 +6,14 @@
     OuterNotification,
     OuterDialog
   } from '@/components/AppProvider/OuterFeedback'
+  import { useUserStore } from '@/store/modules/userInfo'
 
   const { providerAttrs } = useUiConfig()
+
+  const userStore = useUserStore()
+
+  // reload menu
+  userStore.setUserMenuRoutes()
 </script>
 <template>
   <n-config-provider v-bind="providerAttrs">

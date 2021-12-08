@@ -43,4 +43,7 @@ const systemRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export default systemRoutes
+export default {
+  sort: 6,
+  routes: systemRoutes
+}

@@ -3,7 +3,7 @@
   import { fetchChinaGdp, fetchGameChart } from './service'
   import usePromiseFn from '@/composables/usePromiseFn'
   // import { renderLineChart } from '@/views/demo/dashboard/analysis/renderChart/renderLineChart'
-  import { watch } from 'vue'
+  import { onUnmounted, watch } from 'vue'
   import { Chart } from '@antv/g2'
   import { renderGameChart } from '@/views/demo/dashboard/analysis/renderChart/renderGameChart'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
@@ -70,10 +70,16 @@
   watch(data2, (data2) => {
     renderDynamicChart(chartInstance2.value as Chart, data2)
   })
+
+  onUnmounted(() => {
+    if (window['interval']) {
+      clearInterval(window['interval'])
+    }
+  })
 </script>
 
 <template>
-  <PageWrapper>
+  <div class="p-4">
     <NGrid x-gap="12" :cols="2">
       <NGi>
         <NCard title="任天堂游戏销售趋势">
@@ -98,7 +104,7 @@
         </NCard>
       </NGi>
     </NGrid>
-  </PageWrapper>
+  </div>
 </template>
 
 <style scoped lang="less"></style>

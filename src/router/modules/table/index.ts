@@ -33,4 +33,7 @@ const tableDateRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export default tableDateRoutes
+export default {
+  sort: 3,
+  routes: tableDateRoutes
+}

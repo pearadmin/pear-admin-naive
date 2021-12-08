@@ -2,8 +2,11 @@ import { Chart, registerAnimation } from '@antv/g2'
 
 export function renderDynamicChart(chart: Chart, data: any) {
   chart.clear()
-  if (window['interval']) {
-    clearInterval(window['interval'])
+  clearChartInterval()
+  function clearChartInterval() {
+    if (window['interval']) {
+      clearInterval(window['interval'])
+    }
   }
   registerAnimation('label-appear', (element, animateCfg, cfg) => {
     let label
