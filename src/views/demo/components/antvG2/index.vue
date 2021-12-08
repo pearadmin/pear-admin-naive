@@ -1,13 +1,107 @@
-<script lang="ts">
-  export default {
-    name: 'index'
-  }
+<script setup lang="ts">
+  import { fetchGameChart, fetchChinaGdp } from './service'
+  import { useChart } from '@/components/AntVG2/useChart'
+  import { onUnmounted, watch } from 'vue'
+  import { renderGameChart } from '@/views/demo/components/antvG2/renderGameChart'
+  import { Chart } from '@antv/g2'
+  import usePromiseFn from '@/composables/usePromiseFn'
+  import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
+  // ============= chart 1 =============
+  // load data
+  const {
+    data: data1,
+    loading: loading1,
+    executor: executor1
+  } = usePromiseFn(fetchGameChart, {}, { immediate: true, redo: false })
+
+  const {
+    chartRefEl,
+    chartInstance,
+    methods: { updChartProps }
+  } = useChart({
+    loading: loading1.value,
+    initialChartConfig: {
+      autoFit: true,
+      height: 500,
+      padding: 100,
+      syncViewPadding: true
+    }
+  })
+
+  watch(loading1, (loading1) => {
+    updChartProps({
+      loading: loading1
+    })
+  })
+
+  watch(data1, (chart1Data) => {
+    renderGameChart(chartInstance.value as Chart, chart1Data)
+  })
+
+  // ==================== chart 2 ==============
+  const {
+    data: data2,
+    loading: loading2,
+    executor: executor2
+  } = usePromiseFn(fetchChinaGdp, {}, { immediate: true, redo: false })
+
+  const {
+    chartRefEl: chartRefEl2,
+    chartInstance: chartInstance2,
+    methods: { updChartProps: updChartProps2 }
+  } = useChart({
+    loading: loading2.value,
+    initialChartConfig: {
+      autoFit: true,
+      height: 500,
+      padding: [20, 60]
+    }
+  })
+
+  watch(loading2, (loading2) => {
+    updChartProps2({
+      loading: loading2
+    })
+  })
+
+  watch(data2, (data2) => {
+    renderDynamicChart(chartInstance2.value as Chart, data2)
+  })
+
+  onUnmounted(() => {
+    if (window['interval']) {
+      clearInterval(window['interval'])
+    }
+  })
 </script>
 
-<script setup lang="ts"></script>
-
 <template>
-  <div> </div>
+  <PageWrapper>
+    <NGrid x-gap="12" :cols="2">
+      <NGi>
+        <NCard title="任天堂游戏销售趋势">
+          <template #header-extra>
+            <NSpace>
+              <PButton :loading="loading1" @click="executor1">重新加载数据</PButton>
+              <PButton @click="chartInstance?.render()">仅图表刷新</PButton>
+            </NSpace>
+          </template>
+          <G2Chart ref="chartRefEl" />
+        </NCard>
+      </NGi>
+      <NGi>
+        <NCard title="动态条形图">
+          <template #header-extra>
+            <NSpace>
+              <PButton :loading="loading2" @click="executor2">重新加载数据</PButton>
+              <PButton @click="chartInstance2?.render()">仅图表刷新</PButton>
+            </NSpace>
+          </template>
+          <G2Chart ref="chartRefEl2" />
+        </NCard>
+      </NGi>
+    </NGrid>
+  </PageWrapper>
 </template>
 
 <style scoped lang="less"></style>

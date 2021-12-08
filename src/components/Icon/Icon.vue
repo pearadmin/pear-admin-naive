@@ -15,7 +15,7 @@
   })
 
   const fontSize = computed(() => {
-    return typeof props.size === 'number' ? `${props.size}px` : props.size
+    return `${props.size}px`
   })
 
   const styles = computed(() => {
@@ -65,7 +65,7 @@
 </script>
 
 <template>
-  <span ref="iconRefEl" :class="iconClass" :style="styles" :data-icon="name"></span>
+  <i ref="iconRefEl" :class="iconClass" :style="styles" :data-icon="name"></i>
 </template>
 
 <style scoped lang="less">
@@ -81,13 +81,14 @@
     }
   }
   .pear-icon {
-    // script setup失效？
-    //color: v-bind(color);
-    //font-size: v-bind(fontSize);
-    border-radius: 100%;
-    min-width: 1em;
     min-height: 1em;
-    display: inline-flex;
+    min-width: 1em;
+    line-height: 1em;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    fill: currentColor;
+    transform: translateZ(0);
     transition: 0.3s var(--cubic-bezier-ease-in-out);
     &-spin {
       animation: spin 1s infinite linear;
