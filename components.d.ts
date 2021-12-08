@@ -40,6 +40,7 @@ declare module 'vue' {
     NH4: typeof import('naive-ui')['NH4']
     NIcon: typeof import('naive-ui')['NIcon']
     NInput: typeof import('naive-ui')['NInput']
+    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
     NMenu: typeof import('naive-ui')['NMenu']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']

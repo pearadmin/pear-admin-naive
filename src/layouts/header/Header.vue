@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { NLayoutHeader } from 'naive-ui'
   import Setting from './Setting.vue'
   import UserDropdown from './UserDropdown.vue'
   import FullScreen from './FullScreen.vue'

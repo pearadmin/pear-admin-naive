@@ -1,6 +1,5 @@
 <script setup lang="tsx">
   import Icon from '@/components/Icon'
-  // import { useRouter } from 'vue-router'
 
   const options = [
     {
@@ -18,6 +17,15 @@
       key: 'divider'
     },
     {
+      label: '项目地址',
+      key: 'github',
+      icon: () => <Icon name="mdi:github"></Icon>
+    },
+    {
+      type: 'divider',
+      key: 'divider'
+    },
+    {
       label: '退出登录',
       key: 'logout',
       icon: () => <Icon name="ant-design:logout-outlined"></Icon>
@@ -28,6 +36,9 @@
 
   function handleSelect(key: string) {
     switch (key) {
+      case 'github':
+        window.open('https://gitee.com/pear-admin/pear-admin-naive', '_target')
+        break
       case 'logout':
         sessionStorage.clear()
         window.location.reload()

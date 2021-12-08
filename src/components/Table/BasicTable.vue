@@ -201,7 +201,7 @@
       background: var(--body-color);
       border-radius: var(--border-radius);
       padding: 0 0 5px 0;
-      margin-top: 10px;
+      @apply mt-4;
       &-top {
         width: 100%;
         height: auto;
