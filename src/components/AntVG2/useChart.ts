@@ -3,7 +3,7 @@ import { Chart } from '@antv/g2'
 import { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 import G2Chart from '@/components/AntVG2/G2Chart.vue'
 
-export function useChart(options: G2ChartProps) {
+export function useChart(options: Partial<G2ChartProps>) {
   const chartRefEl = ref<Nullable<HTMLElement & typeof G2Chart>>(null)
   const chartInstance = ref<Nullable<Chart>>(null)
 
@@ -15,9 +15,10 @@ export function useChart(options: G2ChartProps) {
 
   const methods = {
     getChart: async () => {
+      await nextTick()
       return chartInstance.value
     },
-    updChartProps: (props: G2ChartProps) => {
+    updChartProps: (props: Partial<G2ChartProps>) => {
       chartRefEl.value?.updChartProps(props)
     }
   }

@@ -34,4 +34,7 @@ const dashboardRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export default dashboardRoutes
+export default {
+  sort: 1,
+  routes: dashboardRoutes
+}

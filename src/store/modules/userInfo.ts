@@ -33,10 +33,13 @@ const useUserStore = defineStore({
     },
     setUserMenuRoutes() {
       const userRoutes = useStorage<RouteRecordRaw[]>('userRoutes', [], sessionStorage)
-      const routes = Object.keys(menuRoutes).reduce((routes, key) => {
+      const routeModules = Object.keys(menuRoutes).reduce((routes, key) => {
         const module = menuRoutes[key]?.default || {}
-        return [...routes, ...module]
-      }, [] as RouteRecordRaw[])
+        routes.push(module)
+        return routes
+      }, [] as any)
+      routeModules.sort((p, n) => p.sort - n.sort)
+      const routes = routeModules.map((it) => it.routes).flat()
       userRoutes.value = routes
       this.menuRoutes = routes
     }

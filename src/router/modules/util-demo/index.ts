@@ -64,4 +64,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export default utilDemoRoutes
+export default {
+  sort: 5,
+  routes: utilDemoRoutes
+}
