@@ -2,6 +2,7 @@ import { ComputedRef, onMounted, onUnmounted, Ref, ref, UnwrapRef, watch } from 
 import { Chart } from '@antv/g2'
 import { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 import { isEmpty, merge } from 'lodash-es'
+import { useEventListener } from '@vueuse/core'
 
 export interface UseInnerChartReturn {
   chartRefEl: Ref<UnwrapRef<Nullable<HTMLElement>>>
@@ -17,6 +18,17 @@ export function useInnerChart(props: ComputedRef<G2ChartProps>): UseInnerChartRe
 
   // chart instance
   const chart = ref<Nullable<Chart>>(null)
+
+  useEventListener(
+    'resize',
+    () => {
+      if (chart.value) {
+        chart.value.forceFit()
+        chart.value.render()
+      }
+    },
+    { passive: true }
+  )
 
   /**
    * if chart initial config change reBuild chart

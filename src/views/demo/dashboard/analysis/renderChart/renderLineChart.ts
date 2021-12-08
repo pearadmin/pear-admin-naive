@@ -1,4 +1,10 @@
 import { Chart } from '@antv/g2'
+/**
+ * 注意：不要用DataSet 目前DataSet打包后会访问会出现
+ * vue-router.esm-bundler.js:3295 TypeError: Cannot read properties of undefined (reading 'Graph')
+ *     at greedy-fas.js:2
+ * 的错误 : (
+ */
 import DataSet from '@antv/data-set'
 
 export function renderLineChart(chart: Nullable<Chart>, data: any) {
