@@ -11,7 +11,7 @@ export function useRouterViewRefresh() {
     () => {
       showView.value = true
     },
-    16,
+    60,
     { immediate: false }
   )
 
@@ -20,6 +20,7 @@ export function useRouterViewRefresh() {
       start()
     }
   })
+
 
   function refreshRouterView() {
     showView.value = false
@@ -32,8 +33,4 @@ export function useRouterViewRefresh() {
     stop()
   })
 
-  // return {
-  //   showView,
-  //   isPending
-  // }
 }

@@ -7,29 +7,13 @@
 
 <template>
   <n-layout-content :native-scrollbar="false" class="pear-admin-content">
-    <template v-if="showView">
-      <router-view v-slot="{ Component }">
-        <template v-if="Component">
-          <transition name="fade-top">
-            <suspense>
-              <component :is="Component" />
-              <template #fallback>
-                <div class="app-loading">
-                  <NSpin size="large" />
-                  <span class="mt-10"> 页面加载完成了！但是在执行顶层的Await函数 </span>
-                </div>
-              </template>
-            </suspense>
-          </transition>
-        </template>
-      </router-view>
-    </template>
-    <template v-else>
-      <div class="app-loading">
-        <NSpin size="large" />
-        <span class="mt-10"> Page Loading </span>
-      </div>
-    </template>
+    <router-view v-slot="{ Component }">
+      <template v-if="Component">
+        <transition name="fade-top">
+          <component v-if="showView" :is="Component" />
+        </transition>
+      </template>
+    </router-view>
   </n-layout-content>
 </template>
 
