@@ -6,17 +6,7 @@
   <AppProvider>
     <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <transition mode="out-in">
-          <suspense>
-            <component :is="Component" />
-            <template #fallback>
-              <div class="app-loading">
-                <NSpin size="large" />
-                <span class="mt-10">Suspense 加载中...</span>
-              </div>
-            </template>
-          </suspense>
-        </transition>
+        <component :is="Component" />
       </template>
     </router-view>
   </AppProvider>

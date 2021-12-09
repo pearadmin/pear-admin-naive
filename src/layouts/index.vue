@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-  import { NLayout } from 'naive-ui'
   import PearSider from './sider'
   import PearHeader from './header'
   import PearContent from './content'
   import PearFooter from './footer'
   import RouteTabs from './content/RouteTabs.vue'
   import { provide, ref } from 'vue'
+  import { useRouterViewRefresh } from '@/composables/useRouterViewRefresh'
 
   const themeConfig = ref<Recordable>({
     inverted: false
   })
   provide('themeConfig', themeConfig)
+
+  // route refresh
+  useRouterViewRefresh()
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">

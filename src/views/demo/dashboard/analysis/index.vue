@@ -2,7 +2,6 @@
   import { useChart } from '@/components/AntVG2/useChart'
   import { fetchChinaGdp } from './service'
   import usePromiseFn from '@/composables/usePromiseFn'
-  // import { renderLineChart } from '@/views/demo/dashboard/analysis/renderChart/renderLineChart'
   import { onUnmounted, watch } from 'vue'
   import { Chart } from '@antv/g2'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'

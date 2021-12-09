@@ -5,18 +5,21 @@
 </script>
 
 <script setup lang="ts">
-  // import Icon from '@/components/Icon'
   import { useRoute } from 'vue-router'
   import userRouteTabs from './useRouteTab'
+  import { inject } from 'vue'
+  import { handleRefreshInjectKey } from '@/composables/useRouterViewRefresh'
 
   const route = useRoute()
 
   const { tags, handleCloseTag, handleClickTag } = userRouteTabs()
+
+  const handleRefresh = inject(handleRefreshInjectKey)
 </script>
 
 <template>
   <NElement tag="div" class="pear-admin-tabs">
-    <NScrollbar x-scrollable style="width: calc(100% - 50px)">
+    <NScrollbar x-scrollable style="width: calc(100% - 50px)" class="p-2">
       <div class="pear-admin-tabs-left">
         <NTag
           v-for="tag in tags"
@@ -37,7 +40,12 @@
       </div>
     </NScrollbar>
     <div class="pear-admin-tabs-right-menu">
-      <Icon class="pear-admin-tabs-right-menu-icon" name="mdi:refresh" :size="20" />
+      <Icon
+        class="pear-admin-tabs-right-menu-icon"
+        name="mdi:refresh"
+        :size="20"
+        @click="handleRefresh"
+      />
       <Icon
         class="pear-admin-tabs-right-menu-icon"
         name="mdi:arrow-down-drop-circle-outline"
@@ -55,7 +63,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2px;
     background: var(--hover-color);
     &-left {
       //padding: 0 5px;

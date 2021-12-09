@@ -32,7 +32,7 @@
   })
 
   // 顶层await
-  const awaitData = await promiseFn({ tag: true }, 0)
+  const awaitData = await promiseFn({ tag: true }, 1000)
 </script>
 
 <template>
