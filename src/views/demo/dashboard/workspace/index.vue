@@ -1,80 +1,125 @@
 <script setup lang="ts">
-  function handleBack() {
-    alert('back')
-  }
-  const options = [
+  import { isYesterday, addDays } from 'date-fns'
+  const projectList = [
     {
-      label: '催更',
-      key: '1'
+      id: 1,
+      title: '新月曲如眉',
+      desc: '一江离愁泪东去，送别有青山',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg004.jpeg'
     },
     {
-      label: '催更',
-      key: '2'
+      id: 2,
+      title: '未有团圆意',
+      desc: '碧月玲珑照人寰，忆当年，几多悲欢',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg005.png'
     },
     {
-      label: '催更',
-      key: '3'
+      id: 3,
+      desc: '云水深处斜阳影，草木天际黯',
+      title: '红豆不堪看',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg006.jpeg'
+    },
+    {
+      id: 1,
+      title: '满眼相思泪',
+      desc: '孤鸿声断层云里，无处觅乡关',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg007.jpeg'
+    },
+    {
+      id: 1,
+      title: '终日劈桃穰',
+      desc: '干戈事，随惊涛万里',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg008.webp'
+    },
+    {
+      id: 1,
+      title: '仁在心儿里',
+      desc: '日落处，风流云散',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg009.jpeg'
+    },
+    {
+      id: 1,
+      title: '两朵隔墙花',
+      desc: '归去来也，黄粱梦醒',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg003.jpeg'
+    },
+    {
+      id: 1,
+      title: '早晚成连理',
+      desc: '枕边泪阑干。',
+      image: 'https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/background/other/bg002.jpeg'
     }
   ]
 </script>
 
 <template>
-  <PageWrapper title="Emmmmm " subtitle="让你的听觉更懂视觉" @back="handleBack">
+  <PageWrapper :show-default-breadcrumb="false" :show-default-title="false">
     <template #pageHeaderContent>
-      <n-grid :cols="5">
-        <n-gi>
-          <n-statistic label="正片" value="125 集" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="嘉宾" value="22 位" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="道歉" value="36 次" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="话题" value="83 个" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="参考链接" value="2,346 个" />
-        </n-gi>
-      </n-grid>
+      <NCard
+        :bordered="false"
+        content-style="display: flex; flex-direction: row; justify-content: flex-start;align-items: center;"
+      >
+        <div class="flex">
+          <n-avatar round :size="72" src="https://www.yuexiaoya.cn/images/photo.jpg" />
+        </div>
+        <NCard :bordered="false" content-style="padding: 0" class="ml-6 justify-between w-auto">
+          <n-h5 class="m-0">早安！ 落梅听风雪！</n-h5>
+          <n-text>那日少年薄春衫，明月照银簪。</n-text>
+        </NCard>
+        <NSpace class="flex-1 mr-4" :wrap="false" justify="end">
+          <NCard :bordered="false" content-style="padding: 0 40px">
+            <n-statistic label="项目">1/10</n-statistic>
+          </NCard>
+          <NCard :bordered="false" content-style="padding: 0 40px">
+            <n-statistic label="团队">1/1</n-statistic>
+          </NCard>
+          <NCard :bordered="false" content-style="padding: 0 40px">
+            <n-statistic label="待办">3/10</n-statistic>
+          </NCard>
+        </NSpace>
+      </NCard>
     </template>
-    <template #title>
-      <a href="https://anyway.fm/" style="text-decoration: none; color: inherit">Anyway.FM</a>
-    </template>
-    <template #avatar>
-      <n-avatar src="https://cdnimg103.lizhi.fm/user/2017/02/04/2583325032200238082_160x160.jpg" />
-    </template>
-    <template #extra>
-      <n-space>
-        <n-button>催更</n-button>
-        <n-dropdown :options="options" placement="bottom-start">
-          <n-button :bordered="false" style="padding: 0 4px"> ··· </n-button>
-        </n-dropdown>
-      </n-space>
-    </template>
-    <template #footer> 截止到 2021 年 4 月 3 日 </template>
-    <div>
-      Page Content11
-      <hr />
-      <n-grid :cols="5">
-        <n-gi>
-          <n-statistic label="正片" value="125 集" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="嘉宾" value="22 位" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="道歉" value="36 次" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="话题" value="83 个" />
-        </n-gi>
-        <n-gi>
-          <n-statistic label="参考链接" value="2,346 个" />
-        </n-gi>
-      </n-grid>
-    </div>
+    <NGrid :x-gap="6" :cols="2">
+      <NGi>
+        <NCard title="项目">
+          <template #header-extra>
+            <n-a>更多</n-a>
+          </template>
+          <NGrid cols="4">
+            <NGi v-for="it in projectList" :key="it.id">
+              <NCard hoverable content-style="padding: 10px" header-style="padding: 10px">
+                <template #header>
+                  <NGradientText type="info">
+                    {{ it.title }}
+                  </NGradientText>
+                </template>
+                <template #cover>
+                  <img class="object-cover h-40" :src="it.image" />
+                </template>
+                <NText>{{ it.desc }}</NText>
+              </NCard>
+            </NGi>
+          </NGrid>
+        </NCard>
+      </NGi>
+      <NGi>
+        <NCard title="日程">
+          <NCalendar #="{ year, month, date }" :value="addDays(Date.now(), 1).valueOf()">
+            {{ year }}-{{ month }}-{{ date }}
+          </NCalendar>
+        </NCard>
+      </NGi>
+      <NGi class="mt-2">
+        <NCard title="最新动态">
+          <template #header-extra>
+            <n-a>更多</n-a>
+          </template>
+        </NCard>
+      </NGi>
+      <NGi class="mt-2">
+        <NCard title="Hello Word"></NCard>
+      </NGi>
+    </NGrid>
   </PageWrapper>
 </template>
 

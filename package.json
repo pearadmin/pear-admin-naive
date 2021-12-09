@@ -21,6 +21,7 @@
     "@types/lodash": "^4.14.177",
     "@vueuse/components": "^7.1.2",
     "@vueuse/core": "^6.9.2",
+    "date-fns": "^2.27.0",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.6",
     "qs": "^6.10.2",

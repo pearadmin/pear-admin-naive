@@ -20,6 +20,7 @@ specifiers:
   '@vueuse/components': ^7.1.2
   '@vueuse/core': ^6.9.2
   canvas: ^2.8.0
+  date-fns: ^2.27.0
   eslint: ^7.32.0
   eslint-define-config: ^1.2.0
   eslint-plugin-prettier: ^4.0.0
@@ -53,6 +54,7 @@ dependencies:
   '@types/lodash': 4.14.177
   '@vueuse/components': 7.1.2_vue@3.2.24
   '@vueuse/core': 6.9.2_vue@3.2.24
+  date-fns: 2.27.0
   mockjs: 1.1.0
   pinia: 2.0.6_typescript@4.5.2+vue@3.2.24
   qs: 6.10.2
@@ -1819,7 +1821,6 @@ packages:
   /date-fns/2.27.0:
     resolution: {integrity: sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==, tarball: date-fns/download/date-fns-2.27.0.tgz}
     engines: {node: '>=0.11'}
-    dev: true
 
   /debug/2.6.9:
     resolution: {integrity: sha1-XRKFFd8TT/Mn6QpMk/Tgd6U2NB8=, tarball: debug/download/debug-2.6.9.tgz}
