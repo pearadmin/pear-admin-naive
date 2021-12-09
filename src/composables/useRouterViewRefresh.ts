@@ -11,7 +11,7 @@ export function useRouterViewRefresh() {
     () => {
       showView.value = true
     },
-    1000,
+    16,
     { immediate: false }
   )
 

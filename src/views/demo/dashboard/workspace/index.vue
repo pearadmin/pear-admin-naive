@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { isYesterday, addDays } from 'date-fns'
+  import { addDays } from 'date-fns'
   const projectList = [
     {
       id: 1,

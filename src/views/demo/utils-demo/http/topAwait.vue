@@ -32,7 +32,7 @@
   })
 
   // 顶层await
-  const awaitData = await promiseFn({ tag: true }, 1000)
+  const awaitData = await promiseFn({ tag: true }, 1000).catch((e) => console.log(e))
 </script>
 
 <template>

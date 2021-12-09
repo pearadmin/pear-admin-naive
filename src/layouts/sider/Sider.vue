@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { NLayoutSider } from 'naive-ui'
   import PearMenu from '../menu'
   import AppLogo from './AppLogo.vue'
   import { inject, ref } from 'vue'
