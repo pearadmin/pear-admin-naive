@@ -53,7 +53,11 @@
 </script>
 
 <template>
-  <PageWrapper :show-default-breadcrumb="false" :show-default-title="false">
+  <PageWrapper
+    :show-default-breadcrumb="false"
+    :show-default-title="false"
+    only-page-header-content
+  >
     <template #pageHeaderContent>
       <NCard
         :bordered="false"

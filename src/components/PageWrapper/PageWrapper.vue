@@ -18,11 +18,14 @@
     'on-back'?: string
     showDefaultBreadcrumb?: boolean
     showDefaultTitle?: boolean
+    /* 等NAIVE UI 修复该问题后去掉 @see https://github.com/TuSimple/naive-ui/issues/1795 */
+    onlyPageHeaderContent?: boolean
   }
 
   const props = withDefaults(defineProps<PageWrapperProps>(), {
     showDefaultBreadcrumb: true,
-    showDefaultTitle: true
+    showDefaultTitle: true,
+    onlyPageHeaderContent: false
   })
 
   const pageHeaderProps = computed(() => {
@@ -43,17 +46,9 @@
     return ['pear-admin-page-wrapper', attrs.class ?? {}]
   })
 
-  // hack: fix .n-page-header default margin-top: 20px
-  const onlyContent = computed(() => {
-    return (
-      Object.keys(pageHeaderSlots).length === 1 &&
-      !!Reflect.get(pageHeaderSlots, 'pageHeaderContent')
-    )
-  })
-
   // deep content style
   const nPageHeaderContentMarginTop = computed(() => {
-    return onlyContent.value ? '0' : '20px'
+    return props.onlyPageHeaderContent ? '0' : '20px'
   })
 
   // content class
@@ -67,7 +62,7 @@
   const pageHeaderClass = computed(() => {
     return {
       'pear-admin-page-wrapper-header': true,
-      'pear-admin-page-wrapper-header-no__padding': onlyContent.value
+      'pear-admin-page-wrapper-header-no__padding': props.onlyPageHeaderContent
     }
   })
 
@@ -98,9 +93,11 @@
         <slot name="pageHeaderContent"></slot>
       </template>
     </NPageHeader>
-    <NElement tag="div" :class="pageContentClass">
-      <slot name="default"></slot>
-    </NElement>
+    <NScrollbar>
+      <NElement tag="div" :class="pageContentClass">
+        <slot name="default"></slot>
+      </NElement>
+    </NScrollbar>
   </div>
 </template>
 
