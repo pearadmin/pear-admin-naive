@@ -1,13 +1,11 @@
-<script setup lang="ts">
-  import { NLayoutFooter } from 'naive-ui'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <n-layout-footer class="pear-admin-footer">
+  <NLayoutFooter class="pear-admin-footer">
     <div>©{{ new Date().getFullYear() }} 落小梅</div>
     &nbsp;&nbsp;&nbsp;
     <div> 赞助: <a href="https://cmy.cn" target="_blank">茶猫云</a> </div>
-  </n-layout-footer>
+  </NLayoutFooter>
 </template>
 
 <style scoped lang="less">
