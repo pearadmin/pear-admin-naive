@@ -117,7 +117,7 @@
         </NCard>
       </NGi>
       <NGi class="mt-2">
-        <NCard title="Hello Word"></NCard>
+        <NCard title="Hello Word" />
       </NGi>
     </NGrid>
   </PageWrapper>

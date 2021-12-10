@@ -20,7 +20,7 @@
     <n-layout embedded has-sider>
       <PearSider />
       <n-layout embedded class="pear-admin-layout-wrapper-layout">
-        <PearHeader />
+        <PearHeader class="mt-1" />
         <RouteTabs />
         <PearContent />
         <PearFooter />

@@ -21,7 +21,6 @@ export function useRouterViewRefresh() {
     }
   })
 
-
   function refreshRouterView() {
     showView.value = false
   }
@@ -32,5 +31,4 @@ export function useRouterViewRefresh() {
   onUnmounted(() => {
     stop()
   })
-
 }
