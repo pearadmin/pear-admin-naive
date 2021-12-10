@@ -8,7 +8,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       title: '工具案例',
-      icon: 'entypo:tools'
+      icon: 'ri:tools-line'
     },
     redirect: '/utils/http',
     children: [
@@ -18,7 +18,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
         component: getParentComponent('parentHttp'),
         meta: {
           title: '请求工具',
-          icon: 'simple-icons:farfetch'
+          icon: 'ic:baseline-http'
         },
         redirect: '/utils/http/topAwait',
         children: [
@@ -47,7 +47,7 @@ const utilDemoRoutes: RouteRecordRaw[] = [
         redirect: '/utils/composable/usePromiseFn',
         meta: {
           title: 'Composable',
-          icon: 'logos:webhooks'
+          icon: 'ic:baseline-webhook'
         },
         children: [
           {
