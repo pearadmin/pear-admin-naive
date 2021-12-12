@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <div class="p-4">
+  <PageWrapper only-content>
     <NGrid x-gap="12" :cols="4">
       <NGi>
         <NCard>
@@ -207,7 +207,7 @@
         </NCard>
       </NGi>
     </NGrid>
-  </div>
+  </PageWrapper>
 </template>
 
 <style scoped lang="less"></style>

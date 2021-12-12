@@ -18,11 +18,16 @@
     'on-back'?: string
     showDefaultBreadcrumb?: boolean
     showDefaultTitle?: boolean
+    /**
+     * 只有内容
+     */
+    onlyContent?: boolean
     /* 等NAIVE UI 修复该问题后去掉 @see https://github.com/TuSimple/naive-ui/issues/1795 */
     onlyPageHeaderContent?: boolean
   }
 
   const props = withDefaults(defineProps<PageWrapperProps>(), {
+    onlyContent: false,
     showDefaultBreadcrumb: true,
     showDefaultTitle: true,
     onlyPageHeaderContent: false
@@ -54,7 +59,8 @@
   // content class
   const pageContentClass = computed(() => {
     return {
-      'pear-admin-page-wrapper-content': true
+      'pear-admin-page-wrapper-content': true,
+      'pear-admin-page-wrapper-content-only': props.onlyContent
     }
   })
 
@@ -71,19 +77,19 @@
 
 <template>
   <div :class="pageWrapperClass">
-    <NPageHeader v-bind="pageHeaderProps" :class="pageHeaderClass">
+    <NPageHeader v-if="!props.onlyContent" v-bind="pageHeaderProps" :class="pageHeaderClass">
       <template v-for="slot in Object.keys(pageHeaderSlots)" :key="slot" #[slot]>
         <slot :name="slot"></slot>
       </template>
       <!-- default is => parentMenuTitle/currentMenuTitle -->
-      <template v-if="showDefaultBreadcrumb" #header>
+      <template v-if="props.showDefaultBreadcrumb" #header>
         <slot name="header">
           <Breadcrumb />
         </slot>
       </template>
 
       <!-- default is => currentMenuTitle -->
-      <template v-if="showDefaultTitle" #title>
+      <template v-if="props.showDefaultTitle" #title>
         <slot name="title">
           {{ route.meta.title }}
         </slot>
@@ -118,6 +124,9 @@
     &-content {
       @apply p-4;
       background: var(--hover-color);
+      &-only {
+        @apply pt-0;
+      }
     }
   }
 </style>
