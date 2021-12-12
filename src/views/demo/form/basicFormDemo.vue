@@ -8,16 +8,14 @@
       model: 'input',
       component: 'NInput',
       formItemProps: {
-        label: 'Input',
-        span: 8
+        label: 'Input'
       }
     },
     {
       model: 'select',
       component: 'NSelect',
       formItemProps: {
-        label: 'Select',
-        span: 8
+        label: 'Select'
       },
       componentProps: {
         options: [
@@ -76,8 +74,7 @@
       model: 'dateTime',
       component: 'NDatePicker',
       formItemProps: {
-        label: 'DateTime',
-        span: 8
+        label: 'DateTime'
       },
       componentProps: {
         type: 'datetime',
@@ -90,8 +87,7 @@
       model: 'dateTimeRange',
       component: 'NDatePicker',
       formItemProps: {
-        label: 'DTRange',
-        span: 8
+        label: 'DTRange'
       },
       componentProps: {
         type: 'datetimerange',
@@ -103,8 +99,8 @@
   ]
 
   const gridProps = {
-    cols: 24,
-    xGap: 12
+    cols: 1,
+    xGap: 6
   }
 
   const { formRefEl, modelValue } = useForm({
@@ -126,7 +122,7 @@
 <template>
   <PageWrapper>
     <NCard>
-      <BasicForm ref="formRefEl" :label-width="60" label-placement="left" />
+      <BasicForm ref="formRefEl" :label-width="80" label-placement="left" />
       <NSpace>
         <NButton type="primary" @click="getFormModel"> 获取model </NButton>
         <NButton type="primary" @click="updFormValue"> 改变值 </NButton>

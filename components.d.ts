@@ -10,6 +10,8 @@ declare module 'vue' {
     Breadcrumb: typeof import('./src/components/PageWrapper/Breadcrumb/Breadcrumb.vue')['default']
     Button: typeof import('./src/components/Button/Button.vue')['default']
     ColumnSetting: typeof import('./src/components/Table/components/ColumnSetting.vue')['default']
+    Error403: typeof import('./src/components/Error/Error403.vue')['default']
+    Error404: typeof import('./src/components/Error/Error404.vue')['default']
     G2Chart: typeof import('./src/components/AntVG2/G2Chart.vue')['default']
     Icon: typeof import('./src/components/Icon/Icon.vue')['default']
     NA: typeof import('naive-ui')['NA']

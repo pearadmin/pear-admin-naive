@@ -6,7 +6,7 @@
 
 <template>
   <div class="pear-admin-app-logo">
-    <img src="@/assets/logo.png" alt="logo" />
+    <img v-if="!showTitle" src="@/assets/logo.png" alt="logo" />
     <span v-if="showTitle" class="pear-admin-app-logo-title">Pear Admin Naive</span>
   </div>
 </template>

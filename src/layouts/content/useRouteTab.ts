@@ -1,6 +1,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { computed, ComputedRef, watch } from 'vue'
 import { RouteTag, useAppStore } from '@/store/modules/app'
+import { ErrorPageNames } from '@/router/modules/errors'
 
 export interface ReturnUseRouteTab {
   tags: ComputedRef<RouteTag[]>
@@ -17,12 +18,15 @@ export default function useRouteTab(): ReturnUseRouteTab {
   watch(
     () => route.path,
     () => {
-      appStore.addTag({
-        path: route.path,
-        fullPath: route.fullPath,
-        name: route.name as string,
-        title: route.meta.title
-      })
+      const { name } = route
+      if (!ErrorPageNames.includes(name as string)) {
+        appStore.addTag({
+          path: route.path,
+          fullPath: route.fullPath,
+          name: route.name as string,
+          title: route.meta.title
+        })
+      }
     },
     { immediate: true }
   )
