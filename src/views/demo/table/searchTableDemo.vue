@@ -134,7 +134,8 @@
     }
   ]
   const gridProps = {
-    cols: 3,
+    responsive: 'screen',
+    cols: '1 s:2 m:3 l:3 xl:3 xxl:3',
     xGap: 24
   }
 

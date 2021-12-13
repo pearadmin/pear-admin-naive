@@ -61,35 +61,47 @@
     <template #pageHeaderContent>
       <NCard
         :bordered="false"
-        content-style="display: flex; flex-direction: row; justify-content: flex-start;align-items: center;"
+        content-style="display: flex; flex-direction: row; justify-content: flex-start;align-items: center;padding: 1px 8px"
       >
-        <div class="flex">
-          <n-avatar round :size="72" src="https://www.yuexiaoya.cn/images/photo.jpg" />
-        </div>
-        <NCard :bordered="false" content-style="padding: 0" class="ml-6 justify-between w-auto">
-          <n-h5 class="m-0">早安！ 落梅听风雪！</n-h5>
-          <n-text>那日少年薄春衫，明月照银簪。</n-text>
-        </NCard>
-        <NSpace class="flex-1 mr-4" :wrap="false" justify="end">
-          <NCard :bordered="false" content-style="padding: 0 40px">
-            <n-statistic label="项目">1/10</n-statistic>
-          </NCard>
-          <NCard :bordered="false" content-style="padding: 0 40px">
-            <n-statistic label="团队">1/1</n-statistic>
-          </NCard>
-          <NCard :bordered="false" content-style="padding: 0 40px">
-            <n-statistic label="待办">3/10</n-statistic>
-          </NCard>
-        </NSpace>
+        <NGrid item-responsive responsive="screen">
+          <NGi span="24 s:12 m:10 l:10" class="flex flex-row justify-start items-center">
+            <div>
+              <n-avatar round :size="72" src="https://www.yuexiaoya.cn/images/photo.jpg" />
+            </div>
+            <div>
+              <NCard
+                :bordered="false"
+                content-style="padding: 0"
+                class="ml-6 justify-between w-auto"
+              >
+                <n-h5 class="m-0">早安！ 落梅听风雪！</n-h5>
+                <n-text>那日少年薄春衫，明月照银簪。</n-text>
+              </NCard>
+            </div>
+          </NGi>
+          <NGi span="24 s:12 m:14 l:14">
+            <NSpace :wrap="false" justify="end">
+              <NCard :bordered="false">
+                <n-statistic label="项目">1/10</n-statistic>
+              </NCard>
+              <NCard :bordered="false">
+                <n-statistic label="团队">1/1</n-statistic>
+              </NCard>
+              <NCard :bordered="false">
+                <n-statistic label="待办">3/10</n-statistic>
+              </NCard>
+            </NSpace>
+          </NGi>
+        </NGrid>
       </NCard>
     </template>
-    <NGrid :x-gap="6" :cols="2">
+    <NGrid :x-gap="6" cols="1 s:1 m:1 l:1 xl:2 2xl:2" responsive="screen">
       <NGi>
         <NCard title="项目">
           <template #header-extra>
             <n-a>更多</n-a>
           </template>
-          <NGrid cols="4">
+          <NGrid cols="1 s:2 m:4 l:4 xl:4 2xl:4" responsive="screen">
             <NGi v-for="it in projectList" :key="it.id">
               <NCard hoverable content-style="padding: 10px" header-style="padding: 10px">
                 <template #header>

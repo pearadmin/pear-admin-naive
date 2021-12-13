@@ -15,24 +15,20 @@ export function createLayoutContext() {
   const { device } = useBreakPoint()
 
   const config = ref<LayoutConfig>({
-    collapsed: device.width < BREAK_POINT_SIZE.md,
-    isMobile: device.width < BREAK_POINT_SIZE.md
+    collapsed: device.width < BREAK_POINT_SIZE.lg,
+    isMobile: device.width < BREAK_POINT_SIZE.lg
   })
 
   watch(
     () => device.width,
     (w) => {
       config.value = {
-        collapsed: w < BREAK_POINT_SIZE.md,
-        isMobile: w < BREAK_POINT_SIZE.md
+        collapsed: w < BREAK_POINT_SIZE.lg,
+        isMobile: w < BREAK_POINT_SIZE.lg,
       }
     },
     { immediate: true }
   )
-
-  watch(config, (cfg) => {
-    console.log(cfg)
-  })
 
   function updConfig(upd: Partial<LayoutConfig>) {
     merge(config.value, upd)

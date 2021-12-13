@@ -46,7 +46,7 @@
 
 <template>
   <PageWrapper only-content>
-    <NGrid x-gap="12" :cols="4">
+    <NGrid x-gap="12" cols="1 s:2 m:4 l:4 xl:4 2xl:4" responsive="screen">
       <NGi>
         <NCard>
           <NStatistic label="统计数据" :value="99">
@@ -88,7 +88,7 @@
         </NCard>
       </NGi>
     </NGrid>
-    <NGrid x-gap="12" :cols="8" class="mt-4">
+    <NGrid x-gap="12" cols="1 s:2 m:4 l:8 xl:8 2xl:8" responsive="screen" class="mt-4">
       <NGi>
         <NCard
           :content-style="{
