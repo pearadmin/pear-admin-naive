@@ -1,5 +1,7 @@
 <script setup lang="tsx">
   import Icon from '@/components/Icon'
+  import { useLayoutContext } from '@/layouts/useLayoutContext'
+  import { computed } from 'vue'
 
   const options = [
     {
@@ -32,6 +34,12 @@
     }
   ]
 
+  const { layoutConfig } = useLayoutContext()
+
+  const isMobile = computed(() => {
+    return layoutConfig.value.isMobile
+  })
+
   // const router = useRouter()
 
   function handleSelect(key: string) {
@@ -56,7 +64,7 @@
         object-fit="cover"
         src="https://www.yuexiaoya.cn/images/photo.jpg"
       />
-      <span class="ml-2">落梅听风雪</span>
+      <span v-if="!isMobile" class="ml-2">落梅听风雪</span>
     </NElement>
   </n-dropdown>
 </template>
