@@ -133,7 +133,7 @@
     searchFormValue,
     handleReset,
     formMethods,
-    setTableProps: (updProps: BasicTableProps) => {
+    setTableProps: (updProps: Partial<BasicTableProps>) => {
       innerProps.value = updProps
       // 更新表头
       if (updProps.openSearch) {

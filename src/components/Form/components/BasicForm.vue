@@ -30,11 +30,10 @@
     model?: Recordable
     schemas?: FormSchema[]
     gridProps?: {
-      /* string is ResponsiveDescription*/
       cols?: number | string
       collapsed?: boolean
       collapsedRows?: number
-      responsive?: 'self' | 'screen'
+      responsive?: 'self' | 'screen' | string // todo remove string
       itemResponsive?: boolean
       xGap?: number
       yGap?: number

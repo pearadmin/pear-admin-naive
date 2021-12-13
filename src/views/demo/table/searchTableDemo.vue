@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
-  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
+  import {BasicFormProps, FormSchema} from '@/components/Form/components/BasicForm.vue'
   import { useTable } from '@/components/Table/composables/useTable'
 
   const columns = [
