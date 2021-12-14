@@ -22,9 +22,7 @@
     loading: loading1.value,
     initialChartConfig: {
       autoFit: true,
-      height: 500,
-      padding: 100,
-      syncViewPadding: true
+      height: 600
     }
   })
 
@@ -53,8 +51,7 @@
     loading: loading2.value,
     initialChartConfig: {
       autoFit: true,
-      height: 500,
-      padding: [20, 60]
+      height: 600
     }
   })
 
