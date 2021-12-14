@@ -8,7 +8,7 @@
 <script setup lang="ts">
   import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
-  import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
+  // import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
@@ -17,6 +17,11 @@
   import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
   import useForm, { UseFormMethods } from '@/components/Form/composables/useForm'
   import { DEFAULT_TABLE_FETCH } from '@/config'
+  import {
+    TableConfigOptions,
+    useTableBaseConfig
+  } from '@/components/Table/composables/useTableBaseConfig'
+  import { createTableContext } from '@/components/Table/composables/useTableContext'
 
   export interface TableFetch {
     fetchUrl: string
@@ -78,17 +83,26 @@
   // 定义可控制列
   const { columns } = useColumns(basicTableAttrs)
 
+  // global icon size
+  const iconSize = ref<number>(18)
+
+  // useTableBaseConfig params
   const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
     return {
-      attrs: basicTableAttrs,
-      fetchRunner,
-      iconSize: ref<number>(18),
-      columns
+      attrs: basicTableAttrs
     }
   })
 
   // 表格高度和大小
-  const { tableSize, tableHeight } = useTableConfig(tableConfigOptions)
+  const { tableSize, tableHeight } = useTableBaseConfig(tableConfigOptions)
+
+  createTableContext({
+    tableSize,
+    tableHeight,
+    iconSize,
+    columns,
+    fetchRunner
+  })
 
   // n-table props
   const nTableProps = computed((): DataTableProps & Recordable => {

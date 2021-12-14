@@ -5,15 +5,26 @@
 </script>
 
 <script setup lang="ts">
-  import { inject, Ref } from 'vue'
+  import { computed, inject, Ref } from 'vue'
   import {
     fetchRunnerInjectKey,
     iconSizeInjectKey,
     TableConfigOptions
   } from '../composables/useTableConfig'
+  import { useTableContext } from '@/components/Table/composables/useTableContext'
 
-  const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  const fetchRunner = inject<TableConfigOptions['fetchRunner']>(fetchRunnerInjectKey)
+  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
+  // const fetchRunner = inject<TableConfigOptions['fetchRunner']>(fetchRunnerInjectKey)
+
+  const { tableProvideState } = useTableContext()
+
+  const iconSize = computed(() => {
+    return tableProvideState.value.iconSize
+  })
+
+  const fetchRunner = computed(() => {
+    return tableProvideState.value.fetchRunner
+  })
 </script>
 
 <template>

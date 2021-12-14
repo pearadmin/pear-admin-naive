@@ -5,13 +5,14 @@
 </script>
 
 <script setup lang="ts">
-  import { inject, Ref } from 'vue'
+  import { computed, inject, Ref } from 'vue'
   import {
     changeTableSizeInjectKey,
     iconSizeInjectKey,
     TableSize,
     tableSizeInjectKey
   } from '../composables/useTableConfig'
+  import { useTableContext } from '@/components/Table/composables/useTableContext'
 
   const options = [
     {
@@ -27,9 +28,25 @@
       key: 'large'
     }
   ]
-  const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  const tableSize = inject<Ref<TableSize>>(tableSizeInjectKey)
-  const changeTableSize = inject<Fn>(changeTableSizeInjectKey)
+  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
+  // const tableSize = inject<Ref<TableSize>>(tableSizeInjectKey)
+  // const changeTableSize = inject<Fn>(changeTableSizeInjectKey)
+
+  const { tableProvideState, updTableProvideState } = useTableContext()
+
+  const iconSize = computed(() => {
+    return tableProvideState.value.iconSize
+  })
+
+  const tableSize = computed(() => {
+    return tableProvideState.value.tableSize
+  })
+
+  function changeTableSize(size: TableSize) {
+    updTableProvideState({
+      tableSize: size
+    })
+  }
 </script>
 
 <template>

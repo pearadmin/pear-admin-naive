@@ -5,16 +5,32 @@
 </script>
 
 <script setup lang="ts">
-  import { inject, Ref } from 'vue'
+  import { computed, inject, Ref } from 'vue'
   import {
     changeTableHeightInjectKey,
     iconSizeInjectKey,
     tableHeightInjectKey
   } from '../composables/useTableConfig'
+  import { useTableContext } from '@/components/Table/composables/useTableContext'
 
-  const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  const tableHeight = inject<Ref<number>>(tableHeightInjectKey)
-  const changeTableHeight = inject<Fn>(changeTableHeightInjectKey)
+  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
+  // const tableHeight = inject<Ref<number>>(tableHeightInjectKey)
+  // const changeTableHeight = inject<Fn>(changeTableHeightInjectKey)
+  const { tableProvideState, updTableProvideState } = useTableContext()
+
+  const iconSize = computed(() => {
+    return tableProvideState.value.iconSize
+  })
+
+  const tableHeight = computed(() => {
+    return tableProvideState.value.tableHeight
+  })
+
+  function changeTableHeight(height: number) {
+    updTableProvideState({
+      tableHeight: height
+    })
+  }
 </script>
 
 <template>

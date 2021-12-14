@@ -6,13 +6,28 @@
 
 <script setup lang="ts">
   import Icon from '@/components/Icon'
-  import { ref, inject, reactive, Ref, watch } from 'vue'
-  import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
+  import { ref, inject, reactive, Ref, watch, computed } from 'vue'
+  // import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
   import { NOT_RENDER_KEYS, PTableColumns } from '@/components/Table/composables/useColumns'
+  import { useTableContext } from '@/components/Table/composables/useTableContext'
 
-  const iconSize = inject<Ref<number>>(iconSizeInjectKey)
+  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
+  //
+  // const columns = inject(columnsInjectKey) as Ref<PTableColumns[]>
 
-  const columns = inject(columnsInjectKey) as Ref<PTableColumns[]>
+  const { tableProvideState, updTableProvideState } = useTableContext()
+
+  const iconSize = computed(() => {
+    return tableProvideState.value.iconSize
+  })
+  const columns = computed({
+    get: () => tableProvideState.value.columns as PTableColumns[],
+    set: (cols) => {
+      updTableProvideState({
+        columns: cols
+      })
+    }
+  })
 
   const settingCols = ref<PTableColumns[]>([])
 
@@ -41,7 +56,7 @@
   }
 
   watch(
-    [...columns.value],
+    columns,
     (cols) => {
       if (cols.length > 0) {
         settingCols.value = [...cols]
