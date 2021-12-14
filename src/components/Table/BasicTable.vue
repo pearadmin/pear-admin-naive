@@ -155,8 +155,8 @@
         <slot name="search">
           <BasicForm ref="searchFormRefEl" :label-width="80" label-placement="left">
             <template #formAction>
-              <PButton type="primary" :loading="isFetching" @click="handleSearch"> 查询 </PButton>
-              <PButton :disabled="isFetching" @click="handleReset">重置</PButton>
+              <NButton type="primary" :loading="isFetching" @click="handleSearch"> 查询 </NButton>
+              <NButton :disabled="isFetching" @click="handleReset">重置</NButton>
             </template>
           </BasicForm>
         </slot>

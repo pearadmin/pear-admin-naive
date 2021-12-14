@@ -77,13 +77,13 @@
 
 <template>
   <PageWrapper>
-    <NGrid x-gap="12" :cols="2">
+    <NGrid x-gap="12" cols="1 s:1 m:1 l:2 xl:2 xxl:2" responsive="screen">
       <NGi>
         <NCard title="任天堂游戏销售趋势">
           <template #header-extra>
             <NSpace>
-              <PButton :loading="loading1" @click="executor1">重新加载数据</PButton>
-              <PButton @click="chartInstance?.render()">仅图表刷新</PButton>
+              <NButton :loading="loading1" @click="executor1">Reload</NButton>
+              <NButton @click="chartInstance?.render()">Refresh</NButton>
             </NSpace>
           </template>
           <G2Chart ref="chartRefEl" />
@@ -93,8 +93,8 @@
         <NCard title="动态条形图">
           <template #header-extra>
             <NSpace>
-              <PButton :loading="loading2" @click="executor2">重新加载数据</PButton>
-              <PButton @click="chartInstance2?.render()">仅图表刷新</PButton>
+              <NButton :loading="loading2" @click="executor2">Reload</NButton>
+              <NButton @click="chartInstance2?.render()">Refresh</NButton>
             </NSpace>
           </template>
           <G2Chart ref="chartRefEl2" />

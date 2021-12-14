@@ -24,7 +24,7 @@ export function createLayoutContext() {
     (w) => {
       config.value = {
         collapsed: w < BREAK_POINT_SIZE.lg,
-        isMobile: w < BREAK_POINT_SIZE.lg,
+        isMobile: w < BREAK_POINT_SIZE.lg
       }
     },
     { immediate: true }

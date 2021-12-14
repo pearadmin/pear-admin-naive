@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import PButton from '@/components/Button/PButton.vue'
   import { ref } from 'vue'
   import usePromiseFn from '@/composables/usePromiseFn'
 
@@ -62,9 +61,9 @@
       <p>finished: {{ isFinished }}</p>
       <NSpace>
         <NButton type="primary" :loading="isLoading" @click="handleReFetch"> 手动触发 </NButton>
-        <PButton type="primary" :loading="isLoading" @click="handleChangeData">
+        <NButton type="primary" :loading="isLoading" @click="handleChangeData">
           参数改变自动重发
-        </PButton>
+        </NButton>
       </NSpace>
     </NCard>
   </PageWrapper>

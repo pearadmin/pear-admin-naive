@@ -18,19 +18,11 @@
     'on-back'?: string
     showDefaultBreadcrumb?: boolean
     showDefaultTitle?: boolean
-    /**
-     * 只有内容
-     */
-    onlyContent?: boolean
-    /* 等NAIVE UI 修复该问题后去掉 @see https://github.com/TuSimple/naive-ui/issues/1795 */
-    onlyPageHeaderContent?: boolean
   }
 
   const props = withDefaults(defineProps<PageWrapperProps>(), {
-    onlyContent: false,
     showDefaultBreadcrumb: true,
-    showDefaultTitle: true,
-    onlyPageHeaderContent: false
+    showDefaultTitle: true
   })
 
   const pageHeaderProps = computed(() => {
@@ -51,24 +43,17 @@
     return ['pear-admin-page-wrapper', attrs.class ?? {}]
   })
 
-  // deep content style
-  const nPageHeaderContentMarginTop = computed(() => {
-    return props.onlyPageHeaderContent ? '0' : '20px'
-  })
-
   // content class
   const pageContentClass = computed(() => {
     return {
-      'pear-admin-page-wrapper-content': true,
-      'pear-admin-page-wrapper-content-only': props.onlyContent
+      'pear-admin-page-wrapper-content': true
     }
   })
 
   // n page header component class
   const pageHeaderClass = computed(() => {
     return {
-      'pear-admin-page-wrapper-header': true,
-      'pear-admin-page-wrapper-header-no__padding': props.onlyPageHeaderContent
+      'pear-admin-page-wrapper-header': true
     }
   })
 
@@ -77,7 +62,7 @@
 
 <template>
   <div :class="pageWrapperClass">
-    <NPageHeader v-if="!props.onlyContent" v-bind="pageHeaderProps" :class="pageHeaderClass">
+    <NPageHeader v-bind="pageHeaderProps" :class="pageHeaderClass">
       <template v-for="slot in Object.keys(pageHeaderSlots)" :key="slot" #[slot]>
         <slot :name="slot"></slot>
       </template>
@@ -115,11 +100,7 @@
     width: 100%;
     height: auto;
     &-header {
-      //padding: 8px 8px 0;
       @apply pl-4 pt-4 pr-4 pb-0;
-      &-no__padding {
-        padding: 0;
-      }
     }
     &-content {
       @apply p-4;

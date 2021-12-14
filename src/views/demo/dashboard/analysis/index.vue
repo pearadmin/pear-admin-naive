@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <PageWrapper only-content>
+  <PageWrapper>
     <NGrid x-gap="12" cols="1 s:2 m:4 l:4 xl:4 2xl:4" responsive="screen">
       <NGi>
         <NCard>
@@ -199,8 +199,8 @@
         <NCard title="动态条形图">
           <template #header-extra>
             <NSpace>
-              <PButton :loading="loading2" @click="executor2">重新加载数据</PButton>
-              <PButton @click="chartInstance2?.render()">仅图表刷新</PButton>
+              <NButton :loading="loading2" @click="executor2">重新加载数据</NButton>
+              <NButton @click="chartInstance2?.render()">仅图表刷新</NButton>
             </NSpace>
           </template>
           <G2Chart ref="chartRefEl2" />
