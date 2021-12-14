@@ -93,9 +93,6 @@
 </template>
 
 <style scoped lang="less">
-  ::v-deep(.n-page-header-content) {
-    margin-top: v-bind(nPageHeaderContentMarginTop);
-  }
   .pear-admin-page-wrapper {
     width: 100%;
     height: auto;

@@ -2,6 +2,7 @@
   import Icon from '@/components/Icon'
   import { useLayoutContext } from '@/layouts/useLayoutContext'
   import { computed } from 'vue'
+  import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
   const options = [
     {
@@ -34,10 +35,15 @@
     }
   ]
 
-  const { layoutConfig } = useLayoutContext()
+  // const { layoutConfig } = useLayoutContext()
+  //
+  // const isMobile = computed(() => {
+  //   return layoutConfig.value.isMobile
+  // })
+  const { provideState } = useLayoutContextData()
 
   const isMobile = computed(() => {
-    return layoutConfig.value.isMobile
+    return provideState.value.isMobile
   })
 
   // const router = useRouter()

@@ -15,7 +15,7 @@ export interface ReturnUseForm {
 }
 
 export default function useForm(options?: BasicFormProps): ReturnUseForm {
-  const formRefEl = ref<Nullable<typeof BasicForm & UseFormMethods>>(null)
+  const formRefEl = ref<Nullable<typeof BasicForm>>(null)
 
   onMounted(() => {
     options && formRefEl.value?.setFormProps(options)

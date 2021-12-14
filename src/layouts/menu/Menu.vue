@@ -1,11 +1,15 @@
 <script setup lang="ts">
-  // import { NMenu, NScrollbar } from 'naive-ui'
   import { useMenu } from '@/layouts/menu/useMenu'
-  import { inject } from 'vue'
+  import { computed } from 'vue'
+  import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
   const { menuRef: menus, expandKeys, updateExpandKeys, currentMenu, updateValue } = useMenu()
 
-  const themeConfig = inject('themeConfig')
+  // const themeConfig = inject('themeConfig')
+  const { provideState } = useLayoutContextData()
+  const themeConfig = computed(() => {
+    return provideState.value.theme
+  })
 </script>
 
 <template>

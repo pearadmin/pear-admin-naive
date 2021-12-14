@@ -40,6 +40,13 @@
     }
   }
 
+  export interface BasicFormExpose {
+    getFormValue: () => Recordable
+    setFormProps: (formProps?: BasicFormProps) => void
+    updFormValue: (updModel: Recordable) => void
+    restoreValidation: () => void
+  }
+
   const props = withDefaults(defineProps<BasicFormProps>(), {
     schemas: () => [],
     gridProps: () => ({
@@ -65,7 +72,7 @@
 
   const formRefEl = ref<typeof NForm | null>(null)
 
-  defineExpose({
+  defineExpose<BasicFormExpose>({
     getFormValue: (): Recordable => {
       return formModelRef.value
     },

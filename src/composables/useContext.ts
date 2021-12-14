@@ -1,37 +1,33 @@
-import { InjectionKey, provide, inject, reactive, readonly as defineReadonly, UnwrapRef } from 'vue'
+import { inject, InjectionKey, provide, ref, Ref, UnwrapRef } from 'vue'
+import type { MaybeRef } from '@vueuse/core'
+import { get } from '@vueuse/core'
+import { merge } from 'lodash-es'
 
-export interface CreateContextOptions {
-  readonly?: boolean
-  createProvider?: boolean
-  native?: boolean
-}
+export type UpdateProvideState<T> = (payload: Partial<MaybeRef<T>>) => void
 
-type ShallowUnwrap<T> = {
-  [P in keyof T]: UnwrapRef<T[P]>
-}
-
-export function createContext<T>(
-  context: any,
-  key: InjectionKey<T> = Symbol(),
-  options: CreateContextOptions = {}
+export function createContext<T extends Recordable>(
+  injectKey: InjectionKey<MaybeRef<T>>,
+  payload: MaybeRef<T>,
+  updStateInjectKey?: InjectionKey<UpdateProvideState<T>>
 ) {
-  const { readonly = true, createProvider = false, native = false } = options
+  const innerState = ref({ ...get(payload) })
 
-  const state = reactive(context)
-  const provideData = readonly ? defineReadonly(state) : state
-  !createProvider && provide(key, native ? context : provideData)
+  provide<Ref<UnwrapRef<T>>>(injectKey, innerState)
+
+  function updProvideState<T>(payload: Partial<MaybeRef<T>>): void {
+    merge(innerState.value, payload)
+  }
+
+  if (updStateInjectKey) {
+    provide<UpdateProvideState<T>>(updStateInjectKey, updProvideState)
+  }
 
   return {
-    state
+    innerState,
+    updProvideState
   }
 }
 
-export function useContext<T>(key: InjectionKey<T>, native?: boolean): T
-export function useContext<T>(key: InjectionKey<T>, defaultValue?: any, native?: boolean): T
-
-export function useContext<T>(
-  key: InjectionKey<T> = Symbol(),
-  defaultValue?: any
-): ShallowUnwrap<T> {
-  return inject(key, defaultValue || {})
+export function useContext<T>(key: InjectionKey<T>): T {
+  return inject<T>(key) as T
 }

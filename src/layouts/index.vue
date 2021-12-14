@@ -2,17 +2,33 @@
   import PearSider from './sider'
   import PearHeader from './header'
   import PearContent from './content'
-  import { provide, ref } from 'vue'
   import { useRouterViewRefresh } from '@/composables/useRouterViewRefresh'
-  import { createLayoutContext } from '@/layouts/createLayoutContext'
+  import { createLayoutContextData, LayoutContextData } from '@/layouts/createLayoutContextData'
+  import { useLayoutBreakPoint } from '@/layouts/useLayoutBreakPoint'
+  import { ref, watch } from 'vue'
+  import { merge } from 'lodash-es'
 
-  const themeConfig = ref<Recordable>({
-    inverted: true
+  const provideState = ref<LayoutContextData>({
+    collapsed: false,
+    isMobile: false,
+    theme: {
+      inverted: true
+    }
   })
-  provide('themeConfig', themeConfig)
+  const { config } = useLayoutBreakPoint()
 
-  // create layout context
-  createLayoutContext()
+  const { updProvideState } = createLayoutContextData(provideState)
+
+  watch(
+    config,
+    (cfg) => {
+      merge(provideState.value, cfg)
+      updProvideState({
+        ...merge(provideState.value, cfg)
+      })
+    },
+    { immediate: true, deep: true }
+  )
 
   // route refresh
   useRouterViewRefresh()

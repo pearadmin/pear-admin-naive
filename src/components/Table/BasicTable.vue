@@ -1,7 +1,9 @@
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     inheritAttrs: false
-  }
+  })
 </script>
 <script setup lang="ts">
   import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
@@ -16,7 +18,6 @@
   import useForm, { UseFormMethods } from '@/components/Form/composables/useForm'
   import { DEFAULT_TABLE_FETCH } from '@/config'
 
-  // @ts-ignore
   export interface TableFetch {
     fetchUrl: string
     immediate?: boolean
@@ -24,14 +25,12 @@
     beforeFetch?: Fn
     afterFetch?: Fn
   }
-  // @ts-ignore
   export interface BasicTableProps {
     fetch?: TableFetch
     openSearch?: boolean
     searchFormProps?: BasicFormProps
   }
 
-  // @ts-ignore
   export interface BasicTableExpose {
     searchFormValue: WritableComputedRef<Recordable>
     handleReset: () => void
