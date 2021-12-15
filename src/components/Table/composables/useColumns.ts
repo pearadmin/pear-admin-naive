@@ -15,6 +15,10 @@ export function useColumns(basicTableAttrs: Recordable) {
   const columns = ref<PTableColumns[]>([])
   const caches = ref<PTableColumns[]>([])
 
+  function updColumns(upd: PTableColumns[]) {
+    columns.value = upd
+  }
+
   watch(
     columns,
     (cols) => {
@@ -34,6 +38,7 @@ export function useColumns(basicTableAttrs: Recordable) {
   )
 
   return {
-    columns: caches
+    columns: caches,
+    updColumns
   }
 }

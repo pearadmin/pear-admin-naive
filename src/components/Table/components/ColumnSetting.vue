@@ -1,33 +1,22 @@
-<script lang="ts">
-  export default {
-    name: 'ColumnSetting'
-  }
-</script>
-
 <script setup lang="ts">
-  import Icon from '@/components/Icon'
-  import { ref, inject, reactive, Ref, watch, computed } from 'vue'
-  // import { columnsInjectKey, iconSizeInjectKey } from '../composables/useTableConfig'
+  import { ref, reactive, watch, computed } from 'vue'
   import { NOT_RENDER_KEYS, PTableColumns } from '@/components/Table/composables/useColumns'
   import { useTableContext } from '@/components/Table/composables/useTableContext'
 
-  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  //
-  // const columns = inject(columnsInjectKey) as Ref<PTableColumns[]>
-
-  const { tableProvideState, updTableProvideState } = useTableContext()
+  const { tableProvideState } = useTableContext()
 
   const iconSize = computed(() => {
     return tableProvideState.value.iconSize
   })
-  const columns = computed({
-    get: () => tableProvideState.value.columns as PTableColumns[],
-    set: (cols) => {
-      updTableProvideState({
-        columns: cols
-      })
-    }
-  })
+
+  const columns = ref<PTableColumns[]>([])
+  watch(
+    () => tableProvideState.value.columns,
+    (cols) => {
+      columns.value = cols as PTableColumns[]
+    },
+    { immediate: true, deep: true }
+  )
 
   const settingCols = ref<PTableColumns[]>([])
 
@@ -59,6 +48,7 @@
     columns,
     (cols) => {
       if (cols.length > 0) {
+        console.log(cols)
         settingCols.value = [...cols]
       }
     },

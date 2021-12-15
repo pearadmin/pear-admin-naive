@@ -1,4 +1,4 @@
-import BasicLayout from './index.vue'
+import BasicLayout from './BasicLayout.vue'
 import { getParentComponent } from './ParentLayout'
 
 export { BasicLayout, getParentComponent }

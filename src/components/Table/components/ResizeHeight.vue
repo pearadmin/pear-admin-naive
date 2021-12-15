@@ -1,22 +1,8 @@
-<script lang="ts">
-  export default {
-    name: 'ResizeHeight'
-  }
-</script>
-
 <script setup lang="ts">
-  import { computed, inject, Ref } from 'vue'
-  import {
-    changeTableHeightInjectKey,
-    iconSizeInjectKey,
-    tableHeightInjectKey
-  } from '../composables/useTableConfig'
+  import { computed } from 'vue'
   import { useTableContext } from '@/components/Table/composables/useTableContext'
 
-  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  // const tableHeight = inject<Ref<number>>(tableHeightInjectKey)
-  // const changeTableHeight = inject<Fn>(changeTableHeightInjectKey)
-  const { tableProvideState, updTableProvideState } = useTableContext()
+  const { tableProvideState } = useTableContext()
 
   const iconSize = computed(() => {
     return tableProvideState.value.iconSize
@@ -27,9 +13,7 @@
   })
 
   function changeTableHeight(height: number) {
-    updTableProvideState({
-      tableHeight: height
-    })
+    tableProvideState.value.tableHeight = height
   }
 </script>
 

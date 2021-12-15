@@ -1,18 +1,14 @@
 <script setup lang="ts">
-  import PearMenu from '../menu'
-  import AppLogo from './AppLogo.vue'
   import { computed } from 'vue'
   import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
-  const { provideState, updateProvideState } = useLayoutContextData()
+  const { provideState } = useLayoutContextData()
 
   const themeConfig = computed(() => provideState.value.theme)
   const collapsed = computed(() => provideState.value.collapsed)
 
   function handleCollapsed(val: boolean) {
-    updateProvideState({
-      collapsed: val
-    })
+    provideState.value.collapsed = val
   }
 </script>
 

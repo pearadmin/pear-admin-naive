@@ -1,11 +1,9 @@
 <script lang="ts" setup>
   import { NForm } from 'naive-ui'
   import { markRaw, ref } from 'vue'
-  import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
   import { useUserStore } from '@/store/modules/userInfo'
   import { FormState } from '@/views/login/type'
   import { useRouter } from 'vue-router'
-  // import { useLogin } from '@/api/moduels/fast-api/login'
   import { login } from '@/api/moduels/demo/app'
 
   const userStore = useUserStore()

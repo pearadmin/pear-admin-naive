@@ -21,12 +21,9 @@ export function createLayoutContextData(payload: MaybeRef<LayoutContextData>) {
 
 export function useLayoutContextData(): {
   provideState: Ref<LayoutContextData>
-  updateProvideState: UpdateProvideState<Partial<MaybeRef<LayoutContextData>>>
 } {
   const provideState = useContext<Ref<LayoutContextData>>(stateKey)
-  const updateProvideState = useContext<UpdateProvideState<LayoutContextData>>(updateStateKey)
   return {
-    provideState,
-    updateProvideState
+    provideState
   }
 }

@@ -8,16 +8,15 @@
 <script setup lang="ts">
   import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
-  // import { TableConfigOptions, useTableConfig } from '@/components/Table/composables/useTableConfig'
   import usePagination from '@/components/Table/composables/usePagination'
   import useTableFetch from '@/components/Table/composables/useTableFetch'
   import { RowData } from 'naive-ui/es/data-table/src/interface'
-  import { useColumns } from '@/components/Table/composables/useColumns'
   import { DataTableProps, PaginationProps } from 'naive-ui'
   import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
   import useForm, { UseFormMethods } from '@/components/Form/composables/useForm'
   import { DEFAULT_TABLE_FETCH } from '@/config'
   import {
+    NOT_RENDER_KEYS,
     TableConfigOptions,
     useTableBaseConfig
   } from '@/components/Table/composables/useTableBaseConfig'
@@ -80,12 +79,6 @@
   // attrs
   const basicTableAttrs = useAttrs()
 
-  // 定义可控制列
-  const { columns } = useColumns(basicTableAttrs)
-
-  // global icon size
-  const iconSize = ref<number>(18)
-
   // useTableBaseConfig params
   const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
     return {
@@ -93,15 +86,22 @@
     }
   })
 
-  // 表格高度和大小
-  const { tableSize, tableHeight } = useTableBaseConfig(tableConfigOptions)
+  // 表格高度，大小，工具栏图标大小，列设置
+  const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(tableConfigOptions)
 
+  // 注入给子级使用
   createTableContext({
     tableSize,
     tableHeight,
     iconSize,
     columns,
     fetchRunner
+  })
+
+  const renderColumns = computed(() => {
+    return columns.value.filter((it) => {
+      return it.visible || (it.type && NOT_RENDER_KEYS.includes(it.type))
+    })
   })
 
   // n-table props
@@ -111,7 +111,7 @@
       size: tableSize.value,
       pagination: paginationRef.value as PaginationProps,
       loading: isFetching.value,
-      data: columns.value.length > 0 ? (tableData.value as RowData[]) : [],
+      data: renderColumns.value.length > 0 ? (tableData.value as RowData[]) : [],
       remote: true,
       flexHeight: true,
       style: {
@@ -119,7 +119,7 @@
       },
       rowKey: (row) => row.id,
       ...omit(basicTableAttrs, 'class', 'style'),
-      columns: columns.value
+      columns: renderColumns.value
     }
   })
 

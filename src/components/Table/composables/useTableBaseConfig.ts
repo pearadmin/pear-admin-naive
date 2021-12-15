@@ -1,6 +1,14 @@
 import { ComputedRef, ref, watch } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
 
+import { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
+
+export interface PTableColumns extends TableBaseColumn {
+  visible: boolean
+}
+
+export const NOT_RENDER_KEYS = ['expand', 'selection']
+
 export interface TableConfigOptions {
   attrs: Record<string, any>
 }
@@ -17,6 +25,9 @@ export function useTableBaseConfig(options: ComputedRef<TableConfigOptions>) {
   // icon size
   const iconSizeRef = ref<number>(18)
 
+  // columns
+  const columns = ref<PTableColumns[]>([])
+
   watch(
     options,
     (o) => {
@@ -27,6 +38,9 @@ export function useTableBaseConfig(options: ComputedRef<TableConfigOptions>) {
       if (o.attrs.height) {
         heightRef.value = o.attrs.height
       }
+      if (o.attrs.columns) {
+        columns.value = o.attrs.columns.map((col) => ({ ...col, visible: true }))
+      }
     },
     { immediate: true }
   )
@@ -34,6 +48,7 @@ export function useTableBaseConfig(options: ComputedRef<TableConfigOptions>) {
   return {
     tableSize: sizeRef,
     tableHeight: heightRef,
-    iconSize: iconSizeRef
+    iconSize: iconSizeRef,
+    columns
   }
 }

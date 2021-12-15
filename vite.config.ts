@@ -19,6 +19,7 @@ function getPlugins(command: string) {
     vueJsx(),
     purgeIcons(),
     autoComponents({
+      dirs: ['src/components', 'src/layouts'],
       resolvers: [NaiveUiResolver()],
       dts: true
     }),

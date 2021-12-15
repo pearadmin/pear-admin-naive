@@ -5,12 +5,12 @@ import { merge } from 'lodash-es'
 
 export type UpdateProvideState<T> = (payload: Partial<MaybeRef<T>>) => void
 
-export function createContext<T extends Recordable>(
+export function createContext<T>(
   injectKey: InjectionKey<MaybeRef<T>>,
   payload: MaybeRef<T>,
   updStateInjectKey?: InjectionKey<UpdateProvideState<T>>
 ) {
-  const innerState = ref({ ...get(payload) })
+  const innerState = ref<T>({ ...get(payload) })
 
   provide<Ref<UnwrapRef<T>>>(injectKey, innerState)
 

@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-  import PearSider from './sider'
-  import PearHeader from './header'
-  import PearContent from './content'
   import { useRouterViewRefresh } from '@/composables/useRouterViewRefresh'
   import { createLayoutContextData, LayoutContextData } from '@/layouts/createLayoutContextData'
   import { useLayoutBreakPoint } from '@/layouts/useLayoutBreakPoint'
@@ -35,13 +32,13 @@
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">
-    <n-layout embedded has-sider position="absolute">
+    <NLayout embedded has-sider position="absolute">
       <PearSider />
-      <n-layout embedded class="pear-admin-layout-wrapper-layout">
+      <NLayout embedded class="pear-admin-layout-wrapper-layout">
         <PearHeader />
         <PearContent />
-      </n-layout>
-    </n-layout>
+      </NLayout>
+    </NLayout>
   </div>
 </template>
 

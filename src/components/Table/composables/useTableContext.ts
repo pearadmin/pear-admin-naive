@@ -18,7 +18,7 @@ const tableStateKey: InjectionKey<TableContext> = Symbol()
 const updTableStateKey: InjectionKey<UpdateProvideState<TableContext>> = Symbol()
 
 export function createTableContext(payload: TableContext) {
-  return createContext(tableStateKey, payload, updTableStateKey)
+  return createContext<TableContext>(tableStateKey, payload, updTableStateKey)
 }
 
 export function useTableContext() {

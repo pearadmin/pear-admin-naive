@@ -1,6 +1,6 @@
 import type { MenuOption } from 'naive-ui'
 import { RouteRecordRaw } from 'vue-router'
-import Icon from '@/components/Icon'
+import Icon from '@/components/Icon/Icon.vue'
 
 export function getMenuOptions(routes: RouteRecordRaw[]): MenuOption[] {
   let menuOptions: MenuOption[] = []

@@ -1,20 +1,6 @@
-<script lang="ts">
-  export default {
-    name: 'Reload'
-  }
-</script>
-
 <script setup lang="ts">
-  import { computed, inject, Ref } from 'vue'
-  import {
-    fetchRunnerInjectKey,
-    iconSizeInjectKey,
-    TableConfigOptions
-  } from '../composables/useTableConfig'
+  import { computed } from 'vue'
   import { useTableContext } from '@/components/Table/composables/useTableContext'
-
-  // const iconSize = inject<Ref<number>>(iconSizeInjectKey)
-  // const fetchRunner = inject<TableConfigOptions['fetchRunner']>(fetchRunnerInjectKey)
 
   const { tableProvideState } = useTableContext()
 

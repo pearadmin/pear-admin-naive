@@ -1,6 +1,4 @@
 <script setup lang="tsx">
-  import Icon from '@/components/Icon'
-  import { useLayoutContext } from '@/layouts/useLayoutContext'
   import { computed } from 'vue'
   import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
@@ -35,11 +33,6 @@
     }
   ]
 
-  // const { layoutConfig } = useLayoutContext()
-  //
-  // const isMobile = computed(() => {
-  //   return layoutConfig.value.isMobile
-  // })
   const { provideState } = useLayoutContextData()
 
   const isMobile = computed(() => {

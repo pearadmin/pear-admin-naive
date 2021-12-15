@@ -1,13 +1,4 @@
-<script lang="ts">
-  export default {
-    name: 'FullScreen'
-  }
-</script>
-
 <script setup lang="ts">
-  // import { NElement, NTooltip } from 'naive-ui'
-  // import Icon from '@/components/Icon'
-
   import { useFullscreen } from '@vueuse/core'
   import { computed } from 'vue'
 

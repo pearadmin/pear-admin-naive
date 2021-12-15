@@ -1,9 +1,3 @@
-<script lang="ts">
-  export default {
-    name: 'PButton'
-  }
-</script>
-
 <script setup lang="ts">
   /**
    * 这个组件的存在意义在于

@@ -1,15 +1,4 @@
-<script lang="ts">
-  export default {
-    name: 'TableTools'
-  }
-</script>
-
-<script setup lang="ts">
-  import Reload from './Reload.vue'
-  import SizeSetting from './SizeSetting.vue'
-  import ColumnSetting from './ColumnSetting.vue'
-  import ResizeHeight from './ResizeHeight.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="pear-admin-table-tools">
