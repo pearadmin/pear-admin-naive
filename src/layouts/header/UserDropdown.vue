@@ -1,6 +1,7 @@
 <script setup lang="tsx">
   import { computed } from 'vue'
   import { useLayoutContextData } from '@/layouts/createLayoutContextData'
+  import Icon from '@/components/Icon/Icon.vue'
 
   const options = [
     {

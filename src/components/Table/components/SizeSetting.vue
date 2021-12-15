@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useTableContext } from '@/components/Table/composables/useTableContext'
+  import { TableSize, useTableContext } from "@/components/Table/composables/useTableContext";
 
   const options = [
     {

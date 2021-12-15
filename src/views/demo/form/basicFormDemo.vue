@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import useForm from '@/components/Form/composables/useForm'
-  import type { FormSchema } from '@/components/Form'
   import { useMessage } from 'naive-ui'
+  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
 
   const schemas: FormSchema[] = [
     {

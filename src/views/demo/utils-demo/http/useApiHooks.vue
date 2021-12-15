@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import { useApi } from '@/api/http'
   import { HttpDemoEnums } from '@/views/demo/utils-demo/http/service'
-  import type { FormSchema } from '@/components/Form'
   import useForm from '@/components/Form/composables/useForm'
-  import BasicForm from '@/components/Form'
+  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
 
   const form1Schemas: FormSchema[] = [
     {

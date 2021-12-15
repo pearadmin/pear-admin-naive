@@ -1,6 +1,6 @@
 import { computed, DefineComponent, defineComponent, PropType } from 'vue'
-import type { FormSchema } from '@/components/Form'
 import { componentMap } from '@/components/Form/component'
+import { FormSchema } from '@/components/Form/components/BasicForm.vue'
 
 export default defineComponent({
   name: 'FormItem',

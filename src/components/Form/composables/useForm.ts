@@ -1,6 +1,6 @@
 import { computed, nextTick, onMounted, Ref, ref, WritableComputedRef } from 'vue'
-import type { BasicFormProps, FormSchema } from '@/components/Form'
-import BasicForm from '@/components/Form'
+import { BasicFormProps, FormSchema } from '@/components/Form/components/BasicForm.vue'
+import BasicForm from '@/components/Form/components/BasicForm.vue'
 
 export interface UseFormMethods {
   restoreValidation: () => Promise<void>

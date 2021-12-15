@@ -1,6 +1,6 @@
-import { BasicFormProps, FormSchema } from '@/components/Form'
 import { Ref, ref, watch } from 'vue'
 import { merge } from 'lodash-es'
+import { BasicFormProps, FormSchema } from '@/components/Form/components/BasicForm.vue'
 
 export interface UseFormModelMethods {
   restFormValue: () => void
