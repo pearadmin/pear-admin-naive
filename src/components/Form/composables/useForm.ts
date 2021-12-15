@@ -19,16 +19,20 @@ export default function useForm(options?: BasicFormProps): ReturnUseForm {
 
   onMounted(() => {
     options && formRefEl.value?.setFormProps(options)
-    modelValue.value = formRefEl.value?.getFormValue()
+    // modelValue.value = formRefEl.value?.getFormValue()
   })
+  // const modelValue = computed({
+  //   get: (): Recordable => {
+  //     return formRefEl.value?.getFormValue()
+  //   },
+  //   set: (val) => {
+  //     debugger
+  //     formRefEl.value?.updFormValue(val)
+  //   }
+  // })
 
-  const modelValue = computed({
-    get: (): Recordable => {
-      return formRefEl.value?.getFormValue()
-    },
-    set: (val) => {
-      return formRefEl.value?.updFormValue(val)
-    }
+  const modelValue = computed(() => {
+    return formRefEl.value?.getFormValue()
   })
 
   const methods: UseFormMethods = {

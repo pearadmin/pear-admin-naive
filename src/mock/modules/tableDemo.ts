@@ -15,7 +15,7 @@ const getTableItem = (): Recordable => {
     email: Mock.mock('@email'),
     city: Mock.mock('@county(true)'),
     zip: Mock.mock('@zip()'),
-    id: Mock.mock('@id()'),
+    id: Mock.mock('@guid()'),
     name: Mock.mock('@cname()')
   })
 }

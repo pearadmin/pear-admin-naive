@@ -133,6 +133,7 @@
       }
     }
   ]
+
   const gridProps = {
     responsive: 'screen',
     cols: '1 s:2 m:3 l:3 xl:3 xxl:3',
@@ -141,11 +142,11 @@
 
   const searchFormProps: BasicFormProps = {
     schemas,
-    gridProps,
-    model: {
-      select: 'song1',
-      input: 'abcdInput'
-    }
+    gridProps
+    // model: {
+    //   select: 'song1',
+    //   input: 'abcdInput'
+    // }
   }
 
   const fetch = {
@@ -164,16 +165,29 @@
     }
   }
 
-  const { tableRefEl } = useTable({
-    searchFormProps,
-    fetch,
-    openSearch: true
-  })
+  // const { tableRefEl } = useTable({
+  //   // searchFormProps,
+  //   fetch,
+  //   // openSearch: true
+  // })
+
+  // test
+  // const { data, loading, executor } = useApi(
+  //   {
+  //     url: TableDemoEnum.getTableRecords,
+  //     method: 'post',
+  //     data: {
+  //       pageSize: 5000,
+  //       pageNo: 1
+  //     }
+  //   },
+  //   { immediate: true }
+  // )
 </script>
 
 <template>
   <PageWrapper>
-    <BasicTable ref="tableRefEl" :columns="columns" virtual-scroll>
+    <BasicTable :fetch="fetch" :columns="columns">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="primary">工具按钮1</NButton>

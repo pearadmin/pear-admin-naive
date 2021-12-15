@@ -5,5 +5,3 @@ declare interface Recordable {
 declare type Nullable<T> = T | null
 
 declare type PromiseFn<T = any, U = T> = (...args: T[]) => Promise<U>
-
-declare type Fn = (...args?: any) => {}

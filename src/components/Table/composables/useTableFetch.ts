@@ -61,15 +61,23 @@ export default function useTableFetch(
     }
   })
 
+  const fetchUrl = computed((): string => {
+    return props.value.fetch?.fetchUrl as string
+  })
+
+  const { loading, executor, finished, data } = useApi<Recordable>(
+    {
+      url: fetchUrl,
+      method: DEFAULT_TABLE_FETCH.method as FetchMethod,
+      [DEFAULT_TABLE_FETCH.bodyType]: fetchOptions
+    },
+    {
+      immediate: false,
+      redo: false
+    }
+  )
+
   const fetchComputed = computed(() => {
-    const { loading, executor, finished, data } = useApi<Recordable>(
-      {
-        url: props.value.fetch?.fetchUrl as string,
-        method: DEFAULT_TABLE_FETCH.method as FetchMethod,
-        [DEFAULT_TABLE_FETCH.bodyType]: fetchOptions
-      },
-      { immediate: false, redo: false }
-    )
     return {
       loading,
       executor,
@@ -97,6 +105,7 @@ export default function useTableFetch(
           cacheData = props.value.fetch.afterFetch(cacheData) ?? []
         }
         tableData.value = cacheData
+        cacheData = null
         // pagination
         paginationRef.value.itemCount = res.value?.[TABLE_FETCH_RESPONSE.total]
       }

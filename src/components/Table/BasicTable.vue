@@ -26,8 +26,8 @@
     fetchUrl: string
     immediate?: boolean
     redo?: boolean
-    beforeFetch?: Fn
-    afterFetch?: Fn
+    beforeFetch?: (payload: Recordable) => Recordable
+    afterFetch?: (payload: Recordable) => Recordable
   }
   export interface BasicTableProps {
     fetch?: TableFetch
@@ -163,7 +163,7 @@
         <slot name="header"></slot>
       </NCard>
     </div>
-    <div v-if="proxyProps.openSearch" class="pear-admin-table-search">
+    <div v-if="proxyProps.openSearch" key="tableSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
           <BasicForm ref="searchFormRefEl" :label-width="80" label-placement="left">
