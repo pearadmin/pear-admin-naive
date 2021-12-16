@@ -56,7 +56,7 @@
 </script>
 
 <template>
-  <n-dropdown trigger="hover" :on-select="handleSelect" :options="options" width="trigger">
+  <n-dropdown trigger="hover" :on-select="handleSelect" :options="options">
     <NElement tag="div" class="pear-admin-user-dropdown" placement="bottom-end">
       <NAvatar
         round
@@ -74,7 +74,6 @@
     @apply h-full flex flex-row justify-center items-center;
     padding: 0 10px;
     cursor: pointer;
-
     &:hover {
       background: var(--hover-color);
     }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import useForm from '@/components/Form/composables/useForm'
   import { useMessage } from 'naive-ui'
-  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
+  import { usePearForm } from '@/components/Form/composables/usePearForm'
+  import { FormSchema } from '@/components/Form/components/PearForm.vue'
 
   const schemas: FormSchema[] = [
     {
@@ -103,7 +103,11 @@
     xGap: 6
   }
 
-  const { formRefEl, modelValue } = useForm({
+  const {
+    formRefEl,
+    values,
+    methods: { reset }
+  } = usePearForm({
     schemas,
     gridProps,
     model: {
@@ -112,20 +116,21 @@
   })
   const message = useMessage()
   function getFormModel() {
-    message.info(JSON.stringify(modelValue.value))
+    message.info(JSON.stringify(values.value))
   }
   function updFormValue() {
-    modelValue.value.input = Math.random().toString(32).substr(5, 12)
+    values.value.input = Math.random().toString(32).substr(5, 12)
   }
 </script>
 
 <template>
   <PageWrapper>
     <NCard>
-      <BasicForm ref="formRefEl" :label-width="80" label-placement="left" />
+      <PearForm ref="formRefEl" :label-width="80" label-placement="left" />
       <NSpace>
         <NButton type="primary" @click="getFormModel"> 获取model </NButton>
         <NButton type="primary" @click="updFormValue"> 改变值 </NButton>
+        <NButton type="primary" @click="reset"> 重置 </NButton>
       </NSpace>
     </NCard>
   </PageWrapper>

@@ -7,7 +7,6 @@ export interface ReturnUseRouteTab {
   tags: ComputedRef<RouteTag[]>
   handleCloseTag: (tag: RouteTag) => void
   handleClickTag: (tag: RouteTag) => void
-  refreshRoute: () => void
 }
 
 export default function useRouteTab(): ReturnUseRouteTab {
@@ -33,10 +32,6 @@ export default function useRouteTab(): ReturnUseRouteTab {
 
   const tags = computed(() => appStore.tags)
 
-  function refreshRoute() {
-    console.log('refresh')
-  }
-
   function handleClickTag(tag) {
     router.replace(tag.fullPath).catch((err) => console.error(err))
   }
@@ -58,7 +53,6 @@ export default function useRouteTab(): ReturnUseRouteTab {
   return {
     tags,
     handleCloseTag,
-    handleClickTag,
-    refreshRoute
+    handleClickTag
   }
 }

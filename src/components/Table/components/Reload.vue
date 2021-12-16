@@ -9,14 +9,18 @@
   })
 
   const fetchRunner = computed(() => {
-    return tableProvideState.value.fetchRunner
+    return tableProvideState.value.fetchRunner.value
   })
+
+  function handleRefresh() {
+    fetchRunner.value()
+  }
 </script>
 
 <template>
   <NTooltip>
     <template #trigger>
-      <NButton text @click.stop="fetchRunner">
+      <NButton text @click.stop="handleRefresh">
         <Icon name="ant-design:reload-outlined" :size="iconSize" />
       </NButton>
     </template>

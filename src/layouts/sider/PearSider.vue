@@ -4,7 +4,7 @@
 
   const { provideState } = useLayoutContextData()
   const themeConfig = computed(() => provideState.value.theme)
-  const collapsed = computed(() => provideState.value.collapsed)
+  const collapsed = computed((): boolean => provideState.value.collapsed as boolean)
   function handleCollapsed(val: boolean) {
     provideState.value.collapsed = val
   }

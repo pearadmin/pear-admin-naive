@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
-  import { BasicFormProps, FormSchema } from '@/components/Form/components/BasicForm.vue'
   import { useTable } from '@/components/Table/composables/useTable'
+  import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
 
   const columns = [
     {
@@ -140,13 +140,13 @@
     xGap: 24
   }
 
-  const searchFormProps: BasicFormProps = {
+  const searchFormProps: PearFormProps = {
     schemas,
-    gridProps
-    // model: {
-    //   select: 'song1',
-    //   input: 'abcdInput'
-    // }
+    gridProps,
+    model: {
+      select: 'song1',
+      input: 'abcdInput'
+    }
   }
 
   const fetch = {
@@ -154,10 +154,7 @@
     // immediate: false,
     // redo: true,
     beforeFetch(params) {
-      console.log('before fetch => ', params)
-      return {
-        ...params
-      }
+      return params
     },
     afterFetch(data) {
       console.log('after fetch => ', data)
@@ -165,35 +162,23 @@
     }
   }
 
-  // const { tableRefEl } = useTable({
-  //   // searchFormProps,
-  //   fetch,
-  //   // openSearch: true
-  // })
-
-  // test
-  // const { data, loading, executor } = useApi(
-  //   {
-  //     url: TableDemoEnum.getTableRecords,
-  //     method: 'post',
-  //     data: {
-  //       pageSize: 5000,
-  //       pageNo: 1
-  //     }
-  //   },
-  //   { immediate: true }
-  // )
+  const { tableRefEl } = useTable({
+    searchFormProps,
+    fetch,
+    openSearch: true
+  })
 </script>
 
 <template>
   <PageWrapper>
-    <BasicTable :fetch="fetch" :columns="columns">
+    <!--    <NDataTable max-height="500px" virtual-scroll :columns="columns" :loading="loading" :data="data?.list"></NDataTable>-->
+    <PearTable :columns="columns" ref="tableRefEl">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="primary">工具按钮1</NButton>
         <NButton type="error">工具按钮2</NButton>
       </template>
-    </BasicTable>
+    </PearTable>
   </PageWrapper>
 </template>
 

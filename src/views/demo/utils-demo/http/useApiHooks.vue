@@ -2,7 +2,7 @@
   import { useApi } from '@/api/http'
   import { HttpDemoEnums } from '@/views/demo/utils-demo/http/service'
   import useForm from '@/components/Form/composables/useForm'
-  import { FormSchema } from '@/components/Form/components/BasicForm.vue'
+  import PearForm, { FormSchema } from '@/components/Form/components/PearForm.vue'
 
   const form1Schemas: FormSchema[] = [
     {
@@ -94,7 +94,7 @@
           注意：改变参请后会马上触发请求，一般来说最好不要这么频繁。你懂的 : )
         </NAlert>
         <br />
-        <BasicForm ref="refEl1" label-placement="left" />
+        <PearForm ref="refEl1" label-placement="left" />
         <pre>
           结果: => {{ JSON.stringify(data1, null, 2) }}
         </pre>
@@ -104,7 +104,7 @@
     <NDivider />
     <NSpin :show="loading2">
       <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
-        <BasicForm ref="refEl2" label-placement="left" />
+        <PearForm ref="refEl2" label-placement="left" />
         <pre>
           结果: => {{ JSON.stringify(data2, null, 2) }}
         </pre>

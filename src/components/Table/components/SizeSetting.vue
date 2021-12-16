@@ -23,8 +23,8 @@
     return tableProvideState.value.iconSize
   })
 
-  const tableSize = computed(() => {
-    return tableProvideState.value.tableSize
+  const tableSize = computed((): TableSize => {
+    return tableProvideState.value.tableSize as TableSize
   })
 
   function changeTableSize(size: TableSize) {

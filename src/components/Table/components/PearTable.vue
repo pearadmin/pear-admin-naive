@@ -3,89 +3,84 @@
     inheritAttrs: false
   }
 </script>
+
 <script setup lang="ts">
-  import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
+  import { DataTableColumn, PaginationProps } from 'naive-ui'
+  import { computed, Ref, ref, useAttrs, WritableComputedRef } from "vue";
   import { merge, omit, pick } from 'lodash-es'
   import usePagination from '@/components/Table/composables/usePagination'
-  import useTableFetch from '@/components/Table/composables/useTableFetch'
-  import { RowData } from 'naive-ui/es/data-table/src/interface'
-  import { DataTableProps, PaginationProps } from 'naive-ui'
-  import { BasicFormProps } from '@/components/Form/components/BasicForm.vue'
-  import useForm, { UseFormMethods } from '@/components/Form/composables/useForm'
-  import { DEFAULT_TABLE_FETCH } from '@/config'
+  import { usePearForm } from '@/components/Form/composables/usePearForm'
+  import { get } from '@vueuse/core'
+  import { useTableRequest } from '@/components/Table/composables/useTableRequest'
   import {
     NOT_RENDER_KEYS,
-    TableConfigOptions,
     useTableBaseConfig
   } from '@/components/Table/composables/useTableBaseConfig'
   import { createTableContext } from '@/components/Table/composables/useTableContext'
+  import { UseFormMethods } from '@/components/Form/composables/useForm'
+  import { PearFormProps } from '@/components/Form/components/PearForm.vue'
 
+  // types
+  // @ts-ignore
   export interface TableFetch {
-    fetchUrl: string
+    fetchUrl?: string
     immediate?: boolean
     redo?: boolean
-    beforeFetch?: (payload: Recordable) => Recordable
+    beforeFetch?: (payload: Ref<Recordable>) => Ref<Recordable>
     afterFetch?: (payload: Recordable) => Recordable
   }
-  export interface BasicTableProps {
+  // @ts-ignore
+  export interface PearTableProps {
+    columns?: Array<DataTableColumn>
+    size?: 'small' | 'medium' | 'large'
+    virtualScroll?: boolean
+    // other todo:
+    // 自定义
     fetch?: TableFetch
     openSearch?: boolean
-    searchFormProps?: BasicFormProps
+    searchFormProps?: PearFormProps
   }
 
-  export interface BasicTableExpose {
+  // @ts-ignore
+  export interface PearTableExpose {
     searchFormValue: WritableComputedRef<Recordable>
     handleReset: () => void
     formMethods: UseFormMethods
-    setTableProps: (updProps: BasicTableProps) => void
+    setTableProps: (updProps: PearTableProps) => void
   }
 
-  const props = withDefaults(defineProps<BasicTableProps>(), {
-    fetch: () => {
-      return {
-        fetchUrl: '',
-        immediate: true,
-        redo: false
-      }
-    },
+  const attrs = useAttrs()
+  const props = withDefaults(defineProps<PearTableProps>(), {
+    columns: () => [],
+    size: 'medium',
     openSearch: false
   })
 
-  const innerProps = ref<BasicTableProps>({})
+  const innerProps = ref<Partial<PearTableProps>>({})
 
-  const proxyProps = computed((): BasicTableProps => {
+  const proxyProps = computed((): PearTableProps => {
     return merge({}, props, innerProps.value)
   })
 
-  // 查询表头
+  // 表格高度，大小，工具栏图标大小，列设置
+  const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(proxyProps)
+
+  // form
   const {
-    formRefEl: searchFormRefEl,
-    modelValue: searchFormValue,
+    formRefEl: tableSearchFormRefEf,
+    values,
     methods: formMethods
-  } = useForm(proxyProps.value.searchFormProps)
+  } = usePearForm(get(proxyProps, 'searchFormProps'))
 
   // 分页
   const { paginationRef, resetPagination } = usePagination()
 
   // 请求
-  const { isFetching, fetchRunner, tableData } = useTableFetch(
-    proxyProps,
-    paginationRef,
-    searchFormValue
-  )
-
-  // attrs
-  const basicTableAttrs = useAttrs()
-
-  // useTableBaseConfig params
-  const tableConfigOptions: ComputedRef<TableConfigOptions> = computed((): TableConfigOptions => {
-    return {
-      attrs: basicTableAttrs
-    }
+  const { data, loading, executor } = useTableRequest({
+    pagination: paginationRef,
+    fetchParams: values,
+    props: proxyProps
   })
-
-  // 表格高度，大小，工具栏图标大小，列设置
-  const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(tableConfigOptions)
 
   // 注入给子级使用
   createTableContext({
@@ -93,7 +88,7 @@
     tableHeight,
     iconSize,
     columns,
-    fetchRunner
+    fetchRunner: executor
   })
 
   const renderColumns = computed(() => {
@@ -102,35 +97,34 @@
     })
   })
 
-  // n-table props
-  const nTableProps = computed((): DataTableProps & Recordable => {
+  // 最外层class 和style
+  const wrapperAttrs = computed((): Recordable => {
+    return pick(proxyProps.value, 'class', 'style')
+  })
+
+  const bindTableProps = computed(() => {
     return {
+      columns: get(renderColumns),
       scrollX: '1500',
-      size: tableSize.value,
-      pagination: paginationRef.value as PaginationProps,
-      loading: isFetching.value,
-      data: renderColumns.value.length > 0 ? (tableData.value as RowData[]) : [],
+      size: get(tableSize),
+      pagination: get(paginationRef) as PaginationProps,
+      loading: get(loading),
+      data: get(data),
       remote: true,
       flexHeight: true,
       style: {
-        height: `${tableHeight.value}px`
+        height: `${get(tableHeight)}px`
       },
       rowKey: (row) => row.id,
-      ...omit(basicTableAttrs, 'class', 'style'),
-      columns: renderColumns.value
+      // columns: renderColumns.value,
+      ...omit(get(proxyProps), 'schemas', 'fetch', 'openSearch', 'columns'),
+      ...omit(attrs, 'class', 'style')
     }
-  })
-
-  // 最外层class 和style
-  const wrapperAttrs = computed((): Recordable => {
-    return pick(basicTableAttrs, 'class', 'style')
   })
 
   // 查询
   function handleSearch() {
-    unref(fetchRunner)({
-      [DEFAULT_TABLE_FETCH.bodyType]: { ...searchFormValue.value }
-    })
+    get(executor)()
   }
 
   // 重置
@@ -140,11 +134,11 @@
   }
 
   // define expose
-  defineExpose<BasicTableExpose>({
-    searchFormValue,
+  defineExpose<PearTableExpose>({
+    searchFormValue: values,
     handleReset,
     formMethods,
-    setTableProps: (updProps: Partial<BasicTableProps>) => {
+    setTableProps: (updProps: Partial<PearTableProps>) => {
       innerProps.value = updProps
       // 更新表头
       if (updProps.openSearch) {
@@ -164,10 +158,10 @@
     <div v-if="proxyProps.openSearch" key="tableSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
-          <BasicForm ref="searchFormRefEl" :label-width="80" label-placement="left">
+          <BasicForm ref="tableSearchFormRefEf" :label-width="80" label-placement="left">
             <template #formAction>
-              <NButton type="primary" :loading="isFetching" @click="handleSearch"> 查询 </NButton>
-              <NButton :disabled="isFetching" @click="handleReset">重置</NButton>
+              <NButton type="primary" :loading="loading" @click="handleSearch"> 查询 </NButton>
+              <NButton @click="handleReset">重置</NButton>
             </template>
           </BasicForm>
         </slot>
@@ -184,7 +178,7 @@
           </template>
         </TableTools>
       </div>
-      <NDataTable v-bind="nTableProps" />
+      <NDataTable v-bind="bindTableProps" />
     </div>
   </div>
 </template>

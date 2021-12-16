@@ -1,7 +1,10 @@
-import { ComputedRef, ref, watch } from 'vue'
+import { ComputedRef, ref, watch, watchEffect } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
 
 import { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
+// @ts-ignore
+import { PearTableProps } from '@/components/Table/components/PearTable.vue'
+import { get } from '@vueuse/core'
 
 export interface PTableColumns extends TableBaseColumn {
   visible: boolean
@@ -15,7 +18,7 @@ export interface TableConfigOptions {
 
 export type TableSize = 'small' | 'medium' | 'large'
 
-export function useTableBaseConfig(options: ComputedRef<TableConfigOptions>) {
+export function useTableBaseConfig(props: Partial<ComputedRef<PearTableProps>>) {
   // table size
   const sizeRef = ref<TableSize>(DEFAULT_TABLE_SIZE)
 
@@ -28,22 +31,14 @@ export function useTableBaseConfig(options: ComputedRef<TableConfigOptions>) {
   // columns
   const columns = ref<PTableColumns[]>([])
 
-  watch(
-    options,
-    (o) => {
-      if (o.attrs.size) {
-        // 可以是最外层table设置的size值
-        sizeRef.value = o.attrs.size
-      }
-      if (o.attrs.height) {
-        heightRef.value = o.attrs.height
-      }
-      if (o.attrs.columns) {
-        columns.value = o.attrs.columns.map((col) => ({ ...col, visible: true }))
-      }
-    },
-    { immediate: true }
-  )
+  watchEffect(() => {
+    if (get(props)?.size) {
+      sizeRef.value = get(get(props)?.size)
+    }
+    if (get(props)?.columns) {
+      columns.value = get(props)?.columns.map((col) => ({ ...col, visible: true }))
+    }
+  })
 
   return {
     tableSize: sizeRef,

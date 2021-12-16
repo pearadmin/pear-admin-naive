@@ -21,7 +21,11 @@ const getTableItem = (): Recordable => {
 }
 
 const getTableData = (dataLength) => {
-  return Array.from({ length: dataLength }, () => getTableItem())
+  const data: Recordable[] = []
+  for (let i = 0; i < dataLength; i++) {
+    data.push(getTableItem())
+  }
+  return data
 }
 
 // 100 / 30 = 3...10

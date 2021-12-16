@@ -4,12 +4,12 @@
 
   const { tableProvideState } = useTableContext()
 
-  const iconSize = computed(() => {
-    return tableProvideState.value.iconSize
+  const iconSize = computed((): number => {
+    return tableProvideState.value.iconSize as number
   })
 
-  const tableHeight = computed(() => {
-    return tableProvideState.value.tableHeight
+  const tableHeight = computed((): number => {
+    return tableProvideState.value.tableHeight as number
   })
 
   function changeTableHeight(height: number) {
