@@ -1,8 +1,12 @@
 <script setup lang="ts">
-  import { refreshInjectKey } from '@/composables/useRouterViewRefresh'
-  import { inject } from 'vue'
+  import { computed } from 'vue'
+  import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
-  const showView = inject(refreshInjectKey)
+  const { provideState } = useLayoutContextData()
+
+  const showView = computed(() => {
+    return provideState.value.showView
+  })
 </script>
 
 <template>

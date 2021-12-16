@@ -3,10 +3,8 @@
   import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
   const { provideState } = useLayoutContextData()
-
   const themeConfig = computed(() => provideState.value.theme)
   const collapsed = computed(() => provideState.value.collapsed)
-
   function handleCollapsed(val: boolean) {
     provideState.value.collapsed = val
   }

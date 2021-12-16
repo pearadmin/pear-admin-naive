@@ -4,7 +4,7 @@ specifiers:
   '@antv/data-set': ^0.11.8
   '@antv/g2': ^4.1.35
   '@iconify/iconify': ^2.1.0
-  '@iconify/json': ^1.1.442
+  '@iconify/json': ^1.1.443
   '@nabla/vite-plugin-eslint': ^1.3.5
   '@purge-icons/generated': ^0.7.0
   '@types/lodash': ^4.14.178
@@ -63,7 +63,7 @@ dependencies:
   vue-router: 4.0.12_vue@3.2.26
 
 devDependencies:
-  '@iconify/json': 1.1.442
+  '@iconify/json': 1.1.443
   '@nabla/vite-plugin-eslint': 1.3.5_eslint@7.32.0+vite@2.7.2
   '@purge-icons/generated': 0.7.0
   '@types/lodash-es': 4.17.5
@@ -691,8 +691,8 @@ packages:
     dependencies:
       cross-fetch: 3.1.4
 
-  /@iconify/json/1.1.442:
-    resolution: {integrity: sha512-wHD0hnDP6j3k65rRWyMbp02+6IYiihKaYUAmmBNf2sWcnjy7sdI/hG1VgUTsfg5ObQ62GqopGb0to1mAyfj2DA==, tarball: '@iconify/json/download/@iconify/json-1.1.442.tgz'}
+  /@iconify/json/1.1.443:
+    resolution: {integrity: sha512-xntTTivt39gGDzfV4UGQExueCj7tP6uL4lm0Z5EZ07LT7gS8QzmUwtgZ5rr/NMwtXi25PlI7hivtSU95MnZpTA==, tarball: '@iconify/json/download/@iconify/json-1.1.443.tgz'}
     dev: true
 
   /@jest/types/27.4.2:

@@ -2,22 +2,34 @@
   import { useRouterViewRefresh } from '@/composables/useRouterViewRefresh'
   import { createLayoutContextData, LayoutContextData } from '@/layouts/createLayoutContextData'
   import { useLayoutBreakPoint } from '@/layouts/useLayoutBreakPoint'
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { merge } from 'lodash-es'
 
   const provideState = ref<LayoutContextData>({
     collapsed: false,
     isMobile: false,
+    showView: false,
     theme: {
       inverted: true
-    }
+    },
+    refreshRouterView: () => {}
   })
   const { config } = useLayoutBreakPoint()
+  // route refresh
+  const { showView, refreshRouterView } = useRouterViewRefresh()
+
+  const layoutState = computed(() => {
+    return {
+      ...config.value,
+      showView,
+      refreshRouterView
+    }
+  })
 
   const { updProvideState } = createLayoutContextData(provideState)
 
   watch(
-    config,
+    layoutState,
     (cfg) => {
       merge(provideState.value, cfg)
       updProvideState({
@@ -26,9 +38,6 @@
     },
     { immediate: true, deep: true }
   )
-
-  // route refresh
-  useRouterViewRefresh()
 </script>
 <template>
   <div class="pear-admin-layout-wrapper">

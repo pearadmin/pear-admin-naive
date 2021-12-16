@@ -1,8 +1,5 @@
-import { onUnmounted, provide, Ref, ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 import { useTimeoutFn } from '@vueuse/core'
-
-export const refreshInjectKey = Symbol('refreshInjectKey')
-export const handleRefreshInjectKey = Symbol('handleRefreshInjectKey')
 
 export function useRouterViewRefresh() {
   const showView = ref<boolean>(true)
@@ -25,10 +22,12 @@ export function useRouterViewRefresh() {
     showView.value = false
   }
 
-  provide<Ref<boolean>>(refreshInjectKey, showView)
-  provide<() => void>(handleRefreshInjectKey, refreshRouterView)
-
   onUnmounted(() => {
     stop()
   })
+
+  return {
+    showView,
+    refreshRouterView
+  }
 }

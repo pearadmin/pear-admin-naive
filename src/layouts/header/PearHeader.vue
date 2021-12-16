@@ -1,10 +1,4 @@
-<script setup lang="ts">
-  import Setting from './Setting.vue'
-  import UserDropdown from './UserDropdown.vue'
-  import FullScreen from './FullScreen.vue'
-  import ThemeTool from '@/components/Application/Settings/ThemeTool.vue'
-  import RouteTabs from '../content/RouteTabs.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <n-layout-header position="absolute" class="pear-admin-header">

@@ -1,20 +1,17 @@
-<script lang="ts">
-  export default {
-    name: 'RouteTabs'
-  }
-</script>
-
 <script setup lang="ts">
   import { useRoute } from 'vue-router'
   import userRouteTabs from './useRouteTab'
-  import { inject } from 'vue'
-  import { handleRefreshInjectKey } from '@/composables/useRouterViewRefresh'
+  import { computed } from 'vue'
+  import { useLayoutContextData } from '@/layouts/createLayoutContextData'
 
   const route = useRoute()
 
   const { tags, handleCloseTag, handleClickTag } = userRouteTabs()
 
-  const handleRefresh = inject(handleRefreshInjectKey)
+  const { provideState } = useLayoutContextData()
+  const handleRefresh = computed(() => {
+    return provideState.value.refreshRouterView
+  })
 </script>
 
 <template>

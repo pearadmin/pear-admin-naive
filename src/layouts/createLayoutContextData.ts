@@ -9,6 +9,8 @@ export interface AppTheme {
 export interface LayoutContextData {
   collapsed: MaybeRef<boolean>
   isMobile: MaybeRef<boolean>
+  showView: MaybeRef<boolean>
+  refreshRouterView: () => void
   theme: AppTheme
 }
 
