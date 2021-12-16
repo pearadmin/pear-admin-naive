@@ -8,9 +8,9 @@ import {
   ref,
   unref,
   UnwrapRef,
-  watch,
+  watch, watchEffect,
   WritableComputedRef
-} from 'vue'
+} from "vue";
 import { useApi } from '@/api/http'
 import { PaginationProps } from 'naive-ui'
 import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
@@ -86,35 +86,50 @@ export default function useTableFetch(
     }
   })
 
-  watch(
-    fetchComputed,
-    (fc) => {
-      isFetching.value = fc.loading.value
-      fetchFinished.value = fc.finished.value
-      fetchRunner.value = fc.executor.value
-    },
-    { immediate: true, deep: true }
-  )
+  // watch(
+  //   fetchComputed,
+  //   (fc) => {
+  //     isFetching.value = fc.loading.value
+  //     fetchFinished.value = fc.finished.value
+  //     fetchRunner.value = fc.executor.value
+  //   },
+  //   { immediate: true, deep: true }
+  // )
 
-  watch(
-    () => fetchComputed.value.data,
-    (res) => {
-      if (res.value) {
-        let cacheData = res.value?.[TABLE_FETCH_RESPONSE.list] ?? []
-        if (props.value.fetch?.afterFetch && typeof props.value.fetch?.afterFetch === 'function') {
-          cacheData = props.value.fetch.afterFetch(cacheData) ?? []
-        }
-        tableData.value = cacheData
-        cacheData = null
-        // pagination
-        paginationRef.value.itemCount = res.value?.[TABLE_FETCH_RESPONSE.total]
+  watchEffect(() => {
+    isFetching.value = fetchComputed.value.loading.value
+    fetchFinished.value = fetchComputed.value.finished.value
+    fetchRunner.value = fetchComputed.value.executor.value
+    if (fetchComputed.value.data.value) {
+      let cacheData = fetchComputed.value.data.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+      if (props.value.fetch?.afterFetch && typeof props.value.fetch?.afterFetch === 'function') {
+        cacheData = props.value.fetch.afterFetch(cacheData) ?? []
       }
-    },
-    {
-      immediate: true,
-      deep: true
+      tableData.value = cacheData
+      // pagination
+      paginationRef.value.itemCount = fetchComputed.value.data.value?.[TABLE_FETCH_RESPONSE.total]
     }
-  )
+  })
+
+  // watch(
+  //   () => fetchComputed.value.data,
+  //   (res) => {
+  //     if (res.value) {
+  //       let cacheData = res.value?.[TABLE_FETCH_RESPONSE.list] ?? []
+  //       if (props.value.fetch?.afterFetch && typeof props.value.fetch?.afterFetch === 'function') {
+  //         cacheData = props.value.fetch.afterFetch(cacheData) ?? []
+  //       }
+  //       tableData.value = cacheData
+  //       cacheData = null
+  //       // pagination
+  //       paginationRef.value.itemCount = res.value?.[TABLE_FETCH_RESPONSE.total]
+  //     }
+  //   },
+  //   {
+  //     immediate: true,
+  //     deep: true
+  //   }
+  // )
 
   // 请求参数改变
   watch(fetchOptions, (n, o) => {

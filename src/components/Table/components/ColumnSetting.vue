@@ -15,7 +15,7 @@
     (cols) => {
       columns.value = cols as PTableColumns[]
     },
-    { immediate: true, deep: true }
+    { immediate: true }
   )
 
   const settingCols = ref<PTableColumns[]>([])

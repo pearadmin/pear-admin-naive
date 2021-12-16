@@ -34,7 +34,7 @@ export function useColumns(basicTableAttrs: Recordable) {
     (cols) => {
       columns.value = cols.map((col) => ({ ...col, visible: true }))
     },
-    { immediate: true, deep: true, flush: 'post' }
+    { immediate: true, deep: true }
   )
 
   return {

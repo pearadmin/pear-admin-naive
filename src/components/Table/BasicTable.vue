@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { defineComponent } from 'vue'
-
-  export default defineComponent({
+  export default {
     inheritAttrs: false
-  })
+  }
 </script>
 <script setup lang="ts">
   import { computed, ComputedRef, ref, unref, useAttrs, WritableComputedRef } from 'vue'
