@@ -1,8 +1,19 @@
 import { PearFormProps, FormSchema } from '@/components/Form/components/PearForm.vue'
-import { ComputedRef, ref, watchEffect } from 'vue'
+import { ComputedRef, Ref, ref, watchEffect } from 'vue'
 import { get } from '@vueuse/core'
 
-export function usePearFormModel(props: ComputedRef<Partial<PearFormProps>>) {
+export interface FormModelMethods {
+  restFormValue: () => void
+}
+
+export interface UsePearFormModelReturn {
+  formModelRef: Ref<Recordable>
+  methods: FormModelMethods
+}
+
+export function usePearFormModel(
+  props: ComputedRef<Partial<PearFormProps>>
+): UsePearFormModelReturn {
   const formModelRef = ref<Recordable>({})
 
   function handleInitModel(model: Recordable | undefined, formSchemas: FormSchema[] | undefined) {

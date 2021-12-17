@@ -12,13 +12,9 @@ export interface PTableColumns extends TableBaseColumn {
 
 export const NOT_RENDER_KEYS = ['expand', 'selection']
 
-export interface TableConfigOptions {
-  attrs: Record<string, any>
-}
-
 export type TableSize = 'small' | 'medium' | 'large'
 
-export function useTableBaseConfig(props: Partial<ComputedRef<PearTableProps>>) {
+export function useTableBaseConfig(props: ComputedRef<Partial<PearTableProps>>) {
   // table size
   const sizeRef = ref<TableSize>(DEFAULT_TABLE_SIZE)
 
@@ -33,10 +29,13 @@ export function useTableBaseConfig(props: Partial<ComputedRef<PearTableProps>>) 
 
   watchEffect(() => {
     if (get(props)?.size) {
-      sizeRef.value = get(get(props)?.size)
+      sizeRef.value = get(get(props)?.size) as TableSize
     }
     if (get(props)?.columns) {
-      columns.value = get(props)?.columns.map((col) => ({ ...col, visible: true }))
+      columns.value = get(props)?.columns?.map((col) => ({
+        ...col,
+        visible: true
+      })) as PTableColumns[]
     }
   })
 

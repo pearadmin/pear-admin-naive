@@ -5,8 +5,8 @@
 
   const { tableProvideState } = useTableContext()
 
-  const iconSize = computed(() => {
-    return tableProvideState.value.iconSize
+  const iconSize = computed((): number => {
+    return tableProvideState.value.iconSize as number
   })
 
   const columns = ref<PTableColumns[]>([])
@@ -48,7 +48,6 @@
     columns,
     (cols) => {
       if (cols.length > 0) {
-        console.log(cols)
         settingCols.value = [...cols]
       }
     },

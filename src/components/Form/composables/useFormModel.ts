@@ -1,6 +1,6 @@
 import { Ref, ref, watch } from 'vue'
 import { merge } from 'lodash-es'
-import { BasicFormProps, FormSchema } from '@/components/Form/components/BasicForm.vue'
+import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
 
 export interface UseFormModelMethods {
   restFormValue: () => void
@@ -15,7 +15,7 @@ export interface UseFormModelReturn {
   methods: UseFormModelMethods
 }
 
-export default function useFormModel(props: Ref<BasicFormProps>): UseFormModelReturn {
+export default function useFormModel(props: Ref<PearFormProps>): UseFormModelReturn {
   const initialModel = ref<Recordable>({})
   const schemas = ref<FormSchema[]>([])
   const formModelRef = ref<Recordable>({})

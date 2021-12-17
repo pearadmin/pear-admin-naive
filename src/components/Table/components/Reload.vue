@@ -1,19 +1,16 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useTableContext } from '@/components/Table/composables/useTableContext'
+  import { get } from '@vueuse/core'
 
   const { tableProvideState } = useTableContext()
 
-  const iconSize = computed(() => {
-    return tableProvideState.value.iconSize
-  })
-
-  const fetchRunner = computed(() => {
-    return tableProvideState.value.fetchRunner.value
+  const iconSize = computed((): number => {
+    return tableProvideState.value.iconSize as number
   })
 
   function handleRefresh() {
-    fetchRunner.value()
+    get(tableProvideState.value.fetchRunner)()
   }
 </script>
 

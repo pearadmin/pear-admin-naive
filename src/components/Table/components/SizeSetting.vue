@@ -19,8 +19,8 @@
 
   const { tableProvideState } = useTableContext()
 
-  const iconSize = computed(() => {
-    return tableProvideState.value.iconSize
+  const iconSize = computed((): number => {
+    return tableProvideState.value.iconSize as number
   })
 
   const tableSize = computed((): TableSize => {

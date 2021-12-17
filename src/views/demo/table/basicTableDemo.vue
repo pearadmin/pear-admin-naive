@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
+  import { DataTableColumn } from 'naive-ui'
 
-  const columns = [
+  const columns: DataTableColumn[] = [
     {
       type: 'selection',
       fixed: 'left'

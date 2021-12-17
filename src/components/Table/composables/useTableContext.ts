@@ -1,6 +1,6 @@
 import { MaybeRef } from '@vueuse/core'
 import { DataTableColumns } from 'naive-ui'
-import { ComputedRef, InjectionKey, Ref } from 'vue'
+import { InjectionKey, Ref } from 'vue'
 import { createContext, UpdateProvideState, useContext } from '@/composables/useContext'
 import { RequestOptionsInit } from 'umi-request'
 
@@ -11,7 +11,7 @@ export interface TableContext {
   tableHeight: MaybeRef<number>
   iconSize: MaybeRef<number>
   columns: MaybeRef<DataTableColumns>
-  fetchRunner: ComputedRef<(args?: RequestOptionsInit) => Promise<unknown>>
+  fetchRunner: MaybeRef<(args?: RequestOptionsInit) => Promise<unknown>>
 }
 
 const tableStateKey: InjectionKey<TableContext> = Symbol()

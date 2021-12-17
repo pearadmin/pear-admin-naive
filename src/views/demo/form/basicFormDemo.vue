@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { useMessage } from 'naive-ui'
+  import { GridProps, useMessage } from 'naive-ui'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
   import { FormSchema } from '@/components/Form/components/PearForm.vue'
 
@@ -98,7 +98,7 @@
     }
   ]
 
-  const gridProps = {
+  const gridProps: GridProps = {
     cols: 1,
     xGap: 6
   }

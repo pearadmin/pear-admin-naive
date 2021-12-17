@@ -2,6 +2,7 @@
   import { TableDemoEnum } from './service'
   import { useTable } from '@/components/Table/composables/useTable'
   import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
+  import { GridProps } from 'naive-ui'
 
   const columns = [
     {
@@ -134,7 +135,7 @@
     }
   ]
 
-  const gridProps = {
+  const gridProps: GridProps = {
     responsive: 'screen',
     cols: '1 s:2 m:3 l:3 xl:3 xxl:3',
     xGap: 24
@@ -171,8 +172,7 @@
 
 <template>
   <PageWrapper>
-    <!--    <NDataTable max-height="500px" virtual-scroll :columns="columns" :loading="loading" :data="data?.list"></NDataTable>-->
-    <PearTable :columns="columns" ref="tableRefEl">
+    <PearTable ref="tableRefEl" :columns="columns">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="primary">工具按钮1</NButton>

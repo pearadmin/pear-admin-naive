@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import { FormItemRule, NForm } from 'naive-ui'
-  import { computed, Ref, ref, Slots, useAttrs } from 'vue'
+  import { FormItemProps, FormItemRule, GridItemProps, GridProps, NForm } from 'naive-ui'
+  import { computed, ref, Slots, useAttrs } from 'vue'
   import { merge, omit } from 'lodash-es'
   import { usePearFormModel } from '@/components/Form/composables/usePearFormModel'
   import PearFormItem from '@/components/Form/components/PearFormItem'
@@ -24,11 +24,13 @@
     component?: ComponentName
     componentProps?: Recordable
     componentSlots?: (() => Slots | HTMLElement) | Slots
-    formItemProps?: Recordable
+    formItemProps?: GridFormItemProps
     // field: string
     // maybe not need
     // wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
+
+  export type GridFormItemProps = Partial<FormItemProps & GridItemProps>
 
   export interface PearFormProps {
     disabled?: boolean
@@ -45,15 +47,16 @@
     // basic
     model?: Recordable
     schemas?: FormSchema[]
-    gridProps?: {
-      cols?: number | string
-      collapsed?: boolean
-      collapsedRows?: number
-      responsive?: 'self' | 'screen' | string // todo remove string
-      itemResponsive?: boolean
-      xGap?: number
-      yGap?: number
-    }
+    gridProps?: Partial<GridProps>
+    // gridProps?: {
+    //   cols?: number | string
+    //   collapsed?: boolean
+    //   collapsedRows?: number
+    //   responsive?: 'self' | 'screen' | string // todo remove string
+    //   itemResponsive?: boolean
+    //   xGap?: number
+    //   yGap?: number
+    // }
   }
 
   // export interface PearFormEmit {
@@ -80,15 +83,16 @@
     requireMarkPlacement: 'right',
     size: 'medium',
     schemas: () => [],
-    gridProps: () => ({
-      cols: 3,
-      collapsed: false,
-      collapsedRows: 1,
-      responsive: 'screen',
-      itemResponsive: false,
-      xGap: 12,
-      yGap: 0
-    })
+    gridProps: () =>
+      ({
+        cols: 3,
+        collapsed: false,
+        collapsedRows: 1,
+        responsive: 'screen',
+        itemResponsive: false,
+        xGap: 12,
+        yGap: 0
+      } as Partial<GridProps>)
   })
 
   const innerProps = ref<Partial<PearFormProps>>({})
@@ -135,8 +139,8 @@
 </script>
 
 <template>
-  <NForm ref="innerFormRefEl" :model="formModelRef" v-bind="bindFormProps">
-    <NGrid v-bind="proxyProps.gridProps">
+  <NForm ref="innerFormRefEl" v-bind="bindFormProps">
+    <NGrid v-bind="proxyProps?.gridProps ?? {}">
       <NFormItemGi
         v-for="schema in proxyProps.schemas"
         :key="schema.model"
@@ -145,7 +149,7 @@
       >
         <PearFormItem :schema="schema" :form-model-ref="formModelRef" />
       </NFormItemGi>
-      <NFormItemGi v-if="$slots.formAction" suffix>
+      <NFormItemGi v-if="$slots.formAction" suffix style="margin-left: auto">
         <NSpace justify="end">
           <slot name="formAction"></slot>
         </NSpace>

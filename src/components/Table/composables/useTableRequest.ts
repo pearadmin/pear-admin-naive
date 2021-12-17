@@ -77,7 +77,7 @@ export function useTableRequest(options: UseTableRequestOptions) {
       let cacheData = get(data)?.[TABLE_FETCH_RESPONSE.list] ?? []
       const after = get(options.props).fetch?.afterFetch ?? null
       if (after && isFunction(after)) {
-        cacheData = after.call(null, data) ?? []
+        cacheData = after.call(null, cacheData) ?? []
       }
       result.value = cacheData
       // pagination

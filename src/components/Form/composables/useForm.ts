@@ -1,21 +1,21 @@
 import { computed, nextTick, onMounted, Ref, ref, WritableComputedRef } from 'vue'
-import { BasicFormProps, FormSchema } from '@/components/Form/components/BasicForm.vue'
-import BasicForm from '@/components/Form/components/BasicForm.vue'
+import { PearFormProps, FormSchema } from '@/components/Form/components/PearForm.vue'
+import PearForm from '@/components/Form/components/PearForm.vue'
 
 export interface UseFormMethods {
   restoreValidation: () => Promise<void>
-  setFormProps: (basicFormProps?: BasicFormProps) => Promise<void>
+  setFormProps: (basicFormProps?: PearFormProps) => Promise<void>
   setFormSchemas: (schemas?: FormSchema[]) => Promise<void>
 }
 
 export interface ReturnUseForm {
-  formRefEl: Ref<Nullable<typeof BasicForm>>
+  formRefEl: Ref<Nullable<typeof PearForm>>
   modelValue: WritableComputedRef<Recordable>
   methods: UseFormMethods
 }
 
-export default function useForm(options?: BasicFormProps): ReturnUseForm {
-  const formRefEl = ref<Nullable<typeof BasicForm>>(null)
+export default function useForm(options?: PearFormProps): ReturnUseForm {
+  const formRefEl = ref<Nullable<typeof PearForm>>(null)
 
   onMounted(() => {
     options && formRefEl.value?.setFormProps(options)
@@ -40,7 +40,7 @@ export default function useForm(options?: BasicFormProps): ReturnUseForm {
       await nextTick()
       formRefEl.value?.restoreValidation()
     },
-    setFormProps: async (formProps?: BasicFormProps) => {
+    setFormProps: async (formProps?: PearFormProps) => {
       await nextTick()
       formRefEl.value?.setFormProps(formProps)
     },

@@ -5,8 +5,8 @@
 </script>
 
 <script setup lang="ts">
-  import { DataTableColumn, PaginationProps } from 'naive-ui'
-  import { computed, Ref, ref, useAttrs, WritableComputedRef } from "vue";
+  import { DataTableColumn, DataTableColumns, PaginationProps } from 'naive-ui'
+  import { computed, Ref, ref, useAttrs } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
   import usePagination from '@/components/Table/composables/usePagination'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
@@ -43,7 +43,7 @@
 
   // @ts-ignore
   export interface PearTableExpose {
-    searchFormValue: WritableComputedRef<Recordable>
+    searchFormValue: Ref<Recordable>
     handleReset: () => void
     formMethods: UseFormMethods
     setTableProps: (updProps: PearTableProps) => void
@@ -64,7 +64,6 @@
 
   // 表格高度，大小，工具栏图标大小，列设置
   const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(proxyProps)
-
   // form
   const {
     formRefEl: tableSearchFormRefEf,
@@ -91,10 +90,14 @@
     fetchRunner: executor
   })
 
-  const renderColumns = computed(() => {
-    return columns.value.filter((it) => {
-      return it.visible || (it.type && NOT_RENDER_KEYS.includes(it.type))
+  const renderColumns = computed((): DataTableColumns => {
+    const cols: DataTableColumns = []
+    columns.value.forEach((it) => {
+      if (it.visible || (it.type && NOT_RENDER_KEYS.includes(it.type))) {
+        cols.push(it)
+      }
     })
+    return cols
   })
 
   // 最外层class 和style
@@ -116,8 +119,7 @@
         height: `${get(tableHeight)}px`
       },
       rowKey: (row) => row.id,
-      // columns: renderColumns.value,
-      ...omit(get(proxyProps), 'schemas', 'fetch', 'openSearch', 'columns'),
+      ...omit(get(proxyProps), 'schemas', 'fetch', 'openSearch', 'columns', 'size'),
       ...omit(attrs, 'class', 'style')
     }
   })
@@ -158,12 +160,12 @@
     <div v-if="proxyProps.openSearch" key="tableSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
-          <BasicForm ref="tableSearchFormRefEf" :label-width="80" label-placement="left">
+          <PearForm ref="tableSearchFormRefEf" :label-width="80" label-placement="left">
             <template #formAction>
               <NButton type="primary" :loading="loading" @click="handleSearch"> 查询 </NButton>
               <NButton @click="handleReset">重置</NButton>
             </template>
-          </BasicForm>
+          </PearForm>
         </slot>
       </NCard>
     </div>
