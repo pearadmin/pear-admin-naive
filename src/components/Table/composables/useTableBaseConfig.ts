@@ -1,4 +1,4 @@
-import { ComputedRef, ref, watch, watchEffect } from 'vue'
+import { ComputedRef, ref, watchEffect } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
 
 import { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'

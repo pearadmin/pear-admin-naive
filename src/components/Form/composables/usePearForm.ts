@@ -4,7 +4,7 @@ import {
   FormSchema
 } from '@/components/Form/components/PearForm.vue'
 import PearForm from '@/components/Form/components/PearForm.vue'
-import { computed, nextTick, onMounted, ref, watchEffect } from "vue";
+import { nextTick, onMounted, ref, watchEffect } from 'vue'
 
 export function usePearForm(pearFormProps?: Partial<PearFormProps>) {
   const formRefEl = ref<Nullable<HTMLElement & typeof PearForm & PearFormExpose>>(null)
