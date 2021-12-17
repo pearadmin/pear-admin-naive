@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
   import { DataTableColumn, DataTableColumns, PaginationProps } from 'naive-ui'
-  import { computed, Ref, ref, useAttrs } from 'vue'
+  import { computed, Ref, ref, useAttrs, watch } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
   import usePagination from '@/components/Table/composables/usePagination'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
@@ -19,6 +19,7 @@
   import { createTableContext } from '@/components/Table/composables/useTableContext'
   import { UseFormMethods } from '@/components/Form/composables/useForm'
   import { PearFormProps } from '@/components/Form/components/PearForm.vue'
+  import { useSearchFormExpand } from '@/components/Table/composables/useSearchFormExpand'
 
   // types
   // @ts-ignore
@@ -64,12 +65,28 @@
 
   // 表格高度，大小，工具栏图标大小，列设置
   const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(proxyProps)
+
   // form
   const {
     formRefEl: tableSearchFormRefEf,
     values,
     methods: formMethods
   } = usePearForm(get(proxyProps, 'searchFormProps'))
+
+  // 展开收起
+  const { gridCollapsed, handleToggleFormExpand } = useSearchFormExpand(proxyProps)
+
+  watch(
+    gridCollapsed,
+    (val) => {
+      formMethods.setFormProps({
+        gridProps: {
+          collapsed: val
+        }
+      })
+    },
+    { immediate: true }
+  )
 
   // 分页
   const { paginationRef, resetPagination } = usePagination()
@@ -141,7 +158,8 @@
     handleReset,
     formMethods,
     setTableProps: (updProps: Partial<PearTableProps>) => {
-      innerProps.value = updProps
+      // innerProps.value = updProps
+      merge(innerProps.value, updProps)
       // 更新表头
       if (updProps.openSearch) {
         formMethods.setFormProps(updProps.searchFormProps)
@@ -160,10 +178,27 @@
     <div v-if="proxyProps.openSearch" key="tableSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
-          <PearForm ref="tableSearchFormRefEf" :label-width="80" label-placement="left">
+          <PearForm ref="tableSearchFormRefEf">
             <template #formAction>
               <NButton type="primary" :loading="loading" @click="handleSearch"> 查询 </NButton>
               <NButton @click="handleReset">重置</NButton>
+              <div
+                v-if="proxyProps?.searchFormProps?.gridProps?.collapsed"
+                @click="handleToggleFormExpand"
+              >
+                <NButton v-if="!gridCollapsed" text icon-placement="right">
+                  收起
+                  <template #icon>
+                    <Icon name="ic:twotone-expand-less" />
+                  </template>
+                </NButton>
+                <NButton v-else text icon-placement="right">
+                  展开
+                  <template #icon>
+                    <Icon name="ic:round-expand-more" />
+                  </template>
+                </NButton>
+              </div>
             </template>
           </PearForm>
         </slot>

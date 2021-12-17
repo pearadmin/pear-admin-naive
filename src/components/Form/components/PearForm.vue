@@ -126,7 +126,7 @@
       return formModelRef.value
     },
     setFormProps: (formProps) => {
-      formProps && (innerProps.value = formProps)
+      formProps && merge(innerProps.value, formProps)
     },
     updFormValue: (updModel: Recordable): void => {
       formModelRef.value = merge(formModelRef.value, updModel)

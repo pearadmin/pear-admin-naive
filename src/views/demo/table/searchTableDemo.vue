@@ -49,6 +49,27 @@
       }
     },
     {
+      model: 'input1',
+      component: 'NInput',
+      formItemProps: {
+        label: 'Input'
+      }
+    },
+    {
+      model: 'input2',
+      component: 'NInput',
+      formItemProps: {
+        label: 'Input'
+      }
+    },
+    {
+      model: 'input3',
+      component: 'NInput',
+      formItemProps: {
+        label: 'Input'
+      }
+    },
+    {
       model: 'select',
       component: 'NSelect',
       formItemProps: {
@@ -137,6 +158,8 @@
 
   const gridProps: GridProps = {
     responsive: 'screen',
+    collapsed: true,
+    collapsedRows: 1,
     cols: '1 s:2 m:3 l:3 xl:3 xxl:3',
     xGap: 24
   }
@@ -144,6 +167,7 @@
   const searchFormProps: PearFormProps = {
     schemas,
     gridProps,
+    labelWidth: 100,
     model: {
       select: 'song1',
       input: 'abcdInput'
@@ -164,6 +188,7 @@
   }
 
   const { tableRefEl } = useTable({
+    columns,
     searchFormProps,
     fetch,
     openSearch: true
@@ -172,7 +197,7 @@
 
 <template>
   <PageWrapper>
-    <PearTable ref="tableRefEl" :columns="columns">
+    <PearTable ref="tableRefEl">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="primary">工具按钮1</NButton>
