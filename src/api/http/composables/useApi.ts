@@ -67,8 +67,8 @@ export function useApi<T extends Recordable>(
   const error = ref<unknown>(null)
 
   const executor = computed((): ((args?: RequestOptionsInit) => Promise<T>) => {
-    const method = options.method ?? 'get'
     return (args?: RequestOptionsInit) => {
+      const method = options.method ?? 'get'
       return new Promise((resolve, reject) => {
         loading.value = true
         finished.value = false

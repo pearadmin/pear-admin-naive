@@ -4,14 +4,10 @@ import {
   FormSchema
 } from '@/components/Form/components/PearForm.vue'
 import PearForm from '@/components/Form/components/PearForm.vue'
-import { nextTick, onMounted, ref, watchEffect } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
 export function usePearForm(pearFormProps?: Partial<PearFormProps>) {
   const formRefEl = ref<Nullable<HTMLElement & typeof PearForm & PearFormExpose>>(null)
-
-  // const values = computed(() => {
-  //   return formRefEl.value?.getFormValue()
-  // })
 
   const values = ref<Recordable>({})
 
@@ -23,6 +19,10 @@ export function usePearForm(pearFormProps?: Partial<PearFormProps>) {
     if (pearFormProps) {
       formRefEl.value?.register(pearFormProps)
     }
+  })
+
+  onUnmounted(() => {
+    formRefEl.value = null
   })
 
   const methods = {

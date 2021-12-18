@@ -1,6 +1,6 @@
 // @ts-ignore
 import BasicTable, { BasicTableExpose, PearTableProps } from '@/components/Table/PearTableProps.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 export type UseTableOptions = Partial<PearTableProps>
 
@@ -11,7 +11,18 @@ export function useTable(options: UseTableOptions) {
     tableRefEl.value?.setTableProps(options)
   })
 
+  onUnmounted(() => {
+    tableRefEl.value = null
+  })
+
+  const methods = {
+    getFormValue: () => {
+      return tableRefEl.value?.searchFormValue
+    }
+  }
+
   return {
-    tableRefEl
+    tableRefEl,
+    methods
   }
 }

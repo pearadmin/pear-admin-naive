@@ -7,7 +7,7 @@ import { get, set } from '@vueuse/core'
 import { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { useApi } from '@/api/http'
 import { FetchMethod } from '@/api/http/composables/useApi'
-import { isFunction, merge } from 'lodash-es'
+import { isEqual, isFunction, merge } from "lodash-es";
 
 export interface UseTableRequestOptions {
   pagination: Ref<Partial<PaginationProps>>
@@ -84,6 +84,17 @@ export function useTableRequest(options: UseTableRequestOptions) {
       set(options.pagination.value, 'itemCount', get(data)?.[TABLE_FETCH_RESPONSE.total])
     }
   })
+
+  // redo
+  watch(
+    basicParams,
+    (nV, oV) => {
+      if (!isEqual(nV, oV) && options.props.value?.fetch?.redo) {
+        get(executor)()
+      }
+    },
+    { deep: true }
+  )
 
   return {
     loading,

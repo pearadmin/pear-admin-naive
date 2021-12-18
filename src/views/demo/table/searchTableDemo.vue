@@ -2,7 +2,8 @@
   import { TableDemoEnum } from './service'
   import { useTable } from '@/components/Table/composables/useTable'
   import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
-  import { GridProps } from 'naive-ui'
+  import { GridProps, useMessage } from 'naive-ui'
+  import { ref } from 'vue'
 
   const columns = [
     {
@@ -170,14 +171,14 @@
     labelWidth: 100,
     model: {
       select: 'song1',
-      input: 'abcdInput'
+      input: '默认值'
     }
   }
 
-  const fetch = {
+  const fetch = ref({
     fetchUrl: TableDemoEnum.getTableRecords,
-    // immediate: false,
-    // redo: true,
+    immediate: true,
+    redo: false,
     beforeFetch(params) {
       return params
     },
@@ -185,14 +186,20 @@
       console.log('after fetch => ', data)
       return data
     }
-  }
+  })
 
-  const { tableRefEl } = useTable({
+  const {
+    tableRefEl,
+    methods: { getFormValue }
+  } = useTable({
     columns,
     searchFormProps,
     fetch,
-    openSearch: true
+    openSearch: true,
+    virtualScroll: true
   })
+
+  const message = useMessage()
 </script>
 
 <template>
@@ -200,8 +207,13 @@
     <PearTable ref="tableRefEl">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
-        <NButton type="primary">工具按钮1</NButton>
-        <NButton type="error">工具按钮2</NButton>
+        <NButton type="warning" @click="fetch.redo = !fetch.redo">
+          {{ fetch.redo ? '禁用redo' : '启用redo' }}
+          {{ fetch.redo ? '' : '(参数改变时会自动触发请求，慎用！)' }}
+        </NButton>
+        <NButton type="primary" @click="message.info(JSON.stringify(getFormValue()))">
+          获取参数
+        </NButton>
       </template>
     </PearTable>
   </PageWrapper>
