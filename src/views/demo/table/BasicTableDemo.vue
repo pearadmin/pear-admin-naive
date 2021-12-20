@@ -60,8 +60,13 @@
 
 <template>
   <PageWrapper>
-    <PearTable :columns="columns" virtual-scroll :fetch="fetch">
+    <PearTable :columns="columns" virtual-scroll :fetch="fetch" open-search>
+      <template #header> 表头区域 slot </template>
+      <template #search> 查询区域（设置openSearch=true后才显示哈）slot </template>
       <template #tableTitle> 标准表格 </template>
+      <template #tools>
+        <NButton text>工具扩展区域 slot</NButton>
+      </template>
     </PearTable>
   </PageWrapper>
 </template>

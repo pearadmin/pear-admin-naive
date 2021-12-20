@@ -6,10 +6,10 @@ import { makeDestructurable } from '@vueuse/core'
 
 export type UseTableOptions = Partial<PearTableProps>
 
-export function useTable(options: MaybeRef<UseTableOptions>) {
+export function usePearTable(options: MaybeRef<UseTableOptions>) {
   const tableExpose = ref<Nullable<PearTableExpose>>()
 
-  function register(expose?: PearTableExpose) {
+  function registerTable(expose?: PearTableExpose) {
     if (expose) {
       tableExpose.value = expose
       expose.updTableProps(options)
@@ -26,5 +26,5 @@ export function useTable(options: MaybeRef<UseTableOptions>) {
     }
   }
 
-  return makeDestructurable({ register, methods } as const, [register, methods] as const)
+  return makeDestructurable({ registerTable, methods } as const, [registerTable, methods] as const)
 }

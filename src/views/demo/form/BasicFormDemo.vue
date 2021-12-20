@@ -204,14 +204,11 @@
     )
   }
   function validatePasswordSame(rule, value) {
-    console.log('validate same ===>', value)
     return value === values.value.password
   }
 
   function handlePasswordInput() {
-    console.log('password input => ', rPasswordFormItemRef.value.validate)
     if (values.value.reenteredPassword) {
-      console.log(rPasswordFormItemRef.value)
       rPasswordFormItemRef.value.validate({ trigger: 'password-input' })
     }
   }

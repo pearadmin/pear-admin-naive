@@ -28,6 +28,15 @@ const tableDateRoutes: RouteRecordRaw[] = [
           title: '查询表格',
           icon: 'mdi:table-search'
         }
+      },
+      {
+        path: 'customHeader',
+        name: 'CustomHeader',
+        component: () => import('@/views/demo/table/DefTableHead.vue'),
+        meta: {
+          title: '自定义表头',
+          icon: 'system-uicons:table-header'
+        }
       }
     ]
   }

@@ -4,6 +4,7 @@
   import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
   import { GridProps, useMessage } from 'naive-ui'
   import { ref } from 'vue'
+  import { usePearForm } from '@/components/Form/composables/usePearForm'
 
   const columns = [
     {
@@ -159,8 +160,7 @@
 
   const gridProps: GridProps = {
     responsive: 'screen',
-    collapsed: true,
-    collapsedRows: 1,
+    collapsed: false,
     cols: '1 s:2 m:3 l:3 xl:3 xxl:3',
     xGap: 24
   }
@@ -172,15 +172,23 @@
     model: {
       select: 'song1',
       input: '默认值'
-    }
+    },
   }
+
+  const {
+    registerForm,
+    methods: { values: formValues }
+  } = usePearForm(searchFormProps)
 
   const fetch = ref({
     fetchUrl: TableDemoEnum.getTableRecords,
     immediate: true,
     redo: false,
     beforeFetch(params) {
-      return params
+      return {
+        ...params.value,
+        ...formValues.value
+      }
     },
     afterFetch(data) {
       console.log('after fetch => ', data)
@@ -193,7 +201,6 @@
     methods: { getFormValue }
   } = usePearTable({
     columns,
-    searchFormProps,
     fetch,
     openSearch: true,
     virtualScroll: true
@@ -206,14 +213,13 @@
   <PageWrapper>
     <PearTable @register-table="registerTable">
       <template #tableTitle> 标准表格 </template>
-      <template #tools>
-        <NButton type="warning" @click="fetch.redo = !fetch.redo">
-          {{ fetch.redo ? '禁用redo' : '启用redo' }}
-          {{ fetch.redo ? '' : '(参数改变时会自动触发请求，慎用！)' }}
-        </NButton>
-        <NButton type="primary" @click="message.info(JSON.stringify(getFormValue()))">
-          获取参数
-        </NButton>
+      <template #search>
+        <PearForm @register-form="registerForm">
+          <template #formAction>
+            <NButton type="primary">我是自定义的</NButton>
+            <NButton type="primary">好巧，我也是</NButton>
+          </template>
+        </PearForm>
       </template>
     </PearTable>
   </PageWrapper>
