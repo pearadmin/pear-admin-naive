@@ -59,6 +59,6 @@ export function usePearForm(pearFormProps?: MaybeRef<Partial<PearFormProps>>) {
       registerForm,
       methods
     } as const,
-    [registerForm, methods] as const
+    [registerForm, methods]
   )
 }

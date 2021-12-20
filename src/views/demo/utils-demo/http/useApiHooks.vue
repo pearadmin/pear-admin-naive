@@ -23,7 +23,10 @@
     }
   ]
 
-  const { formRefEl: refEl1, modelValue: params1 } = useForm({
+  const {
+    registerForm: rf1,
+    methods: { values: params1 }
+  } = usePearForm({
     schemas: form1Schemas,
     model: {
       keyA: '全自动挡',
@@ -64,7 +67,10 @@
     }
   ]
 
-  const { formRefEl: refEl2, values: params2 } = usePearForm({
+  const {
+    registerForm: rf2,
+    methods: { values: params2 }
+  } = usePearForm({
     schemas: form2Schemas,
     model: {
       keyA: '全手动挡',
@@ -94,7 +100,7 @@
           注意：改变参请后会马上触发请求，一般来说最好不要这么频繁。你懂的 : )
         </NAlert>
         <br />
-        <PearForm ref="refEl1" label-placement="left" />
+        <PearForm @register-form="rf1" />
         <pre>
           结果: => {{ JSON.stringify(data1, null, 2) }}
         </pre>
@@ -104,7 +110,7 @@
     <NDivider />
     <NSpin :show="loading2">
       <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
-        <PearForm ref="refEl2" label-placement="left" />
+        <PearForm @register-form="rf2" />
         <pre>
           结果: => {{ JSON.stringify(data2, null, 2) }}
         </pre>
