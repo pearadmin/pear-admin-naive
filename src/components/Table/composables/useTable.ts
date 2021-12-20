@@ -1,28 +1,30 @@
 // @ts-ignore
-import BasicTable, { BasicTableExpose, PearTableProps } from '@/components/Table/PearTableProps.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { PearTableExpose, PearTableProps } from '@/components/Table/PearTable.vue'
+import { onUnmounted, ref } from 'vue'
+import { MaybeRef } from '@vueuse/core'
+import { makeDestructurable } from '@vueuse/core'
 
 export type UseTableOptions = Partial<PearTableProps>
 
-export function useTable(options: UseTableOptions) {
-  const tableRefEl = ref<Nullable<typeof BasicTable & HTMLElement & BasicTableExpose>>(null)
+export function useTable(options: MaybeRef<UseTableOptions>) {
+  const tableExpose = ref<Nullable<PearTableExpose>>()
 
-  onMounted(() => {
-    tableRefEl.value?.setTableProps(options)
-  })
+  function register(expose?: PearTableExpose) {
+    if (expose) {
+      tableExpose.value = expose
+      expose.updTableProps(options)
+    }
+  }
 
   onUnmounted(() => {
-    tableRefEl.value = null
+    tableExpose.value = null
   })
 
   const methods = {
     getFormValue: () => {
-      return tableRefEl.value?.searchFormValue
+      return tableExpose.value?.searchFormValue
     }
   }
 
-  return {
-    tableRefEl,
-    methods
-  }
+  return makeDestructurable({ register, methods } as const, [register, methods] as const)
 }

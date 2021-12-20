@@ -7,7 +7,7 @@ import { get, set } from '@vueuse/core'
 import { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { useApi } from '@/api/http'
 import { FetchMethod } from '@/api/http/composables/useApi'
-import { isEqual, isFunction, merge } from "lodash-es";
+import { isEqual, isFunction, merge } from 'lodash-es'
 
 export interface UseTableRequestOptions {
   pagination: Ref<Partial<PaginationProps>>

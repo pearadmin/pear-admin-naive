@@ -1,6 +1,7 @@
 import { computed, DefineComponent, defineComponent, PropType } from 'vue'
 import { componentMap } from '@/components/Form/component'
 import { FormSchema } from '@/components/Form/components/PearForm.vue'
+import { isFunction } from 'lodash-es'
 
 export default defineComponent({
   name: 'PearFormItem',
@@ -15,14 +16,39 @@ export default defineComponent({
       default: () => ({})
     }
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const Component = computed((): DefineComponent => {
       const name = props.schema?.component ? props.schema.component : 'NInput'
       return componentMap.get(name) as DefineComponent
     })
 
     const comProps = computed((): Recordable => {
-      return props.schema?.componentProps ?? {}
+      // 支持动态props
+      const keys = Object.keys(props.schema?.componentProps ?? {})
+      /**
+       * componentProps: {
+       *   aaa: 'aaa',
+       *   xxx: (formModelRef) => {
+       *     return xxx
+       *   },
+       *   onXXX: () => function onXXX(){}
+       * }
+       * 排除以on开头的，一般来说，以on开头的多为函数，所以不做处理
+       */
+      const innerProps = keys.reduce((resProps, key) => {
+        const itemProp = props.schema?.componentProps ?? null
+        if (itemProp) {
+          return {
+            ...resProps,
+            [key]:
+              isFunction(itemProp[key]) && !key.startsWith('on')
+                ? itemProp[key](props.formModelRef)
+                : itemProp[key]
+          }
+        }
+        return resProps
+      }, {} as Recordable)
+      return innerProps
     })
 
     const comSlots = computed(() => {
@@ -30,12 +56,13 @@ export default defineComponent({
     })
 
     return () => {
+      const DynamicComponent = Component.value
       return (
-        <Component.value
-          {...comProps.value}
+        <DynamicComponent
+          {...{ ...comProps.value, ...attrs }}
           v-model={[props.formModelRef[props.schema.model], 'value']}
           v-slots={comSlots.value}
-        ></Component.value>
+        />
       )
     }
   }

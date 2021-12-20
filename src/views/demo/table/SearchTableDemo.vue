@@ -189,7 +189,7 @@
   })
 
   const {
-    tableRefEl,
+    register,
     methods: { getFormValue }
   } = useTable({
     columns,
@@ -204,7 +204,7 @@
 
 <template>
   <PageWrapper>
-    <PearTable ref="tableRefEl">
+    <PearTable @register-table="register">
       <template #tableTitle> 标准表格 </template>
       <template #tools>
         <NButton type="warning" @click="fetch.redo = !fetch.redo">

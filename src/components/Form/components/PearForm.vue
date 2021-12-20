@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { FormItemProps, FormItemRule, GridItemProps, GridProps, NForm } from 'naive-ui'
-  import { computed, ref, Slots, useAttrs } from 'vue'
+  import { computed, ref, Slots, useAttrs, onMounted, unref, watch } from 'vue'
   import { merge, omit } from 'lodash-es'
   import { usePearFormModel } from '@/components/Form/composables/usePearFormModel'
   import PearFormItem from '@/components/Form/components/PearFormItem'
@@ -30,7 +30,7 @@
     // wrapperSlots?: (() => Slots | HTMLElement) | Slots
   }
 
-  export type GridFormItemProps = Partial<FormItemProps & GridItemProps>
+  export type GridFormItemProps = Partial<FormItemProps & GridItemProps> & Recordable
 
   export interface PearFormProps {
     disabled?: boolean
@@ -48,31 +48,22 @@
     model?: Recordable
     schemas?: FormSchema[]
     gridProps?: Partial<GridProps>
-    // gridProps?: {
-    //   cols?: number | string
-    //   collapsed?: boolean
-    //   collapsedRows?: number
-    //   responsive?: 'self' | 'screen' | string // todo remove string
-    //   itemResponsive?: boolean
-    //   xGap?: number
-    //   yGap?: number
-    // }
   }
 
-  // export interface PearFormEmit {
-  //   (e: 'register', props: Ref<Partial<PearFormProps>>): void
-  // }
+  export interface PearFormEmit {
+    (e: 'register-form', expose?: PearFormExpose): void
+  }
 
   export interface PearFormExpose {
-    register: (formProps: Partial<PearFormProps>) => void
+    updFormProps: (formProps?: Partial<PearFormProps>) => void
     getFormValue: () => Recordable
-    setFormProps: (formProps?: Partial<PearFormProps>) => void
     updFormValue: (updModel: Recordable) => void
+    validate: (args?: any) => Promise<any>
     restoreValidation: () => void
   }
 
   const attrs = useAttrs()
-  // const emit = defineEmits<PearFormEmit>()
+  const emit = defineEmits<PearFormEmit>()
 
   const props = withDefaults(defineProps<PearFormProps>(), {
     disabled: false,
@@ -80,6 +71,7 @@
     labelPlacement: 'top',
     showFeedback: true,
     showLabel: true,
+    showRequireMark: undefined,
     requireMarkPlacement: 'right',
     size: 'medium',
     schemas: () => [],
@@ -112,30 +104,44 @@
 
   const bindFormProps = computed(() => {
     return {
-      ...omit(proxyProps, 'model', 'schemas', 'gridProps'),
+      ...omit(unref(proxyProps), 'model', 'schemas', 'gridProps'),
       ...attrs,
-      model: formModelRef.value
+      model: unref(formModelRef)
     }
   })
 
-  defineExpose<PearFormExpose>({
-    register: (props) => {
-      innerProps.value = props
+  watch(
+    bindFormProps,
+    (prop) => {
+      console.log(prop)
     },
+    { deep: true }
+  )
+
+  const formExpose: PearFormExpose = {
     getFormValue: (): Recordable => {
       return formModelRef.value
     },
-    setFormProps: (formProps) => {
+    updFormProps: (formProps) => {
       formProps && merge(innerProps.value, formProps)
     },
     updFormValue: (updModel: Recordable): void => {
       formModelRef.value = merge(formModelRef.value, updModel)
     },
+    validate: async (args?: any) => {
+      return innerFormRefEl.value?.validate(args)
+    },
     restoreValidation: () => {
       innerFormRefEl.value?.restoreValidation()
       restFormValue()
     }
+  }
+
+  onMounted(() => {
+    emit('register-form', formExpose)
   })
+
+  defineExpose<PearFormExpose>(formExpose)
 </script>
 
 <template>
@@ -145,7 +151,7 @@
         v-for="schema in proxyProps.schemas"
         :key="schema.model"
         :path="schema.model"
-        v-bind="schema?.formItemProps ? schema.formItemProps : {}"
+        v-bind="schema?.formItemProps ?? {}"
       >
         <PearFormItem :schema="schema" :form-model-ref="formModelRef" />
       </NFormItemGi>

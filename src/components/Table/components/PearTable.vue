@@ -6,10 +6,10 @@
 
 <script setup lang="ts">
   import { DataTableColumn, DataTableColumns, PaginationProps } from 'naive-ui'
-  import { computed, Ref, ref, useAttrs, watch } from 'vue'
+  import { computed, onMounted, Ref, ref, useAttrs, watch } from 'vue'
   import { merge, omit, pick } from 'lodash-es'
   import usePagination from '@/components/Table/composables/usePagination'
-  import { usePearForm } from '@/components/Form/composables/usePearForm'
+  import { usePearForm, UseFormMethods } from '@/components/Form/composables/usePearForm'
   import { get } from '@vueuse/core'
   import { useTableRequest } from '@/components/Table/composables/useTableRequest'
   import {
@@ -17,7 +17,7 @@
     useTableBaseConfig
   } from '@/components/Table/composables/useTableBaseConfig'
   import { createTableContext } from '@/components/Table/composables/useTableContext'
-  import { UseFormMethods } from '@/components/Form/composables/useForm'
+  // import { UseFormMethods } from '@/components/Form/composables/useForm'
   import { PearFormProps } from '@/components/Form/components/PearForm.vue'
   import { useSearchFormExpand } from '@/components/Table/composables/useSearchFormExpand'
 
@@ -47,9 +47,15 @@
     searchFormValue: Ref<Recordable>
     handleReset: () => void
     formMethods: UseFormMethods
-    setTableProps: (updProps: PearTableProps) => void
+    updTableProps: (updProps: PearTableProps) => void
   }
 
+  // @ts-ignore
+  export interface PearTableEmits {
+    (e: 'register-table', PearTableExpose): void
+  }
+
+  const emit = defineEmits<PearTableEmits>()
   const attrs = useAttrs()
   const props = withDefaults(defineProps<PearTableProps>(), {
     columns: () => [],
@@ -67,11 +73,7 @@
   const { tableSize, tableHeight, iconSize, columns } = useTableBaseConfig(proxyProps)
 
   // form
-  const {
-    formRefEl: tableSearchFormRefEf,
-    values,
-    methods: formMethods
-  } = usePearForm(get(proxyProps, 'searchFormProps'))
+  const { registerForm, methods: formMethods } = usePearForm(get(proxyProps, 'searchFormProps'))
 
   // 展开收起
   const { gridCollapsed, handleToggleFormExpand } = useSearchFormExpand(proxyProps)
@@ -79,7 +81,7 @@
   watch(
     gridCollapsed,
     (val) => {
-      formMethods.setFormProps({
+      formMethods.updFormProps({
         gridProps: {
           collapsed: val
         }
@@ -94,7 +96,7 @@
   // 请求
   const { data, loading, executor } = useTableRequest({
     pagination: paginationRef,
-    fetchParams: values,
+    fetchParams: formMethods.values,
     props: proxyProps
   })
 
@@ -152,19 +154,24 @@
     resetPagination()
   }
 
-  // define expose
-  defineExpose<PearTableExpose>({
-    searchFormValue: values,
+  const tableExpose: PearTableExpose = {
+    searchFormValue: formMethods.values,
     handleReset,
     formMethods,
-    setTableProps: (updProps: Partial<PearTableProps>) => {
-      // innerProps.value = updProps
+    updTableProps: (updProps: Partial<PearTableProps>) => {
       merge(innerProps.value, updProps)
       // 更新表头
       if (updProps.openSearch) {
-        formMethods.setFormProps(updProps.searchFormProps)
+        formMethods.updFormProps(updProps.searchFormProps)
       }
     }
+  }
+
+  // define expose
+  defineExpose<PearTableExpose>(tableExpose)
+
+  onMounted(() => {
+    emit('register-table', tableExpose)
   })
 </script>
 
@@ -178,7 +185,7 @@
     <div v-if="proxyProps.openSearch" key="tableSearch" class="pear-admin-table-search">
       <NCard>
         <slot name="search">
-          <PearForm ref="tableSearchFormRefEf">
+          <PearForm @register-form="registerForm">
             <template #formAction>
               <NButton type="primary" :loading="loading" @click="handleSearch"> 查询 </NButton>
               <NButton @click="handleReset">重置</NButton>

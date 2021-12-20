@@ -15,7 +15,7 @@ const formDemoRoutes: RouteRecordRaw[] = [
       {
         path: 'basicForm',
         name: 'basicForm',
-        component: () => import('@/views/demo/form/basicFormDemo.vue'),
+        component: () => import('@/views/demo/form/BasicFormDemo.vue'),
         meta: {
           title: '基础表单',
           icon: 'ant-design:form-outlined'

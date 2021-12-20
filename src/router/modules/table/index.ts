@@ -14,7 +14,7 @@ const tableDateRoutes: RouteRecordRaw[] = [
       {
         path: 'basicTable',
         name: 'basicTable',
-        component: () => import('@/views/demo/table/basicTableDemo.vue'),
+        component: () => import('@/views/demo/table/BasicTableDemo.vue'),
         meta: {
           title: '基础表格',
           icon: 'la:table'
@@ -23,7 +23,7 @@ const tableDateRoutes: RouteRecordRaw[] = [
       {
         path: 'searchTable',
         name: 'SearchTable',
-        component: () => import('@/views/demo/table/searchTableDemo.vue'),
+        component: () => import('@/views/demo/table/SearchTableDemo.vue'),
         meta: {
           title: '查询表格',
           icon: 'mdi:table-search'

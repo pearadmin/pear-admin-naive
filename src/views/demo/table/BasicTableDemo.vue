@@ -63,9 +63,6 @@
     <PearTable :columns="columns" virtual-scroll :fetch="fetch">
       <template #tableTitle> 标准表格 </template>
     </PearTable>
-    <!--    <BasicTable :columns="columns" virtual-scroll :fetch="fetch">-->
-    <!--      <template #tableTitle> 标准表格 </template>-->
-    <!--    </BasicTable>-->
   </PageWrapper>
 </template>
 

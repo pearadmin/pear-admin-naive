@@ -1,51 +1,64 @@
-import {
-  PearFormProps,
-  PearFormExpose,
-  FormSchema
-} from '@/components/Form/components/PearForm.vue'
-import PearForm from '@/components/Form/components/PearForm.vue'
-import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import { PearFormProps, PearFormExpose } from '@/components/Form/components/PearForm.vue'
+import { nextTick, onUnmounted, Ref, ref, unref, watchEffect } from 'vue'
+import type { MaybeRef } from '@vueuse/core'
+import { makeDestructurable } from '@vueuse/core'
 
-export function usePearForm(pearFormProps?: Partial<PearFormProps>) {
-  const formRefEl = ref<Nullable<HTMLElement & typeof PearForm & PearFormExpose>>(null)
+export interface UseFormMethods {
+  values: Ref<Recordable>
+  getFormValue: () => Recordable
+  restoreValidation: () => Promise<void>
+  updFormProps: (formProps?: Partial<PearFormProps>) => Promise<void>
+  validate: (args?: any) => Promise<void>
+  reset: () => void
+}
+
+export function usePearForm(pearFormProps?: MaybeRef<Partial<PearFormProps>>) {
+  const formExpose = ref<Nullable<PearFormExpose>>(null)
+
+  function registerForm(expose: PearFormExpose) {
+    formExpose.value = expose
+    if (pearFormProps) {
+      expose.updFormProps(unref(pearFormProps))
+    }
+  }
 
   const values = ref<Recordable>({})
 
   watchEffect(() => {
-    values.value = (formRefEl.value?.getFormValue() as Recordable) ?? {}
-  })
-
-  onMounted(() => {
-    if (pearFormProps) {
-      formRefEl.value?.register(pearFormProps)
-    }
+    values.value = (unref(formExpose)?.getFormValue() as Recordable) ?? {}
   })
 
   onUnmounted(() => {
-    formRefEl.value = null
+    formExpose.value = null
   })
 
-  const methods = {
+  const methods: UseFormMethods = {
+    values,
+    getFormValue: () => {
+      return values.value
+    },
     restoreValidation: async () => {
       await nextTick()
-      formRefEl.value?.restoreValidation()
+      unref(formExpose)?.restoreValidation()
     },
-    setFormProps: async (formProps?: Partial<PearFormProps>) => {
+    updFormProps: async (formProps?: Partial<PearFormProps>) => {
       await nextTick()
-      formRefEl.value?.setFormProps(formProps)
+      unref(formExpose)?.updFormProps(formProps)
     },
-    setFormSchemas: async (schemas?: FormSchema[]) => {
+    validate: async (args?: any) => {
       await nextTick()
-      formRefEl.value?.setFormSchemas(schemas)
+      return unref(formExpose)?.validate(args)
     },
     reset: () => {
-      formRefEl.value?.restoreValidation()
+      unref(formExpose)?.restoreValidation()
     }
   }
 
-  return {
-    formRefEl,
-    values,
-    methods
-  }
+  return makeDestructurable(
+    {
+      registerForm,
+      methods
+    } as const,
+    [registerForm, methods] as const
+  )
 }

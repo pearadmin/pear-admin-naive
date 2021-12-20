@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { useApi } from '@/api/http'
   import { HttpDemoEnums } from '@/views/demo/utils-demo/http/service'
-  import useForm from '@/components/Form/composables/useForm'
+  import { usePearForm } from '@/components/Form/composables/usePearForm'
   import PearForm, { FormSchema } from '@/components/Form/components/PearForm.vue'
 
   const form1Schemas: FormSchema[] = [
@@ -64,7 +64,7 @@
     }
   ]
 
-  const { formRefEl: refEl2, modelValue: params2 } = useForm({
+  const { formRefEl: refEl2, values: params2 } = usePearForm({
     schemas: form2Schemas,
     model: {
       keyA: '全手动挡',
