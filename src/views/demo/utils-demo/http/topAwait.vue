@@ -21,6 +21,9 @@
     })
   }
 
+  const res1 = await promiseFn({ tag: true }, 2000)
+  console.log(res1)
+
   /**
    * eg 1.
    * 顶层异步 promise().then()
@@ -36,6 +39,9 @@
 
 <template>
   <PageWrapper title="setup异步" subtitle="建议使用Promise.then()而不是await xxx()">
+    <pre>
+      {{ JSON.stringify(res1, null, 4) }}
+    </pre>
     <NSpin :show="loading">
       <NCard title="顶层Promise.then" subtitle="不会触发suspense Loading">
         <div>

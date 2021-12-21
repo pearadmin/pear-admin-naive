@@ -61,6 +61,6 @@ export default ({ command }): UserConfigExport => ({
     open: true
   },
   build: {
-    sourcemap: true
+    sourcemap: false
   }
 })
