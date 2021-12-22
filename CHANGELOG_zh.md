@@ -1,9 +1,10 @@
+* **useApi:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
+* **useTableRequest:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
+
 ## [1.0.2](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.2) (2021-12-20)
 
 ### Optimize
-* **composables:**  优化 `useForm` 、` useTable `
-* **useApi:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求 
-* **useTableRequest:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求 
+* **composables:**  优化 `useForm` 、` useTable ` 
 
 ### Refactor
 * **Component** 修改PearForm, PearTable内部注册组件的方式，修正开发模式下，热更新后不渲染的问题
