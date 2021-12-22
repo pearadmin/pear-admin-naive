@@ -2,7 +2,7 @@
   import { TableDemoEnum } from './service'
   import { usePearTable } from '@/components/Table/composables/usePearTable'
   import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
-  import { GridProps, useMessage } from 'naive-ui'
+  import { GridProps } from 'naive-ui'
   import { ref } from 'vue'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
 
@@ -172,7 +172,7 @@
     model: {
       select: 'song1',
       input: '默认值'
-    },
+    }
   }
 
   const {
@@ -196,17 +196,12 @@
     }
   })
 
-  const {
-    registerTable,
-    methods: { getFormValue }
-  } = usePearTable({
+  const { registerTable } = usePearTable({
     columns,
     fetch,
     openSearch: true,
     virtualScroll: true
   })
-
-  const message = useMessage()
 </script>
 
 <template>

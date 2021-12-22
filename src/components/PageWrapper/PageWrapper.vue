@@ -18,11 +18,13 @@
     'on-back'?: string
     showDefaultBreadcrumb?: boolean
     showDefaultTitle?: boolean
+    onlyContent?: boolean
   }
 
   const props = withDefaults(defineProps<PageWrapperProps>(), {
     showDefaultBreadcrumb: true,
-    showDefaultTitle: true
+    showDefaultTitle: true,
+    onlyContent: false
   })
 
   const pageHeaderProps = computed(() => {
@@ -53,7 +55,8 @@
   // n page header component class
   const pageHeaderClass = computed(() => {
     return {
-      'pear-admin-page-wrapper-header': true
+      'pear-admin-page-wrapper-header': true,
+      'pear-admin-page-wrapper-header-only': props.onlyContent
     }
   })
 
@@ -98,13 +101,13 @@
     height: auto;
     &-header {
       @apply pl-4 pt-4 pr-4 pb-0;
+      &-only {
+        @apply p-0;
+      }
     }
     &-content {
       @apply p-4;
       background: var(--hover-color);
-      &-only {
-        @apply pt-0;
-      }
     }
   }
 </style>
