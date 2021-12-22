@@ -2,7 +2,7 @@ import { computed, ComputedRef, nextTick, onMounted, ref, Ref, watch, watchEffec
 import { PaginationProps } from 'naive-ui'
 import { Recordable } from 'vite-plugin-mock'
 import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
-import { get, set } from '@vueuse/core'
+import { get, set, useDebounceFn } from '@vueuse/core'
 // @ts-ignore
 import { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { useApi } from '@/api/http'
@@ -50,7 +50,8 @@ export function useTableRequest(options: UseTableRequestOptions) {
     },
     {
       immediate: false,
-      redo: false
+      redo: false,
+      debounce: get(options.props).fetch?.debounce ?? 0
     }
   )
 
@@ -85,12 +86,25 @@ export function useTableRequest(options: UseTableRequestOptions) {
     }
   })
 
+  const debouncedFn = computed((): Nullable<() => Promise<void>> => {
+    if (get(options.props).fetch?.debounce && get(options.props).fetch?.debounce > 0) {
+      return useDebounceFn(async () => {
+        await get(executor)()
+      }, get(options.props).fetch?.debounce ?? 0)
+    }
+    return null
+  })
+
   // redo
   watch(
     basicParams,
-    (nV, oV) => {
+    async (nV, oV) => {
       if (!isEqual(nV, oV) && options.props.value?.fetch?.redo) {
-        get(executor)()
+        if (get(options.props).fetch?.debounce && get(options.props).fetch?.debounce > 0) {
+          await debouncedFn.value?.()
+        } else {
+          await get(executor)()
+        }
       }
     },
     { deep: true }

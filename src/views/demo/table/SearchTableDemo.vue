@@ -168,7 +168,8 @@
   const searchFormProps: PearFormProps = {
     schemas,
     gridProps,
-    labelWidth: 100,
+    labelWidth: 80,
+    labelPlacement: 'left',
     model: {
       select: 'song1',
       input: '默认值'
@@ -179,6 +180,7 @@
     fetchUrl: TableDemoEnum.getTableRecords,
     immediate: true,
     redo: false,
+    debounce: 2000,
     beforeFetch(params) {
       return params
     },

@@ -4,6 +4,7 @@ import type { MaybeRef } from '@vueuse/core'
 import { get } from '@vueuse/core'
 import { merge, omit } from 'lodash-es'
 import request from '../fetch'
+import { useDebounceFn } from '@vueuse/core'
 
 export type FetchMethod = 'get' | 'post' | 'delete' | 'put' | 'patch' | 'head' | 'options' | 'rpc'
 
@@ -20,6 +21,7 @@ export interface UseApiConfig<T = Nullable<Recordable>> {
   redo?: boolean
   initialData?: T
   throwErr?: boolean
+  debounce?: number
 }
 
 export interface UseApiReturnType<T> {
@@ -39,7 +41,8 @@ export function useApi<T extends Recordable>(
     immediate: true,
     initialData: null,
     redo: false,
-    throwErr: false
+    throwErr: false,
+    debounce: 0
   }
 
   if (config) {
@@ -99,11 +102,19 @@ export function useApi<T extends Recordable>(
     }
   })
 
+  const debouncedFn = useDebounceFn(async () => {
+    await get(executor)()
+  }, useConfig?.debounce)
+
   watch(
     [fetchUrl, fetchOptions],
     async () => {
       if (useConfig.redo) {
-        await get(executor)()
+        if (useConfig.debounce && useConfig.debounce > 0) {
+          await debouncedFn()
+        } else {
+          await get(executor)()
+        }
       }
     },
     { deep: true }

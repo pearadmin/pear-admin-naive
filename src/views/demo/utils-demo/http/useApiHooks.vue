@@ -44,7 +44,7 @@
       method: 'post',
       data: params1
     },
-    { redo: true, immediate: true }
+    { redo: true, immediate: true, debounce: 1000 }
   )
 
   // demo 2

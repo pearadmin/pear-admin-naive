@@ -27,6 +27,7 @@
     fetchUrl?: string
     immediate?: boolean
     redo?: boolean
+    debounce?: number
     beforeFetch?: (payload: Ref<Recordable>) => Ref<Recordable>
     afterFetch?: (payload: Recordable) => Recordable
   }

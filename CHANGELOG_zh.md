@@ -2,6 +2,8 @@
 
 ### Optimize
 * **composables:**  优化 `useForm` 、` useTable `
+* **useApi:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求 
+* **useTableRequest:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求 
 
 ### Refactor
 * **Component** 修改PearForm, PearTable内部注册组件的方式，修正开发模式下，热更新后不渲染的问题
