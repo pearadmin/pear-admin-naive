@@ -1,5 +1,7 @@
 * **useApi:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
 * **useTableRequest:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
+* **PageWrapper** * 修复PageWrapper只有内容时左上右边距存在的问题
+* **PearForm** * 完善PearForm Demo更多功能
 
 ## [1.0.2](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.2) (2021-12-20)
 

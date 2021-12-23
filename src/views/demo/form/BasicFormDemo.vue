@@ -137,13 +137,12 @@
   ]
 
   const gridProps: GridProps = {
-    cols: 1,
-    xGap: 6
+    cols: 1
   }
 
   const {
     registerForm,
-    methods: { values, reset, validate }
+    methods: { values, reset, validate, updFormProps }
   } = usePearForm({
     labelWidth: 80,
     labelPlacement: 'left',
@@ -232,11 +231,80 @@
       }
     })
   }
+
+  // dynamic label width
+  const labelWidthRef = ref<number>(80)
+  function toggleLabelWidth(val: number) {
+    labelWidthRef.value = val
+    updFormProps({
+      labelWidth: val
+    })
+  }
+
+  // col
+  const colRef = ref<number>(1)
+  function toggleCol(col: number) {
+    colRef.value = col
+    updFormProps({
+      labelWidth: 80,
+      gridProps: {
+        cols: col
+      }
+    })
+  }
+
+  // disable form
+  function disableForm(val: boolean) {
+    updFormProps({
+      disabled: !val
+    })
+  }
+
+  // label placement
+  function labelAlign(val: boolean) {
+    updFormProps({
+      labelAlign: val ? 'left' : 'right'
+    })
+  }
 </script>
 
 <template>
   <PageWrapper>
     <NCard>
+      <NSpace align="center">
+        <n-switch size="large" :on-update:value="disableForm" :default-value="true">
+          <template #checked>启用表单</template>
+          <template #unchecked>禁用表单</template>
+        </n-switch>
+        <n-switch size="large" :on-update:value="labelAlign" :default-value="true">
+          <template #checked>label居左</template>
+          <template #unchecked>label居右</template>
+        </n-switch>
+        <n-input-group>
+          <n-input-group-label>labelWidth:</n-input-group-label>
+          <n-input-number
+            v-model:value="labelWidthRef"
+            :style="{ width: '33%' }"
+            :on-update:value="toggleLabelWidth"
+            placeholder="最小值"
+            :min="80"
+            :max="150"
+          />
+        </n-input-group>
+        <n-input-group>
+          <n-input-group-label>一行</n-input-group-label>
+          <n-input-number
+            v-model:value="colRef"
+            :style="{ width: '33%' }"
+            :on-update:value="toggleCol"
+            placeholder="最小值"
+            :min="1"
+            :max="12"
+          />
+          <n-input-group-label>列</n-input-group-label>
+        </n-input-group>
+      </NSpace>
+      <NDivider />
       <PearForm @register-form="registerForm" />
       <NSpace>
         <NButton type="primary" @click="getFormModel"> 获取model </NButton>

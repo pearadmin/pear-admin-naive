@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { FormItemProps, FormItemRule, GridItemProps, GridProps, NForm } from 'naive-ui'
-  import { computed, ref, Slots, useAttrs, onMounted, unref, watch } from 'vue'
+  import { computed, ref, Slots, useAttrs, onMounted, unref } from 'vue'
   import { merge, omit } from 'lodash-es'
   import { usePearFormModel } from '@/components/Form/composables/usePearFormModel'
   import PearFormItem from '@/components/Form/components/PearFormItem'
@@ -109,14 +109,6 @@
       model: unref(formModelRef)
     }
   })
-
-  watch(
-    bindFormProps,
-    (prop) => {
-      console.log(prop)
-    },
-    { deep: true }
-  )
 
   const formExpose: PearFormExpose = {
     getFormValue: (): Recordable => {
