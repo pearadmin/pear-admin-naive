@@ -87,10 +87,11 @@ export function useTableRequest(options: UseTableRequestOptions) {
   })
 
   const debouncedFn = computed((): Nullable<() => Promise<void>> => {
-    if (get(options.props).fetch?.debounce && get(options.props).fetch?.debounce > 0) {
+    const debounce = get(options.props)?.fetch?.debounce ?? 0
+    if (debounce > 0) {
       return useDebounceFn(async () => {
         await get(executor)()
-      }, get(options.props).fetch?.debounce ?? 0)
+      }, debounce)
     }
     return null
   })
@@ -100,7 +101,8 @@ export function useTableRequest(options: UseTableRequestOptions) {
     basicParams,
     async (nV, oV) => {
       if (!isEqual(nV, oV) && options.props.value?.fetch?.redo) {
-        if (get(options.props).fetch?.debounce && get(options.props).fetch?.debounce > 0) {
+        const debounce = get(options.props)?.fetch?.debounce ?? 0
+        if (debounce > 0) {
           await debouncedFn.value?.()
         } else {
           await get(executor)()

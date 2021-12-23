@@ -180,7 +180,7 @@
     fetchUrl: TableDemoEnum.getTableRecords,
     immediate: true,
     redo: false,
-    debounce: 2000,
+    debounce: 1000,
     beforeFetch(params) {
       return params
     },

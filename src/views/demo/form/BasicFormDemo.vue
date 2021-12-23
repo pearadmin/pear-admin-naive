@@ -276,7 +276,7 @@
           <template #checked>启用表单</template>
           <template #unchecked>禁用表单</template>
         </n-switch>
-        <n-switch size="large" :on-update:value="labelAlign" :default-value="true">
+        <n-switch size="large" :on-update:value="labelAlign" :default-value="false">
           <template #checked>label居左</template>
           <template #unchecked>label居右</template>
         </n-switch>
