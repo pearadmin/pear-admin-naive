@@ -14,7 +14,7 @@ const formDemoRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'basicForm',
-        name: 'basicForm',
+        name: 'BasicForm',
         component: () => import('@/views/demo/form/BasicFormDemo.vue'),
         meta: {
           title: '基础表单',
@@ -23,10 +23,19 @@ const formDemoRoutes: RouteRecordRaw[] = [
       },
       {
         path: 'useForm',
-        name: 'useForm',
-        component: () => import('@/views/demo/form/UseFormRefDemo.vue'),
+        name: 'SseForm',
+        component: () => import('@/views/demo/form/UseFormDemo.vue'),
         meta: {
           title: 'UseForm',
+          icon: 'ant-design:form-outlined'
+        }
+      },
+      {
+        path: 'useFormRef',
+        name: 'UseFormRef',
+        component: () => import('@/views/demo/form/UseFormRefDemo.vue'),
+        meta: {
+          title: 'UseFormRef',
           icon: 'ant-design:form-outlined'
         }
       }

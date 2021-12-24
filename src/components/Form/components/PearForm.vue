@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { FormItemProps, FormItemRule, GridItemProps, GridProps, NForm } from 'naive-ui'
-  import { computed, ref, Slots, useAttrs, onMounted, unref } from 'vue'
+  import { computed, ref, Slots, useAttrs, onMounted, unref, Ref } from 'vue'
   import { merge, omit } from 'lodash-es'
   import { usePearFormModel } from '@/components/Form/composables/usePearFormModel'
   import PearFormItem from '@/components/Form/components/PearFormItem'
@@ -56,6 +56,7 @@
   }
 
   export interface PearFormExpose {
+    values: Ref<Recordable>
     updFormProps: (formProps?: Partial<PearFormProps>) => void
     getFormValue: () => Recordable
     updFormValue: (updModel: Recordable) => void
@@ -112,6 +113,7 @@
   })
 
   const formExpose: PearFormExpose = {
+    values: formModelRef,
     getFormValue: (): Recordable => {
       return formModelRef.value
     },
