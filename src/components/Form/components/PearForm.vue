@@ -47,7 +47,8 @@
     // basic
     model?: Recordable
     schemas?: FormSchema[]
-    gridProps?: Partial<GridProps>
+    // setup not support dynamic import types, so add any now
+    gridProps?: Partial<GridProps> & any
   }
 
   export interface PearFormEmit {

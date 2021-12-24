@@ -1,5 +1,5 @@
 import { PearFormProps, PearFormExpose } from '@/components/Form/components/PearForm.vue'
-import { nextTick, onUnmounted, Ref, ref, unref, watchEffect } from 'vue'
+import { isRef, nextTick, onUnmounted, Ref, ref, unref, watchEffect } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
 import { makeDestructurable } from '@vueuse/core'
 
@@ -26,6 +26,9 @@ export function usePearForm(pearFormProps?: MaybeRef<Partial<PearFormProps>>) {
 
   watchEffect(() => {
     values.value = (unref(formExpose)?.getFormValue() as Recordable) ?? {}
+    if (isRef(pearFormProps)) {
+      formExpose.value?.updFormProps(unref(pearFormProps))
+    }
   })
 
   onUnmounted(() => {

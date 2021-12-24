@@ -20,6 +20,15 @@ const formDemoRoutes: RouteRecordRaw[] = [
           title: '基础表单',
           icon: 'ant-design:form-outlined'
         }
+      },
+      {
+        path: 'useForm',
+        name: 'useForm',
+        component: () => import('@/views/demo/form/UseFormRefDemo.vue'),
+        meta: {
+          title: 'UseForm',
+          icon: 'ant-design:form-outlined'
+        }
       }
     ]
   }
