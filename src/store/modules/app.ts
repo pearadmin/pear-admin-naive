@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useLocalStorage, useSessionStorage } from '@vueuse/core'
 import { RemoveableRef, get } from '@vueuse/core'
+import { unref } from 'vue'
 
 export type ThemeName = 'dark' | 'light' | 'auto'
 
@@ -44,6 +45,29 @@ const useAppStore = defineStore({
         tagsRef.value.splice(index, 1)
         this.tags = tagsRef.value
       }
+    },
+    closeLeftTag(currentName: string) {
+      const tagsRef: RemoveableRef<RouteTag[]> = useSessionStorage('tags', [])
+      if (unref(tagsRef).length === 0) {
+        return
+      }
+      const index = unref(tagsRef).findIndex((it) => it.name === currentName)
+      this.tags = unref(tagsRef).filter((it, idx) => index <= idx)
+    },
+    closeRightTag(currentName: string) {
+      const tagsRef: RemoveableRef<RouteTag[]> = useSessionStorage('tags', [])
+      if (unref(tagsRef).length === 0) {
+        return
+      }
+      const index = unref(tagsRef).findIndex((it) => it.name === currentName)
+      this.tags = unref(tagsRef).filter((it, idx) => idx <= index)
+    },
+    closeOtherTag(currentName: string) {
+      const tagsRef: RemoveableRef<RouteTag[]> = useSessionStorage('tags', [])
+      if (unref(tagsRef).length === 0) {
+        return
+      }
+      this.tags = unref(tagsRef).filter((it) => it.name === currentName)
     }
   }
 })

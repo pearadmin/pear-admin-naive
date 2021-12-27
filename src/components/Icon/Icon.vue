@@ -95,7 +95,8 @@
     }
   }
   span.iconify {
-    display: block;
+    //display: block;
+    display: inline-flex;
     min-width: 1em;
     min-height: 1em;
     border-radius: 100%;

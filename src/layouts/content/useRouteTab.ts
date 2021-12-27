@@ -7,6 +7,9 @@ export interface ReturnUseRouteTab {
   tags: ComputedRef<RouteTag[]>
   handleCloseTag: (tag: RouteTag) => void
   handleClickTag: (tag: RouteTag) => void
+  handleCloseLeft: () => void
+  handleCloseRight: () => void
+  handleCloseOther: () => void
 }
 
 export default function useRouteTab(): ReturnUseRouteTab {
@@ -31,6 +34,15 @@ export default function useRouteTab(): ReturnUseRouteTab {
   )
 
   const tags = computed(() => appStore.tags)
+  // const tags = ref<RouteTag[]>([])
+
+  // watch(
+  //   appStore.tags,
+  //   (val) => {
+  //     tags.value = val
+  //   },
+  //   { immediate: true }
+  // )
 
   function handleClickTag(tag) {
     router.replace(tag.fullPath).catch((err) => console.error(err))
@@ -50,9 +62,27 @@ export default function useRouteTab(): ReturnUseRouteTab {
     }
   }
 
+  function handleCloseLeft() {
+    const currentName = route.name as string
+    appStore.closeLeftTag(currentName)
+  }
+
+  function handleCloseRight() {
+    const currentName = route.name as string
+    appStore.closeRightTag(currentName)
+  }
+
+  function handleCloseOther() {
+    const currentName = route.name as string
+    appStore.closeOtherTag(currentName)
+  }
+
   return {
     tags,
     handleCloseTag,
-    handleClickTag
+    handleClickTag,
+    handleCloseLeft,
+    handleCloseRight,
+    handleCloseOther
   }
 }

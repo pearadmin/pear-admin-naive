@@ -6,7 +6,14 @@
 
   const route = useRoute()
 
-  const { tags, handleCloseTag, handleClickTag } = userRouteTabs()
+  const {
+    tags,
+    handleCloseTag,
+    handleClickTag,
+    handleCloseLeft,
+    handleCloseOther,
+    handleCloseRight
+  } = userRouteTabs()
 
   const { provideState } = useLayoutContextData()
   const handleRefresh = computed(() => {
@@ -16,7 +23,7 @@
 
 <template>
   <NElement tag="div" class="pear-admin-tabs">
-    <NScrollbar x-scrollable style="width: calc(100% - 50px)" class="p-2">
+    <NScrollbar x-scrollable style="width: calc(100% - 60px)" class="p-2">
       <div class="pear-admin-tabs-left">
         <NTag
           v-for="tag in tags"
@@ -37,17 +44,14 @@
       </div>
     </NScrollbar>
     <div class="pear-admin-tabs-right-menu">
-      <Icon
-        class="pear-admin-tabs-right-menu-icon"
-        name="mdi:refresh"
-        :size="20"
-        @click="handleRefresh"
-      />
-      <Icon
-        class="pear-admin-tabs-right-menu-icon"
-        name="mdi:arrow-down-drop-circle-outline"
-        :size="18"
-      />
+      <NSpace justify="center" align="center" item-style="display:flex;">
+        <TabRefresh :refresh="handleRefresh" />
+        <TabsAction
+          :close-left="handleCloseLeft"
+          :close-right="handleCloseRight"
+          :close-other="handleCloseOther"
+        />
+      </NSpace>
     </div>
   </NElement>
 </template>
@@ -95,13 +99,6 @@
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-      padding: 0 5px;
-      &-icon {
-        cursor: pointer;
-        &:not(:first-child) {
-          margin-left: 5px;
-        }
-      }
     }
   }
 </style>
