@@ -242,6 +242,7 @@
   // col
   const colRef = ref<number>(1)
   function toggleCol(col: number) {
+    if (!col) return
     colRef.value = col
     useFormRef.value.gridProps.cols = col
   }
