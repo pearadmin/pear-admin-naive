@@ -38,6 +38,9 @@
   <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://cdn.jsdelivr.net/gh/jiabinbin/cdn/images/system-template/use-api.png" />
 </div>
 
+### 使用文档
+[文档地址](http://naive-doc.pearadmin.com/)
+
 ### 🌈 项目概述
 
 - 基于 Vue 3 setup script语法 与 Naive UI 实现的通用中后台管理模板。整合最新技术高效快速开发，前后端分离模式，开箱即用。

@@ -1,5 +1,6 @@
 ## [1.0.3](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.3) (2022-01-05)
 ### Feature
+* **Docs** 新增使用文档
 * **PearForm** 表单 PearForm Demo更多功能
 * **Route** 新增平级模式路由
 * **ErrorPage** 完善404，403，500错误页面

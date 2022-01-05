@@ -24,6 +24,11 @@
       icon: () => <Icon name="mdi:github"></Icon>
     },
     {
+      label: '使用文档',
+      key: 'docs',
+      icon: () => <Icon name="iconoir:google-docs"></Icon>
+    },
+    {
       type: 'divider',
       key: 'divider'
     },
@@ -45,7 +50,10 @@
   function handleSelect(key: string) {
     switch (key) {
       case 'github':
-        window.open('https://gitee.com/pear-admin/pear-admin-naive', '_target')
+        window.open('https://github.com/pearadmin/pear-admin-naive', '_target')
+        break
+      case 'docs':
+        window.open('http://naive-doc.pearadmin.com/', '_target')
         break
       case 'logout':
         sessionStorage.clear()

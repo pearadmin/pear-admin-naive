@@ -1,5 +1,6 @@
 ## [1.0.3](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.3) (2022-01-05)
 ### Feature
+* **Docs** add docs site
 * **PearForm**  more feature with `PearForm` demo
 * **Route** add `lateral route mode` in router
 * **ErrorPage** add `404`, `403`, `500` error pages
