@@ -26,6 +26,14 @@ const errors: RouteRecordRaw[] = [
           title: '403'
         },
         component: () => import('@/views/error/403.vue')
+      },
+      {
+        path: '/500',
+        name: '500',
+        meta: {
+          title: '500'
+        },
+        component: () => import('@/views/error/500.vue')
       }
     ]
   }

@@ -22,6 +22,17 @@ const systemRoutes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'hidePage',
+        name: 'HidePage',
+        component: () => import('@/views/demo/system/account/hidePage.vue'),
+        meta: {
+          title: 'HidePageManage',
+          hidden: true,
+          activeMenuName: 'User',
+          icon: 'ri:account-box-line'
+        }
+      },
+      {
         path: 'menus',
         name: 'Menus',
         component: () => import('@/views/demo/system/menus/index.vue'),
