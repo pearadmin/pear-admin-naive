@@ -1,3 +1,15 @@
+## [1.0.3](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.3) (2022-01-05)
+### Feature
+* **PearForm** * more feature with `PearForm` demo
+* **Route** * add `lateral route mode` in router
+* **ErrorPage** * add `404`, `403`, `500` error pages
+* **useApi:** setting `redo:true` with `hooks: useApi`, can specify `debounce` as number(ms) to enable function throttling requests 
+* **useTableRequest:** setting `redo:true` with `tableHooks: useTableRequest`, can specify `debounce` as number(ms) to enable function throttling requests
+* **routeTabs** add `close left`, `close right`, `close other` feature in RouteTab
+
+### Fix
+* **PageWrapper** * fix `PageWrapper` only has default slot letTopRight padding
+
 ## [1.0.2](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.2) (2021-12-20)
 
 ### Optimize

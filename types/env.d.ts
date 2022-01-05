@@ -14,6 +14,8 @@ declare module 'vue-router' {
     hidden?: boolean
     /// 将所有的子级渲染为一级菜单 默认false
     hiddenChildren?: boolean
+    /// 指定平级菜单的Name，用于渲染菜单的选中状态
+    activeMenuName?: string
   }
 }
 

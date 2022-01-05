@@ -19,7 +19,7 @@
 
 <template>
   <div class="flex h-full flex-col items-center mt-20">
-    <n-result status="403" title="您的权限不足" size="huge">
+    <n-result status="500" title="服务器错误" size="huge">
       <template #footer>
         <n-button @click="$router.push('/')">返回首页</n-button>
       </template>

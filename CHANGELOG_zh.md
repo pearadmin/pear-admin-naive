@@ -1,8 +1,14 @@
+## [1.0.3](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.3) (2022-01-05)
+### Feature
+* **PearForm** * 表单 PearForm Demo更多功能
+* **Route** * 新增平级模式路由
+* **ErrorPage** * 完善404，403，500错误页面
 * **useApi:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
 * **useTableRequest:** 新增设置 redo:true时,可指定 `debounce` 为number(ms)来开启函数节流请求
-* **routeTabs** 完善`关闭左侧`，`关闭右侧`，`关闭其它` 功能
+* **routeTabs** 新增 RouteTab`关闭左侧`，`关闭右侧`，`关闭其它` 功能
+
+### Fix
 * **PageWrapper** * 修复PageWrapper只有内容时左上右边距存在的问题
-* **PearForm** * 完善PearForm Demo更多功能
 
 ## [1.0.2](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.2) (2021-12-20)
 
