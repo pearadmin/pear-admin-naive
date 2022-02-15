@@ -1,10 +1,9 @@
 <script setup lang="ts">
   import { useChart } from '@/components/AntVG2/useChart'
-  import { fetchChinaGdp } from './service'
-  import usePromiseFn from '@/composables/usePromiseFn'
   import { onUnmounted, watch } from 'vue'
   import { Chart } from '@antv/g2'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
+  import { useApi } from '@/api/http'
 
   // ============= chart =============
   // load data
@@ -12,7 +11,13 @@
     data: data2,
     loading: loading2,
     executor: executor2
-  } = usePromiseFn(fetchChinaGdp, {}, { immediate: true, redo: false })
+  } = useApi(
+    {
+      url: 'dashboard/getGDP',
+      method: 'get'
+    },
+    { immediate: true, redo: false }
+  )
 
   const {
     chartRefEl: chartRefEl2,
@@ -34,7 +39,7 @@
   })
 
   watch(data2, (data2) => {
-    renderDynamicChart(chartInstance2.value as Chart, data2)
+    data2 && renderDynamicChart(chartInstance2.value as Chart, data2)
   })
 
   onUnmounted(() => {

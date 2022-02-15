@@ -55,6 +55,6 @@
     margin-top: 92px;
   }
   .app-loading {
-    @apply w-full min-h-screen flex flex-col justify-center items-center;
+    //@apply w-full min-h-screen flex flex-col justify-center items-center;
   }
 </style>

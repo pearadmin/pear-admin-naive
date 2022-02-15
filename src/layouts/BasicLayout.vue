@@ -60,6 +60,7 @@
       //left: v-bind(left) !important;
       //padding-left: v-bind(left);
       //transition: 0.3s;
+      // border: 1px solid red;
     }
   }
 </style>
