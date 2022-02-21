@@ -5,6 +5,8 @@
   import type { GridProps } from 'naive-ui'
   import { ref } from 'vue'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
+  import type { TableFetch } from '@/components/Table/components/PearTable.vue'
+  import type { Ref } from 'vue'
 
   const columns = [
     {
@@ -180,17 +182,17 @@
     methods: { values: formValues }
   } = usePearForm(searchFormProps)
 
-  const fetch = ref({
+  const fetch = ref<Partial<TableFetch>>({
     fetchUrl: TableDemoEnum.getTableRecords,
     immediate: true,
     redo: false,
-    beforeFetch(params) {
+    beforeFetch(params: Ref<Recordable>) {
       return {
         ...params.value,
         ...formValues.value
       }
     },
-    afterFetch(data) {
+    afterFetch(data: Recordable) {
       console.log('after fetch => ', data)
       return data
     }

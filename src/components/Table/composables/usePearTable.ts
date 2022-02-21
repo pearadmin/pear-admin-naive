@@ -1,17 +1,23 @@
-import type { PearTableExpose, PearTableProps } from '@/components/Table/components/PearTable.vue'
+import type {
+  PearTableExpose,
+  PearTableProps,
+  TableFetch
+} from '@/components/Table/components/PearTable.vue'
 import { onUnmounted, ref } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
-import { makeDestructurable } from '@vueuse/core'
+import { get, makeDestructurable } from '@vueuse/core'
 
-export type UseTableOptions = Partial<PearTableProps>
+export type TableProps = PearTableProps & {
+  fetch?: MaybeRef<TableFetch>
+}
 
-export function usePearTable(options: MaybeRef<UseTableOptions>) {
+export function usePearTable(options: MaybeRef<Partial<TableProps>>) {
   const tableExpose = ref<Nullable<PearTableExpose>>()
 
   function registerTable(expose?: PearTableExpose) {
     if (expose) {
       tableExpose.value = expose
-      expose.updTableProps(options)
+      expose.updTableProps(get(options) as PearTableProps)
     }
   }
 

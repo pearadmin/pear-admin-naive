@@ -25,7 +25,7 @@
     immediate?: boolean
     redo?: boolean
     debounce?: number
-    beforeFetch?: (payload: Ref<Recordable>) => Ref<Recordable>
+    beforeFetch?: (payload: Ref<Recordable>) => MaybeRef<Recordable>
     afterFetch?: (payload: Recordable) => Recordable
   }
   // @ts-ignore
