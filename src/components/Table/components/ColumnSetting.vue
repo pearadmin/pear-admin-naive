@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, reactive, watch, computed } from 'vue'
-  import { NOT_RENDER_KEYS, PTableColumns } from '@/components/Table/composables/useColumns'
+  import { NOT_RENDER_KEYS } from '@/components/Table/composables/useColumns'
+  import type { PTableColumns } from '@/components/Table/composables/useColumns'
   import { useTableContext } from '@/components/Table/composables/useTableContext'
 
   const { tableProvideState } = useTableContext()

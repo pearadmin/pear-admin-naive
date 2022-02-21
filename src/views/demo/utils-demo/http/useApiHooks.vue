@@ -2,7 +2,8 @@
   import { useApi } from '@/api/http'
   import { HttpDemoEnums } from '@/views/demo/utils-demo/http/service'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
-  import PearForm, { FormSchema } from '@/components/Form/components/PearForm.vue'
+  import PearForm from '@/components/Form/components/PearForm.vue'
+  import type { FormSchema } from '@/components/Form/components/PearForm.vue'
 
   const form1Schemas: FormSchema[] = [
     {

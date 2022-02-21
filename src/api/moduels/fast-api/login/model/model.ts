@@ -1,4 +1,4 @@
-import { BasicModel } from '@/api/moduels/basicModel'
+import type { BasicModel } from '@/api/moduels/basicModel'
 
 export interface LoginModel {
   username: string

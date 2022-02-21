@@ -1,6 +1,8 @@
 <script setup lang="ts">
-  import { FormItemProps, FormItemRule, GridItemProps, GridProps, NForm } from 'naive-ui'
-  import { computed, ref, Slots, useAttrs, onMounted, unref, Ref } from 'vue'
+  import type { FormItemProps, FormItemRule, GridItemProps, GridProps } from 'naive-ui'
+  import type { NForm } from 'naive-ui'
+  import type { Slots, Ref } from 'vue'
+  import { computed, ref, useAttrs, onMounted, unref } from 'vue'
   import { merge, omit } from 'lodash-es'
   import { usePearFormModel } from '@/components/Form/composables/usePearFormModel'
   import PearFormItem from '@/components/Form/components/PearFormItem'

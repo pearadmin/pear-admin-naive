@@ -1,5 +1,5 @@
 import { computed, ref, watch } from 'vue'
-import { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
+import type { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
 
 export interface PTableColumns extends TableBaseColumn {
   visible: boolean

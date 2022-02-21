@@ -1,6 +1,7 @@
-import { MaybeRef } from '@vueuse/core'
-import { createContext, UpdateProvideState, useContext } from '@/composables/useContext'
-import { InjectionKey, Ref } from 'vue'
+import type { MaybeRef } from '@vueuse/core'
+import { createContext, useContext } from '@/composables/useContext'
+import type { UpdateProvideState } from '@/composables/useContext'
+import type { InjectionKey, Ref } from 'vue'
 
 export interface AppTheme {
   inverted: boolean

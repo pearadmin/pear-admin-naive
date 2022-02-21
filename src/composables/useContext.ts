@@ -1,4 +1,5 @@
-import { inject, InjectionKey, provide, ref, Ref, UnwrapRef } from 'vue'
+import { inject, provide, ref } from 'vue'
+import type { InjectionKey, Ref, UnwrapRef } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
 import { get } from '@vueuse/core'
 import { merge } from 'lodash-es'

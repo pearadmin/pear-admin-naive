@@ -1,4 +1,5 @@
-import { ComputedRef, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
+import type { ComputedRef } from 'vue'
 // @ts-ignore
 import { PearTableProps } from '@/components/Table/components/PearTable.vue'
 

@@ -1,5 +1,5 @@
 import { useApi } from '@/api/http'
-import { MenuModel } from '@/api/moduels/fast-api/menu/model/menuModel'
+import type { MenuModel } from '@/api/moduels/fast-api/menu/model/menuModel'
 
 export enum MenuApiEnum {
   menuRecords = 'menu/menusList'

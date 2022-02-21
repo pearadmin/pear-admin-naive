@@ -1,6 +1,7 @@
-import { computed, DefineComponent, defineComponent, PropType } from 'vue'
+import { computed, defineComponent } from 'vue'
+import type { DefineComponent, PropType } from 'vue'
 import { componentMap } from '@/components/Form/component'
-import { FormSchema } from '@/components/Form/components/PearForm.vue'
+import type { FormSchema } from '@/components/Form/components/PearForm.vue'
 import { isFunction } from 'lodash-es'
 
 export default defineComponent({

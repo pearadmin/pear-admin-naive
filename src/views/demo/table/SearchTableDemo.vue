@@ -1,8 +1,9 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
   import { usePearTable } from '@/components/Table/composables/usePearTable'
-  import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
-  import { GridProps, useMessage } from 'naive-ui'
+  import type { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
+  import { useMessage } from 'naive-ui'
+  import type { GridProps } from 'naive-ui'
   import { ref } from 'vue'
 
   const columns = [

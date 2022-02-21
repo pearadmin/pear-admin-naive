@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import { NForm } from 'naive-ui'
   import { markRaw, ref } from 'vue'
   import { useUserStore } from '@/store/modules/userInfo'
-  import { FormState } from '@/views/login/type'
+  import type { FormState } from '@/views/login/type'
+  import { NForm } from 'naive-ui'
   import { useRouter } from 'vue-router'
   import { login } from '@/api/moduels/demo/app'
 

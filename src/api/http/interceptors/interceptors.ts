@@ -1,4 +1,4 @@
-import { RequestOptionsInit } from 'umi-request'
+import type { RequestOptionsInit } from 'umi-request'
 import { createDialog } from '@/api/http/createDialog'
 
 export function requestInterceptor(url: string, options: RequestOptionsInit) {

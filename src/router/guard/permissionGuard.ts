@@ -1,4 +1,4 @@
-import { Router } from 'vue-router'
+import type { Router } from 'vue-router'
 import { useUserStore } from '@/store/modules/userInfo'
 import { unref } from 'vue'
 

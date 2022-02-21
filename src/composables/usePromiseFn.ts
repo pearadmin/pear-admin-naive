@@ -1,5 +1,7 @@
-import { computed, Ref, ref, UnwrapRef, watch } from 'vue'
-import { get, MaybeRef } from '@vueuse/core'
+import { computed, ref, watch } from 'vue'
+import type { Ref, UnwrapRef } from 'vue'
+import { get } from '@vueuse/core'
+import type { MaybeRef } from '@vueuse/core'
 
 export type FetchData = Recordable
 

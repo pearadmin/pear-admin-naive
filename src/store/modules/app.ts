@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useLocalStorage, useSessionStorage } from '@vueuse/core'
-import { RemoveableRef, get } from '@vueuse/core'
+import { get } from '@vueuse/core'
+import type { RemoveableRef } from '@vueuse/core'
 import { unref } from 'vue'
 
 export type ThemeName = 'dark' | 'light' | 'auto'

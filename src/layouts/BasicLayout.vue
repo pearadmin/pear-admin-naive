@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { useRouterViewRefresh } from '@/composables/useRouterViewRefresh'
-  import { createLayoutContextData, LayoutContextData } from '@/layouts/createLayoutContextData'
+  import { createLayoutContextData } from '@/layouts/createLayoutContextData'
+  import type { LayoutContextData } from '@/layouts/createLayoutContextData'
   import { useLayoutBreakPoint } from '@/layouts/useLayoutBreakPoint'
   import { computed, ref, watch } from 'vue'
   import { merge } from 'lodash-es'

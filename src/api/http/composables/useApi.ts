@@ -1,5 +1,6 @@
-import { computed, ComputedRef, Ref, ref, UnwrapRef, watch } from 'vue'
-import { RequestOptionsInit } from 'umi-request'
+import { computed, ref, watch } from 'vue'
+import type { ComputedRef, Ref, UnwrapRef } from 'vue'
+import type { RequestOptionsInit } from 'umi-request'
 import type { MaybeRef } from '@vueuse/core'
 import { get } from '@vueuse/core'
 import { merge, omit } from 'lodash-es'

@@ -1,4 +1,5 @@
-import { RouteLocationMatched, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
+import type { RouteLocationMatched } from 'vue-router'
 import { ref, watch } from 'vue'
 
 export default function useBreadcrumb() {

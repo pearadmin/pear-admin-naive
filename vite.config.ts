@@ -1,4 +1,4 @@
-import { UserConfigExport } from 'vite'
+import type { UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import windiCSS from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'

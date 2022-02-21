@@ -1,8 +1,9 @@
 <script setup lang="ts">
   import { useMessage } from 'naive-ui'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
-  import { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
+  import type { FormSchema, PearFormProps } from '@/components/Form/components/PearForm.vue'
   import { ref } from 'vue'
+  import type { Ref } from 'vue'
 
   // rPasswordFormItemRef
   const rPasswordFormItemRef = ref<any>({})
@@ -136,7 +137,7 @@
     }
   ]
 
-  const useFormRef = ref<PearFormProps>({
+  const useFormRef = ref<Partial<PearFormProps>>({
     labelWidth: 80,
     labelPlacement: 'left',
     schemas,
@@ -193,7 +194,7 @@
   const {
     registerForm,
     methods: { values, reset, validate }
-  } = usePearForm(useFormRef)
+  } = usePearForm(useFormRef as Ref<PearFormProps>)
 
   function validatePasswordStartWith(rule, value) {
     return (

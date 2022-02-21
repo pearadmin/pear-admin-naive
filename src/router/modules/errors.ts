@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import NotFound from '@/components/Error/Error404.vue'
 
 // 错误页面不在route tabs中展示

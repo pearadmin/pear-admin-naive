@@ -1,5 +1,6 @@
-import { PearFormProps, FormSchema } from '@/components/Form/components/PearForm.vue'
-import { ComputedRef, Ref, ref, watchEffect } from 'vue'
+import type { PearFormProps, FormSchema } from '@/components/Form/components/PearForm.vue'
+import type { ComputedRef, Ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { get } from '@vueuse/core'
 
 export interface FormModelMethods {

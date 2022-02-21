@@ -1,4 +1,4 @@
-import { Chart } from '@antv/g2'
+import type { Chart } from '@antv/g2'
 
 function findMaxMin(data) {
   let maxValue = 0

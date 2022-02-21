@@ -1,3 +1,7 @@
+### Optimize
+* **upgrade deps** some deps upgrade
+* **g2 data source changed** form `github` to `mock`
+
 ## [1.0.3](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.3) (2022-01-05)
 ### Feature
 * **Docs** add docs site

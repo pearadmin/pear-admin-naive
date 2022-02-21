@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { useChart } from '@/components/AntVG2/useChart'
   import { onUnmounted, watch } from 'vue'
-  import { Chart } from '@antv/g2'
+  import type { Chart } from '@antv/g2'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
   import { useApi } from '@/api/http'
 

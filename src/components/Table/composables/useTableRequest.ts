@@ -1,12 +1,13 @@
-import { computed, ComputedRef, nextTick, onMounted, ref, Ref, watch, watchEffect } from 'vue'
-import { PaginationProps } from 'naive-ui'
-import { Recordable } from 'vite-plugin-mock'
+import { computed, nextTick, onMounted, ref, watch, watchEffect } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import type { PaginationProps } from 'naive-ui'
+import type { Recordable } from 'vite-plugin-mock'
 import { DEFAULT_TABLE_FETCH, TABLE_FETCH_RESPONSE, TABLE_PAGINATION } from '@/config'
 import { get, set, useDebounceFn } from '@vueuse/core'
 // @ts-ignore
 import { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { useApi } from '@/api/http'
-import { FetchMethod } from '@/api/http/composables/useApi'
+import type { FetchMethod } from '@/api/http/composables/useApi'
 import { isEqual, isFunction, merge } from 'lodash-es'
 
 export interface UseTableRequestOptions {

@@ -1,6 +1,6 @@
 import { useApi } from '@/api/http'
-import { Ref } from 'vue'
-import { LoginModel, LoginResData } from '@/api/moduels/fast-api/login/model/model'
+import type { Ref } from 'vue'
+import type { LoginModel, LoginResData } from '@/api/moduels/fast-api/login/model/model'
 
 enum Api {
   userLogin = 'user/login/'

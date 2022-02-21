@@ -1,6 +1,6 @@
 import { useApi } from '@/api/http'
-import { Ref } from 'vue'
-import { CaptureModel, CaptureParams, LoginForm, LoginResData } from './dataModel/appModel'
+import type { Ref } from 'vue'
+import type { CaptureModel, CaptureParams, LoginForm, LoginResData } from './dataModel/appModel'
 
 export enum Api {
   GetCapture = '/user/getCapture',

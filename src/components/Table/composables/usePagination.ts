@@ -1,5 +1,6 @@
 import type { PaginationProps } from 'naive-ui'
-import { Ref, ref } from 'vue'
+import type { Ref } from 'vue'
+import { ref } from 'vue'
 
 export interface UsePagination {
   paginationRef: Ref<PaginationProps>
@@ -7,7 +8,7 @@ export interface UsePagination {
 }
 
 export default function usePagination(): UsePagination {
-  const paginationRef = ref<PaginationProps>({
+  const paginationRef = ref<Writeable<PaginationProps>>({
     itemCount: 0,
     // pageCount: 100,
     page: 1,

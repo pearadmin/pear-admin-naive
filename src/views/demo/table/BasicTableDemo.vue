@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { TableDemoEnum } from './service'
-  import { DataTableColumn } from 'naive-ui'
+  import type { DataTableColumn } from 'naive-ui'
 
   const columns: DataTableColumn[] = [
     {

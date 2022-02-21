@@ -1,5 +1,5 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
-import { App } from 'vue'
+import type { App } from 'vue'
 import { permissionGuard } from '@/router/guard/permissionGuard'
 import routes from './routes'
 

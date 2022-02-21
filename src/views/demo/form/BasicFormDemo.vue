@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import { GridProps, useMessage } from 'naive-ui'
-  import { FormSchema } from '@/components/Form/components/PearForm.vue'
+  import type { GridProps } from 'naive-ui'
+  import { useMessage } from 'naive-ui'
+  import type { FormSchema } from '@/components/Form/components/PearForm.vue'
   import { ref } from 'vue'
 
   // rPasswordFormItemRef

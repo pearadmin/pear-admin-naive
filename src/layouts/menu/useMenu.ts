@@ -1,6 +1,7 @@
 import { getMenuOptions } from '@/router/util'
-import { computed, Ref, ref, watch } from 'vue'
-import { MenuOption } from 'naive-ui'
+import { computed, ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import type { MenuOption } from 'naive-ui'
 import { useRoute } from 'vue-router'
 import { useUserStore } from '@/store/modules/userInfo'
 

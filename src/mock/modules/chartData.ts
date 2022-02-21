@@ -1,4 +1,4 @@
-import { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from 'vite-plugin-mock'
 import { createResponseData } from '../mockUtil'
 import data from './gdp.json'
 

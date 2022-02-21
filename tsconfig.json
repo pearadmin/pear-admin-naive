@@ -13,12 +13,17 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "noImplicitThis": true,
+    "preserveValueImports": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": ["src/*"]
     },
     "strictFunctionTypes": false,
     "types": ["vite/client"],
-    "typeRoots": ["./node_modules/@types/", "./types"]
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    "instantiationDepthLimit": 100,
+    "instantiationCountLimit": 10000000
   },
   "include": [
     "src/**/*.ts",

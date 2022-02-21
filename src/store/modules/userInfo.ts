@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 const menuRoutes = import.meta.globEager('../../router/modules/*/*.ts')
 

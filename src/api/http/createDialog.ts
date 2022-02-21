@@ -1,4 +1,4 @@
-import { DialogOptions } from 'naive-ui'
+import type { DialogOptions } from 'naive-ui'
 
 interface CreateDialog extends DialogOptions {
   duration?: number

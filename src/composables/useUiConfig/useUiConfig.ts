@@ -1,9 +1,12 @@
-import { ThemeName, useAppStore } from '@/store/modules/app'
-import { computed, ComputedRef, Ref, ref } from 'vue'
-import { zhCN, dateZhCN, useOsTheme, darkTheme, NLocale, GlobalThemeOverrides } from 'naive-ui'
+import type { ThemeName } from '@/store/modules/app'
+import { useAppStore } from '@/store/modules/app'
+import { computed, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import { zhCN, dateZhCN, useOsTheme, darkTheme } from 'naive-ui'
+import type { NLocale, GlobalThemeOverrides } from 'naive-ui'
 import { naiveUIConfig } from '@/config/theme.config'
-import { NDateLocale } from 'naive-ui/lib/locales/date/enUS'
-import { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface'
+import type { NDateLocale } from 'naive-ui/lib/locales/date/enUS'
+import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface'
 
 interface ProviderAttrs {
   dateLocale: Ref<NDateLocale>

@@ -15,7 +15,8 @@
     title?: string
     subtitle?: string
     extra?: string
-    'on-back'?: string
+    // 'on-back'?: string
+    onBack?: string
     showDefaultBreadcrumb?: boolean
     showDefaultTitle?: boolean
     onlyContent?: boolean

@@ -3,7 +3,7 @@
   import { useChart } from '@/components/AntVG2/useChart'
   import { onUnmounted, watch } from 'vue'
   import { renderGameChart } from '@/views/demo/components/antvG2/renderGameChart'
-  import { Chart } from '@antv/g2'
+  import type { Chart } from '@antv/g2'
   import usePromiseFn from '@/composables/usePromiseFn'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
   // ============= chart 1 =============

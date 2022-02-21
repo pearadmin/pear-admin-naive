@@ -1,6 +1,8 @@
 import { useRoute, useRouter } from 'vue-router'
-import { computed, ComputedRef, watch } from 'vue'
-import { RouteTag, useAppStore } from '@/store/modules/app'
+import { computed, watch } from 'vue'
+import type { ComputedRef } from 'vue'
+import type { RouteTag } from '@/store/modules/app'
+import { useAppStore } from '@/store/modules/app'
 import { ErrorPageNames } from '@/router/modules/errors'
 
 export interface ReturnUseRouteTab {

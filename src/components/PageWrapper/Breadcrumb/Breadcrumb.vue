@@ -1,9 +1,3 @@
-<script lang="ts">
-  export default {
-    name: 'Breadcrumb'
-  }
-</script>
-
 <script setup lang="ts">
   import useBreadcrumb from './useBreadcrumb'
 

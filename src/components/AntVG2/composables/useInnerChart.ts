@@ -1,6 +1,7 @@
-import { ComputedRef, onMounted, onUnmounted, Ref, ref, UnwrapRef, watch } from 'vue'
+import type { ComputedRef, Ref, UnwrapRef } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { Chart } from '@antv/g2'
-import { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
+import type { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 import { isEmpty, merge } from 'lodash-es'
 import { useEventListener } from '@vueuse/core'
 

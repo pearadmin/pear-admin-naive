@@ -1,9 +1,10 @@
-import { ComputedRef, ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
+import type { ComputedRef } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
 
-import { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
+import type { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
 // @ts-ignore
-import { PearTableProps } from '@/components/Table/components/PearTable.vue'
+import type { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { get } from '@vueuse/core'
 
 export interface PTableColumns extends TableBaseColumn {

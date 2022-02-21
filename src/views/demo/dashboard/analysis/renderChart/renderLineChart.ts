@@ -1,4 +1,4 @@
-import { Chart } from '@antv/g2'
+import type { Chart } from '@antv/g2'
 /**
  * 注意：不要用DataSet 目前DataSet打包后会访问会出现
  * vue-router.esm-bundler.js:3295 TypeError: Cannot read properties of undefined (reading 'Graph')
