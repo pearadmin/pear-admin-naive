@@ -3,7 +3,6 @@ import type { ComputedRef } from 'vue'
 import { DEFAULT_TABLE_HEIGHT, DEFAULT_TABLE_SIZE } from '@/config'
 
 import type { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
-// @ts-ignore
 import type { PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { get } from '@vueuse/core'
 

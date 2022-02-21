@@ -1,9 +1,3 @@
-<script lang="ts">
-  export default {
-    inheritAttrs: false
-  }
-</script>
-
 <script setup lang="ts">
   import type { DataTableColumn, DataTableColumns, PaginationProps } from 'naive-ui'
   import { computed, onMounted, ref, useAttrs, watch } from 'vue'
@@ -11,8 +5,9 @@
   import { merge, omit, pick } from 'lodash-es'
   import usePagination from '@/components/Table/composables/usePagination'
   import { usePearForm } from '@/components/Form/composables/usePearForm'
-  import { type UseFormMethods } from '@/components/Form/composables/usePearForm'
+  import type { UseFormMethods } from '@/components/Form/composables/usePearForm'
   import { get } from '@vueuse/core'
+  import type { MaybeRef } from '@vueuse/core'
   import { useTableRequest } from '@/components/Table/composables/useTableRequest'
   import {
     NOT_RENDER_KEYS,
@@ -20,7 +15,7 @@
   } from '@/components/Table/composables/useTableBaseConfig'
   import { createTableContext } from '@/components/Table/composables/useTableContext'
   // import { UseFormMethods } from '@/components/Form/composables/useForm'
-  import { type PearFormProps } from '@/components/Form/components/PearForm.vue'
+  import type { PearFormProps } from '@/components/Form/components/PearForm.vue'
   import { useSearchFormExpand } from '@/components/Table/composables/useSearchFormExpand'
 
   // types
@@ -50,7 +45,7 @@
     searchFormValue: Ref<Recordable>
     handleReset: () => void
     formMethods: UseFormMethods
-    updTableProps: (updProps: PearTableProps) => void
+    updTableProps: (updProps: MaybeRef<Partial<PearTableProps>>) => void
   }
 
   // @ts-ignore

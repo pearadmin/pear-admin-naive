@@ -6,7 +6,7 @@
   import type { Chart } from '@antv/g2'
   import usePromiseFn from '@/composables/usePromiseFn'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
-  import { useApi } from "@/api/http";
+  import { useApi } from '@/api/http'
   // ============= chart 1 =============
   // load data
   const {

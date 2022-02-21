@@ -1,7 +1,6 @@
 import { ref, watch } from 'vue'
 import type { ComputedRef } from 'vue'
-// @ts-ignore
-import { PearTableProps } from '@/components/Table/components/PearTable.vue'
+import type { PearTableProps } from '@/components/Table/components/PearTable.vue'
 
 export function useSearchFormExpand(props: ComputedRef<PearTableProps>) {
   const gridCollapsed = ref<boolean>(false)

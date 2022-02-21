@@ -1,5 +1,4 @@
-// @ts-ignore
-import type { PearTableExpose, PearTableProps } from '@/components/Table/PearTable.vue'
+import type { PearTableExpose, PearTableProps } from '@/components/Table/components/PearTable.vue'
 import { onUnmounted, ref } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
 import { makeDestructurable } from '@vueuse/core'
