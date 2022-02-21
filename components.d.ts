@@ -63,6 +63,7 @@ declare module 'vue' {
     Reload: typeof import('./src/components/Table/components/Reload.vue')['default']
     ResizeHeight: typeof import('./src/components/Table/components/ResizeHeight.vue')['default']
     RouteTabs: typeof import('./src/layouts/content/RouteTabs.vue')['default']
+    Setting: typeof import('./src/layouts/header/Setting.vue')['default']
     SizeSetting: typeof import('./src/components/Table/components/SizeSetting.vue')['default']
     TableTools: typeof import('./src/components/Table/components/TableTools.vue')['default']
     TabRefresh: typeof import('./src/layouts/content/TabRefresh.vue')['default']
