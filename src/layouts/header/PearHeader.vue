@@ -3,7 +3,7 @@
 <template>
   <n-layout-header position="absolute" class="pear-admin-header">
     <div class="pear-admin-header-top">
-      <Setting />
+      <AppSetting />
       <UserDropdown />
       <FullScreen />
       <ThemeTool />

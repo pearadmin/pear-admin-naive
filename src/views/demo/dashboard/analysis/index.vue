@@ -13,7 +13,7 @@
     executor: executor2
   } = useApi(
     {
-      url: 'dashboard/getGDP',
+      url: '/dashboard/getGDP',
       method: 'get'
     },
     { immediate: true, redo: false }

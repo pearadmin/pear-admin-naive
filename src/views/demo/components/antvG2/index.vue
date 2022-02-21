@@ -1,11 +1,12 @@
 <script setup lang="ts">
-  import { fetchGameChart, fetchChinaGdp } from './service'
+  import { fetchGameChart } from './service'
   import { useChart } from '@/components/AntVG2/useChart'
   import { onUnmounted, watch } from 'vue'
   import { renderGameChart } from '@/views/demo/components/antvG2/renderGameChart'
   import type { Chart } from '@antv/g2'
   import usePromiseFn from '@/composables/usePromiseFn'
   import { renderDynamicChart } from '@/views/demo/dashboard/analysis/renderChart/renderDynamicChart'
+  import { useApi } from "@/api/http";
   // ============= chart 1 =============
   // load data
   const {
@@ -41,7 +42,13 @@
     data: data2,
     loading: loading2,
     executor: executor2
-  } = usePromiseFn(fetchChinaGdp, {}, { immediate: true, redo: false })
+  } = useApi(
+    {
+      url: '/dashboard/getGDP',
+      method: 'get'
+    },
+    { immediate: true, redo: false }
+  )
 
   const {
     chartRefEl: chartRefEl2,
