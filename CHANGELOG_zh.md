@@ -1,3 +1,4 @@
+## [1.0.4](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.4) (2022-02-21)
 ### Optimize
 * **依赖升级** 更新部分依赖
 * **g2图表数据源切换** 从github中的请求移至mock中。
