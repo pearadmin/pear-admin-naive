@@ -9,12 +9,14 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import purgeIcons from 'vite-plugin-purge-icons'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import legacy from '@vitejs/plugin-legacy'
+import defineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
 
 function getPlugins(command: string) {
   return [
     vue(),
+    defineOptions(),
     windiCSS(),
     vueJsx(),
     purgeIcons(),

@@ -89,6 +89,7 @@ pnpm run serve
 
 ### 📖 帮助文档
 
+[项目文档](http://naive-doc.pearadmin.com/)
 除却需要jsx支持的组件外，其它均采用 setup-script 语法，[详情](https://github.com/vuejs/rfcs/pull/227#issuecomment-870105222)
 
 

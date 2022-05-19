@@ -16,6 +16,9 @@ declare module 'vue-router' {
     hiddenChildren?: boolean
     /// 指定平级菜单的Name，用于渲染菜单的选中状态
     activeMenuName?: string
+    /// keep-alive设置，如果路由需要设置keep-alive，则需要在对应的页面设置其页面组件的name属性方会生效。在script setup中
+    /// 使用 defineOptions({ name: 'PageName' })来设置其name属性。注意: 缓存的是vue组件的name属性，而非vue-router的name属性
+    keepAlive?: boolean
   }
 }
 

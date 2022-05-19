@@ -16,6 +16,7 @@ export interface RouteTag {
 export interface AppConfiguration {
   theme: RemoveableRef<ThemeName>
   tags: RemoveableRef<RouteTag[]>
+  keepAliveNames: string[]
 }
 
 const useAppStore = defineStore({
@@ -23,7 +24,8 @@ const useAppStore = defineStore({
   state: (): AppConfiguration => {
     return <AppConfiguration>{
       theme: useLocalStorage('theme', 'dark'),
-      tags: useSessionStorage('tags', [])
+      tags: useSessionStorage('tags', []),
+      keepAliveNames: []
     }
   },
   getters: {},
@@ -69,6 +71,9 @@ const useAppStore = defineStore({
         return
       }
       this.tags = unref(tagsRef).filter((it) => it.name === currentName)
+    },
+    setKeepAliveNames(keys: string[]) {
+      this.keepAliveNames = keys
     }
   }
 })

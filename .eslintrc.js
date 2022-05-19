@@ -35,6 +35,7 @@ module.exports = defineConfig({
     'vue/max-attributes-per-line': 'off',
     'vue/require-default-prop': 'off',
     'vue/no-setup-props-destructure': 'off',
+    'vue/multi-word-component-names': 'off',
     'vue/html-self-closing': [
       'error',
       {

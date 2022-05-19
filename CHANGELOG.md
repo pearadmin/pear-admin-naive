@@ -1,4 +1,11 @@
 ## [1.0.4](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.4) (2022-02-21)
+### Feature
+* **upgrade deps** some deps upgrade
+* **KeepAlive** router support `keep-alive`
+* **Docs** add docs 
+
+
+## [1.0.4](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.4) (2022-02-21)
 ### Optimize
 * **upgrade deps** some deps upgrade
 * **g2 data source changed** form `github` to `mock`

@@ -1,12 +1,12 @@
 <script setup lang="tsx">
-  import { computed } from 'vue'
+  import { computed, unref, watch } from 'vue'
   import { useLayoutContextData } from '@/layouts/createLayoutContextData'
+  import { useAppStore } from '@/store/modules/app'
+  import { storeToRefs } from 'pinia'
+  import { useRoute } from 'vue-router'
 
   const { provideState } = useLayoutContextData()
 
-  const showView = computed(() => {
-    return provideState.value.showView
-  })
   /**
    * <router-view v-slot="{ Component }">
    *       <template v-if="Component">
@@ -16,23 +16,27 @@
    *       </template>
    *     </router-view>
    */
-  //
-  //   <router-view name="default" v-slot="{ Component, route }">
-  // <transition name="fade-top" mode="out-in" :duration="300" :key="route.path">
-  //   <suspense>
-  //     <template #default>
-  //   <component v-if="Component && showView" :is="Component" :key="route.path" />
-  //   <span v-else>
-  // </span>
-  // </template>
-  // <template #fallback>
-  // <div>
-  //   Loading...
-  // </div>
-  // </template>
-  // </suspense>
-  // </transition>
-  // </router-view>
+  const showView = computed(() => {
+    return provideState.value.showView
+  })
+  // store
+  const appStore = useAppStore()
+  // keep alive names
+  const { keepAliveNames } = storeToRefs(appStore)
+
+  const route = useRoute()
+
+  watch(
+    () => route.path,
+    () => {
+      const matched = route.matched
+      const matchedKeys = matched
+        .filter((it) => it.meta?.keepAlive)
+        .map((comp) => comp.components.default.name) as string[]
+      appStore.setKeepAliveNames(Array.from(new Set(unref(keepAliveNames).concat(matchedKeys))))
+    },
+    { immediate: true }
+  )
 </script>
 
 <template>
@@ -40,7 +44,9 @@
     <router-view v-slot="{ Component }">
       <template v-if="Component">
         <transition name="fade-top">
-          <component :is="Component" v-if="showView" />
+          <keep-alive :include="keepAliveNames">
+            <component :is="Component" v-if="showView" />
+          </keep-alive>
         </transition>
       </template>
     </router-view>
