@@ -1,4 +1,4 @@
-## [1.0.5](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.5) (2022-02-21)
+## [1.0.5](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.5) (2022-05-20)
 ### Feature
 * **依赖升级** 更新部分依赖
 * **KeepAlive** 路由支持KeepAlive配置
