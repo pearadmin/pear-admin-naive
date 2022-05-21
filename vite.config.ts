@@ -1,6 +1,5 @@
 import type { UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import windiCSS from 'vite-plugin-windicss'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -10,14 +9,15 @@ import purgeIcons from 'vite-plugin-purge-icons'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import legacy from '@vitejs/plugin-legacy'
 import defineOptions from 'unplugin-vue-define-options/vite'
+import unocss from 'unocss/vite'
 
 // https://vitejs.dev/config/
 
 function getPlugins(command: string) {
   return [
     vue(),
+    unocss(),
     defineOptions(),
-    windiCSS(),
     vueJsx(),
     purgeIcons(),
     autoComponents({

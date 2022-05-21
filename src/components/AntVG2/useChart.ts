@@ -1,7 +1,6 @@
 import type { Chart } from '@antv/g2'
 import type { G2ChartProps } from '@/components/AntVG2/G2Chart.vue'
 import { nextTick, onMounted, ref } from 'vue'
-// @ts-ignore
 import G2Chart from '@/components/AntVG2/G2Chart.vue'
 
 export function useChart(options: Partial<G2ChartProps>) {

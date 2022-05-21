@@ -19,7 +19,6 @@
   import { useSearchFormExpand } from '@/components/Table/composables/useSearchFormExpand'
 
   // types
-  // @ts-ignore
   export interface TableFetch {
     fetchUrl?: string
     immediate?: boolean
@@ -28,7 +27,6 @@
     beforeFetch?: (payload: Ref<Recordable>) => MaybeRef<Recordable>
     afterFetch?: (payload: Recordable) => Recordable
   }
-  // @ts-ignore
   export interface PearTableProps {
     columns?: Array<DataTableColumn>
     size?: 'small' | 'medium' | 'large'
@@ -40,7 +38,6 @@
     searchFormProps?: PearFormProps
   }
 
-  // @ts-ignore
   export interface PearTableExpose {
     searchFormValue: Ref<Recordable>
     handleReset: () => void
@@ -48,7 +45,6 @@
     updTableProps: (updProps: MaybeRef<Partial<PearTableProps>>) => void
   }
 
-  // @ts-ignore
   export interface PearTableEmits {
     (e: 'register-table', PearTableExpose): void
   }

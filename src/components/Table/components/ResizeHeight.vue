@@ -30,6 +30,7 @@
       </NTooltip>
     </template>
     <NSlider
+      style="height: 200px"
       vertical
       :min="400"
       :max="1200"

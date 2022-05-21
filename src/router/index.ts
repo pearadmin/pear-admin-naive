@@ -5,7 +5,10 @@ import { useAppRouterGuard } from '@/router/guard'
 
 const router = createRouter({
   history: createWebHashHistory('/'),
-  routes
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 useAppRouterGuard(router)

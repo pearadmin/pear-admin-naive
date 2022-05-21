@@ -102,21 +102,17 @@
         </NAlert>
         <br />
         <PearForm @register-form="rf1" />
-        <pre>
-          结果: => {{ JSON.stringify(data1, null, 2) }}
-        </pre>
-        <NButton type="primary" @click="executor1">再次触发请求</NButton>
+        结果: => {{ JSON.stringify(data1, null, 2) }}
       </NCard>
+      <NButton type="primary" @click="executor1">再次触发请求</NButton>
     </NSpin>
     <NDivider />
     <NSpin :show="loading2">
       <NCard title="全手动挡(初始化不请求，参数改变也不请求)">
         <PearForm @register-form="rf2" />
-        <pre>
-          结果: => {{ JSON.stringify(data2, null, 2) }}
-        </pre>
-        <NButton type="primary" @click="executor2">手动换挡</NButton>
+        结果: => {{ JSON.stringify(data2, null, 2) }}
       </NCard>
+      <NButton type="primary" @click="executor2">手动换挡</NButton>
     </NSpin>
   </PageWrapper>
 </template>

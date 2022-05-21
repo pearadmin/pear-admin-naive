@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import '@purge-icons/generated'
-import 'virtual:windi.css'
+import 'uno.css'
 import '@/style/global.less'
 import { useAppRouter } from '@/router'
 

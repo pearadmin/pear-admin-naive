@@ -46,7 +46,6 @@ export function useMenu(): ReturnUseMenu {
     const matchLen = matchedNames.length
     const matchExpandKeys = matchedNames.slice(0, matchLen - 1)
     const openKey = matchedNames[matchLen - 1]
-    console.log(openKey)
     expandKeys.value = matchExpandKeys
     // 处理平级模式的菜单
     if (route?.meta?.activeMenuName) {

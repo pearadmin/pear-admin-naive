@@ -41,27 +41,11 @@
   )
 </script>
 <template>
-  <div class="pear-admin-layout-wrapper">
-    <NLayout embedded has-sider position="absolute">
-      <PearSider />
-      <NLayout embedded class="pear-admin-layout-wrapper-layout">
-        <PearHeader />
-        <PearContent />
-      </NLayout>
+  <NLayout embedded has-sider position="absolute">
+    <PearSider />
+    <NLayout embedded>
+      <PearHeader />
+      <PearContent />
     </NLayout>
-  </div>
+  </NLayout>
 </template>
-
-<style lang="less">
-  .pear-admin-layout-wrapper {
-    //@apply w-full min-h-screen h-full;
-    &-layout {
-      //@apply w-full min-h-screen h-full;
-      //width: v-bind(layoutWith);
-      //left: v-bind(left) !important;
-      //padding-left: v-bind(left);
-      //transition: 0.3s;
-      // border: 1px solid red;
-    }
-  }
-</style>

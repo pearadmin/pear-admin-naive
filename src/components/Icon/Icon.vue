@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { computed, onMounted, ref, watch } from 'vue'
-  // @ts-ignore
   import Iconify from '@purge-icons/generated'
 
   export interface IconProps {

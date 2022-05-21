@@ -56,7 +56,7 @@
   }
 </script>
 <template>
-  <div class="px-5 login-wrapper">
+  <div class="login-wrapper">
     <ThemeTool class="float-right my-4 mr-4" />
     <div class="relative w-full py-5 my-40 ml-auto mr-auto login-form sm:w-full">
       <div class="flex flex-row items-center justify-around">
@@ -114,7 +114,7 @@
   }
 
   .login-wrapper {
-    @apply w-full h-screen absolute;
+    @apply w-full absolute;
     background: url('@/assets/svg/background.svg') no-repeat;
     background-size: cover;
   }

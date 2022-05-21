@@ -1,16 +1,8 @@
-<script lang="ts">
-  export default {
-    name: 'PageWrapper',
-    inheritAttrs: false
-  }
-</script>
-
 <script setup lang="ts">
   import { computed, useAttrs, useSlots } from 'vue'
   import { omit } from 'lodash-es'
   import { useRoute } from 'vue-router'
 
-  // @ts-ignore
   export interface PageWrapperProps {
     title?: string
     subtitle?: string
@@ -21,6 +13,11 @@
     showDefaultTitle?: boolean
     onlyContent?: boolean
   }
+
+  defineOptions({
+    name: 'PageWrapper',
+    inheritAttrs: false
+  })
 
   const props = withDefaults(defineProps<PageWrapperProps>(), {
     showDefaultBreadcrumb: true,
@@ -99,13 +96,16 @@
 <style scoped lang="less">
   .pear-admin-page-wrapper {
     width: 100%;
-    height: auto;
+    height: 100%;
+
     &-header {
       @apply pl-4 pt-4 pr-4 pb-0;
+
       &-only {
         @apply p-0;
       }
     }
+
     &-content {
       @apply p-4;
       background: var(--hover-color);

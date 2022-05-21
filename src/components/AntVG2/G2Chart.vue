@@ -11,7 +11,6 @@
     updChartProps: (props: Partial<G2ChartProps>) => void
   }
 
-  // @ts-ignore
   export interface G2ChartProps {
     initialChartConfig?: Omit<ChartCfg, 'container'>
     loading?: boolean

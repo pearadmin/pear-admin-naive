@@ -44,7 +44,7 @@
       </div>
     </NScrollbar>
     <div class="pear-admin-tabs-right-menu">
-      <NSpace justify="center" align="center" item-style="display:flex;">
+      <NSpace justify="center" align="center" :wrap="false" item-style="display:flex;">
         <TabRefresh :refresh="handleRefresh" />
         <TabsAction
           :close-left="handleCloseLeft"
