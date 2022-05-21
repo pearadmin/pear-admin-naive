@@ -1,3 +1,8 @@
+### Feature
+* **依赖升级** 更新部分依赖
+* **unocss** 带破坏性更新: 使用unocss替换windicss
+
+
 ## [1.0.5](https://github.com/pearadmin/pear-admin-naive/releases/tag/1.0.5) (2022-05-20)
 ### Feature
 * **依赖升级** 更新部分依赖
